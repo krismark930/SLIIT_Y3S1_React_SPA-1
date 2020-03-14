@@ -21,18 +21,18 @@ const MainNavbar = props => {
                         <Nav.Link href="#pricing">Pricing</Nav.Link>
                     </Nav>
                     <Nav className=" float-right">
-                        <Nav.Link href="#deets">ContactUs</Nav.Link>
-                        <Nav.Link href="#deets">About</Nav.Link>
+                        <Nav.Link href="#contact_us">Contact Us</Nav.Link>
+                        <Nav.Link href="#about">About</Nav.Link>
                         {logingStatus.loggedin ? (
                             <div className="signoutHeader" onClick={() => signOut()}>
-                                <Nav.Link href="#deets">
+                                <Nav.Link href="#sign_out">
                                     {" "}
                                     <Button variant="outline-success" style={{ padding: "3px" }}>Sign Out</Button>
                                 </Nav.Link>
                             </div>
                         ) : (
                             <Nav>
-                                <Nav.Link href="#deets">
+                                <Nav.Link href="#sign_in">
                                     <Button variant="outline-success" style={{ padding: "3px" }}>Sign In</Button>
                                 </Nav.Link>
                             </Nav>
