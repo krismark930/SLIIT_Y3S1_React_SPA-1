@@ -1,5 +1,4 @@
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
 import MainNavbar from "./components/navbar/navbar-component";
 
 function App() {
