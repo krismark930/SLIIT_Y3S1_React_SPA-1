@@ -9,7 +9,7 @@ import CartDropdown from "../cart-dropdown/cart-dropdown-component";
 const MainNavbar = props => {
   const [logingStatus, setLogingStatus] = useState({
     loggedin: true,
-    hidden: false
+    hidden: true
   });
 
   const signOut = () => {};
