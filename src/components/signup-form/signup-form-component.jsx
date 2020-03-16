@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Formik } from "formik";
 import { Form, Col, InputGroup, Button } from "react-bootstrap";
 import * as yup from "yup";
+import { FaSignInAlt } from "react-icons/fa";
 
 const schema = yup.object().shape({
   firstName: yup
@@ -177,7 +178,18 @@ const SignupForm = props => {
               </Form.Group>
             </Form.Row>
 
-            <Button type="submit" disabled={isSubmitting}>
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              style={{ marginTop: "10px" }}
+            >
+              <FaSignInAlt
+                style={{
+                  marginRight: "10px",
+                  marginBottom: "3px",
+                  transform: "rotate(270deg)"
+                }}
+              />
               SignUp
             </Button>
           </Form>
