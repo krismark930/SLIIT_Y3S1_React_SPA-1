@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./navbar-style.scss";
 import { FaCartArrowDown } from "react-icons/fa";
 import { IconContext } from "react-icons";
+import CartDropdown from "../cart-dropdown/cart-dropdown-component";
 
 const MainNavbar = props => {
   const [logingStatus, setLogingStatus] = useState({
@@ -12,6 +13,13 @@ const MainNavbar = props => {
   });
 
   const signOut = () => {};
+
+  const toggleCart = () => {
+    setLogingStatus({
+      ...logingStatus,
+      hidden: !logingStatus.hidden
+    });
+  };
 
   return (
     <div className="navbar-head">
@@ -36,7 +44,7 @@ const MainNavbar = props => {
               <div className="signoutHeader" onClick={() => signOut()}>
                 <Nav.Link href="#sign_out">
                   {" "}
-                  <span className="cartDropdownNavBar">
+                  <span className="cartDropdownNavBar" onClick={toggleCart}>
                     <IconContext.Provider
                       value={{
                         color: "",
@@ -47,6 +55,7 @@ const MainNavbar = props => {
                       <FaCartArrowDown />
                     </IconContext.Provider>
                   </span>
+                  {logingStatus.hidden ? null : <CartDropdown />}
                   <Button variant="outline-success" style={{ padding: "3px" }}>
                     Sign Out
                   </Button>
