@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Formik } from "formik";
 import { Form, Col, InputGroup, Button } from "react-bootstrap";
 import * as yup from "yup";
-// import * as FontAwesome from "react-icons";
 import { FaSignInAlt } from "react-icons/fa";
 
 const schema = yup.object().shape({
@@ -84,11 +83,7 @@ const LoginForm = props => {
               </Form.Group>
             </Form.Row>
 
-            <Button
-              type="submit"
-              style={{ marginLeft: "13px" }}
-              disabled={isSubmitting}
-            >
+            <Button type="submit" style={{}} disabled={isSubmitting}>
               <FaSignInAlt
                 style={{
                   marginRight: "10px",

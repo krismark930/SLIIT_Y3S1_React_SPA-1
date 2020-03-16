@@ -1,6 +1,19 @@
 .loginSignupMainHead {
   margin-top: 70px;
 
+  .container {
+    max-width: 1300px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .clll {
+    margin-left: auto;
+  }
+
   .loginSignupPageLginForm {
     border-radius: 4px;
     padding: 20px;

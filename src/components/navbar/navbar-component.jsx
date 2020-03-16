@@ -2,6 +2,8 @@ import React, { Component, useState } from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./navbar-style.scss";
+import { FaCartArrowDown } from "react-icons/fa";
+import { IconContext } from "react-icons";
 
 const MainNavbar = props => {
   const [logingStatus, setLogingStatus] = useState({
@@ -34,6 +36,17 @@ const MainNavbar = props => {
               <div className="signoutHeader" onClick={() => signOut()}>
                 <Nav.Link href="#sign_out">
                   {" "}
+                  <span className="cartDropdownNavBar">
+                    <IconContext.Provider
+                      value={{
+                        color: "",
+                        className: "global-class-name",
+                        size: "2rem"
+                      }}
+                    >
+                      <FaCartArrowDown />
+                    </IconContext.Provider>
+                  </span>
                   <Button variant="outline-success" style={{ padding: "3px" }}>
                     Sign Out
                   </Button>
