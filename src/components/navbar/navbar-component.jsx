@@ -40,22 +40,27 @@ const MainNavbar = props => {
           <Nav className=" float-right">
             <Nav.Link href="#contact_us">Contact Us</Nav.Link>
             <Nav.Link href="#about">About</Nav.Link>
+
+            <span className="cartDropdownNavBar" onClick={toggleCart}>
+              <IconContext.Provider
+                value={{
+                  color: "white",
+                  className: "global-class-name",
+                  size: "2rem"
+                }}
+              >
+                <FaCartArrowDown />
+              </IconContext.Provider>
+            </span>
+
+            {logingStatus.hidden ? null : (
+              <CartDropdown checkoutToggle={toggleCart} />
+            )}
+
             {logingStatus.loggedin ? (
               <div className="signoutHeader" onClick={() => signOut()}>
                 <Nav.Link href="#sign_out">
                   {" "}
-                  <span className="cartDropdownNavBar" onClick={toggleCart}>
-                    <IconContext.Provider
-                      value={{
-                        color: "",
-                        className: "global-class-name",
-                        size: "2rem"
-                      }}
-                    >
-                      <FaCartArrowDown />
-                    </IconContext.Provider>
-                  </span>
-                  {logingStatus.hidden ? null : <CartDropdown />}
                   <Button variant="outline-success" style={{ padding: "3px" }}>
                     Sign Out
                   </Button>
@@ -63,11 +68,16 @@ const MainNavbar = props => {
               </div>
             ) : (
               <Nav>
-                <Nav.Link href="#sign_in">
-                  <Button variant="outline-success" style={{ padding: "3px" }}>
+                {/* <Nav.Link href="#sign_in"> */}
+                <Link to="/signin-signup">
+                  <Button
+                    variant="outline-success"
+                    style={{ padding: "3px", margin: "4px 6px" }}
+                  >
                     Sign In
                   </Button>
-                </Nav.Link>
+                </Link>
+                {/* </Nav.Link> */}
               </Nav>
             )}
             {/* {logingStatus.hidden ? null : <CartDropdown />} */}

@@ -4,6 +4,7 @@ import { Col, Button } from "react-bootstrap";
 
 import "./cart-dropdown-styles.scss";
 import CartItem from "../cart-item/cart-item-component";
+import { Link } from "react-router-dom";
 
 const cartItems = [
   {
@@ -29,7 +30,7 @@ const cartItems = [
   }
 ];
 
-const CartDropdown = ({ history, dispatch }) => {
+const CartDropdown = ({ checkoutToggle }) => {
   return (
     <div className="cart-dropdown">
       <div className="cart-items">
@@ -42,22 +43,21 @@ const CartDropdown = ({ history, dispatch }) => {
         )}
       </div>
 
-      <Button
-        type="submit"
-        style={{ marginTop: "10px" }}
-        onClick={() => {
-          //   history.push("/checkout");
-          //   dispatch(toggeleCardHidden());
-        }}
-      >
-        <FaShoppingCart
-          style={{
-            marginRight: "10px",
-            marginBottom: "3px"
-          }}
-        />
-        Go to checkout
-      </Button>
+      <Link to="/checkout-page">
+        <Button
+          type="submit"
+          style={{ marginTop: "10px" }}
+          onSubmit={checkoutToggle}
+        >
+          <FaShoppingCart
+            style={{
+              marginRight: "10px",
+              marginBottom: "3px"
+            }}
+          />
+          Go to checkout
+        </Button>
+      </Link>
     </div>
   );
 };
