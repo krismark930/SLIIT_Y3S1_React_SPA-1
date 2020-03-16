@@ -31,8 +31,8 @@ const LoginForm = props => {
           }, 500);
         }}
         initialValues={{
-          email: "",
-          password: ""
+          email: loginData.email,
+          password: loginData.password
         }}
       >
         {({
@@ -46,46 +46,48 @@ const LoginForm = props => {
           errors
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
-            <Form.Group as={Col} md="12" controlId="validationFormik01">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Email"
-                name="email"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                isInvalid={touched.email && errors.email}
-                isValid={touched.email && !errors.email}
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.email}
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group as={Col} md="12" controlId="validationFormik02">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                placeholder="Password"
-                type="password"
-                name="password"
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                isInvalid={touched.password && errors.password}
-                isValid={touched.password && !errors.password}
-              />
+            <Form.Row>
+              <Form.Group as={Col} md="12" controlId="validationFormik01">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isInvalid={touched.email && errors.email}
+                  isValid={touched.email && !errors.email}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors.email}
+                </Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group as={Col} md="12" controlId="validationFormik02">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  placeholder="Password"
+                  type="password"
+                  name="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isInvalid={touched.password && errors.password}
+                  isValid={touched.password && !errors.password}
+                />
 
-              <Form.Control.Feedback type="invalid">
-                {errors.password}
-              </Form.Control.Feedback>
-            </Form.Group>
+                <Form.Control.Feedback type="invalid">
+                  {errors.password}
+                </Form.Control.Feedback>
+              </Form.Group>
+            </Form.Row>
 
             <Button
               type="submit"
               style={{ marginLeft: "13px" }}
               disabled={isSubmitting}
             >
-              Submit form
+              Login
             </Button>
           </Form>
         )}
