@@ -1,25 +1,29 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useContext } from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./navbar-style.scss";
 import { FaCartArrowDown } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import CartDropdown from "../cart-dropdown/cart-dropdown-component";
+import { AppContext } from "../../Context/app-context";
 
 const MainNavbar = props => {
-  const [logingStatus, setLogingStatus] = useState({
-    loggedin: true,
-    hidden: true
-  });
+  const appContext = useContext(AppContext);
+  console.log(appContext);
+
+  // const [logingStatus, setLogingStatus] = useState({
+  //   loggedin: true,
+  //   hidden: true
+  // });
 
   const signOut = () => {};
 
-  const toggleCart = () => {
-    setLogingStatus({
-      ...logingStatus,
-      hidden: !logingStatus.hidden
-    });
-  };
+  // const toggleCart = () => {
+  //   setLogingStatus({
+  //     ...logingStatus,
+  //     hidden: !logingStatus.hidden
+  //   });
+  // };
 
   return (
     <div className="navbar-head">
@@ -41,31 +45,39 @@ const MainNavbar = props => {
             <Nav.Link href="#contact_us">Contact Us</Nav.Link>
             <Nav.Link href="#about">About</Nav.Link>
 
-            <span className="cartDropdownNavBar" onClick={toggleCart}>
-              <IconContext.Provider
-                value={{
-                  color: "white",
-                  className: "global-class-name",
-                  size: "2rem"
-                }}
-              >
-                <FaCartArrowDown />
-              </IconContext.Provider>
-            </span>
+            {/* {logingStatus.hidden ? null : <CartDropdown />} */}
 
-            {logingStatus.hidden ? null : (
-              <CartDropdown checkoutToggle={toggleCart} />
-            )}
+            {appContext.loggedin ? (
+              <Nav>
+                <div className="dripdowntoggles">
+                  <Nav.Link
+                    onClick={appContext.toggleDropdownHidden}
+                    className="cartDropdownNavBar"
+                  >
+                    <IconContext.Provider
+                      value={{
+                        color: "white",
+                        className: "global-class-name",
+                        size: "2rem"
+                      }}
+                    >
+                      <FaCartArrowDown />
+                    </IconContext.Provider>
+                  </Nav.Link>
+                </div>
 
-            {logingStatus.loggedin ? (
-              <div className="signoutHeader" onClick={() => signOut()}>
+                {appContext.hidden ? null : <CartDropdown />}
+
                 <Nav.Link href="#sign_out">
-                  {" "}
-                  <Button variant="outline-success" style={{ padding: "3px" }}>
+                  <Button
+                    variant="outline-success"
+                    style={{ padding: "3px" }}
+                    onClick={appContext.logout}
+                  >
                     Sign Out
                   </Button>
                 </Nav.Link>
-              </div>
+              </Nav>
             ) : (
               <Nav>
                 {/* <Nav.Link href="#sign_in"> */}
@@ -80,7 +92,6 @@ const MainNavbar = props => {
                 {/* </Nav.Link> */}
               </Nav>
             )}
-            {/* {logingStatus.hidden ? null : <CartDropdown />} */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
