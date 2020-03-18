@@ -3,7 +3,7 @@ import { AppContext } from "./app-context";
 
 const GlobalState = props => {
   const [loggedin, setLoggedin] = useState(true);
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(true);
   const [products, setProducts] = useState([
     { id: "p1", title: "Gaming Mouse", price: 29.99 },
     { id: "p2", title: "Harry Potter 3", price: 9.99 },
@@ -15,7 +15,7 @@ const GlobalState = props => {
     { id: "p1", title: "Gaming Mouse", price: 29.99 }
   ]);
 
-  //   addItemToCart = (item) => {
+  //   const addItemToCart = item => {
   //     const updatedCart = [...cart];
   //     const updatedItemIndex = updatedCart.findIndex(item => item.id === item.id);
 
@@ -28,7 +28,6 @@ const GlobalState = props => {
   //       updatedItem.quantity++;
   //       updatedCart[updatedItemIndex] = updatedItem;
   //     }
-
   //   };
 
   //   removeItemFromCart = (productId, state) => {
@@ -67,6 +66,7 @@ const GlobalState = props => {
         hidden: hidden,
         cart: cart,
         logout: logout,
+        // addItemToCart: addItemToCart,
         toggleDropdownHidden: toggleDropdownHidden
       }}
     >

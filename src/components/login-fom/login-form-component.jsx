@@ -16,21 +16,38 @@ const schema = yup.object().shape({
 });
 
 const LoginForm = props => {
+  var responseError = "";
   const [loginData, setloginData] = useState({
     email: "",
     password: ""
   });
 
+  const onSubmitHand = async (values, { setSubmitting }) => {
+    console.log(values);
+    setloginData(values);
+
+    try {
+      const response = await fetch("http://localhost:5000/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(values)
+      });
+
+      const responseData = await response.json();
+      responseError = responseData.message;
+      console.log(responseError);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="loginComponentHead">
       <Formik
         validationSchema={schema}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            console.log(values);
-            setloginData(values);
-          }, 500);
-        }}
+        onSubmit={onSubmitHand}
         initialValues={{
           email: loginData.email,
           password: loginData.password
@@ -82,7 +99,6 @@ const LoginForm = props => {
                 </Form.Control.Feedback>
               </Form.Group>
             </Form.Row>
-
             <Button type="submit" style={{}} disabled={isSubmitting}>
               <FaSignInAlt
                 style={{

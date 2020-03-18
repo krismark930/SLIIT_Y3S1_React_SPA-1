@@ -10,7 +10,7 @@ export const AppContext = createContext({
     { id: "p4", title: "Half-dried plant", price: 2.99 }
   ],
   cart: [],
-  addItemToCart: (item, state) => {},
+  addItemToCart: item => {},
   removeItemFromCart: (productId, state) => {},
   toggleDropdownHidden: state => {},
   logout: state => {}

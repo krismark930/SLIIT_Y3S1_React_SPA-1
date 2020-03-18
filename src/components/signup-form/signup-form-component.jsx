@@ -45,16 +45,31 @@ const SignupForm = props => {
     password: ""
   });
 
+  const onSubmitHand = async (values, { setSubmitting }) => {
+    console.log(values);
+    setSignupData(values);
+
+    try {
+      const response = await fetch("http://localhost:5000/users/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(values)
+      });
+
+      const responseData = await response.json();
+      console.log(responseData.message);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="signupFormHead">
       <Formik
         validationSchema={schema}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            console.log(values);
-            setSignupData(values);
-          }, 500);
-        }}
+        onSubmit={onSubmitHand}
         initialValues={signUpData}
       >
         {({

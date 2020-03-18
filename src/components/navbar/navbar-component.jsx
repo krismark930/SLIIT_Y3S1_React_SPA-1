@@ -9,6 +9,7 @@ import { AppContext } from "../../Context/app-context";
 
 const MainNavbar = props => {
   const appContext = useContext(AppContext);
+
   console.log(appContext);
 
   // const [logingStatus, setLogingStatus] = useState({
