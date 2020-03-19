@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Formik } from "formik";
 import { Form, Col, InputGroup, Button } from "react-bootstrap";
 import * as yup from "yup";
 import { FaSignInAlt } from "react-icons/fa";
+import { AppContext } from "../../Context/app-context";
 
 const schema = yup.object().shape({
   email: yup
@@ -16,6 +17,9 @@ const schema = yup.object().shape({
 });
 
 const LoginForm = props => {
+  const appContext = useContext(AppContext);
+  const [errorLogin, seterrorLogin] = useState(null);
+
   var responseError = "";
   const [loginData, setloginData] = useState({
     email: "",
@@ -36,10 +40,16 @@ const LoginForm = props => {
       });
 
       const responseData = await response.json();
+      console.log(responseData.login);
+      if (!responseData.login) {
+        throw new Error(responseData.message);
+      }
       responseError = responseData.message;
-      console.log(responseError);
+      // console.log(responseError);
+      appContext.login();
     } catch (err) {
-      console.log(err);
+      // seterrorLogin(err.message);
+      // console.log(err.message);
     }
   };
 

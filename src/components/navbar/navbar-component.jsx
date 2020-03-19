@@ -65,18 +65,18 @@ const MainNavbar = props => {
                       <FaCartArrowDown />
                     </IconContext.Provider>
                   </Nav.Link>
+                  {appContext.hidden ? null : <CartDropdown />}
                 </div>
 
-                {appContext.hidden ? null : <CartDropdown />}
-
-                <Nav.Link href="#sign_out">
-                  <Button
-                    variant="outline-success"
-                    style={{ padding: "3px" }}
-                    onClick={appContext.logout}
-                  >
-                    Sign Out
-                  </Button>
+                <Nav.Link onClick={appContext.logout}>
+                  <Link to="/">
+                    <Button
+                      variant="outline-success"
+                      style={{ padding: "3px" }}
+                    >
+                      Sign Out
+                    </Button>
+                  </Link>
                 </Nav.Link>
               </Nav>
             ) : (

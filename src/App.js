@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useContext } from "react";
 import MainNavbar from "./components/navbar/navbar-component";
 import LoginSignup from "./pages/login-signup/login-signup-component";
 import { Route, Switch, Redirect } from "react-router-dom";
@@ -8,17 +8,34 @@ import { AppContext } from "./Context/app-context";
 import GlobalState from "./Context/global-state";
 
 function App() {
+  let routess;
+
+  const app = useContext(AppContext);
+
+  console.log(app.loggedin + " roues check");
+  if (app.loggedin) {
+    routess = (
+      <Switch>
+        <Route exact path="/" component={Homepage} />
+        <Route exact path="/checkout-page" component={Checkout} />
+        <Redirect to="/" />
+      </Switch>
+    );
+  } else {
+    routess = (
+      <Switch>
+        <Route exact path="/" component={Homepage} />
+        <Route exact path="/signin-signup" component={LoginSignup} />
+        <Redirect to="/signin-signup" />
+      </Switch>
+    );
+  }
+
   return (
     <div className="App">
-      <GlobalState>
-        <MainNavbar />
+      <MainNavbar />
 
-        <Switch>
-          <Route exact path="/" component={Homepage} />
-          <Route path="/signin-signup" component={LoginSignup} />
-          <Route path="/checkout-page" component={Checkout} />
-        </Switch>
-      </GlobalState>
+      {routess}
     </div>
   );
 }

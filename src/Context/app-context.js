@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 export const AppContext = createContext({
-  loggedin: true,
+  loggedin: false,
   hidden: false,
   products: [
     { id: "p1", title: "Gaming Mouse", price: 29.99 },
@@ -13,5 +13,6 @@ export const AppContext = createContext({
   addItemToCart: item => {},
   removeItemFromCart: (productId, state) => {},
   toggleDropdownHidden: state => {},
-  logout: state => {}
+  logout: state => {},
+  login: state => {}
 });

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AppContext } from "./app-context";
 
 const GlobalState = props => {
-  const [loggedin, setLoggedin] = useState(true);
+  const [loggedin, setLoggedin] = useState(false);
   const [hidden, setHidden] = useState(true);
   const [products, setProducts] = useState([
     { id: "p1", title: "Gaming Mouse", price: 29.99 },
@@ -56,6 +56,9 @@ const GlobalState = props => {
   const logout = state => {
     setLoggedin(false);
   };
+  const login = state => {
+    setLoggedin(true);
+  };
 
   return (
     <AppContext.Provider
@@ -65,6 +68,7 @@ const GlobalState = props => {
         loggedin: loggedin,
         hidden: hidden,
         cart: cart,
+        login: login,
         logout: logout,
         // addItemToCart: addItemToCart,
         toggleDropdownHidden: toggleDropdownHidden
