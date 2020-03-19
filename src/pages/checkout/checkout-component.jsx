@@ -31,6 +31,14 @@ import { AppContext } from "../../Context/app-context";
 const Checkout = () => {
   const appContext = useContext(AppContext);
 
+  var total = 0;
+
+  appContext.cart.forEach(element => {
+    var itemTotal = 0;
+    itemTotal = element.quantity * element.price;
+    total += itemTotal;
+  });
+
   return (
     <div className="checkout-page">
       <div className="checkout-header">
@@ -54,7 +62,7 @@ const Checkout = () => {
       {appContext.cart.map(cartItem => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-      <div className="total">TOTAL: ${}</div>
+      <div className="total">TOTAL: ${total}</div>
       <Button className="buyNowBtn" type="submit" style={{ float: "right" }}>
         Buy Now
       </Button>
