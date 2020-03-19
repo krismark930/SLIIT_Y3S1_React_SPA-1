@@ -7,29 +7,29 @@ import CartItem from "../cart-item/cart-item-component";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../Context/app-context";
 
-const cartItems = [
-  {
-    id: 1,
-    name: "Brown Brim",
-    imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    price: 25,
-    quantity: 3
-  },
-  {
-    id: 1,
-    name: "Brown Brim",
-    imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    price: 25,
-    quantity: 3
-  },
-  {
-    id: 1,
-    name: "Brown Brim",
-    imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    price: 25,
-    quantity: 3
-  }
-];
+// const cartItems = [
+//   {
+//     id: 1,
+//     name: "Brown Brim",
+//     imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+//     price: 25,
+//     quantity: 3
+//   },
+//   {
+//     id: 1,
+//     name: "Brown Brim",
+//     imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+//     price: 25,
+//     quantity: 3
+//   },
+//   {
+//     id: 1,
+//     name: "Brown Brim",
+//     imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+//     price: 25,
+//     quantity: 3
+//   }
+// ];
 
 const CartDropdown = ({ checkoutToggle }) => {
   const appContext = useContext(AppContext);
@@ -37,8 +37,8 @@ const CartDropdown = ({ checkoutToggle }) => {
   return (
     <div className="cart-dropdown">
       <div className="cart-items">
-        {cartItems.length ? (
-          cartItems.map(cartItem => (
+        {appContext.cart.length ? (
+          appContext.cart.map(cartItem => (
             <CartItem key={cartItem.id} item={cartItem} />
           ))
         ) : (

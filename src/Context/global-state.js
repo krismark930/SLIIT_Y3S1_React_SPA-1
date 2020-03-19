@@ -11,24 +11,33 @@ const GlobalState = props => {
     { id: "p4", title: "Half-dried plant", price: 2.99 }
   ]);
 
-  const [cart, setCart] = useState([
-    { id: "p1", title: "Gaming Mouse", price: 29.99 }
-  ]);
+  var count = -1;
 
-  //   const addItemToCart = item => {
-  //     const updatedCart = [...cart];
-  //     const updatedItemIndex = updatedCart.findIndex(item => item.id === item.id);
+  const [cart, setCart] = useState([]);
 
-  //     if (updatedItemIndex < 0) {
-  //       updatedCart.push({ ...item, quantity: 1 });
-  //     } else {
-  //       const updatedItem = {
-  //         ...updatedCart[updatedItemIndex]
-  //       };
-  //       updatedItem.quantity++;
-  //       updatedCart[updatedItemIndex] = updatedItem;
-  //     }
-  //   };
+  const addItemToCart = item => {
+    const updatedCart = cart;
+    console.log(updatedCart);
+
+    var itemId = item.id;
+    console.log(itemId);
+
+    const updatedItemIndex = updatedCart.findIndex(item => item.id == itemId);
+
+    console.log(updatedItemIndex);
+
+    if (updatedItemIndex < 0) {
+      updatedCart.push({ ...item, quantity: 1 });
+    } else {
+      const updatedItem = {
+        ...updatedCart[updatedItemIndex]
+      };
+      updatedItem.quantity++;
+      updatedCart[updatedItemIndex] = updatedItem;
+    }
+
+    setCart(updatedCart);
+  };
 
   //   removeItemFromCart = (productId, state) => {
   //     console.log("Removing product with id: " + productId);
@@ -70,7 +79,7 @@ const GlobalState = props => {
         cart: cart,
         login: login,
         logout: logout,
-        // addItemToCart: addItemToCart,
+        addItemToCart: addItemToCart,
         toggleDropdownHidden: toggleDropdownHidden
       }}
     >

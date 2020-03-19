@@ -1,33 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./checkout-style.scss";
 import { Button } from "react-bootstrap";
 import CheckoutItem from "../../components/checkout-item/checkout-item-component";
+import { AppContext } from "../../Context/app-context";
 
-const cartItems = [
-  {
-    id: 1,
-    name: "Brown Brim",
-    imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    price: 25,
-    quantity: 3
-  },
-  {
-    id: 1,
-    name: "Brown Brim",
-    imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    price: 25,
-    quantity: 3
-  },
-  {
-    id: 1,
-    name: "Brown Brim",
-    imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    price: 25,
-    quantity: 3
-  }
-];
+// const cartItems = [
+//   {
+//     id: 1,
+//     name: "Brown Brim",
+//     imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+//     price: 25,
+//     quantity: 3
+//   },
+//   {
+//     id: 1,
+//     name: "Brown Brim",
+//     imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+//     price: 25,
+//     quantity: 3
+//   },
+//   {
+//     id: 1,
+//     name: "Brown Brim",
+//     imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+//     price: 25,
+//     quantity: 3
+//   }
+// ];
 const Checkout = () => {
+  const appContext = useContext(AppContext);
+
   return (
     <div className="checkout-page">
       <div className="checkout-header">
@@ -47,8 +50,9 @@ const Checkout = () => {
           <span>Remove</span>
         </div>
       </div>
-      {cartItems.map(cartItem => (
-        <CheckoutItem key={cartItem.id} cartItem={cartItems} />
+
+      {appContext.cart.map(cartItem => (
+        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
       <div className="total">TOTAL: ${}</div>
       <Button className="buyNowBtn" type="submit" style={{ float: "right" }}>
