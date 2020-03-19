@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Formik } from "formik";
-import { Form, Col, InputGroup, Button } from "react-bootstrap";
+import { Form, Col, InputGroup, Button, Spinner } from "react-bootstrap";
 import * as yup from "yup";
 import { FaSignInAlt } from "react-icons/fa";
 import { AppContext } from "../../Context/app-context";
@@ -10,13 +10,13 @@ const schema = yup.object().shape({
     .string()
     .email()
     .required("Enter the email"),
-  password: yup
-    .string()
-    .min(3, "min")
-    .required("Enter the password")
+  password: yup.string().required("Enter the password")
 });
 
+var errorss = "";
+
 const LoginForm = props => {
+  const [loading, setLoading] = useState(false);
   const appContext = useContext(AppContext);
   const [errorLogin, seterrorLogin] = useState(null);
 
@@ -27,6 +27,7 @@ const LoginForm = props => {
   });
 
   const onSubmitHand = async (values, { setSubmitting }) => {
+    setLoading(true);
     console.log(values);
     setloginData(values);
 
@@ -40,17 +41,21 @@ const LoginForm = props => {
       });
 
       const responseData = await response.json();
-      console.log(responseData.login);
+      console.log(responseData);
       if (!responseData.login) {
+        errorss = responseData.message;
         throw new Error(responseData.message);
       }
       responseError = responseData.message;
       // console.log(responseError);
       appContext.login();
+      setLoading(false);
     } catch (err) {
-      // seterrorLogin(err.message);
-      // console.log(err.message);
+      seterrorLogin(err.message);
+      console.log(err.message);
+      setLoading(false);
     }
+    console.log(errorss + " errrrrr");
   };
 
   return (
@@ -104,6 +109,13 @@ const LoginForm = props => {
                   isValid={touched.password && !errors.password}
                 />
 
+                {loading && (
+                  <Spinner
+                    animation="border"
+                    style={{ textAlign: "center", marginLeft: "44%" }}
+                  />
+                )}
+
                 <Form.Control.Feedback type="invalid">
                   {errors.password}
                 </Form.Control.Feedback>
@@ -118,6 +130,7 @@ const LoginForm = props => {
               />
               Login
             </Button>
+            {errorss && <div id="loginServerError">{errorss}</div>}
           </Form>
         )}
       </Formik>

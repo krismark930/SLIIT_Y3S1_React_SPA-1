@@ -215,11 +215,9 @@ const SignupForm = props => {
                   {loading && (
                     <Spinner
                       animation="border"
-                      style={{ textAlign: "center", marginLeft: "278px" }}
+                      style={{ textAlign: "center", marginLeft: "49%" }}
                     />
                   )}
-
-                  {errorss && <div id="loginServerError">{errorss}</div>}
 
                   <Form.Control.Feedback type="invalid">
                     {errors.passwordConfirm}
@@ -241,6 +239,7 @@ const SignupForm = props => {
                 />
                 SignUp
               </Button>
+              {errorss && <div id="loginServerError">{errorss}</div>}
             </Form>
           )}
         </Formik>
