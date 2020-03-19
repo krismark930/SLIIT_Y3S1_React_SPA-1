@@ -4,7 +4,8 @@ import { Form, Col, InputGroup, Button, Spinner } from "react-bootstrap";
 import * as yup from "yup";
 import { FaSignInAlt } from "react-icons/fa";
 import { AppContext } from "../../Context/app-context";
-// import Modal from "../modle/modal";
+
+import "./signup-form.scss";
 
 const schema = yup.object().shape({
   firstName: yup
@@ -37,6 +38,8 @@ const schema = yup.object().shape({
     .oneOf([yup.ref("password"), null], "Passwords must match")
 });
 
+var errorss = "";
+
 const SignupForm = props => {
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
@@ -50,7 +53,6 @@ const SignupForm = props => {
     password: ""
   });
 
-  var errorss;
   const onSubmitHand = async (values, { setSubmitting }) => {
     setLoading(true);
 
@@ -88,7 +90,6 @@ const SignupForm = props => {
 
   return (
     <React.Fragment>
-      {/* <ErrorModal error={error} onClear={errorHandler} /> */}
       <div className="signupFormHead">
         <Formik
           validationSchema={schema}
@@ -214,9 +215,11 @@ const SignupForm = props => {
                   {loading && (
                     <Spinner
                       animation="border"
-                      style={{ textAlign: "center" }}
+                      style={{ textAlign: "center", marginLeft: "278px" }}
                     />
                   )}
+
+                  {errorss && <div id="loginServerError">{errorss}</div>}
 
                   <Form.Control.Feedback type="invalid">
                     {errors.passwordConfirm}
@@ -227,7 +230,7 @@ const SignupForm = props => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                style={{ marginTop: "10px" }}
+                style={{ marginTop: "5px" }}
               >
                 <FaSignInAlt
                   style={{
