@@ -69,39 +69,8 @@ const GlobalState = props => {
       return item.id != itemId;
     });
 
-    // console.log(itemId);
-
-    // const updatedItemIndex = updatedCart.findIndex(item => item.id == itemId);
-
-    // console.log(updatedItemIndex);
-
-    // const updatedItem = {
-    //   ...updatedCart[updatedItemIndex]
-    // };
-    // updatedItem.quantity--;
-    // updatedCart[updatedItemIndex] = updatedItem;
-
     setCart(cartUpdated);
   };
-
-  // const removeItemFromCart = productId => {
-  //   console.log("Removing product with id: " + productId);
-  //   const updatedCart = [...cart];
-  //   const updatedItemIndex = updatedCart.findIndex(
-  //     item => item.id === productId
-  //   );
-
-  //   const updatedItem = {
-  //     ...updatedCart[updatedItemIndex]
-  //   };
-  //   updatedItem.quantity--;
-  //   if (updatedItem.quantity <= 0) {
-  //     updatedCart.splice(updatedItemIndex, 1);
-  //   } else {
-  //     updatedCart[updatedItemIndex] = updatedItem;
-  //   }
-  //   return { ...state, cart: updatedCart };
-  // };
 
   const toggleDropdownHidden = () => {
     setHidden(!hidden);
