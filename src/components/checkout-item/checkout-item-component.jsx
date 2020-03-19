@@ -1,14 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 import "./checkout-item-styles.scss";
 import { AppContext } from "../../Context/app-context";
 
 const CheckoutItem = ({ cartItem }) => {
-  // const [quantityHelper, setQuantityHelper] = useState(0);
+  const [quantityHelper, setQuantityHelper] = useState(0);
 
-  // setQuantityHelper(cartItem.quantity);
+  var quantity = cartItem.quantity;
 
   const appContext = useContext(AppContext);
+
+  const contentss = null;
+
+  useEffect(() => {
+    quantity = cartItem.quantity;
+  });
 
   // var itemToSend = {
   //   id: item.id,
@@ -31,7 +37,7 @@ const CheckoutItem = ({ cartItem }) => {
         >
           &#10094;
         </div>
-        <span className="value">{cartItem.quantity}</span>
+        <span className="value">{quantity}</span>
         {console.log(cartItem)}
         <div
           className="arrow"

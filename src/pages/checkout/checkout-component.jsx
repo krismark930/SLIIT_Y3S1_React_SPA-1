@@ -32,11 +32,14 @@ const Checkout = () => {
   const appContext = useContext(AppContext);
 
   var total = 0;
+  var totals = 0;
 
   appContext.cart.forEach(element => {
     var itemTotal = 0;
     itemTotal = element.quantity * element.price;
-    total += itemTotal;
+    totals = totals + itemTotal;
+    total = Number(totals).toFixed(2);
+    // total = (Math.round(total * 100) / 100).toFixed(2);
   });
 
   return (
