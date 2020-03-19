@@ -39,24 +39,69 @@ const GlobalState = props => {
     setCart(updatedCart);
   };
 
-  //   removeItemFromCart = (productId, state) => {
-  //     console.log("Removing product with id: " + productId);
-  //     const updatedCart = [...cart];
-  //     const updatedItemIndex = updatedCart.findIndex(
-  //       item => item.id === productId
-  //     );
+  const removeItemFromCart = item => {
+    const updatedCart = cart;
+    console.log(updatedCart);
 
-  //     const updatedItem = {
-  //       ...updatedCart[updatedItemIndex]
-  //     };
-  //     updatedItem.quantity--;
-  //     if (updatedItem.quantity <= 0) {
-  //       updatedCart.splice(updatedItemIndex, 1);
-  //     } else {
-  //       updatedCart[updatedItemIndex] = updatedItem;
-  //     }
-  //     return { ...state, cart: updatedCart };
+    var itemId = item.id;
+    console.log(itemId);
+
+    const updatedItemIndex = updatedCart.findIndex(item => item.id == itemId);
+
+    console.log(updatedItemIndex);
+
+    const updatedItem = {
+      ...updatedCart[updatedItemIndex]
+    };
+    updatedItem.quantity--;
+    updatedCart[updatedItemIndex] = updatedItem;
+
+    setCart(updatedCart);
+  };
+
+  const removeCompletelyItemFromCart = item => {
+    const updatedCart = cart;
+    console.log(updatedCart);
+
+    var itemId = item.id;
+
+    var cartUpdated = updatedCart.filter(item => {
+      return item.id != itemId;
+    });
+
+    // console.log(itemId);
+
+    // const updatedItemIndex = updatedCart.findIndex(item => item.id == itemId);
+
+    // console.log(updatedItemIndex);
+
+    // const updatedItem = {
+    //   ...updatedCart[updatedItemIndex]
+    // };
+    // updatedItem.quantity--;
+    // updatedCart[updatedItemIndex] = updatedItem;
+
+    setCart(cartUpdated);
+  };
+
+  // const removeItemFromCart = productId => {
+  //   console.log("Removing product with id: " + productId);
+  //   const updatedCart = [...cart];
+  //   const updatedItemIndex = updatedCart.findIndex(
+  //     item => item.id === productId
+  //   );
+
+  //   const updatedItem = {
+  //     ...updatedCart[updatedItemIndex]
   //   };
+  //   updatedItem.quantity--;
+  //   if (updatedItem.quantity <= 0) {
+  //     updatedCart.splice(updatedItemIndex, 1);
+  //   } else {
+  //     updatedCart[updatedItemIndex] = updatedItem;
+  //   }
+  //   return { ...state, cart: updatedCart };
+  // };
 
   const toggleDropdownHidden = () => {
     setHidden(!hidden);
@@ -80,6 +125,8 @@ const GlobalState = props => {
         login: login,
         logout: logout,
         addItemToCart: addItemToCart,
+        removeCompletelyItemFromCart: removeCompletelyItemFromCart,
+        removeItemFromCart: removeItemFromCart,
         toggleDropdownHidden: toggleDropdownHidden
       }}
     >

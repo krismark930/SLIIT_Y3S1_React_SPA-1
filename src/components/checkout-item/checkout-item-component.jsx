@@ -25,7 +25,12 @@ const CheckoutItem = ({ cartItem }) => {
       </div>
       <span className="name">{cartItem.title}</span>
       <span className="quantity">
-        <div className="arrow">&#10094;</div>
+        <div
+          className="arrow"
+          onClick={() => appContext.removeItemFromCart(cartItem)}
+        >
+          &#10094;
+        </div>
         <span className="value">{cartItem.quantity}</span>
         {console.log(cartItem)}
         <div
@@ -36,7 +41,12 @@ const CheckoutItem = ({ cartItem }) => {
         </div>
       </span>
       <span className="price">{cartItem.price}</span>
-      <div className="remove-button">&#10005;</div>
+      <div
+        className="remove-button"
+        onClick={() => appContext.removeCompletelyItemFromCart(cartItem)}
+      >
+        &#10005;
+      </div>
     </div>
   );
 };

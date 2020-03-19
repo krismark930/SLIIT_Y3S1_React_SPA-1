@@ -12,6 +12,7 @@ export const AppContext = createContext({
   cart: [],
   addItemToCart: item => {},
   removeItemFromCart: (productId, state) => {},
+  removeCompletelyItemFromCart: item => {},
   toggleDropdownHidden: state => {},
   logout: state => {},
   login: state => {}
