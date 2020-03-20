@@ -35,7 +35,9 @@ const schema = yup.object().shape({
     .string()
     .min(3, "min")
     .required("Confirm the password")
-    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .oneOf([yup.ref("password"), null], "Passwords must match"),
+  passwordResetQuestion: yup.string().required("Select a question"),
+  answer: yup.string().required("Enter the password")
 });
 
 var errorss = "";
@@ -50,7 +52,9 @@ const SignupForm = props => {
     teleNo: "",
     passwordConfirm: "",
     email: "",
-    password: ""
+    password: "",
+    passwordResetQuestion: "",
+    answer: ""
   });
 
   const onSubmitHand = async (values, { setSubmitting }) => {
@@ -221,6 +225,57 @@ const SignupForm = props => {
 
                   <Form.Control.Feedback type="invalid">
                     {errors.passwordConfirm}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group as={Col} controlId="formGridState">
+                  <Form.Label>
+                    Select a question to update password option..{" "}
+                  </Form.Label>
+                  <Form.Control
+                    as="select"
+                    value="Choose..."
+                    placeholder="Confirm Password"
+                    type="select"
+                    name="passwordResetQuestion"
+                    value={values.passwordResetQuestion}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isInvalid={
+                      touched.passwordResetQuestion &&
+                      errors.passwordResetQuestion
+                    }
+                    isValid={
+                      touched.passwordResetQuestion &&
+                      !errors.passwordResetQuestion
+                    }
+                  >
+                    <option></option>
+                    <option value="What is the name of your first name ? ">
+                      What is the name of your first name ?{" "}
+                    </option>
+                    <option value="What is your favorite color ?">
+                      What is your favorite color ?{" "}
+                    </option>
+                  </Form.Control>
+                  <Form.Control.Feedback type="invalid">
+                    {errors.passwordResetQuestion}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group as={Col} md="12" controlId="validationFormik05">
+                  <Form.Label>Answer to above question</Form.Label>
+                  <Form.Control
+                    placeholder="Answer"
+                    type="text"
+                    name="answer"
+                    value={values.answer}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isInvalid={touched.answer && errors.answer}
+                    isValid={touched.answer && !errors.answer}
+                  />
+
+                  <Form.Control.Feedback type="invalid">
+                    {errors.answer}
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
