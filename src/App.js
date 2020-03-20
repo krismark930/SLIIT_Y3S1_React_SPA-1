@@ -6,6 +6,7 @@ import Homepage from "./pages/homepage/homepage-component";
 import Checkout from "./pages/checkout/checkout-component";
 import { AppContext } from "./Context/app-context";
 import GlobalState from "./Context/global-state";
+import UpdatePassword from "./pages/forgot-password/forgot-password-component";
 
 function App() {
   let routess;
@@ -26,6 +27,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/signin-signup" component={LoginSignup} />
+        <Route exact path="/forgot-password" component={UpdatePassword} />
+
         <Redirect to="/signin-signup" />
       </Switch>
     );

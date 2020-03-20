@@ -1,9 +1,19 @@
 import React, { useState, useContext } from "react";
 import { Formik } from "formik";
-import { Form, Col, InputGroup, Button, Spinner } from "react-bootstrap";
+import {
+  Form,
+  Col,
+  InputGroup,
+  Button,
+  Spinner,
+  Badge,
+  Row,
+  Container
+} from "react-bootstrap";
 import * as yup from "yup";
 import { FaSignInAlt } from "react-icons/fa";
 import { AppContext } from "../../Context/app-context";
+import { Link } from "react-router-dom";
 
 const schema = yup.object().shape({
   email: yup
@@ -121,15 +131,37 @@ const LoginForm = props => {
                 </Form.Control.Feedback>
               </Form.Group>
             </Form.Row>
-            <Button type="submit" style={{}} disabled={isSubmitting}>
-              <FaSignInAlt
-                style={{
-                  marginRight: "10px",
-                  marginBottom: "3px"
-                }}
-              />
-              Login
-            </Button>
+
+            <Row>
+              <Col md={4}>
+                <Button type="submit" style={{}} disabled={isSubmitting}>
+                  <FaSignInAlt
+                    style={{
+                      marginRight: "10px",
+                      marginBottom: "3px"
+                    }}
+                  />
+                  Login
+                </Button>
+              </Col>
+              <Col md={2}></Col>
+              <Link to="/forgot-password">
+                <Col
+                  md={6}
+                  style={{
+                    paddingTop: "7px",
+                    fontWeight: "500",
+                    color: "red",
+                    fontSize: "14px",
+                    maxWidth: "100%"
+                  }}
+                >
+                  <span>Forgot Password</span>
+                </Col>
+              </Link>
+            </Row>
+
+            <Row></Row>
             {errorss && <div id="loginServerError">{errorss}</div>}
           </Form>
         )}
