@@ -233,7 +233,6 @@ const SignupForm = props => {
                   </Form.Label>
                   <Form.Control
                     as="select"
-                    value="Choose..."
                     placeholder="Confirm Password"
                     type="select"
                     name="passwordResetQuestion"
