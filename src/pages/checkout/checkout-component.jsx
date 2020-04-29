@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 
 import "./checkout-style.scss";
-import { Button } from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import CheckoutItem from "../../components/checkout-item/checkout-item-component";
-import { AppContext } from "../../Context/app-context";
+import {AppContext} from "../../Context/app-context";
 
 // const cartItems = [
 //   {
@@ -63,10 +63,10 @@ const Checkout = () => {
       </div>
 
       {appContext.cart.map(cartItem => (
-        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+        <CheckoutItem key={cartItem.id} cartItem={cartItem}/>
       ))}
       <div className="total">TOTAL: ${total}</div>
-      <Button className="buyNowBtn" type="submit" style={{ float: "right" }}>
+      <Button className="buyNowBtn" type="submit" style={{float: "right"}}>
         Buy Now
       </Button>
     </div>

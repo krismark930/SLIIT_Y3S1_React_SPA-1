@@ -1,11 +1,10 @@
-import React, { createContext, useState, useContext } from "react";
+import React, {useContext} from "react";
 import MainNavbar from "./components/navbar/navbar-component";
 import LoginSignup from "./pages/login-signup/login-signup-component";
-import { Route, Switch, Redirect } from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import Homepage from "./pages/homepage/homepage-component";
 import Checkout from "./pages/checkout/checkout-component";
-import { AppContext } from "./Context/app-context";
-import GlobalState from "./Context/global-state";
+import {AppContext} from "./Context/app-context";
 import UpdatePassword from "./pages/forgot-password/forgot-password-component";
 
 function App() {
@@ -17,26 +16,26 @@ function App() {
   if (app.loggedin) {
     routess = (
       <Switch>
-        <Route exact path="/" component={Homepage} />
-        <Route exact path="/checkout-page" component={Checkout} />
-        <Redirect to="/" />
+        <Route exact path="/" component={Homepage}/>
+        <Route exact path="/checkout-page" component={Checkout}/>
+        <Redirect to="/"/>
       </Switch>
     );
   } else {
     routess = (
       <Switch>
-        <Route exact path="/" component={Homepage} />
-        <Route exact path="/signin-signup" component={LoginSignup} />
-        <Route exact path="/forgot-password" component={UpdatePassword} />
+        <Route exact path="/" component={Homepage}/>
+        <Route exact path="/signin-signup" component={LoginSignup}/>
+        <Route exact path="/forgot-password" component={UpdatePassword}/>
 
-        <Redirect to="/signin-signup" />
+        <Redirect to="/signin-signup"/>
       </Switch>
     );
   }
 
   return (
     <div className="App">
-      <MainNavbar />
+      <MainNavbar/>
 
       {routess}
     </div>

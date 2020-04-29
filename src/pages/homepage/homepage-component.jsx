@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
-import { AppContext } from "../../Context/app-context";
-import CartItem from "../../components/cart-item/cart-item-component";
-import { Button } from "react-bootstrap";
+import React, {useContext} from "react";
+import {AppContext} from "../../Context/app-context";
+import {Button} from "react-bootstrap";
 
 const Homepage = () => {
   const appContext = useContext(AppContext);
