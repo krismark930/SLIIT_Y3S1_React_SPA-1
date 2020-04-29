@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { AppContext } from "./app-context";
+import React, {useState} from "react";
+import {AppContext} from "./app-context";
 
 const GlobalState = props => {
   const [loggedin, setLoggedin] = useState(false);
   const [hidden, setHidden] = useState(true);
   const [products, setProducts] = useState([
-    { id: "p1", title: "Gaming Mouse", price: 29.99 },
-    { id: "p2", title: "Harry Potter 3", price: 9.99 },
-    { id: "p3", title: "Used plastic bottle", price: 0.99 },
-    { id: "p4", title: "Half-dried plant", price: 2.99 }
+    {id: "p1", title: "Gaming Mouse", price: 29.99},
+    {id: "p2", title: "Harry Potter 3", price: 9.99},
+    {id: "p3", title: "Used plastic bottle", price: 0.99},
+    {id: "p4", title: "Half-dried plant", price: 2.99}
   ]);
 
   var count = -1;
@@ -27,7 +27,7 @@ const GlobalState = props => {
     console.log(updatedItemIndex);
 
     if (updatedItemIndex < 0) {
-      updatedCart.push({ ...item, quantity: 1 });
+      updatedCart.push({...item, quantity: 1});
     } else {
       const updatedItem = {
         ...updatedCart[updatedItemIndex]
@@ -89,7 +89,6 @@ const GlobalState = props => {
         hidden: hidden,
         products: products,
         loggedin: loggedin,
-        hidden: hidden,
         cart: cart,
         login: login,
         logout: logout,

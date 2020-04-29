@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 import LoginForm from "../../components/login-fom/login-form-component";
 
 import "./login-signup-styles.scss";
@@ -14,15 +14,14 @@ const LoginSignup = props => {
             <div className="loginSignupPageLginForm">
               <h4>I already have an account </h4>
               <p>Signin using email and password</p>
-              <LoginForm />
+              <LoginForm/>
             </div>
           </Col>
-
           <Col md="6" className="clll">
             <div className="loginSignupPageSignupForm">
               <h4>I don't have an account </h4>
               <p>Signin using required details</p>
-              <SignupForm />
+              <SignupForm/>
             </div>
           </Col>
         </Row>

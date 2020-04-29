@@ -1,19 +1,10 @@
-import React, { useState, useContext } from "react";
-import { Formik } from "formik";
-import {
-  Form,
-  Col,
-  InputGroup,
-  Button,
-  Spinner,
-  Badge,
-  Row,
-  Container
-} from "react-bootstrap";
+import React, {useContext, useState} from "react";
+import {Formik} from "formik";
+import {Button, Col, Form, Row, Spinner} from "react-bootstrap";
 import * as yup from "yup";
-import { FaSignInAlt } from "react-icons/fa";
-import { AppContext } from "../../Context/app-context";
-import { Link } from "react-router-dom";
+import {FaSignInAlt} from "react-icons/fa";
+import {AppContext} from "../../Context/app-context";
+import {Link} from "react-router-dom";
 
 const schema = yup.object().shape({
   email: yup
@@ -36,7 +27,7 @@ const LoginForm = props => {
     password: ""
   });
 
-  const onSubmitHand = async (values, { setSubmitting }) => {
+  const onSubmitHand = async (values, {setSubmitting}) => {
     setLoading(true);
     console.log(values);
     setloginData(values);
@@ -79,15 +70,15 @@ const LoginForm = props => {
         }}
       >
         {({
-          handleSubmit,
-          isSubmitting,
-          handleChange,
-          handleBlur,
-          values,
-          touched,
-          isValid,
-          errors
-        }) => (
+            handleSubmit,
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            values,
+            touched,
+            isValid,
+            errors
+          }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Form.Row>
               <Form.Group as={Col} md="12" controlId="validationFormik01">
@@ -122,7 +113,7 @@ const LoginForm = props => {
                 {loading && (
                   <Spinner
                     animation="border"
-                    style={{ textAlign: "center", marginLeft: "44%" }}
+                    style={{textAlign: "center", marginLeft: "44%"}}
                   />
                 )}
 
