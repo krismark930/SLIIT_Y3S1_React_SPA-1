@@ -17,7 +17,6 @@ const LoginSignup = props => {
               <LoginForm/>
             </div>
           </Col>
-
           <Col md="6" className="clll">
             <div className="loginSignupPageSignupForm">
               <h4>I don't have an account </h4>

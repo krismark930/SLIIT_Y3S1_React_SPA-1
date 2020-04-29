@@ -89,7 +89,6 @@ const GlobalState = props => {
         hidden: hidden,
         products: products,
         loggedin: loggedin,
-        hidden: hidden,
         cart: cart,
         login: login,
         logout: logout,
