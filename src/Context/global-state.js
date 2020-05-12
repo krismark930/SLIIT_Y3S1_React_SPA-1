@@ -3,6 +3,8 @@ import {AppContext} from "./app-context";
 
 const GlobalState = props => {
   const [loggedin, setLoggedin] = useState(false);
+  const [editPayUser, setEditPayUser] = useState(false);
+  const [editPayUserId, setEditPayUserId] = useState("1");
   const [hidden, setHidden] = useState(true);
   const [products, setProducts] = useState([
     {id: "p1", title: "Gaming Mouse", price: 29.99},
@@ -14,6 +16,52 @@ const GlobalState = props => {
   var count = -1;
 
   const [cart, setCart] = useState([]);
+  const [ currentUser, setCurrentUser] = useState([]);
+  const [ payUserDetails, setPayUserDetails] = useState([]);
+  const [ editPayUserDetails, setEditPayUserDetails] = useState([]);
+  const [ payCardDetails, setPayCardDetails] = useState([]);
+  const [ payOrderDetails, setPayOrderDetails] = useState([]);
+
+  const  addPayCardDetails = payCard => {
+    const updatedPayCard = [] ;
+    updatedPayCard.push({...payCard});
+    console.log(updatedPayCard);    
+
+    setPayCardDetails(updatedPayCard);
+  };
+
+  const  addPayUserDetails = payUser => {
+    const updatedPayUser = [] ;
+    updatedPayUser.push({...payUser});
+    console.log(updatedPayUser);    
+
+    setPayUserDetails(updatedPayUser);
+  };
+
+  
+  const  addEditPayUserDetails = payUser => {
+    const updatedPayUser = [] ;
+    updatedPayUser.push({...payUser});
+    console.log(updatedPayUser);    
+
+    setEditPayUserDetails(updatedPayUser);
+  };
+
+  const  addPayOrderDetails = payOrder => {
+    const updatedPayOrder = [] ;
+    updatedPayOrder.push({...payOrder});
+    console.log(updatedPayOrder);    
+
+    setPayOrderDetails(updatedPayOrder);
+  };
+
+  const  addCurrentUser = user => {
+    const updatedCurrentUser = [] ;
+    updatedCurrentUser.push({...user});
+    console.log(updatedCurrentUser);    
+
+    setCurrentUser(updatedCurrentUser);
+  };
 
   const addItemToCart = item => {
     const updatedCart = cart;
@@ -78,21 +126,48 @@ const GlobalState = props => {
 
   const logout = state => {
     setLoggedin(false);
+    setEditPayUser(false);
   };
   const login = state => {
     setLoggedin(true);
   };
 
+  const payUserEdit = state => {
+    setEditPayUser(true);
+  };
+
+  const payUserEditFalse = state => {
+    setEditPayUser(false);
+  };
+  const setEditPayUserID = id => {
+    setEditPayUserId(id);
+  };
+
   return (
     <AppContext.Provider
       value={{
+        editPayUser:editPayUser,
+        editPayUserId:editPayUserId,
         hidden: hidden,
         products: products,
         loggedin: loggedin,
         cart: cart,
+        currentUser:currentUser,
+        payUserDetails: payUserDetails,
+        editPayUserDetails:editPayUserDetails,
+        payCardDetails: payCardDetails,
+        payOrderDetails: payOrderDetails,
+        payUserEdit:payUserEdit,
+        payUserEditFalse:payUserEditFalse,
+        setEditPayUserID :setEditPayUserID ,
         login: login,
         logout: logout,
+        addEditPayUserDetails:addEditPayUserDetails,
+        addCurrentUser:addCurrentUser,
         addItemToCart: addItemToCart,
+        addPayUserDetails:addPayUserDetails,
+        addPayCardDetails:addPayCardDetails,
+        addPayOrderDetails:addPayOrderDetails,
         removeCompletelyItemFromCart: removeCompletelyItemFromCart,
         removeItemFromCart: removeItemFromCart,
         toggleDropdownHidden: toggleDropdownHidden
