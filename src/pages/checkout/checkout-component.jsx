@@ -4,6 +4,7 @@ import "./checkout-style.scss";
 import {Button} from "react-bootstrap";
 import CheckoutItem from "../../components/checkout-item/checkout-item-component";
 import {AppContext} from "../../Context/app-context";
+import {Link} from "react-router-dom";
 
 // const cartItems = [
 //   {
@@ -42,6 +43,10 @@ const Checkout = () => {
     // total = (Math.round(total * 100) / 100).toFixed(2);
   });
 
+  const setFalseEdit = () =>{
+    appContext.payUserEditFalse();
+  }
+
   return (
     <div className="checkout-page">
       <div className="checkout-header">
@@ -66,9 +71,11 @@ const Checkout = () => {
         <CheckoutItem key={cartItem.id} cartItem={cartItem}/>
       ))}
       <div className="total">TOTAL: ${total}</div>
-      <Button className="buyNowBtn" type="submit" style={{float: "right"}}>
+      <Link to="/pay-user">
+      <Button className="buyNowBtn" type="submit" style={{float: "right"}} onClick={() => {setFalseEdit()}}>
         Buy Now
       </Button>
+      </Link>
     </div>
   );
 };

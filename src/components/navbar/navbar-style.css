@@ -1,3 +1,16 @@
 .navbar-head {
     background-color: "dark";
-}
+  
+    .dripdowntoggles {
+      .nav-link {
+        /* display: block; */
+        padding: 0.5rem 1rem;
+      }
+    }
+  
+    .cartDropdownNavBar {
+      margin-left: 3px;
+      margin-right: 10px;
+    }
+  }
+  

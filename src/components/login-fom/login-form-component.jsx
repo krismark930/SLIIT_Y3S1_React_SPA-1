@@ -50,6 +50,9 @@ const LoginForm = props => {
       responseError = responseData.message;
       // console.log(responseError);
       appContext.login();
+      console.log(`wade hari`);
+      appContext.addCurrentUser(values);
+      console.log(appContext.addCurrentUser(values));
       setLoading(false);
     } catch (err) {
       seterrorLogin(err.message);
