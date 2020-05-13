@@ -16,49 +16,49 @@ const GlobalState = props => {
   var count = -1;
 
   const [cart, setCart] = useState([]);
-  const [ currentUser, setCurrentUser] = useState([]);
-  const [ payUserDetails, setPayUserDetails] = useState([]);
-  const [ editPayUserDetails, setEditPayUserDetails] = useState([]);
-  const [ payCardDetails, setPayCardDetails] = useState([]);
-  const [ payOrderDetails, setPayOrderDetails] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
+  const [payUserDetails, setPayUserDetails] = useState([]);
+  const [editPayUserDetails, setEditPayUserDetails] = useState([]);
+  const [payCardDetails, setPayCardDetails] = useState([]);
+  const [payOrderDetails, setPayOrderDetails] = useState([]);
 
-  const  addPayCardDetails = payCard => {
-    const updatedPayCard = [] ;
+  const addPayCardDetails = payCard => {
+    const updatedPayCard = [];
     updatedPayCard.push({...payCard});
-    console.log(updatedPayCard);    
+    console.log(updatedPayCard);
 
     setPayCardDetails(updatedPayCard);
   };
 
-  const  addPayUserDetails = payUser => {
-    const updatedPayUser = [] ;
+  const addPayUserDetails = payUser => {
+    const updatedPayUser = [];
     updatedPayUser.push({...payUser});
-    console.log(updatedPayUser);    
+    console.log(updatedPayUser);
 
     setPayUserDetails(updatedPayUser);
   };
 
-  
-  const  addEditPayUserDetails = payUser => {
-    const updatedPayUser = [] ;
+
+  const addEditPayUserDetails = payUser => {
+    const updatedPayUser = [];
     updatedPayUser.push({...payUser});
-    console.log(updatedPayUser);    
+    console.log(updatedPayUser);
 
     setEditPayUserDetails(updatedPayUser);
   };
 
-  const  addPayOrderDetails = payOrder => {
-    const updatedPayOrder = [] ;
+  const addPayOrderDetails = payOrder => {
+    const updatedPayOrder = [];
     updatedPayOrder.push({...payOrder});
-    console.log(updatedPayOrder);    
+    console.log(updatedPayOrder);
 
     setPayOrderDetails(updatedPayOrder);
   };
 
-  const  addCurrentUser = user => {
-    const updatedCurrentUser = [] ;
+  const addCurrentUser = user => {
+    const updatedCurrentUser = [];
     updatedCurrentUser.push({...user});
-    console.log(updatedCurrentUser);    
+    console.log(updatedCurrentUser);
 
     setCurrentUser(updatedCurrentUser);
   };
@@ -146,28 +146,28 @@ const GlobalState = props => {
   return (
     <AppContext.Provider
       value={{
-        editPayUser:editPayUser,
-        editPayUserId:editPayUserId,
+        editPayUser: editPayUser,
+        editPayUserId: editPayUserId,
         hidden: hidden,
         products: products,
         loggedin: loggedin,
         cart: cart,
-        currentUser:currentUser,
+        currentUser: currentUser,
         payUserDetails: payUserDetails,
-        editPayUserDetails:editPayUserDetails,
+        editPayUserDetails: editPayUserDetails,
         payCardDetails: payCardDetails,
         payOrderDetails: payOrderDetails,
-        payUserEdit:payUserEdit,
-        payUserEditFalse:payUserEditFalse,
-        setEditPayUserID :setEditPayUserID ,
+        payUserEdit: payUserEdit,
+        payUserEditFalse: payUserEditFalse,
+        setEditPayUserID: setEditPayUserID,
         login: login,
         logout: logout,
-        addEditPayUserDetails:addEditPayUserDetails,
-        addCurrentUser:addCurrentUser,
+        addEditPayUserDetails: addEditPayUserDetails,
+        addCurrentUser: addCurrentUser,
         addItemToCart: addItemToCart,
-        addPayUserDetails:addPayUserDetails,
-        addPayCardDetails:addPayCardDetails,
-        addPayOrderDetails:addPayOrderDetails,
+        addPayUserDetails: addPayUserDetails,
+        addPayCardDetails: addPayCardDetails,
+        addPayOrderDetails: addPayOrderDetails,
         removeCompletelyItemFromCart: removeCompletelyItemFromCart,
         removeItemFromCart: removeItemFromCart,
         toggleDropdownHidden: toggleDropdownHidden
