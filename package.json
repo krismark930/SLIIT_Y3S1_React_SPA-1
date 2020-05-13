@@ -8,21 +8,32 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "eslint-plugin-flowtype": "^3.13.0",
     "formik": "^2.1.4",
-    "node-sass": "^4.13.1",
-    "react": "^16.13.0",
+    "jquery": "^3.5.1",
+    "minimist": "^1.2.5",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.13.0",
     "react-icons": "^3.9.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "yup": "^0.28.3"
+    "yup": "^0.28.3",
+    "semantic-ui-react": "^0.87.3",
+    "typescript": "^3.8.3"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "resolutions": {
+    "minimist": "1.2.3",
+    "mkdir": "0.5.3",
+    "yargs-parser": "^13.1.2"
   },
   "eslintConfig": {
     "extends": "react-app"

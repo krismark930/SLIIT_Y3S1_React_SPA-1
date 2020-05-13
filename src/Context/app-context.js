@@ -2,9 +2,9 @@ import {createContext} from "react";
 
 export const AppContext = createContext({
   loggedin: false,
-  editPayUser:false,
+  editPayUser: false,
   hidden: false,
-  editPayUserId:"1",
+  editPayUserId: "1",
   products: [
     {id: "p1", title: "Gaming Mouse", price: 29.99},
     {id: "p2", title: "Harry Potter 3", price: 9.99},
@@ -40,12 +40,12 @@ export const AppContext = createContext({
   },
   login: state => {
   },
-  payUserEdit:state => {
+  payUserEdit: state => {
   },
-  payUserEditFalse :state => {
-    
+  payUserEditFalse: state => {
+
   },
-  setEditPayUserID:id =>{
+  setEditPayUserID: id => {
 
   }
 });

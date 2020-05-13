@@ -43,7 +43,7 @@ const Checkout = () => {
     // total = (Math.round(total * 100) / 100).toFixed(2);
   });
 
-  const setFalseEdit = () =>{
+  const setFalseEdit = () => {
     appContext.payUserEditFalse();
   }
 
@@ -72,9 +72,11 @@ const Checkout = () => {
       ))}
       <div className="total">TOTAL: ${total}</div>
       <Link to="/pay-user">
-      <Button className="buyNowBtn" type="submit" style={{float: "right"}} onClick={() => {setFalseEdit()}}>
-        Buy Now
-      </Button>
+        <Button className="buyNowBtn" type="submit" style={{float: "right"}} onClick={() => {
+          setFalseEdit()
+        }}>
+          Buy Now
+        </Button>
       </Link>
     </div>
   );
