@@ -71,7 +71,7 @@ const Checkout = () => {
         <CheckoutItem key={cartItem.id} cartItem={cartItem}/>
       ))}
       <div className="total">TOTAL: ${total}</div>
-      <Link to="/pay-user">
+      <Link to="/pay-card">
         <Button className="buyNowBtn" type="submit" style={{float: "right"}} onClick={() => {
           setFalseEdit()
         }}>

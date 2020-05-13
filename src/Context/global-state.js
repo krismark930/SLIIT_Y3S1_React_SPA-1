@@ -5,6 +5,8 @@ const GlobalState = props => {
   const [loggedin, setLoggedin] = useState(false);
   const [editPayUser, setEditPayUser] = useState(false);
   const [editPayUserId, setEditPayUserId] = useState("1");
+  const [editPayCard, setEditPayCard] = useState(false);
+  const [editPayCardId, setEditPayCardId] = useState("1");
   const [hidden, setHidden] = useState(true);
   const [products, setProducts] = useState([
     {id: "p1", title: "Gaming Mouse", price: 29.99},
@@ -16,54 +18,14 @@ const GlobalState = props => {
   var count = -1;
 
   const [cart, setCart] = useState([]);
-  const [currentUser, setCurrentUser] = useState([]);
-  const [payUserDetails, setPayUserDetails] = useState([]);
-  const [editPayUserDetails, setEditPayUserDetails] = useState([]);
-  const [payCardDetails, setPayCardDetails] = useState([]);
-  const [payOrderDetails, setPayOrderDetails] = useState([]);
+  const [ currentUser, setCurrentUser] = useState([]);
+  const [ payUserDetails, setPayUserDetails] = useState([]);
+  const [ editPayUserDetails, setEditPayUserDetails] = useState([]);
+  const [ editPayCardDetails, setEditPayCardDetails] = useState([]);
+  const [ payCardDetails, setPayCardDetails] = useState([]);
+  const [ payOrderDetails, setPayOrderDetails] = useState([]);
 
-  const addPayCardDetails = payCard => {
-    const updatedPayCard = [];
-    updatedPayCard.push({...payCard});
-    console.log(updatedPayCard);
-
-    setPayCardDetails(updatedPayCard);
-  };
-
-  const addPayUserDetails = payUser => {
-    const updatedPayUser = [];
-    updatedPayUser.push({...payUser});
-    console.log(updatedPayUser);
-
-    setPayUserDetails(updatedPayUser);
-  };
-
-
-  const addEditPayUserDetails = payUser => {
-    const updatedPayUser = [];
-    updatedPayUser.push({...payUser});
-    console.log(updatedPayUser);
-
-    setEditPayUserDetails(updatedPayUser);
-  };
-
-  const addPayOrderDetails = payOrder => {
-    const updatedPayOrder = [];
-    updatedPayOrder.push({...payOrder});
-    console.log(updatedPayOrder);
-
-    setPayOrderDetails(updatedPayOrder);
-  };
-
-  const addCurrentUser = user => {
-    const updatedCurrentUser = [];
-    updatedCurrentUser.push({...user});
-    console.log(updatedCurrentUser);
-
-    setCurrentUser(updatedCurrentUser);
-  };
-
-  const addItemToCart = item => {
+    const addItemToCart = item => {
     const updatedCart = cart;
     console.log(updatedCart);
 
@@ -127,10 +89,62 @@ const GlobalState = props => {
   const logout = state => {
     setLoggedin(false);
     setEditPayUser(false);
+    setEditPayCard(false);
   };
   const login = state => {
     setLoggedin(true);
   };
+
+  const  addPayCardDetails = payCard => {
+    const updatedPayCard = [] ;
+    updatedPayCard.push({...payCard});
+    console.log(updatedPayCard);    
+
+    setPayCardDetails(updatedPayCard);
+  };
+
+  const  addPayUserDetails = payUser => {
+    const updatedPayUser = [] ;
+    updatedPayUser.push({...payUser});
+    console.log(updatedPayUser);    
+
+    setPayUserDetails(updatedPayUser);
+  };
+
+  
+  const  addEditPayUserDetails = payUser => {
+    const updatedPayUser = [] ;
+    updatedPayUser.push({...payUser});
+    console.log(updatedPayUser);    
+
+    setEditPayUserDetails(updatedPayUser);
+  };
+
+  const  addEditPayCardDetails = payCard => {
+    const updatedPayCard = [] ;
+    updatedPayCard.push({...payCard});
+    console.log(updatedPayCard);    
+
+    setEditPayCardDetails(updatedPayCard);
+  };
+
+  const  addPayOrderDetails = payOrder => {
+    const updatedPayOrder = [] ;
+    updatedPayOrder.push({...payOrder});
+    console.log(updatedPayOrder);    
+
+    setPayOrderDetails(updatedPayOrder);
+  };
+
+  const  addCurrentUser = user => {
+    const updatedCurrentUser = [] ;
+    updatedCurrentUser.push({...user});
+    console.log(updatedCurrentUser);    
+
+    setCurrentUser(updatedCurrentUser);
+  };
+
+
 
   const payUserEdit = state => {
     setEditPayUser(true);
@@ -143,31 +157,49 @@ const GlobalState = props => {
     setEditPayUserId(id);
   };
 
+  
+  const payCardEdit = state => {
+    setEditPayCard(true);
+  };
+
+  const payCardEditFalse = state => {
+    setEditPayCard(false);
+  };
+  const setEditPayCardID = id => {
+    setEditPayCardId(id);
+  };
   return (
     <AppContext.Provider
       value={{
-        editPayUser: editPayUser,
-        editPayUserId: editPayUserId,
+        editPayUser:editPayUser,
+        editPayUserId:editPayUserId,
+        editPayCard:editPayCard,
+        editPayCardId:editPayCardId,
         hidden: hidden,
         products: products,
         loggedin: loggedin,
         cart: cart,
-        currentUser: currentUser,
+        currentUser:currentUser,
         payUserDetails: payUserDetails,
-        editPayUserDetails: editPayUserDetails,
+        editPayUserDetails:editPayUserDetails,
+        editPayCardDetails:editPayCardDetails,
         payCardDetails: payCardDetails,
         payOrderDetails: payOrderDetails,
-        payUserEdit: payUserEdit,
-        payUserEditFalse: payUserEditFalse,
-        setEditPayUserID: setEditPayUserID,
+        payUserEdit:payUserEdit,
+        payUserEditFalse:payUserEditFalse,
+        setEditPayUserID :setEditPayUserID ,
+        payCardEdit:payCardEdit,
+        payCardEditFalse:payCardEditFalse,
+        setEditPayCardID :setEditPayCardID ,
         login: login,
         logout: logout,
-        addEditPayUserDetails: addEditPayUserDetails,
-        addCurrentUser: addCurrentUser,
+        addEditPayUserDetails:addEditPayUserDetails,
+        addEditPayCardDetails:addEditPayCardDetails,
+        addCurrentUser:addCurrentUser,
         addItemToCart: addItemToCart,
-        addPayUserDetails: addPayUserDetails,
-        addPayCardDetails: addPayCardDetails,
-        addPayOrderDetails: addPayOrderDetails,
+        addPayUserDetails:addPayUserDetails,
+        addPayCardDetails:addPayCardDetails,
+        addPayOrderDetails:addPayOrderDetails,
         removeCompletelyItemFromCart: removeCompletelyItemFromCart,
         removeItemFromCart: removeItemFromCart,
         toggleDropdownHidden: toggleDropdownHidden

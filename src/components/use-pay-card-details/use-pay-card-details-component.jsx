@@ -1,6 +1,6 @@
 import React, {useContext,useState,useEffect} from "react";
 
-import "./use-pay-user-details-styles.scss";
+import "./use-pay-card-details-styles.scss";
 import {Button} from "react-bootstrap";
 //import CheckoutItem from "../../components/checkout-item/checkout-item-component";
 import {AppContext} from "../../Context/app-context";
@@ -8,17 +8,14 @@ import {Link} from "react-router-dom";
 
 
 
-const UsePayUserDetails =  () => {
+const UsePayCardDetails =  () => {
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
-  const [payUserDetails, setPayUserDetails] = useState({
+  const [payCardDetails, setPayCardDetails] = useState({
     email:"",
-    name: "",
-    phone: "",
-    address: "",
-    city: "",
-    province: "",
+    cardType: "",
+    cardNumber: "",
     isSave: false
   });
 
@@ -31,24 +28,24 @@ const UsePayUserDetails =  () => {
         currentEmail = user.email;
     });
 
-    getPayUserDetails(); 
+    getPayCardDetails(); 
     
-  }, [payUserDetails,currentEmail,isDelete]);
+  }, [payCardDetails,currentEmail,isDelete]);
 
- const setEditPayUser = (id) => {
-   appContext.payUserEdit();
-   appContext.setEditPayUserID(id);
+ const setEditPayCard = (id) => {
+   appContext.payCardEdit();
+   appContext.setEditPayCardID(id);
    console.log("hi machan edit wada");
  console.log(id);
  }
 
 
-const DeletePayUser = async (id) => {
+const DeletePayCard = async (id) => {
   //console.log("hi oya delete eka athule");
   
   try {
 
-    const response = await fetch('http://localhost:5000/payments/pay-user/'+id, {
+    const response = await fetch('http://localhost:5000/payments/pay-card/'+id, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
@@ -60,10 +57,11 @@ const DeletePayUser = async (id) => {
     console.log(responseData);
     //console.log("hi delete una");
    // currentEmail = " ";
-    //getPayUserDetails();
+    //getPayCardDetails();
     if(responseData){ 
       setIsDelete(true);
     }
+   
     setLoading(false);
     
   } catch (errorss) {
@@ -73,24 +71,26 @@ const DeletePayUser = async (id) => {
   }
 }
 
-  const getPayUserDetails = async() =>{
+  const getPayCardDetails = async() =>{
     console.log("hi details ganna awa");
+    console.log(currentEmail);
     try {
-        const response = await fetch("http://localhost:5000/payments/pay-user");
+        const response = await fetch("http://localhost:5000/payments/pay-card");
   
       const responseData = await response.json();
-       //const userid= appContext.editPayUserId;
+       //const cardid= appContext.editPayCardId;
 
-        responseData.map(payUser => {
-          if((payUser.email === currentEmail) && (payUser.isSave)){
-            setPayUserDetails(payUser);
-            appContext.addEditPayUserDetails(payUser);
+        responseData.map(payCard => {
+          if((payCard.email === currentEmail) && (payCard.isSave)){
+            
+            setPayCardDetails(payCard);
+            appContext.addEditPayCardDetails(payCard);
           }
 
         });
         
         console.log(responseData);
-        console.log(payUserDetails);
+        console.log(payCardDetails);
         
       
         
@@ -102,11 +102,12 @@ const DeletePayUser = async (id) => {
  
  /* if(isDelete){
     currentEmail = " ";
-    getPayUserDetails();
+    getPayCardDetails();
     console.log("me is delete check karapu eka");
   }*/
  
   console.log(isDelete);
+  console.log(currentEmail);
   
 
 
@@ -114,40 +115,39 @@ const DeletePayUser = async (id) => {
 
   return (
     <div>
-       {isDelete ? (<div><h2>There is no saved data to display</h2></div>) : (<div><table className="table">
+       {isDelete ? (<div><h2>There is no saved data to display</h2></div>) : (<div>
+        <h2>Saved Card Details</h2>
+         <table className="table">
+         
           <thead className="thead-light">
             <tr>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Address</th>
-              <th>City</th>
-              <th>Province</th>
+              <th>Card Type</th>
+              <th>Card Number</th>
+    
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{payUserDetails.name}</td>
-              <td>{payUserDetails.phone}</td>
-              <td>{payUserDetails.address}</td>
-              <td>{payUserDetails.city}</td>
-              <td>{payUserDetails.province}</td>
+              <td>{payCardDetails.cardType}</td>
+              <td>{payCardDetails.cardNumber}</td>
+          
             </tr> 
             </tbody>
 
-     <Link to="/pay-user">
+     <Link to="/pay-card">
       <Button className="buyNowBtn" type="submit" style={{margin : "10px"}}>
         Use This
       </Button>
       </Link>
 
       
-      <Button className="buyNowBtn" type="submit" style={{margin : "10px"}} onClick={() => {setEditPayUser(payUserDetails._id)}}>
+      <Button className="buyNowBtn" type="submit" style={{margin : "10px"}} onClick={() => {setEditPayCard(payCardDetails._id)}}>
         Update
       </Button>
       
 
       
-      <Button className="buyNowBtn" type="submit" style={{margin : "10px"}} onClick={() => {DeletePayUser(payUserDetails._id)}}>
+      <Button className="buyNowBtn" type="submit" style={{margin : "10px"}} onClick={() => {DeletePayCard(payCardDetails._id)}}>
         Delete
       </Button>
     
@@ -163,4 +163,4 @@ const DeletePayUser = async (id) => {
   );
 };
 
-export default UsePayUserDetails;
+export default UsePayCardDetails;

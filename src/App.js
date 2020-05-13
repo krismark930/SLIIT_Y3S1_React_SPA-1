@@ -7,6 +7,7 @@ import Checkout from "./pages/checkout/checkout-component";
 import UpdatePassword from "./pages/forgot-password/forgot-password-component";
 import {AppContext} from "./Context/app-context";
 import PayUserDetails from "./pages/pay-user-details/pay-user-details-component";
+import PayCardDetails from "./pages/pay-card-details/pay-card-details-component";
 
 function App() {
   let routess;
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/" component={Homepage}/>
         <Route exact path="/checkout-page" component={Checkout}/>
         <Route exact path="/pay-user" component={PayUserDetails}/>
+        <Route exact path="/pay-card" component={PayCardDetails}/>
         <Redirect to="/"/>
       </Switch>
     );
