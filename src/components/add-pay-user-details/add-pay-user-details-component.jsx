@@ -1,7 +1,8 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState,useEffect} from "react";
 import {Formik} from "formik";
-import {Button, Col, Form} from "react-bootstrap";
+import {Button, Col, Form, Spinner} from "react-bootstrap";
 import * as yup from "yup";
+import {FaSignInAlt} from "react-icons/fa";
 import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
 
@@ -19,15 +20,15 @@ const schema = yup.object().shape({
       "Enter a valid telephone number"
     )
     .required("Enter the telephone number"),
-  address: yup
+    address: yup
     .string()
     .min(2, "address must have at least 2 characters")
     .required("Enter the address"),
-  city: yup
+    city: yup
     .string()
     .min(2, "city must have at least 2 characters")
     .required("Enter the city"),
-  province: yup
+    province: yup
     .string()
     .min(2, "province must have at least 2 characters")
     .required("Enter the province")
@@ -40,7 +41,7 @@ const AddPayUserDetails = props => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [payUserDetails, setPayUserDetails] = useState({
-    email: "",
+    email:"",
     name: "",
     phone: "",
     address: "",
@@ -50,16 +51,16 @@ const AddPayUserDetails = props => {
   });
 
   var payUser;
-  var currentEmail;
+  var currentEmail ;
 
   useEffect(() => {
     //console.log(payUserDetails);
     //payUser = payUserDetails;
-
+    
   }, [payUserDetails]);
 
   const onSubmitHandle = async (values, {setSubmitting}) => {
-
+    
     console.log("Ane manda");
     console.log(values);
     setLoading(true);
@@ -67,18 +68,18 @@ const AddPayUserDetails = props => {
     appContext.currentUser.forEach(user => {
       currentEmail = user.email;
       console.log(currentEmail);
-      setPayUserDetails({...values, email: currentEmail});
+     setPayUserDetails({...values, email:currentEmail});
     });
 
-    payUser = {...values, email: currentEmail};
-
+    payUser = {...values, email:currentEmail};
+   
     console.log("Ane manda Bn");
     console.log(currentEmail);
     console.log(payUser);
-
+   
 
     try {
-      if (values.isSave) {
+      if(values.isSave){
         appContext.addPayUserDetails(payUser);
       }
       const response = await fetch("http://localhost:5000/payments/pay-user", {
@@ -93,7 +94,7 @@ const AddPayUserDetails = props => {
       console.log(responseData);
       if (!responseData.save) {
         setError("lol");
-
+        
         throw new Error(responseData.message);
       }
 
@@ -106,7 +107,7 @@ const AddPayUserDetails = props => {
       setError(errorss.message || "Something went wrong, try again later");
     }
 
-
+  
   };
 
   return (
@@ -128,7 +129,7 @@ const AddPayUserDetails = props => {
               errors
             }) => (
             <Form noValidate onSubmit={handleSubmit}>
-
+             
 
               <Form.Row>
                 <Form.Group as={Col} md="12" controlId="validationFormik04">
@@ -182,7 +183,7 @@ const AddPayUserDetails = props => {
                   </Form.Control.Feedback>
                 </Form.Group>
 
-
+                
               </Form.Row>
 
               <Form.Row>
@@ -227,64 +228,65 @@ const AddPayUserDetails = props => {
                   >
                     <option></option>
                     <option value="Western">
-                      1.Western{" "}
+                     1.Western{" "}
                     </option>
                     <option value="Eastern">
-                      2.Eastern{" "}
+                     2.Eastern{" "}
                     </option>
                     <option value="North Central">
-                      3.North Central{" "}
+                     3.North Central{" "}
                     </option>
                     <option value="Northern">
-                      4.Northern{" "}
+                     4.Northern{" "}
                     </option>
                     <option value="North Western">
-                      5.North Western{" "}
+                     5.North Western{" "}
                     </option>
                     <option value="Sabaragamuwa">
-                      6.Sabaragamuwa{" "}
+                     6.Sabaragamuwa{" "}
                     </option>
                     <option value=" Southern">
-                      7. Southern{" "}
+                     7. Southern{" "}
                     </option>
                     <option value=" Uva">
-                      8. Uva{" "}
+                     8. Uva{" "}
                     </option>
                     <option value="Central">
-                      9.Central{" "}
+                     9.Central{" "}
                     </option>
-
+                    
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
                     {errors.province}
                   </Form.Control.Feedback>
                 </Form.Group>
-
-
+                
+                
               </Form.Row>
 
               <Form.Row>
-                <Form.Group as={Col} md="12" controlId="validationFormik04">
-                  <Form.Control
+              <Form.Group as={Col} md="12" controlId="validationFormik04">
+               <Form.Control
                     type="checkbox"
-                    name="isSave"
-                    value={values.isSave}
+                    name="isSave" 
+                    value={values.isSave }
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={touched.isSave && errors.isSave}
-                    isValid={touched.isSave && !errors.isSave}
+                    isInvalid={touched.isSave  && errors.isSave }
+                    isValid={touched.isSave  && !errors.isSave }
                   />
                   <Form.Control.Feedback type="invalid">
-                    {errors.isSave}
+                    {errors.isSave }
                   </Form.Control.Feedback>
 
                   <Form.Label>Save for future</Form.Label>
-                </Form.Group>
+               </Form.Group>
 
+             
 
               </Form.Row>
 
-
+         
               <Button
                 type="submit"
                 disabled={isSubmitting}
@@ -294,13 +296,13 @@ const AddPayUserDetails = props => {
               </Button>
 
               <Link to="/">
-                <Button
-                  type="reset"
-                  disabled={isSubmitting}
-                  style={{marginTop: "5px", marginRight: "5px"}}
-                >
-                  Cancel
-                </Button>
+              <Button
+                type="reset"
+                disabled={isSubmitting}
+                style={{marginTop: "5px", marginRight: "5px"}}
+              >
+                Cancel
+              </Button>
               </Link>
 
             </Form>

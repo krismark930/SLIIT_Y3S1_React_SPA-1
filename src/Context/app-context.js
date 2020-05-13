@@ -3,8 +3,10 @@ import {createContext} from "react";
 export const AppContext = createContext({
   loggedin: false,
   editPayUser: false,
+  editPayCard:false,
   hidden: false,
   editPayUserId: "1",
+  editPayCardId:"1",
   products: [
     {id: "p1", title: "Gaming Mouse", price: 29.99},
     {id: "p2", title: "Harry Potter 3", price: 9.99},
@@ -17,17 +19,9 @@ export const AppContext = createContext({
   editPayUserDetails: [],
   payCardDetails: [],
   payOrderDetails: [],
+  editPayCardDetails: [],
 
-  addCurrentUser: user => {
-  },
-  addPayUserDetails: payUser => {
-  },
-  addEditPayUserDetails: payUser => {
-  },
-  addPayCardDetails: payUser => {
-  },
-  addPayOrderDetails: payUser => {
-  },
+  
   addItemToCart: item => {
   },
   removeItemFromCart: (productId, state) => {
@@ -40,12 +34,32 @@ export const AppContext = createContext({
   },
   login: state => {
   },
-  payUserEdit: state => {
+  addCurrentUser: user => {
   },
-  payUserEditFalse: state => {
+  addPayUserDetails: payUser => {
+  },
+  addPayCardDetails: payUser => {
+  },
+  addPayOrderDetails: payUser => {
+  },
+  addEditPayUserDetails: payUser => {
+  },
+  addEditPayCardDetails: payCard => {
+  },
+  payUserEdit:state => {
+  },
+  payUserEditFalse :state => {
+    
+  },
+  setEditPayUserID:id =>{
 
   },
-  setEditPayUserID: id => {
+  payCardEdit:state => {
+  },
+  payCardEditFalse :state => {
+    
+  },
+  setEditPayCardID:id =>{
 
   }
 });
