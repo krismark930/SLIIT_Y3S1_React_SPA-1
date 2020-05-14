@@ -94,7 +94,7 @@ const EditPayUserDetails  = props => {
       })
      
 
-  },[userid]);
+  },[setDetails, userid]);
 
   const setDetails = (data) => {
     payUser = data;
@@ -103,88 +103,6 @@ const EditPayUserDetails  = props => {
 }
 
 
-
-//appContext.addPayUserDetails(payUser);
-//console.log("me thama context eken ganna edit details");
-//console.log(appContext.PayUserDetails);
-
-  //console.log("me payUserDetails ekata set una ewa");
- // console.log(payUserDetails);
-
- /* const onChangeName = (e) => {
-       setPayUserDetails({name:e.target.value});
-  }
-
-  const onChangePhone = (e) => {
-    setPayUserDetails({phone:e.target.value});
-  }
-
-  const onChangeAddress = (e) => {
-    setPayUserDetails({address:e.target.value});
-  }
-
-  const onChangeCity = (e) => {
-    setPayUserDetails({city:e.target.value});
-  }
-
-  const onChangeProvince = (e) => {
-    setPayUserDetails({province:e.target.value});
-  }
-
-  const onChangeIsSave = (e) => {
-    setPayUserDetails({isSave:e.target.value});
-  }
-
-  const onSubmit = async(e)  => {
-    e.preventDefault();
-
-    appContext.currentUser.forEach(user => {
-      currentEmail = user.email;
-      //console.log(currentEmail);
-    
-    });
-    const payUser = {
-      email:currentEmail,
-      name: payUserDetails.name,
-      phone: payUserDetails.phone,
-      address: payUserDetails.address,
-      city: payUserDetails.city,
-      province:payUserDetails.province,
-      isSave: payUserDetails.isSave
-      
-    }
-
-    console.log(payUser);
-
-    try {
-      if(payUser.isSave){
-        appContext.addPayUserDetails(payUser);
-      }
-      const response = await fetch("http://localhost:5000/payments/pay-user/update/"+ userid,{
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payUser)
-      });
-
-      const responseData = await response.json();
-      console.log(responseData);
-      if (!responseData.login) {
-        setError("lol");
-        
-        throw new Error(responseData.message);
-      }
-
-      appContext.login();
-      setLoading(false);
-      console.log(responseData);
-    } catch (errorss) {
-      console.log(errorss);
-      setLoading(false);
-      setError(errorss.message || "Something went wrong, try again later");
-    }
-  }*/
   
 
  const onSubmitHandle = async (values, {setSubmitting}) => {

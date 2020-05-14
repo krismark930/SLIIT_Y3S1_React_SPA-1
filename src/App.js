@@ -9,6 +9,7 @@ import UpdatePassword from "./pages/forgot-password/forgot-password-component";
 import {AppContext} from "./Context/app-context";
 import PayUserDetails from "./pages/pay-user-details/pay-user-details-component";
 import PayCardDetails from "./pages/pay-card-details/pay-card-details-component";
+import ManageStoreManager from "./pages/admin-store-managers/admin-store-managers-component";
 
 function App() {
   let routess;
@@ -32,6 +33,7 @@ function App() {
         <Route exact path="/" component={Homepage}/>
         <Route exact path="/signin-signup" component={LoginSignup}/>
         <Route exact path="/forgot-password" component={UpdatePassword}/>
+        <Route exact path="/admin-login" component={ManageStoreManager}/>
         <Redirect to="/signin-signup"/>
       </Switch>
     );

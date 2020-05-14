@@ -153,6 +153,21 @@ const LoginForm = props => {
                   <span>Forgot Password</span>
                 </Col>
               </Link>
+
+              <Link to="/admin-login">
+                <Col
+                  md={6}
+                  style={{
+                    paddingTop: "7px",
+                    fontWeight: "500",
+                    color: "red",
+                    fontSize: "14px",
+                    maxWidth: "100%"
+                  }}
+                >
+                  <span>Admin Login</span>
+                </Col>
+              </Link>
             </Row>
 
             <Row></Row>
