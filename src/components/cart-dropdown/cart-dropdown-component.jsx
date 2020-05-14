@@ -46,7 +46,7 @@ const CartDropdown = ({checkoutToggle}) => {
         )}
       </div>
 
-      <Link to="/place-order">
+      <Link to="/checkout-page">
         <Button
           type="submit"
           style={{marginTop: "10px"}}
