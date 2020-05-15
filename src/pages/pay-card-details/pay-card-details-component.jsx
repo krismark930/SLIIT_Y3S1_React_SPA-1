@@ -1,15 +1,13 @@
-import React,{useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import {Col, Row} from "react-bootstrap";
 
 import "./pay-card-details-styles.scss";
-import AddPayCardDetails  from "../../components/add-pay-card-details/add-pay-card-details-component";
-import UsePayCardDetails  from "../../components/use-pay-card-details/use-pay-card-details-component";
-import EditPayCardDetails  from "../../components/edit-pay-card-details/edit-pay-card-details-component";
+import AddPayCardDetails from "../../components/add-pay-card-details/add-pay-card-details-component";
+import UsePayCardDetails from "../../components/use-pay-card-details/use-pay-card-details-component";
+import EditPayCardDetails from "../../components/edit-pay-card-details/edit-pay-card-details-component";
 
 
 import {AppContext} from "../../Context/app-context";
-import { useEffect } from "react";
-
 
 
 const PayCardDetails = props => {
@@ -19,14 +17,12 @@ const PayCardDetails = props => {
   useEffect(() => {
     //console.log(payCardDetails);
     //payCard = payCardDetails;
-    
+
   });
 
-  if(app.editPayCard){
+  if (app.editPayCard) {
     route = (<EditPayCardDetails/>);
-  }
-
-  else{
+  } else {
     route = (<AddPayCardDetails/>);
   }
 
@@ -36,16 +32,16 @@ const PayCardDetails = props => {
         <Row>
           <Col md="4">
             <div className="loginSignupPageLginForm">
-              
-             
+
+
               {route}
             </div>
           </Col>
           <Col md="6" className="clll">
             <div className="loginSignupPageSignupForm">
-              
-            <UsePayCardDetails/>
-              
+
+              <UsePayCardDetails/>
+
             </div>
           </Col>
         </Row>

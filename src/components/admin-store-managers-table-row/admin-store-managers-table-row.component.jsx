@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useState} from "react";
 
-import "./use-place-order-details-styles.scss";
+import "./checkout-item-styles.scss";
 import {AppContext} from "../../Context/app-context";
 
-const UsePlaceOrderDetails = ({cartItem}) => {
+const CheckoutItem = ({cartItem}) => {
   const [quantityHelper, setQuantityHelper] = useState(0);
 
   var quantity = cartItem.quantity;
@@ -31,15 +31,30 @@ const UsePlaceOrderDetails = ({cartItem}) => {
       </div>
       <span className="name">{cartItem.title}</span>
       <span className="quantity">
-      
+        <div
+          className="arrow"
+          onClick={() => appContext.removeItemFromCart(cartItem)}
+        >
+          &#10094;
+        </div>
         <span className="value">{quantity}</span>
         {console.log(cartItem)}
-       
+        <div
+          className="arrow"
+          onClick={() => appContext.addItemToCart(cartItem)}
+        >
+          &#10095;
+        </div>
       </span>
       <span className="price">{cartItem.price}</span>
-
+      <div
+        className="remove-button"
+        onClick={() => appContext.removeCompletelyItemFromCart(cartItem)}
+      >
+        &#10005;
+      </div>
     </div>
   );
 };
 
-export default UsePlaceOrderDetails;
+export default CheckoutItem;

@@ -1,8 +1,7 @@
-import React, {useContext, useState,useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Formik} from "formik";
-import {Button, Col, Form, Spinner} from "react-bootstrap";
+import {Button, Col, Form} from "react-bootstrap";
 import * as yup from "yup";
-import {FaSignInAlt} from "react-icons/fa";
 import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
 
@@ -14,7 +13,7 @@ const schema = yup.object().shape({
     .min(2, " cardType must have at least 2 characters")
     .required("Enter the card type"),
 
-    cardNumber: yup
+  cardNumber: yup
     .string()
     .min(2, "card number must have at least 2 characters")
     .required("Enter the card number"),
@@ -27,24 +26,24 @@ const AddPayCardDetails = props => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [payCardDetails, setPayCardDetails] = useState({
-    email:"",
+    email: "",
     cardType: "",
     cardNumber: "",
     isSave: false
   });
 
   var payCard;
-  var currentEmail ;
+  var currentEmail;
 
   useEffect(() => {
     console.log(payCardDetails);
     payCard = payCardDetails;
-    
+
   }, [payCardDetails]);
 
   console.log(currentEmail);
   const onSubmitHandle = async (values, {setSubmitting}) => {
-    
+
     console.log("Ane manda");
     console.log(values);
     setLoading(true);
@@ -52,18 +51,18 @@ const AddPayCardDetails = props => {
     appContext.currentUser.forEach(user => {
       currentEmail = user.email;
       console.log(currentEmail);
-      setPayCardDetails({...values, email:currentEmail});
+      setPayCardDetails({...values, email: currentEmail});
     });
 
-    payCard = {...values, email:currentEmail};
-   
+    payCard = {...values, email: currentEmail};
+
     console.log("Ane manda Bn");
     console.log(currentEmail);
     console.log(payCard);
-   
+
 
     try {
-      if(values.isSave){
+      if (values.isSave) {
         appContext.addPayCardDetails(payCard);
       }
       const response = await fetch("http://localhost:5000/payments/pay-card", {
@@ -78,7 +77,7 @@ const AddPayCardDetails = props => {
       console.log(responseData);
       if (!responseData.save) {
         setError("lol");
-        
+
         throw new Error(responseData.message);
       }
 
@@ -91,7 +90,7 @@ const AddPayCardDetails = props => {
       setError(errorss.message || "Something went wrong, try again later");
     }
 
-  
+
   };
 
   return (
@@ -114,7 +113,7 @@ const AddPayCardDetails = props => {
             }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row><Form.Label><h1>Card Details</h1></Form.Label></Form.Row>
-             
+
 
               <Form.Row>
                 <Form.Group as={Col} md="12" controlId="validationFormik04">
@@ -151,31 +150,30 @@ const AddPayCardDetails = props => {
                   </Form.Control.Feedback>
                 </Form.Group>
 
-                </Form.Row>
+              </Form.Row>
 
               <Form.Row>
-              <Form.Group as={Col} md="12" controlId="validationFormik04">
-               <Form.Control
+                <Form.Group as={Col} md="12" controlId="validationFormik04">
+                  <Form.Control
                     type="checkbox"
-                    name="isSave" 
-                    value={values.isSave }
+                    name="isSave"
+                    value={values.isSave}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={touched.isSave  && errors.isSave }
-                    isValid={touched.isSave  && !errors.isSave }
+                    isInvalid={touched.isSave && errors.isSave}
+                    isValid={touched.isSave && !errors.isSave}
                   />
                   <Form.Control.Feedback type="invalid">
-                    {errors.isSave }
+                    {errors.isSave}
                   </Form.Control.Feedback>
 
                   <Form.Label>Save for future</Form.Label>
-               </Form.Group>
+                </Form.Group>
 
-             
 
               </Form.Row>
 
-         
+
               <Button
                 type="submit"
                 disabled={isSubmitting}
@@ -185,13 +183,13 @@ const AddPayCardDetails = props => {
               </Button>
 
               <Link to="/">
-              <Button
-                type="reset"
-                disabled={isSubmitting}
-                style={{marginTop: "5px", marginRight: "5px"}}
-              >
-                Cancel
-              </Button>
+                <Button
+                  type="reset"
+                  disabled={isSubmitting}
+                  style={{marginTop: "5px", marginRight: "5px"}}
+                >
+                  Cancel
+                </Button>
               </Link>
 
             </Form>
@@ -202,4 +200,4 @@ const AddPayCardDetails = props => {
   );
 };
 
-export default AddPayCardDetails ;
+export default AddPayCardDetails;

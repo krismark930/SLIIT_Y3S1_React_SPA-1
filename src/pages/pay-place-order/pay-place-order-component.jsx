@@ -45,9 +45,8 @@ const PayPlaceOrder = () => {
     // total = (Math.round(total * 100) / 100).toFixed(2);
   });
 
-   total = (Number(subtotal) + Number(delivery)).toFixed(2);
+  total = (Number(subtotal) + Number(delivery)).toFixed(2);
 
- 
 
   return (
     <div className="checkout-page">
@@ -64,26 +63,26 @@ const PayPlaceOrder = () => {
         <div className="header-block">
           <span>Price</span>
         </div>
-        
+
       </div>
 
       {appContext.cart.map(cartItem => (
         <UsePlaceOrderDetails key={cartItem.id} cartItem={cartItem}/>
       ))}
       <div className="total"><h5>Sub Total: ${subtotal}</h5></div>
-      <div  className="total"><h5>Delivery Fee: ${delivery}</h5></div>
+      <div className="total"><h5>Delivery Fee: ${delivery}</h5></div>
       <div className="total"><h6>(It will be delivered within 10 days)</h6></div>
       <div className="total">TOTAL: ${total}</div>
       <Link to="/pay-user">
-        <Button className="buyNowBtn" type="submit" style={{float: "right"}} >
+        <Button className="buyNowBtn" type="submit" style={{float: "right"}}>
           Buy Order
         </Button>
       </Link>
       <Link to="/">
-         <Button className="buyNowBtn" type="reset" style={{float: "right"}} >
-                Cancel
-              </Button>
-              </Link>
+        <Button className="buyNowBtn" type="reset" style={{float: "right"}}>
+          Cancel
+        </Button>
+      </Link>
 
     </div>
   );

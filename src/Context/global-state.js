@@ -5,6 +5,8 @@ const GlobalState = props => {
   const [loggedin, setLoggedin] = useState(false);
   const [editPayUser, setEditPayUser] = useState(false);
   const [editPayUserId, setEditPayUserId] = useState("1");
+  const [editStoreManager, setEditStoreManager] = useState(false);
+  const [editStoreManagerId, setEditStoreManagerID] = useState("1");
   const [editPayCard, setEditPayCard] = useState(false);
   const [editPayCardId, setEditPayCardId] = useState("1");
   const [hidden, setHidden] = useState(true);
@@ -18,14 +20,15 @@ const GlobalState = props => {
   var count = -1;
 
   const [cart, setCart] = useState([]);
-  const [ currentUser, setCurrentUser] = useState([]);
-  const [ payUserDetails, setPayUserDetails] = useState([]);
-  const [ editPayUserDetails, setEditPayUserDetails] = useState([]);
-  const [ editPayCardDetails, setEditPayCardDetails] = useState([]);
-  const [ payCardDetails, setPayCardDetails] = useState([]);
-  const [ payOrderDetails, setPayOrderDetails] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
+  const [payUserDetails, setPayUserDetails] = useState([]);
+  const [editPayUserDetails, setEditPayUserDetails] = useState([]);
+  const [editPayCardDetails, setEditPayCardDetails] = useState([]);
+  const [payCardDetails, setPayCardDetails] = useState([]);
+  const [payOrderDetails, setPayOrderDetails] = useState([]);
+  const [storeManagers, setStoreManagers] = useState([]);
 
-    const addItemToCart = item => {
+  const addItemToCart = item => {
     const updatedCart = cart;
     console.log(updatedCart);
 
@@ -90,61 +93,60 @@ const GlobalState = props => {
     setLoggedin(false);
     setEditPayUser(false);
     setEditPayCard(false);
+    setEditStoreManager(false);
   };
+
   const login = state => {
     setLoggedin(true);
   };
 
-  const  addPayCardDetails = payCard => {
-    const updatedPayCard = [] ;
+  const addPayCardDetails = payCard => {
+    const updatedPayCard = [];
     updatedPayCard.push({...payCard});
-    console.log(updatedPayCard);    
+    console.log(updatedPayCard);
 
     setPayCardDetails(updatedPayCard);
   };
 
-  const  addPayUserDetails = payUser => {
-    const updatedPayUser = [] ;
+  const addPayUserDetails = payUser => {
+    const updatedPayUser = [];
     updatedPayUser.push({...payUser});
-    console.log(updatedPayUser);    
+    console.log(updatedPayUser);
 
     setPayUserDetails(updatedPayUser);
   };
 
-  
-  const  addEditPayUserDetails = payUser => {
-    const updatedPayUser = [] ;
+  const addEditPayUserDetails = payUser => {
+    const updatedPayUser = [];
     updatedPayUser.push({...payUser});
-    console.log(updatedPayUser);    
+    console.log(updatedPayUser);
 
     setEditPayUserDetails(updatedPayUser);
   };
 
-  const  addEditPayCardDetails = payCard => {
-    const updatedPayCard = [] ;
+  const addEditPayCardDetails = payCard => {
+    const updatedPayCard = [];
     updatedPayCard.push({...payCard});
-    console.log(updatedPayCard);    
+    console.log(updatedPayCard);
 
     setEditPayCardDetails(updatedPayCard);
   };
 
-  const  addPayOrderDetails = payOrder => {
-    const updatedPayOrder = [] ;
+  const addPayOrderDetails = payOrder => {
+    const updatedPayOrder = [];
     updatedPayOrder.push({...payOrder});
-    console.log(updatedPayOrder);    
+    console.log(updatedPayOrder);
 
     setPayOrderDetails(updatedPayOrder);
   };
 
-  const  addCurrentUser = user => {
-    const updatedCurrentUser = [] ;
+  const addCurrentUser = user => {
+    const updatedCurrentUser = [];
     updatedCurrentUser.push({...user});
-    console.log(updatedCurrentUser);    
+    console.log(updatedCurrentUser);
 
     setCurrentUser(updatedCurrentUser);
   };
-
-
 
   const payUserEdit = state => {
     setEditPayUser(true);
@@ -157,7 +159,7 @@ const GlobalState = props => {
     setEditPayUserId(id);
   };
 
-  
+
   const payCardEdit = state => {
     setEditPayCard(true);
   };
@@ -168,41 +170,71 @@ const GlobalState = props => {
   const setEditPayCardID = id => {
     setEditPayCardId(id);
   };
+
+  const storeManagerEdit = state => {
+    setEditStoreManager(true);
+  };
+
+  const editStoreManagerFalse = state => {
+    setEditStoreManager(false);
+  };
+
+  const setEditStoreManagerId = id => {
+    setEditStoreManagerID(id);
+  };
+
+  const addStoreManagers = storeManager => {
+    const updatedStoreManager = [];
+    updatedStoreManager.push({...storeManager});
+    console.log("-=-=-=-=-=-===");
+
+    console.log(updatedStoreManager);
+
+    setStoreManagers(updatedStoreManager);
+  };
+
   return (
     <AppContext.Provider
       value={{
-        editPayUser:editPayUser,
-        editPayUserId:editPayUserId,
-        editPayCard:editPayCard,
-        editPayCardId:editPayCardId,
+        editStoreManager: editStoreManager,
+        editStoreManagerId: editStoreManagerId,
+        editPayUser: editPayUser,
+        editPayUserId: editPayUserId,
+        editPayCard: editPayCard,
+        editPayCardId: editPayCardId,
         hidden: hidden,
         products: products,
         loggedin: loggedin,
         cart: cart,
-        currentUser:currentUser,
+        currentUser: currentUser,
         payUserDetails: payUserDetails,
-        editPayUserDetails:editPayUserDetails,
-        editPayCardDetails:editPayCardDetails,
+        editPayUserDetails: editPayUserDetails,
+        editPayCardDetails: editPayCardDetails,
         payCardDetails: payCardDetails,
         payOrderDetails: payOrderDetails,
-        payUserEdit:payUserEdit,
-        payUserEditFalse:payUserEditFalse,
-        setEditPayUserID :setEditPayUserID ,
-        payCardEdit:payCardEdit,
-        payCardEditFalse:payCardEditFalse,
-        setEditPayCardID :setEditPayCardID ,
+        storeManagers: storeManagers,
+        payUserEdit: payUserEdit,
+        payUserEditFalse: payUserEditFalse,
+        setEditPayUserID: setEditPayUserID,
+        payCardEdit: payCardEdit,
+        payCardEditFalse: payCardEditFalse,
+        setEditPayCardID: setEditPayCardID,
         login: login,
         logout: logout,
-        addEditPayUserDetails:addEditPayUserDetails,
-        addEditPayCardDetails:addEditPayCardDetails,
-        addCurrentUser:addCurrentUser,
+        addEditPayUserDetails: addEditPayUserDetails,
+        addEditPayCardDetails: addEditPayCardDetails,
+        addCurrentUser: addCurrentUser,
         addItemToCart: addItemToCart,
-        addPayUserDetails:addPayUserDetails,
-        addPayCardDetails:addPayCardDetails,
-        addPayOrderDetails:addPayOrderDetails,
+        addPayUserDetails: addPayUserDetails,
+        addPayCardDetails: addPayCardDetails,
+        addPayOrderDetails: addPayOrderDetails,
         removeCompletelyItemFromCart: removeCompletelyItemFromCart,
         removeItemFromCart: removeItemFromCart,
-        toggleDropdownHidden: toggleDropdownHidden
+        toggleDropdownHidden: toggleDropdownHidden,
+        storeManagerEdit: storeManagerEdit,
+        editStoreManagerFalse: editStoreManagerFalse,
+        setEditStoreManagerId: setEditStoreManagerId,
+        addStoreManagers: addStoreManagers
       }}
     >
       {props.children}
