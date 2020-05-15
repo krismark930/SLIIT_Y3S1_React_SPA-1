@@ -1,50 +1,54 @@
-import React, {useContext, useState} from "react";
-import {Formik} from "formik";
-import {Button, Col, Form, Spinner} from "react-bootstrap";
-import * as yup from "yup";
-import {FaSignInAlt} from "react-icons/fa";
-import {AppContext} from "../../Context/app-context";
-import "./admin-store-manager-form-styles.jsx.scss";
+import React, {useContext, useState} from "react"
+import {Formik} from "formik"
+import {Button, Col, Form, Spinner} from "react-bootstrap"
+import * as yup from "yup"
+import {FaUserPlus} from "react-icons/fa"
+import {AppContext} from "../../Context/app-context"
+import "./admin-store-manager-form-styles.scss"
 
 const schema = yup.object().shape({
   firstName: yup
     .string()
-    .min(2, "first name must have at least 2 characters")
-    .required("Enter the first name"),
+    .min(2, "First name must be at least 2 characters long.")
+    .required("Please enter the first name."),
   lastName: yup
     .string()
-    .min(2, "last name must have at least 2 characters")
-    .required("Enter the last name"),
+    .min(2, "Last name must be at least 2 characters long.")
+    .required("Please enter the last name."),
   email: yup
     .string()
-    .email()
-    .required("Enter the email"),
+    .email("Please enter a valid email address.")
+    .required("Please enter the email."),
   teleNo: yup
     .string()
     .matches(
       /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/g,
-      "Enter a valid telephone number"
+      "Please enter a valid phone number."
     )
-    .required("Enter the telephone number"),
+    .required("Please enter the phone number."),
   password: yup
     .string()
-    .min(5, "password must have at least 5 characters")
-    .required("Enter the password"),
+    .min(5, "Password must be at least 5 characters long.")
+    .required("Please enter the password."),
   passwordConfirm: yup
     .string()
-    .min(3, "min")
-    .required("Confirm the password")
-    .oneOf([yup.ref("password"), null], "Passwords must match"),
-  passwordResetQuestion: yup.string().required("Select a question"),
-  answer: yup.string().required("Enter the password")
-});
+    .min(5, "Password must be at least 5 characters long.")
+    .required("Please enter the password again for confirmation.")
+    .oneOf([yup.ref("password"), null], "Please make sure the two passwords match."),
+  passwordResetQuestion: yup
+    .string()
+    .required("Please select the password reset question."),
+  answer: yup
+    .string()
+    .required("Please enter the answer for the password reset question.")
+})
 
-var errorss = "";
+let errors_ = ""
 
-const AddStoreMAnagerForm = props => {
-  const appContext = useContext(AppContext);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
+const AddStoreManagerForm = props => {
+  const appContext = useContext(AppContext)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState()
   const [storeManagerData, setStoreManagerData] = useState({
     firstName: "",
     lastName: "",
@@ -54,14 +58,11 @@ const AddStoreMAnagerForm = props => {
     password: "",
     passwordResetQuestion: "",
     answer: ""
-  });
+  })
 
   const onSubmitHand = async (values, {setSubmitting}) => {
-    setLoading(true);
-
-    console.log(values);
-    setStoreManagerData(values);
-
+    setLoading(true)
+    setStoreManagerData(values)
     try {
       const response = await fetch("http://localhost:5000/admin/storemanager", {
         method: "POST",
@@ -69,25 +70,18 @@ const AddStoreMAnagerForm = props => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(values)
-      });
-
-      const responseData = await response.json();
-      console.log(responseData);
-
-      setLoading(false);
-      console.log(responseData);
-    } catch (errorss) {
-      console.log(errorss);
-      setLoading(false);
-      setError(errorss.message || "Something went wrong, try again later");
+      })
+      const responseData = await response.json()
+      setLoading(false)
+    } catch (errors_) {
+      setLoading(false)
+      setError(errors_.message || "Something went wrong, please try again later.")
     }
-
-    console.log(errorss + " errosdfdfdf");
-  };
+  }
 
   return (
     <React.Fragment>
-      <div className="signupFormHead">
+      <div>
         <Formik
           validationSchema={schema}
           onSubmit={onSubmitHand}
@@ -105,7 +99,7 @@ const AddStoreMAnagerForm = props => {
             }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
-                <Form.Group as={Col} md="6" controlId="validationFormik01">
+                <Form.Group as={Col} md="12" controlId="validationFormik01">
                   <Form.Label>First Name</Form.Label>
                   <Form.Control
                     placeholder="First Name"
@@ -117,12 +111,11 @@ const AddStoreMAnagerForm = props => {
                     isInvalid={touched.firstName && errors.firstName}
                     isValid={touched.firstName && !errors.firstName}
                   />
-
                   <Form.Control.Feedback type="invalid">
                     {errors.firstName}
                   </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group as={Col} md="6" controlId="validationFormik02">
+                <Form.Group as={Col} md="12" controlId="validationFormik02">
                   <Form.Label>Last Name</Form.Label>
                   <Form.Control
                     placeholder="Last Name"
@@ -134,13 +127,11 @@ const AddStoreMAnagerForm = props => {
                     isInvalid={touched.lastName && errors.lastName}
                     isValid={touched.lastName && !errors.lastName}
                   />
-
                   <Form.Control.Feedback type="invalid">
                     {errors.lastName}
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
-
               <Form.Row>
                 <Form.Group as={Col} md="12" controlId="validationFormik04">
                   <Form.Label>Email</Form.Label>
@@ -158,11 +149,10 @@ const AddStoreMAnagerForm = props => {
                     {errors.email}
                   </Form.Control.Feedback>
                 </Form.Group>
-
                 <Form.Group as={Col} md="12" controlId="validationFormik03">
-                  <Form.Label>Telephone</Form.Label>
+                  <Form.Label>Phone Number</Form.Label>
                   <Form.Control
-                    placeholder="Telephone Number"
+                    placeholder="Phone Number"
                     type="text"
                     name="teleNo"
                     value={values.teleNo}
@@ -171,12 +161,10 @@ const AddStoreMAnagerForm = props => {
                     isInvalid={touched.teleNo && errors.teleNo}
                     isValid={touched.teleNo && !errors.teleNo}
                   />
-
                   <Form.Control.Feedback type="invalid">
                     {errors.teleNo}
                   </Form.Control.Feedback>
                 </Form.Group>
-
                 <Form.Group as={Col} md="12" controlId="validationFormik05">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
@@ -189,12 +177,10 @@ const AddStoreMAnagerForm = props => {
                     isInvalid={touched.password && errors.password}
                     isValid={touched.password && !errors.password}
                   />
-
                   <Form.Control.Feedback type="invalid">
                     {errors.password}
                   </Form.Control.Feedback>
                 </Form.Group>
-
                 <Form.Group as={Col} md="12" controlId="validationFormik05">
                   <Form.Label>Confirm Password</Form.Label>
                   <Form.Control
@@ -215,18 +201,17 @@ const AddStoreMAnagerForm = props => {
                       style={{textAlign: "center", marginLeft: "49%"}}
                     />
                   )}
-
                   <Form.Control.Feedback type="invalid">
                     {errors.passwordConfirm}
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} controlId="formGridState">
                   <Form.Label>
-                    Select a question to update password option..{" "}
+                    Password Reset Question{" "}
                   </Form.Label>
                   <Form.Control
                     as="select"
-                    placeholder="Confirm Password"
+                    placeholder="Password Reset Question"
                     type="select"
                     name="passwordResetQuestion"
                     value={values.passwordResetQuestion}
@@ -241,12 +226,12 @@ const AddStoreMAnagerForm = props => {
                       !errors.passwordResetQuestion
                     }
                   >
-                    <option></option>
-                    <option value="What is the name of your first name ? ">
-                      What is the name of your first name ?{" "}
+                    <option/>
+                    <option value="What is your favorite food?">
+                      What is your favorite food?{" "}
                     </option>
-                    <option value="What is your favorite color ?">
-                      What is your favorite color ?{" "}
+                    <option value="What is your favorite color?">
+                      What is your favorite color?{" "}
                     </option>
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
@@ -254,9 +239,9 @@ const AddStoreMAnagerForm = props => {
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="12" controlId="validationFormik05">
-                  <Form.Label>Answer to above question</Form.Label>
+                  <Form.Label>Answer to Password Reset Question</Form.Label>
                   <Form.Control
-                    placeholder="Answer"
+                    placeholder="Answer to Password Reset Question"
                     type="text"
                     name="answer"
                     value={values.answer}
@@ -265,34 +250,38 @@ const AddStoreMAnagerForm = props => {
                     isInvalid={touched.answer && errors.answer}
                     isValid={touched.answer && !errors.answer}
                   />
-
                   <Form.Control.Feedback type="invalid">
                     {errors.answer}
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
-
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                style={{marginTop: "5px"}}
+                style={{
+                  marginTop: "3%",
+                  marginLeft: "40%",
+                  paddingLeft: "15px",
+                  paddingRight: "15px",
+                  paddingTop: "10px",
+                  paddingBottom: "10px"
+                }}
               >
-                <FaSignInAlt
+                <FaUserPlus
                   style={{
-                    marginRight: "10px",
-                    marginBottom: "3px",
-                    transform: "rotate(270deg)"
+                    marginRight: "9px",
+                    marginBottom: "6px"
                   }}
                 />
                 Add
               </Button>
-              {errorss && <div id="loginServerError">{errorss}</div>}
+              {errors_ && <div id="loginServerError">{errors_}</div>}
             </Form>
           )}
         </Formik>
       </div>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default AddStoreMAnagerForm;
+export default AddStoreManagerForm
