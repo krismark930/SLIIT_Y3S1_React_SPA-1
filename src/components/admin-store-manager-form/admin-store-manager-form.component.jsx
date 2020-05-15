@@ -4,7 +4,6 @@ import {Button, Col, Form, Spinner} from "react-bootstrap";
 import * as yup from "yup";
 import {FaSignInAlt} from "react-icons/fa";
 import {AppContext} from "../../Context/app-context";
-
 import "./admin-store-manager-form-styles.jsx.scss";
 
 const schema = yup.object().shape({
