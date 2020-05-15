@@ -31,14 +31,10 @@ const GlobalState = props => {
   const addItemToCart = item => {
     const updatedCart = cart;
     console.log(updatedCart);
-
     var itemId = item.id;
     console.log(itemId);
-
     const updatedItemIndex = updatedCart.findIndex(item => item.id == itemId);
-
     console.log(updatedItemIndex);
-
     if (updatedItemIndex < 0) {
       updatedCart.push({...item, quantity: 1});
     } else {
@@ -48,40 +44,31 @@ const GlobalState = props => {
       updatedItem.quantity++;
       updatedCart[updatedItemIndex] = updatedItem;
     }
-
     setCart(updatedCart);
   };
 
   const removeItemFromCart = item => {
     const updatedCart = cart;
     console.log(updatedCart);
-
     var itemId = item.id;
     console.log(itemId);
-
     const updatedItemIndex = updatedCart.findIndex(item => item.id == itemId);
-
     console.log(updatedItemIndex);
-
     const updatedItem = {
       ...updatedCart[updatedItemIndex]
     };
     updatedItem.quantity--;
     updatedCart[updatedItemIndex] = updatedItem;
-
     setCart(updatedCart);
   };
 
   const removeCompletelyItemFromCart = item => {
     const updatedCart = cart;
     console.log(updatedCart);
-
     var itemId = item.id;
-
     var cartUpdated = updatedCart.filter(item => {
       return item.id != itemId;
     });
-
     setCart(cartUpdated);
   };
 
@@ -104,7 +91,6 @@ const GlobalState = props => {
     const updatedPayCard = [];
     updatedPayCard.push({...payCard});
     console.log(updatedPayCard);
-
     setPayCardDetails(updatedPayCard);
   };
 
@@ -112,7 +98,6 @@ const GlobalState = props => {
     const updatedPayUser = [];
     updatedPayUser.push({...payUser});
     console.log(updatedPayUser);
-
     setPayUserDetails(updatedPayUser);
   };
 
@@ -120,7 +105,6 @@ const GlobalState = props => {
     const updatedPayUser = [];
     updatedPayUser.push({...payUser});
     console.log(updatedPayUser);
-
     setEditPayUserDetails(updatedPayUser);
   };
 
@@ -128,7 +112,6 @@ const GlobalState = props => {
     const updatedPayCard = [];
     updatedPayCard.push({...payCard});
     console.log(updatedPayCard);
-
     setEditPayCardDetails(updatedPayCard);
   };
 
@@ -136,7 +119,6 @@ const GlobalState = props => {
     const updatedPayOrder = [];
     updatedPayOrder.push({...payOrder});
     console.log(updatedPayOrder);
-
     setPayOrderDetails(updatedPayOrder);
   };
 
@@ -144,7 +126,6 @@ const GlobalState = props => {
     const updatedCurrentUser = [];
     updatedCurrentUser.push({...user});
     console.log(updatedCurrentUser);
-
     setCurrentUser(updatedCurrentUser);
   };
 
@@ -155,10 +136,10 @@ const GlobalState = props => {
   const payUserEditFalse = state => {
     setEditPayUser(false);
   };
+
   const setEditPayUserID = id => {
     setEditPayUserId(id);
   };
-
 
   const payCardEdit = state => {
     setEditPayCard(true);
@@ -167,6 +148,7 @@ const GlobalState = props => {
   const payCardEditFalse = state => {
     setEditPayCard(false);
   };
+
   const setEditPayCardID = id => {
     setEditPayCardId(id);
   };
@@ -186,10 +168,6 @@ const GlobalState = props => {
   const addStoreManagers = storeManager => {
     const updatedStoreManager = [];
     updatedStoreManager.push({...storeManager});
-    console.log("-=-=-=-=-=-===");
-
-    console.log(updatedStoreManager);
-
     setStoreManagers(updatedStoreManager);
   };
 
