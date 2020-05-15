@@ -31,6 +31,7 @@ const schema = yup.object().shape({
 });
 
 var errorss = "";
+let store_manager;
 
 const EditStoreManagerForm = props => {
   const appContext = useContext(AppContext);
@@ -47,25 +48,26 @@ const EditStoreManagerForm = props => {
     answer: ""
   });
 
-  const userid = appContext.editStoreManagerId;
+  let userid;
   console.log('-----------');
 
   console.log(appContext);
   console.log(appContext.storeManagers[0])
 
+  const setDetails = (data) => {
+    store_manager = data;
+  }
+
   useEffect(() => {
     axios.get('http://localhost:5000/admin/storemanager/' + userid)
       .then(response => {
-        console.log("434488888888888888888888888");
-
-        console.log(response.data);
         setStoreManagerData(response.data);
-        appContext.addStoreManagers(response.data);
+        setDetails(response.data);
       })
       .catch(function (error) {
         console.log(error);
       })
-  }, [appContext, userid]);
+  }, [setDetails, userid]);
 
   const onSubmitHand = async (values, {setSubmitting}) => {
     setLoading(true);
@@ -73,13 +75,20 @@ const EditStoreManagerForm = props => {
     console.log(values);
     setStoreManagerData(values);
 
+    store_manager = {...values};
+
     try {
+      if (values.isSave) {
+        appContext.addStoreManagers(store_manager);
+      }
+      userid = appContext.editStoreManagerId;
+
       const response = await fetch("http://localhost:5000/admin/storemanager", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(values)
+        body: JSON.stringify(store_manager)
       });
 
       const responseData = await response.json();

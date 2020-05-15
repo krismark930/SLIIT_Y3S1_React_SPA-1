@@ -6,7 +6,6 @@ import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "./edit-pay-user-details-styles.scss";
 
 const schema = yup.object().shape({
@@ -33,20 +32,16 @@ const schema = yup.object().shape({
     .string()
     .min(2, "province must have at least 2 characters")
     .required("Enter the province")
-
 });
-
 
 const EditPayUserDetails = props => {
   var payUser;
-
-
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [payUserDetails, setPayUserDetails] = useState({
     email: "",
-    name: "fgdhdhd",
+    name: "",
     phone: "",
     address: "",
     city: "",
@@ -54,59 +49,30 @@ const EditPayUserDetails = props => {
     isSave: false
   });
 
-  //var payUser;
   var currentEmail;
   var userid;
-
 
   console.log(payUserDetails);
 
   const initialUser = appContext.editPayUserDetails;
 
-  //console.log("Ane manda me initial ekata ganna ewa");
-
-
-  //console.log(initialUser[0]);
-  //console.log(initialUser.name );
-
+  const setDetails = (data) => {
+    payUser = data;
+  }
 
   useEffect(() => {
-
-
-    //console.log("meka thama edit karana id eka");
-    //console.log(userid);
-
-
     axios.get('http://localhost:5000/payments/pay-user/' + userid)
       .then(response => {
-
         setPayUserDetails(response.data);
         setDetails(response.data);
-        //console.log("me edit wenna ena data");
-        //console.log(response.data);     
-
-
       })
       .catch(function (error) {
         console.log(error);
       })
-
-
   }, [setDetails, userid]);
 
-  const setDetails = (data) => {
-    payUser = data;
-    //console.log("me thama payUser");
-    //console.log(payUser);
-  }
-
-
   const onSubmitHandle = async (values, {setSubmitting}) => {
-
-    //console.log("Ane manda");
-    //console.log(values);
     setLoading(true);
-
     appContext.currentUser.forEach(user => {
       currentEmail = user.email;
       console.log(currentEmail);
@@ -115,17 +81,10 @@ const EditPayUserDetails = props => {
 
     payUser = {...values, email: currentEmail};
 
-    // console.log("Ane manda Bn");
-    // console.log(currentEmail);
-    //console.log(currentEmail);
-    //console.log(payUser);
-
-
     try {
       if (values.isSave) {
         appContext.addPayUserDetails(payUser);
       }
-
       userid = appContext.editPayUserId;
 
       const response = await fetch("http://localhost:5000/payments/pay-user/update/" + userid, {
