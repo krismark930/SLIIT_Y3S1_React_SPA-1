@@ -17,8 +17,6 @@ const GlobalState = props => {
     {id: "p4", title: "Half-dried plant", price: 2.99}
   ]);
 
-  var count = -1;
-
   const [cart, setCart] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
   const [payUserDetails, setPayUserDetails] = useState([]);
@@ -31,9 +29,9 @@ const GlobalState = props => {
   const addItemToCart = item => {
     const updatedCart = cart;
     console.log(updatedCart);
-    var itemId = item.id;
+    let itemId = item.id;
     console.log(itemId);
-    const updatedItemIndex = updatedCart.findIndex(item => item.id == itemId);
+    const updatedItemIndex = updatedCart.findIndex(item => item.id === itemId);
     console.log(updatedItemIndex);
     if (updatedItemIndex < 0) {
       updatedCart.push({...item, quantity: 1});
@@ -50,9 +48,9 @@ const GlobalState = props => {
   const removeItemFromCart = item => {
     const updatedCart = cart;
     console.log(updatedCart);
-    var itemId = item.id;
+    let itemId = item.id;
     console.log(itemId);
-    const updatedItemIndex = updatedCart.findIndex(item => item.id == itemId);
+    const updatedItemIndex = updatedCart.findIndex(item => item.id === itemId);
     console.log(updatedItemIndex);
     const updatedItem = {
       ...updatedCart[updatedItemIndex]
@@ -65,9 +63,9 @@ const GlobalState = props => {
   const removeCompletelyItemFromCart = item => {
     const updatedCart = cart;
     console.log(updatedCart);
-    var itemId = item.id;
-    var cartUpdated = updatedCart.filter(item => {
-      return item.id != itemId;
+    let itemId = item.id;
+    let cartUpdated = updatedCart.filter(item => {
+      return item.id !== itemId;
     });
     setCart(cartUpdated);
   };
