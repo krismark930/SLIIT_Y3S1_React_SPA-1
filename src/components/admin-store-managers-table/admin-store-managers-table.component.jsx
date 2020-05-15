@@ -19,7 +19,7 @@ const ManageStoreManagerTable = () => {
       const responseData = await response.json();
       //const userid= appContext.editPayUserId;
       setStoreManagers(responseData);
-      //appContext.addStoreManagers(responseData);
+      appContext.addStoreManagers(responseData);
       console.log(responseData);
 
     } catch (errorss) {
@@ -35,10 +35,10 @@ const ManageStoreManagerTable = () => {
     appContext.storeManagerEdit();
     appContext.setEditStoreManagerId(id);
 
-    axios.get('http://localhost:5000/admin/storemanager/'+ id)
+    axios.get('http://localhost:5000/admin/storemanager/' + id)
       .then(response => {
 
-        appContext.addStoreManagers(response.data);
+        //appContext.addStoreManagers(response.data);
         console.log(response.data)
       })
       .catch(function (error) {

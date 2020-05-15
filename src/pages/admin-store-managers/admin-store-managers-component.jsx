@@ -1,5 +1,6 @@
 import AddStoreManagerForm from "../../components/admin-store-manager-form/admin-store-manager-form.component";
-import EditStoreManagerForm from "../../components/admin-store-manager-form-edit/admin-store-manager-form-edit.component";
+import EditStoreManagerForm
+  from "../../components/admin-store-manager-form-edit/admin-store-manager-form-edit.component";
 import StoreManagerTable from "../../components/admin-store-managers-table/admin-store-managers-table.component";
 
 import React, {useContext} from "react";

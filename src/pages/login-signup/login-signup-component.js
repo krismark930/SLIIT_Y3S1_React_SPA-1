@@ -1,7 +1,6 @@
 import React from "react";
 import {Col, Row} from "react-bootstrap";
 import LoginForm from "../../components/login-fom/login-form-component";
-import ProductAdd  from "../../pages/Product-add/product-add-component";
 
 import "./login-signup-styles.scss";
 import SignupForm from "../../components/signup-form/signup-form-component";

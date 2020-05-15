@@ -22,7 +22,7 @@ export const AppContext = createContext({
   payCardDetails: [],
   payOrderDetails: [],
   editPayCardDetails: [],
- storeManagers: [],
+  storeManagers: [],
 
   addItemToCart: item => {
   },

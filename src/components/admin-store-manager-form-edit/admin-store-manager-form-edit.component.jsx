@@ -54,7 +54,7 @@ const EditStoreManagerForm = props => {
   console.log(appContext.storeManagers[0])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/admin/storemanager/'+ userid)
+    axios.get('http://localhost:5000/admin/storemanager/' + userid)
       .then(response => {
         console.log("434488888888888888888888888");
 
@@ -65,11 +65,7 @@ const EditStoreManagerForm = props => {
       .catch(function (error) {
         console.log(error);
       })
-  },[appContext, userid]);
-
-  const onEdit = () => {
-
-  }
+  }, [appContext, userid]);
 
   const onSubmitHand = async (values, {setSubmitting}) => {
     setLoading(true);
