@@ -2,10 +2,10 @@ import React, {useContext, useEffect, useState} from 'react'
 import {Formik} from 'formik'
 import {Button, Col, Form, Spinner} from 'react-bootstrap'
 import * as yup from 'yup'
-import {FaSignInAlt} from 'react-icons/fa'
+import {FaUserEdit} from 'react-icons/fa'
 import {AppContext} from '../../Context/app-context'
 import './admin-store-manager-form-edit-styles.scss'
-import axios from 'axios';
+import axios from 'axios'
 
 const schema = yup.object().shape({
   firstName: yup
@@ -44,13 +44,13 @@ const schema = yup.object().shape({
     .required('Please enter the answer for the password reset question.')
 })
 
-var errorss = '';
-let store_manager;
+let errors_ = ''
+let store_manager
 
 const EditStoreManagerForm = props => {
-  const appContext = useContext(AppContext);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
+  const appContext = useContext(AppContext)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState()
   const [storeManagerData, setStoreManagerData] = useState({
     firstName: '',
     lastName: '',
@@ -60,68 +60,57 @@ const EditStoreManagerForm = props => {
     password: '',
     passwordResetQuestion: '',
     answer: ''
-  });
+  })
 
-  let userid;
-  console.log('-----------');
+  let userId
+  console.log('-----------')
 
-  console.log(appContext);
+  console.log(appContext)
   console.log(appContext.storeManagers[0])
 
   const setDetails = (data) => {
-    store_manager = data;
+    store_manager = data
   }
 
   useEffect(() => {
-    axios.get('http://localhost:5000/admin/storemanager/' + userid)
+    axios.get('http://localhost:5000/admin/storemanager/' + userId)
       .then(response => {
-        setStoreManagerData(response.data);
-        setDetails(response.data);
+        setStoreManagerData(response.data)
+        setDetails(response.data)
       })
       .catch(function (error) {
-        console.log(error);
+        console.log(error)
       })
-  }, [setDetails, userid]);
+  }, [setDetails, userId])
 
   const onSubmitHand = async (values, {setSubmitting}) => {
-    setLoading(true);
-
-    console.log(values);
-    setStoreManagerData(values);
-
-    store_manager = {...values};
-
+    setLoading(true)
+    console.log(values)
+    setStoreManagerData(values)
+    store_manager = {...values}
     try {
       if (values.isSave) {
-        appContext.addStoreManagers(store_manager);
+        appContext.addStoreManagers(store_manager)
       }
-      userid = appContext.editStoreManagerId;
-
+      userId = appContext.editStoreManagerId
       const response = await fetch('http://localhost:5000/admin/storemanager', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(store_manager)
-      });
-
-      const responseData = await response.json();
-      console.log(responseData);
-
-      setLoading(false);
-      console.log(responseData);
-    } catch (errorss) {
-      console.log(errorss);
-      setLoading(false);
-      setError(errorss.message || 'Something went wrong, try again later');
+      })
+      const responseData = await response.json()
+      console.log(responseData)
+      setLoading(false)
+      console.log(responseData)
+    } catch (errors_) {
+      console.log(errors_)
+      setLoading(false)
+      setError(errors_.message || 'Something went wrong, try again later')
     }
-
-    console.log(errorss + ' errosdfdfdf');
-  };
-
-  //
-  // const index= appContext.storeManagers.findIndex(item => item._id === userid);
-  // console.log('index = ' + index)
+    console.log(errors_ + ' errosdfdfdf')
+  }
 
   return (
     <React.Fragment>
@@ -143,7 +132,7 @@ const EditStoreManagerForm = props => {
             }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
-                <Form.Group as={Col} md='6' controlId='validationFormik01'>
+                <Form.Group as={Col} md='12' controlId='validationFormik01'>
                   <Form.Label>First Name</Form.Label>
                   <Form.Control
                     placeholder='First Name'
@@ -155,12 +144,11 @@ const EditStoreManagerForm = props => {
                     isInvalid={touched.firstName && errors.firstName}
                     isValid={touched.firstName && !errors.firstName}
                   />
-
                   <Form.Control.Feedback type='invalid'>
                     {errors.firstName}
                   </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group as={Col} md='6' controlId='validationFormik02'>
+                <Form.Group as={Col} md='12' controlId='validationFormik02'>
                   <Form.Label>Last Name</Form.Label>
                   <Form.Control
                     placeholder='Last Name'
@@ -172,13 +160,11 @@ const EditStoreManagerForm = props => {
                     isInvalid={touched.lastName && errors.lastName}
                     isValid={touched.lastName && !errors.lastName}
                   />
-
                   <Form.Control.Feedback type='invalid'>
                     {errors.lastName}
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
-
               <Form.Row>
                 <Form.Group as={Col} md='12' controlId='validationFormik04'>
                   <Form.Label>Email</Form.Label>
@@ -196,11 +182,10 @@ const EditStoreManagerForm = props => {
                     {errors.email}
                   </Form.Control.Feedback>
                 </Form.Group>
-
                 <Form.Group as={Col} md='12' controlId='validationFormik03'>
-                  <Form.Label>Telephone</Form.Label>
+                  <Form.Label>Phone Number</Form.Label>
                   <Form.Control
-                    placeholder='Telephone Number'
+                    placeholder='Phone Number'
                     type='text'
                     name='teleNo'
                     value={values.teleNo}
@@ -209,7 +194,6 @@ const EditStoreManagerForm = props => {
                     isInvalid={touched.teleNo && errors.teleNo}
                     isValid={touched.teleNo && !errors.teleNo}
                   />
-
                   <Form.Control.Feedback type='invalid'>
                     {errors.teleNo}
                   </Form.Control.Feedback>
@@ -226,12 +210,10 @@ const EditStoreManagerForm = props => {
                     isInvalid={touched.password && errors.password}
                     isValid={touched.password && !errors.password}
                   />
-
                   <Form.Control.Feedback type='invalid'>
                     {errors.password}
                   </Form.Control.Feedback>
                 </Form.Group>
-
                 <Form.Group as={Col} md='12' controlId='validationFormik05'>
                   <Form.Label>Confirm Password</Form.Label>
                   <Form.Control
@@ -252,18 +234,17 @@ const EditStoreManagerForm = props => {
                       style={{textAlign: 'center', marginLeft: '49%'}}
                     />
                   )}
-
                   <Form.Control.Feedback type='invalid'>
                     {errors.passwordConfirm}
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} controlId='formGridState'>
                   <Form.Label>
-                    Select a question to update password option..{' '}
+                    Password Reset Question{' '}
                   </Form.Label>
                   <Form.Control
                     as='select'
-                    placeholder='Confirm Password'
+                    placeholder='Password Reset Question'
                     type='select'
                     name='passwordResetQuestion'
                     value={values.passwordResetQuestion}
@@ -278,12 +259,12 @@ const EditStoreManagerForm = props => {
                       !errors.passwordResetQuestion
                     }
                   >
-                    <option></option>
-                    <option value='What is the name of your first name ? '>
-                      What is the name of your first name ?{' '}
+                    <option/>
+                    <option value='What is your favorite food?'>
+                      What is your favorite food?{' '}
                     </option>
-                    <option value='What is your favorite color ?'>
-                      What is your favorite color ?{' '}
+                    <option value='What is your favorite color?'>
+                      What is your favorite color?{' '}
                     </option>
                   </Form.Control>
                   <Form.Control.Feedback type='invalid'>
@@ -291,9 +272,9 @@ const EditStoreManagerForm = props => {
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md='12' controlId='validationFormik05'>
-                  <Form.Label>Answer to above question</Form.Label>
+                  <Form.Label>Answer to Password Reset Question</Form.Label>
                   <Form.Control
-                    placeholder='Answer'
+                    placeholder='Answer to Password Reset Question'
                     type='text'
                     name='answer'
                     value={values.answer}
@@ -302,7 +283,6 @@ const EditStoreManagerForm = props => {
                     isInvalid={touched.answer && errors.answer}
                     isValid={touched.answer && !errors.answer}
                   />
-
                   <Form.Control.Feedback type='invalid'>
                     {errors.answer}
                   </Form.Control.Feedback>
@@ -311,24 +291,30 @@ const EditStoreManagerForm = props => {
               <Button
                 type='submit'
                 disabled={isSubmitting}
-                style={{marginTop: '5px'}}
+                style={{
+                  marginTop: '3%',
+                  marginLeft: '40%',
+                  paddingLeft: '15px',
+                  paddingRight: '15px',
+                  paddingTop: '10px',
+                  paddingBottom: '10px'
+                }}
               >
-                <FaSignInAlt
+                <FaUserEdit
                   style={{
-                    marginRight: '10px',
-                    marginBottom: '3px',
-                    transform: 'rotate(270deg)'
+                    marginRight: '9px',
+                    marginBottom: '6px'
                   }}
                 />
                 Edit
               </Button>
-              {errorss && <div id='loginServerError'>{errorss}</div>}
+              {errors_ && <div id='loginServerError'>{errors_}</div>}
             </Form>
           )}
         </Formik>
       </div>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default EditStoreManagerForm;
+export default EditStoreManagerForm

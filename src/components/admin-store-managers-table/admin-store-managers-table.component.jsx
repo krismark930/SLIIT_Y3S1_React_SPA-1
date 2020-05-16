@@ -57,7 +57,7 @@ const ManageStoreManagerTable = () => {
   return (
     <div>
       <table className='table'>
-        <thead className='thead-light'>
+        <thead className='thead-dark'>
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
@@ -67,6 +67,7 @@ const ManageStoreManagerTable = () => {
           <th>Reset Quest</th>
           <th>Answer</th>
           <th>Type</th>
+          <th>Actions</th>
         </tr>
         </thead>
         <tbody>
