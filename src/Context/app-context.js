@@ -7,8 +7,6 @@ export const AppContext = createContext({
   hidden: false,
   editPayUserId: '1',
   editPayCardId: '1',
-  editStoreManager: false,
-  editStoreManagerId: '1',
   products: [
     {id: 'p1', title: 'Gaming Mouse', price: 29.99},
     {id: 'p2', title: 'Harry Potter 3', price: 9.99},
@@ -22,7 +20,12 @@ export const AppContext = createContext({
   payCardDetails: [],
   payOrderDetails: [],
   editPayCardDetails: [],
+  editStoreManager: false,
+  editStoreManagerId: '1',
   storeManagers: [],
+  editCategory: false,
+  ediCategoryId: '1',
+  categories: [],
 
   addItemToCart: item => {
   },
@@ -67,5 +70,13 @@ export const AppContext = createContext({
   setEditStoreManagerId: id => {
   },
   addStoreManagers: storeManager => {
+  },
+  categoryEdit: state => {
+  },
+  editCategoryFalse: state => {
+  },
+  setEditCategoryId: id => {
+  },
+  addCategories: category => {
   }
 })
