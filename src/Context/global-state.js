@@ -5,8 +5,6 @@ const GlobalState = props => {
   const [loggedin, setLoggedin] = useState(false)
   const [editPayUser, setEditPayUser] = useState(false)
   const [editPayUserId, setEditPayUserId] = useState('1')
-  const [editStoreManager, setEditStoreManager] = useState(false)
-  const [editStoreManagerId, setEditStoreManagerID] = useState('1')
   const [editPayCard, setEditPayCard] = useState(false)
   const [editPayCardId, setEditPayCardId] = useState('1')
   const [hidden, setHidden] = useState(true)
@@ -16,7 +14,6 @@ const GlobalState = props => {
     {id: 'p3', title: 'Used plastic bottle', price: 0.99},
     {id: 'p4', title: 'Half-dried plant', price: 2.99}
   ])
-
   const [cart, setCart] = useState([])
   const [currentUser, setCurrentUser] = useState([])
   const [payUserDetails, setPayUserDetails] = useState([])
@@ -24,7 +21,12 @@ const GlobalState = props => {
   const [editPayCardDetails, setEditPayCardDetails] = useState([])
   const [payCardDetails, setPayCardDetails] = useState([])
   const [payOrderDetails, setPayOrderDetails] = useState([])
+  const [editStoreManager, setEditStoreManager] = useState(false)
+  const [editStoreManagerId, setEditStoreManagerID] = useState('1')
   const [storeManagers, setStoreManagers] = useState([])
+  const [editCategory, setEditCategory] = useState(false)
+  const [editCategoryId, setEditCategoryID] = useState('1')
+  const [categories, setCategories] = useState([])
 
   const addItemToCart = item => {
     const updatedCart = cart
@@ -169,11 +171,27 @@ const GlobalState = props => {
     setStoreManagers(updatedStoreManager)
   }
 
+  const categoryEdit = state => {
+    setEditCategory(true)
+  }
+
+  const editCategoryFalse = state => {
+    setEditCategory(false)
+  }
+
+  const setEditCategoryId = id => {
+    setEditCategoryID(id)
+  }
+
+  const addCategories = category => {
+    const updatedCategory = []
+    updatedCategory.push({...category})
+    setCategories(updatedCategory)
+  }
+
   return (
     <AppContext.Provider
       value={{
-        editStoreManager: editStoreManager,
-        editStoreManagerId: editStoreManagerId,
         editPayUser: editPayUser,
         editPayUserId: editPayUserId,
         editPayCard: editPayCard,
@@ -188,7 +206,12 @@ const GlobalState = props => {
         editPayCardDetails: editPayCardDetails,
         payCardDetails: payCardDetails,
         payOrderDetails: payOrderDetails,
+        editStoreManager: editStoreManager,
+        editStoreManagerId: editStoreManagerId,
         storeManagers: storeManagers,
+        editCategory: editCategory,
+        editCategoryId: editCategoryId,
+        categories: categories,
         payUserEdit: payUserEdit,
         payUserEditFalse: payUserEditFalse,
         setEditPayUserID: setEditPayUserID,
@@ -210,7 +233,11 @@ const GlobalState = props => {
         storeManagerEdit: storeManagerEdit,
         editStoreManagerFalse: editStoreManagerFalse,
         setEditStoreManagerId: setEditStoreManagerId,
-        addStoreManagers: addStoreManagers
+        addStoreManagers: addStoreManagers,
+        categoryEdit: categoryEdit,
+        editCategoryFalse: editCategoryFalse,
+        setEditCategoryId: setEditCategoryId,
+        addCategories: addCategories
       }}
     >
       {props.children}

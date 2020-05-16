@@ -10,6 +10,7 @@ import {AppContext} from './Context/app-context'
 import PayUserDetails from './pages/pay-user-details/pay-user-details-component'
 import PayCardDetails from './pages/pay-card-details/pay-card-details-component'
 import ManageStoreManager from './pages/admin-store-managers/admin-store-managers-component'
+import ManageCategory from './pages/admin-categories/admin-categories-component'
 
 function App() {
   let routes
@@ -34,6 +35,7 @@ function App() {
         <Route exact path='/signin-signup' component={LoginSignup}/>
         <Route exact path='/forgot-password' component={UpdatePassword}/>
         <Route exact path='/admin-login' component={ManageStoreManager}/>
+        <Route exact path='/categories' component={ManageCategory}/>
         <Redirect to='/signin-signup'/>
       </Switch>
     )

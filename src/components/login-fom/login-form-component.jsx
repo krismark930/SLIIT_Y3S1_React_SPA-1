@@ -112,20 +112,17 @@ const LoginForm = props => {
                   isInvalid={touched.password && errors.password}
                   isValid={touched.password && !errors.password}
                 />
-
                 {loading && (
                   <Spinner
                     animation="border"
                     style={{textAlign: "center", marginLeft: "44%"}}
                   />
                 )}
-
                 <Form.Control.Feedback type="invalid">
                   {errors.password}
                 </Form.Control.Feedback>
               </Form.Group>
             </Form.Row>
-
             <Row>
               <Col md={4}>
                 <Button type="submit" style={{}} disabled={isSubmitting}>
@@ -153,7 +150,6 @@ const LoginForm = props => {
                   <span>Forgot Password</span>
                 </Col>
               </Link>
-
               <Link to="/admin-login">
                 <Col
                   md={6}
@@ -169,8 +165,21 @@ const LoginForm = props => {
                 </Col>
               </Link>
             </Row>
-
-            <Row></Row>
+            <Link to="/categories">
+              <Col
+                md={6}
+                style={{
+                  paddingTop: "7px",
+                  fontWeight: "500",
+                  color: "red",
+                  fontSize: "14px",
+                  maxWidth: "100%"
+                }}
+              >
+                <span>Categories</span>
+              </Col>
+            </Link>
+            <Row/>
             {errorss && <div id="loginServerError">{errorss}</div>}
           </Form>
         )}
