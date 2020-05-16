@@ -190,9 +190,7 @@ const AddStoreManagerForm = props => {
                     value={values.passwordConfirm}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={
-                      touched.passwordConfirm && errors.passwordConfirm
-                    }
+                    isInvalid={touched.passwordConfirm && errors.passwordConfirm}
                     isValid={touched.passwordConfirm && !errors.passwordConfirm}
                   />
                   {loading && (
@@ -275,7 +273,7 @@ const AddStoreManagerForm = props => {
                 />
                 Add
               </Button>
-              {errors_ && <div id='loginServerError'>{errors_}</div>}
+              {errors_ && <div id='serverErrors'>{errors_}</div>}
             </Form>
           )}
         </Formik>

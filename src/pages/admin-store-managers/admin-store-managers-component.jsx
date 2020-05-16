@@ -18,20 +18,18 @@ const ManageStoreManager = props => {
 
   return (
     <div className='storeManagerMain'>
-      <div className='container'>
-        <Row>
-          <Col lg='5'>
-            <div className='storeManagerForm'>
-              {route}
-            </div>
-          </Col>
-          <Col lg='7'>
-            <div className='storeManagerTable'>
-              <StoreManagerTable/>
-            </div>
-          </Col>
-        </Row>
-      </div>
+      <Row className='container'>
+        <Col sm='6'>
+          <div className='storeManagerForm'>
+            {route}
+          </div>
+        </Col>
+        <Col sm='6'>
+          <div className='storeManagerTable'>
+            <StoreManagerTable/>
+          </div>
+        </Col>
+      </Row>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
+import {FaUserEdit, FaUserMinus} from 'react-icons/fa'
 import './admin-store-managers-table-styles.scss'
 import {AppContext} from '../../Context/app-context'
 import axios from 'axios'
@@ -56,19 +57,14 @@ const ManageStoreManagerTable = () => {
 
   return (
     <div>
-      <table className='table'>
-        <thead className='thead-dark'>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Phone no</th>
-          <th>Password</th>
-          <th>Reset Quest</th>
-          <th>Answer</th>
-          <th>Type</th>
-          <th>Actions</th>
-        </tr>
+      <table className='table' style={{border: 'solid darkblue 2px'}}>
+        <thead>
+        <th style={{borderBottom: 'solid darkblue 2px'}}>First Name</th>
+        <th style={{borderBottom: 'solid darkblue 2px'}}>Last Name</th>
+        <th style={{borderBottom: 'solid darkblue 2px'}}>Email</th>
+        <th style={{borderBottom: 'solid darkblue 2px'}}>Phone Number</th>
+        <th style={{borderBottom: 'solid darkblue 2px'}}/>
+        <th style={{borderBottom: 'solid darkblue 2px'}}/>
         </thead>
         <tbody>
         {storeManagers.map((storeManager) => {
@@ -78,13 +74,15 @@ const ManageStoreManagerTable = () => {
               <td>{storeManager.lastName}</td>
               <td>{storeManager.email}</td>
               <td>{storeManager.teleNo}</td>
-              <td>{storeManager.password}</td>
-              <td>{storeManager.passwordResetQuestion}</td>
-              <td>{storeManager.answer}</td>
-              <td>{storeManager.type}</td>
               <td>
-                <button onClick={() => DeleteStoreManager(storeManager._id)}>Delete</button>
-                <button onClick={() => EditStoreManager(storeManager._id)}>Edit</button>
+                <button onClick={() => EditStoreManager(storeManager._id)} style={{color: 'darkgreen'}}>
+                  <FaUserEdit size={25}/>
+                </button>
+              </td>
+              <td>
+                <button onClick={() => DeleteStoreManager(storeManager._id)} style={{color: 'indianred'}}>
+                  <FaUserMinus size={25}/>
+                </button>
               </td>
             </tr>
           )
