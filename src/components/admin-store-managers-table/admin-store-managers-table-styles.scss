@@ -1,1 +1,28 @@
-/**/
+button {
+  border: none;
+  background: transparent;
+}
+
+th {
+  text-align: center;
+  font-size: larger;
+  color: white;
+}
+
+thead {
+  background-color: #6c7ae0;
+}
+
+td {
+  font-size: larger;
+  color: rgb(107, 107, 107);
+  text-align: center;
+}
+
+tr:nth-child(odd) {
+  background-color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #dddfff;
+}

@@ -1,5 +1,5 @@
 .storeManagerMain {
-  margin-top: 5%;
+  margin-top: 3%;
 
   .container {
     padding-right: 15px;
@@ -9,15 +9,17 @@
   }
 
   .storeManagerForm {
-    border-radius: 4px;
+    border-radius: 5px;
     padding: 20px;
-    background-color: #d8cfcf85;
+    background-color: rgba(52, 133, 214, 0.57);
+    margin-bottom: 3%;
   }
 
   .storeManagerTable {
-    width: 180%;
-    border-radius: 4px;
-    padding: 20px;
-    background-color: #d8cfcf85;
+    border-radius: 5px;
+    width: 210%;
+    padding: 20px 20px 10px 20px;
+    background-color: rgba(52, 133, 214, 0.61);
+    min-width: max-content;
   }
 }
