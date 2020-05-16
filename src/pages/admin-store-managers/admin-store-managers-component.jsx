@@ -18,6 +18,7 @@ const ManageStoreManager = props => {
 
   return (
     <div className='storeManagerMain'>
+      <h1>Manage Store Managers</h1>
       <Row className='container'>
         <Col sm='6'>
           <div className='storeManagerForm'>

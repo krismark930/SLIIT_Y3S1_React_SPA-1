@@ -1,5 +1,10 @@
 .categoryMain {
-  margin-top: 3%;
+  margin-top: 2%;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 3%;
+  }
 
   .container {
     padding-right: 15px;
@@ -8,7 +13,7 @@
     margin-left: 5%;
   }
 
-  .categroyForm {
+  .categoryForm {
     border-radius: 5px;
     padding: 20px;
     background-color: rgba(52, 133, 214, 0.57);
