@@ -17,6 +17,7 @@ const ManageCategory = props => {
 
   return (
     <div className='categoryMain'>
+      <h1>Manage Product Categories</h1>
       <Row className='container'>
         <Col sm='6'>
           <div className='categoryForm'>

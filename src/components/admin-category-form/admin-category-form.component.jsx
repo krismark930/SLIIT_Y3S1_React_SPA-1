@@ -87,6 +87,8 @@ const AddCategoryForm = props => {
                     {errors.categoryTitle}
                   </Form.Control.Feedback>
                 </Form.Group>
+              </Form.Row>
+              <Form.Row>
                 <Form.Group as={Col} md='12' controlId='validationFormik02'>
                   <Form.Label>Description</Form.Label>
                   <Form.Control

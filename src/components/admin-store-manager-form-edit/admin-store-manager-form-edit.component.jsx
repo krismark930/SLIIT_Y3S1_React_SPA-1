@@ -125,6 +125,8 @@ const EditStoreManagerForm = props => {
                     {errors.firstName}
                   </Form.Control.Feedback>
                 </Form.Group>
+              </Form.Row>
+              <Form.Row>
                 <Form.Group as={Col} md='12' controlId='validationFormik02'>
                   <Form.Label>Last Name</Form.Label>
                   <Form.Control
@@ -159,6 +161,8 @@ const EditStoreManagerForm = props => {
                     {errors.email}
                   </Form.Control.Feedback>
                 </Form.Group>
+              </Form.Row>
+              <Form.Row>
                 <Form.Group as={Col} md='12' controlId='validationFormik03'>
                   <Form.Label>Phone Number</Form.Label>
                   <Form.Control

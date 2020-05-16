@@ -115,6 +115,8 @@ const AddStoreManagerForm = props => {
                     {errors.firstName}
                   </Form.Control.Feedback>
                 </Form.Group>
+              </Form.Row>
+              <Form.Row>
                 <Form.Group as={Col} md='12' controlId='validationFormik02'>
                   <Form.Label>Last Name</Form.Label>
                   <Form.Control
@@ -149,6 +151,8 @@ const AddStoreManagerForm = props => {
                     {errors.email}
                   </Form.Control.Feedback>
                 </Form.Group>
+              </Form.Row>
+              <Form.Row>
                 <Form.Group as={Col} md='12' controlId='validationFormik03'>
                   <Form.Label>Phone Number</Form.Label>
                   <Form.Control
@@ -165,6 +169,8 @@ const AddStoreManagerForm = props => {
                     {errors.teleNo}
                   </Form.Control.Feedback>
                 </Form.Group>
+              </Form.Row>
+              <Form.Row>
                 <Form.Group as={Col} md='12' controlId='validationFormik05'>
                   <Form.Label>Password</Form.Label>
                   <Form.Control
@@ -181,6 +187,8 @@ const AddStoreManagerForm = props => {
                     {errors.password}
                   </Form.Control.Feedback>
                 </Form.Group>
+              </Form.Row>
+              <Form.Row>
                 <Form.Group as={Col} md='12' controlId='validationFormik05'>
                   <Form.Label>Confirm Password</Form.Label>
                   <Form.Control
@@ -203,6 +211,8 @@ const AddStoreManagerForm = props => {
                     {errors.passwordConfirm}
                   </Form.Control.Feedback>
                 </Form.Group>
+              </Form.Row>
+              <Form.Row>
                 <Form.Group as={Col} controlId='formGridState'>
                   <Form.Label>
                     Password Reset Question{' '}
@@ -236,6 +246,8 @@ const AddStoreManagerForm = props => {
                     {errors.passwordResetQuestion}
                   </Form.Control.Feedback>
                 </Form.Group>
+              </Form.Row>
+              <Form.Row>
                 <Form.Group as={Col} md='12' controlId='validationFormik05'>
                   <Form.Label>Answer to Password Reset Question</Form.Label>
                   <Form.Control
