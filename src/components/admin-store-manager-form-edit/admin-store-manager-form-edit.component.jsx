@@ -85,7 +85,7 @@ const EditStoreManagerForm = props => {
       setLoading(false)
     } catch (errors_) {
       setLoading(false)
-      setError(errors_.message || 'Something went wrong, try again later')
+      setError(errors_.message || 'Something went wrong, try again later.')
     }
   }
 
