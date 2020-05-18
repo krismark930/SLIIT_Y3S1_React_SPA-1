@@ -21,49 +21,49 @@ function App() {
   // console.log(app.loggedin + ' routes check')
 console.log(app.currentUser[0].type)
 
-// if (app.loggedin && app.currentUser[0].type == "Administrator") {
-//   console.log("Admin")
-//    routes = (
-//       <Switch>
-//           <Route exact path='/' component={Homepage}/>
-//         <Redirect to='/'/>
-//       </Switch>
-//     )
-// }else if(app.loggedin && app.currentUser[0].type == 'Store Manager'){
-//   console.log("Store Manager")
-//   routes = (
-//       <Switch>
-//           <Route exact path='/' component={Homepage}/>
-//         <Redirect to='/'/>
-//       </Switch>
-//     )
-// }else if (app.loggedin && app.currentUser[0].type == 'Customer') {
-//     console.log("Customer")
-//     routes = (
-//       <Switch>
-//         <Route exact path='/' component={Homepage}/>
-//         <Route exact path='/checkout-page' component={Checkout}/>
-//         <Route exact path='/place-order' component={PayPlaceOrder}/>
-//         <Route exact path='/pay-user' component={PayUserDetails}/>
-//         <Route exact path='/pay-card' component={PayCardDetails}/>
-//         <Redirect to='/'/>
-//       </Switch>
-//     )
-//   } 
+if (app.loggedin && app.currentUser[0].type == "Administrator") {
+  console.log("Admin")
+   routes = (
+      <Switch>
+          <Route exact path='/' component={Homepage}/>
+        <Redirect to='/'/>
+      </Switch>
+    )
+}else if(app.loggedin && app.currentUser[0].type == 'Store Manager'){
+  console.log("Store Manager")
+  routes = (
+      <Switch>
+          <Route exact path='/' component={Homepage}/>
+        <Redirect to='/'/>
+      </Switch>
+    )
+}else if (app.loggedin && app.currentUser[0].type == 'Customer') {
+    console.log("Customer")
+    routes = (
+      <Switch>
+        <Route exact path='/' component={Homepage}/>
+        <Route exact path='/checkout-page' component={Checkout}/>
+        <Route exact path='/place-order' component={PayPlaceOrder}/>
+        <Route exact path='/pay-user' component={PayUserDetails}/>
+        <Route exact path='/pay-card' component={PayCardDetails}/>
+        <Redirect to='/'/>
+      </Switch>
+    )
+  } 
   
-//   if(! app.loggedin) {
-//     console.log("Guest")
-//     routes = (
-//       <Switch>
-//         <Route exact path='/' component={Homepage}/>
-//         <Route exact path='/signin-signup' component={LoginSignup}/>
-//         <Route exact path='/forgot-password' component={UpdatePassword}/>
-//         <Route exact path='/admin-login' component={ManageStoreManager}/>
-//         <Route exact path='/categories' component={ManageCategory}/>
-//         <Redirect to='/signin-signup'/>
-//       </Switch>
-//     )
-//   }
+  if(! app.loggedin) {
+    console.log("Guest")
+    routes = (
+      <Switch>
+        <Route exact path='/' component={Homepage}/>
+        <Route exact path='/signin-signup' component={LoginSignup}/>
+        <Route exact path='/forgot-password' component={UpdatePassword}/>
+        <Route exact path='/admin-login' component={ManageStoreManager}/>
+        <Route exact path='/categories' component={ManageCategory}/>
+        <Redirect to='/signin-signup'/>
+      </Switch>
+    )
+  }
 
   return (
     <div className='App'>
