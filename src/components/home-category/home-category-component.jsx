@@ -8,8 +8,10 @@ const HomeCategory = ({ category, products }) => {
   return (
     <div className="home-category wrapper container">
       <div className="row">
-        <h3 style={{ padding: "10px", marginLeft: "10px " }}>{category}</h3>
-        <CardDeck className="col-12">
+        <h3 style={{ padding: "10px", marginLeft: "10px ", marginTop: "3%" }}>
+          {category}
+        </h3>
+        <CardDeck className="col-12" style={{}}>
           {filtered.slice(0, 3).map((item) => {
             return <HomeItem item={item} />;
           })}
