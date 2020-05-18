@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Card, Button } from "react-bootstrap";
-import { FaCaretDown } from "react-icons/fa";
+import { FaCartArrowDown } from "react-icons/fa";
 import { AppContext } from "../../Context/app-context";
 
 const HomeItem = ({ item }) => {
@@ -30,7 +30,7 @@ const HomeItem = ({ item }) => {
           }}
         >
           Add to Cart{" "}
-          <FaCaretDown
+          <FaCartArrowDown
             style={{
               marginRight: "6px",
               marginLeft: "6px",

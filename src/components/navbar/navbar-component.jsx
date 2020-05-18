@@ -10,8 +10,7 @@ import {AppContext} from "../../Context/app-context";
 const MainNavbar = props => {
   const appContext = useContext(AppContext);
 
-  console.log(appContext);
-
+// console.log('lol')
   // const [logingStatus, setLogingStatus] = useState({
   //   loggedin: true,
   //   hidden: true

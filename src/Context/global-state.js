@@ -15,7 +15,7 @@ const GlobalState = props => {
     {id: 'p4', title: 'Half-dried plant', price: 2.99}
   ])
   const [cart, setCart] = useState([])
-  const [currentUser, setCurrentUser] = useState([])
+  const [currentUser, setCurrentUser] = useState([{type: "Null"}])
   const [payUserDetails, setPayUserDetails] = useState([])
   const [editPayUserDetails, setEditPayUserDetails] = useState([])
   const [editPayCardDetails, setEditPayCardDetails] = useState([])
@@ -29,6 +29,7 @@ const GlobalState = props => {
   const [categories, setCategories] = useState([])
 
   const addItemToCart = item => {
+    console.log()
     const updatedCart = cart
     console.log(updatedCart)
     let itemId = item.id

@@ -10,23 +10,20 @@ import axios from 'axios'
 const schema = yup.object().shape({
   firstName: yup
     .string()
-    .min(2, 'First name must be at least 2 characters long.')
-    .required('Please enter the first name.'),
+    .min(2, 'First name must be at least 2 characters long.'),
   lastName: yup
     .string()
-    .min(2, 'Last name must be at least 2 characters long.')
-    .required('Please enter the last name.'),
+    .min(2, 'Last name must be at least 2 characters long.'),
   email: yup
     .string()
-    .email('Please enter a valid email address.')
-    .required('Please enter the email.'),
+    .email('Please enter a valid email address.'),
   teleNo: yup
     .string()
     .matches(
       /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/g,
       'Please enter a valid phone number.'
     )
-    .required('Please enter the phone number.')
+    
 })
 
 let errors_ = ''
@@ -66,6 +63,7 @@ const EditStoreManagerForm = props => {
   }, [setDetails, userId])
 
   const onSubmitHand = async (values, {setSubmitting}) => {
+    console.log(values)
     setLoading(true)
     setStoreManagerData(values)
     store_manager = {...values}
@@ -74,8 +72,8 @@ const EditStoreManagerForm = props => {
         appContext.addStoreManagers(store_manager)
       }
       userId = appContext.editStoreManagerId
-      const response = await fetch('http://localhost:5000/admin/storemanager', {
-        method: 'POST',
+      const response = await fetch('http://localhost:5000/admin/storemanager/'+userId, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -115,7 +113,7 @@ const EditStoreManagerForm = props => {
                     placeholder='First Name'
                     type='text'
                     name='firstName'
-                    value={values.firstName}
+                    value={appContext.storeManagers[0].firstName}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={touched.firstName && errors.firstName}
@@ -133,7 +131,7 @@ const EditStoreManagerForm = props => {
                     placeholder='Last Name'
                     type='text'
                     name='lastName'
-                    value={values.lastName}
+                    value={appContext.storeManagers[0].lastName}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={touched.lastName && errors.lastName}
@@ -151,7 +149,7 @@ const EditStoreManagerForm = props => {
                     type='email'
                     placeholder='Email'
                     name='email'
-                    value={values.email}
+                    value={appContext.storeManagers[0].email}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={touched.email && errors.email}
@@ -169,7 +167,7 @@ const EditStoreManagerForm = props => {
                     placeholder='Phone Number'
                     type='text'
                     name='teleNo'
-                    value={values.teleNo}
+                    value={appContext.storeManagers[0].teleNo}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={touched.teleNo && errors.teleNo}

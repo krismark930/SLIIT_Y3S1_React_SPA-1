@@ -42,17 +42,17 @@ const LoginForm = props => {
       });
 
       const responseData = await response.json();
-      console.log(responseData);
+      console.log(responseData.userDetails);
       if (!responseData.login) {
         errorss = responseData.message;
         throw new Error(responseData.message);
       }
       responseError = responseData.message;
-      // console.log(responseError);
+    console.log(responseData.userDetails);
       appContext.login();
-      console.log(`wade hari`);
+    console.log( values);
       appContext.addCurrentUser(values);
-      console.log(appContext.addCurrentUser(values));
+      console.log(appContext.addCurrentUser(responseData.userDetails));
       setLoading(false);
     } catch (err) {
       seterrorLogin(err.message);
