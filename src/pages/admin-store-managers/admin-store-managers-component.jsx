@@ -17,15 +17,15 @@ const ManageStoreManager = props => {
     route = (<AddStoreManagerForm/>)
 
   return (
-    <div className='storeManagerMain'>
+    <div className='storeManagerMain container' style={{maxWidth: "1303px"}}>
       <h1>Manage Store Managers</h1>
-      <Row className='container'>
-        <Col sm='6'>
+      <Row  style={{maxWidth: "1286px"}}>
+        <Col sm='4'>
           <div className='storeManagerForm'>
             {route}
           </div>
         </Col>
-        <Col sm='6'>
+        <Col sm='8'>
           <div className='storeManagerTable'>
             <StoreManagerTable/>
           </div>

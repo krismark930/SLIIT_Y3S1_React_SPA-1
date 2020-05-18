@@ -48,7 +48,7 @@ const MainNavbar = props => {
 
             {/* {logingStatus.hidden ? null : <CartDropdown />} */}
 
-            {appContext.loggedin ? (
+            {(appContext.loggedin ) ? (
               <Nav>
                 <div className="dripdowntoggles">
                   <Nav.Link
@@ -62,9 +62,11 @@ const MainNavbar = props => {
                         size: "2rem"
                       }}
                     >
+                    
                       <FaCartArrowDown/>
                     </IconContext.Provider>
                   </Nav.Link>
+                  
                   {appContext.hidden ? null : <CartDropdown/>}
                 </div>
 
