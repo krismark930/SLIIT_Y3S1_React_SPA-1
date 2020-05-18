@@ -162,6 +162,10 @@ const GlobalState = props => {
     setEditStoreManager(false)
   }
 
+  // const editStoreManagerTrue = state => {
+  //   setEditStoreManager(true)
+  // }
+
   const setEditStoreManagerId = id => {
     setEditStoreManagerID(id)
   }

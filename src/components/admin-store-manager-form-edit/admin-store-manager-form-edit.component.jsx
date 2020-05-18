@@ -64,6 +64,7 @@ const EditStoreManagerForm = props => {
 
   const onSubmitHand = async (values, {setSubmitting}) => {
     console.log(values)
+    
     setLoading(true)
     setStoreManagerData(values)
     store_manager = {...values}
@@ -72,6 +73,7 @@ const EditStoreManagerForm = props => {
         appContext.addStoreManagers(store_manager)
       }
       userId = appContext.editStoreManagerId
+      appContext.storeManagerEdit();
       const response = await fetch('http://localhost:5000/admin/storemanager/'+userId, {
         method: 'PUT',
         headers: {
@@ -81,6 +83,7 @@ const EditStoreManagerForm = props => {
       })
       const responseData = await response.json()
       setLoading(false)
+       
     } catch (errors_) {
       setLoading(false)
       setError(errors_.message || 'Something went wrong, try again later.')

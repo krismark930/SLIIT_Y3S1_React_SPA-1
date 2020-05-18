@@ -72,6 +72,7 @@ const AddStoreManagerForm = props => {
         body: JSON.stringify(values)
       })
       const responseData = await response.json()
+      values.firstName("")
       setLoading(false)
     } catch (errors_) {
       setLoading(false)
