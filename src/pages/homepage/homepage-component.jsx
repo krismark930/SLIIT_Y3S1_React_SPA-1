@@ -3,6 +3,8 @@ import { AppContext } from "../../Context/app-context";
 import { Button } from "react-bootstrap";
 import HomeCategory from "../../components/home-category/home-category-component";
 import { wait } from "@testing-library/react";
+import HomePageCarousle from "../../components/homepage-carousle/homepage-carousle-component";
+import "./homepage-styles.scss";
 
 const Homepage = () => {
   const appContext = useContext(AppContext);
@@ -22,6 +24,12 @@ const Homepage = () => {
   ];
 
   const products = [
+    {
+      title: "Women",
+      price: 123.0,
+      category: "Women",
+      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    },
     {
       title: "Women",
       price: 123.0,
@@ -77,7 +85,7 @@ const Homepage = () => {
   });
 
   return (
-    <div className="homepageHead" style={{ marginTop: "5%" }}>
+    <div className="homepageHead">
       {/* {appContext.products.map(cartItem => (
         <div key={cartItem.id}>
           <p>{cartItem.id}</p>
@@ -86,6 +94,7 @@ const Homepage = () => {
           </Button>
         </div>
       ))} */}
+      <HomePageCarousle />
       {chats}
     </div>
   );
