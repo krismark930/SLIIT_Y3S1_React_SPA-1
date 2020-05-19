@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import MainNavbar from "./components/navbar/navbar-component";
 import LoginSignup from "./pages/login-signup/login-signup-component";
@@ -14,8 +14,26 @@ import ManageCategory from "./pages/admin-categories/admin-categories-component"
 import SingleCategory from "./pages/single-category/single-category-page";
 
 function App() {
-  let routes;
   const app = useContext(AppContext);
+
+  // useEffect(() => {
+  //   const response = await fetch("http://localhost:5000/users/login", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(values)
+  //   });
+
+  //   const responseData = await response.json();
+  //   console.log(responseData.userDetails);
+
+  //   app.addProducts()
+
+  // }, [])
+
+  let routes;
+
   console.log("-------------------------------");
   console.log(app);
 
@@ -35,6 +53,11 @@ function App() {
     routes = (
       <Switch>
         <Route exact path="/" component={Homepage} />
+        <Route
+          exact
+          path="/product-category/:category"
+          component={SingleCategory}
+        />
         <Redirect to="/" />
       </Switch>
     );
@@ -43,6 +66,11 @@ function App() {
     routes = (
       <Switch>
         <Route exact path="/" component={Homepage} />
+        <Route
+          exact
+          path="/product-category/:category"
+          component={SingleCategory}
+        />
         <Route exact path="/checkout-page" component={Checkout} />
         <Route exact path="/place-order" component={PayPlaceOrder} />
         <Route exact path="/pay-user" component={PayUserDetails} />
