@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext,useState,useEffect} from "react";
 
 import "./use-pay-card-details-styles.scss";
 import {Button} from "react-bootstrap";
@@ -7,155 +7,163 @@ import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
 
 
-const UsePayCardDetails = () => {
+
+const UsePayCardDetails =  () => {
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   const [payCardDetails, setPayCardDetails] = useState({
-    email: "",
+    email:"",
     cardType: "",
     cardNumber: "",
     isSave: false
   });
 
-  var currentEmail;
+  var currentEmail ;
 
+ 
 
   useEffect(() => {
     appContext.currentUser.forEach(user => {
-      currentEmail = user.email;
+        currentEmail = user.email;
     });
 
-    getPayCardDetails();
+    getPayCardDetails(); 
+    
+  }, [payCardDetails,currentEmail,isDelete]);
 
-  }, [payCardDetails, currentEmail, isDelete]);
-
-  const setEditPayCard = (id) => {
-    appContext.payCardEdit();
-    appContext.setEditPayCardID(id);
-    console.log("hi machan edit wada");
-    console.log(id);
-  }
+ const setEditPayCard = (id) => {
+   appContext.payCardEdit();
+   appContext.setEditPayCardID(id);
+   console.log("hi machan edit wada");
+ console.log(id);
+ }
 
 
-  const DeletePayCard = async (id) => {
-    //console.log("hi oya delete eka athule");
+const DeletePayCard = async (id) => {
+  //console.log("hi oya delete eka athule");
+  
+  try {
 
-    try {
+    const response = await fetch('http://localhost:5000/payments/pay-card/'+id, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+     
+    });
 
-      const response = await fetch('http://localhost:5000/payments/pay-card/' + id, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json"
-        },
-
-      });
-
-      const responseData = await response.json();
-      console.log(responseData);
-      //console.log("hi delete una");
-      // currentEmail = " ";
-      //getPayCardDetails();
-      if (responseData) {
-        setIsDelete(true);
-      }
-
-      setLoading(false);
-
-    } catch (errorss) {
-      console.log(errorss);
-      setLoading(false);
-
+    const responseData = await response.json();
+    console.log(responseData);
+    //console.log("hi delete una");
+   // currentEmail = " ";
+    //getPayCardDetails();
+    if(responseData){ 
+      setIsDelete(true);
     }
+   
+    setLoading(false);
+    
+  } catch (errorss) {
+    console.log(errorss);
+    setLoading(false);
+    
   }
+}
 
-  const getPayCardDetails = async () => {
+  const getPayCardDetails = async() =>{
     console.log("hi details ganna awa");
     console.log(currentEmail);
     try {
-      const response = await fetch("http://localhost:5000/payments/pay-card");
-
+        const response = await fetch("http://localhost:5000/payments/pay-card");
+  
       const responseData = await response.json();
-      //const cardid= appContext.editPayCardId;
+       //const cardid= appContext.editPayCardId;
 
-      responseData.map(payCard => {
-        if ((payCard.email === currentEmail) && (payCard.isSave)) {
+        responseData.map(payCard => {
+          if((payCard.email === currentEmail) && (payCard.isSave)){
+            
+            setPayCardDetails(payCard);
+            appContext.addEditPayCardDetails(payCard);
+          }
 
-          setPayCardDetails(payCard);
-          appContext.addEditPayCardDetails(payCard);
-        }
-
-      });
-
-      console.log(responseData);
-      console.log(payCardDetails);
-
-
-    } catch (errorss) {
-      console.log(errorss);
-
-    }
+        });
+        
+        console.log(responseData);
+        console.log(payCardDetails);
+        
+      
+        
+      } catch (errorss) {
+        console.log(errorss);
+      
+      }
   }
-
-  /* if(isDelete){
-     currentEmail = " ";
-     getPayCardDetails();
-     console.log("me is delete check karapu eka");
-   }*/
-
+ 
+ /* if(isDelete){
+    currentEmail = " ";
+    getPayCardDetails();
+    console.log("me is delete check karapu eka");
+  }*/
+ 
   console.log(isDelete);
   console.log(currentEmail);
 
+  
+  
+ const setConfirmedCard = () => {
+  appContext.setFalsePayUserConfirmed();
+  appContext.setTruePayCardConfirmed();
+ 
+ }
+  
 
   return (
     <div>
-      {isDelete ? (<div><h2>There is no saved data to display</h2></div>) : (<div>
-          <h2>Saved Card Details</h2>
-          <table className="table">
-
-            <thead className="thead-light">
+       {isDelete ? (<div><h2>There is no saved data to display</h2></div>) : (<div>
+        <h2>Saved Card Details</h2>
+         <table className="table">
+         
+          <thead className="thead-light">
             <tr>
               <th>Card Type</th>
               <th>Card Number</th>
-
+    
             </tr>
-            </thead>
-            <tbody>
+          </thead>
+          <tbody>
             <tr>
               <td>{payCardDetails.cardType}</td>
               <td>{payCardDetails.cardNumber}</td>
-
-            </tr>
+          
+            </tr> 
             </tbody>
 
-            <Link to="/pay-card">
-              <Button className="buyNowBtn" type="submit" style={{margin: "10px"}}>
-                Use This
-              </Button>
-            </Link>
+     
+      <Button className="buyNowBtn" type="submit" style={{margin : "10px"}}  onClick={() => {setConfirmedCard()} }>
+        Use This
+      </Button>
+      
 
+      
+      <Button className="buyNowBtn" type="submit" style={{margin : "10px"}} onClick={() => {setEditPayCard(payCardDetails._id)}}>
+        Update
+      </Button>
+      
 
-            <Button className="buyNowBtn" type="submit" style={{margin: "10px"}} onClick={() => {
-              setEditPayCard(payCardDetails._id)
-            }}>
-              Update
-            </Button>
-
-
-            <Button className="buyNowBtn" type="submit" style={{margin: "10px"}} onClick={() => {
-              DeletePayCard(payCardDetails._id)
-            }}>
-              Delete
-            </Button>
-
-
-          </table>
-        </div>
-      )}
-
-
-    </div>
-
+      
+      <Button className="buyNowBtn" type="submit" style={{margin : "10px"}} onClick={() => {DeletePayCard(payCardDetails._id)}}>
+        Delete
+      </Button>
+    
+         
+        </table></div>
+       )}
+        
+      
+      </div>
+    
+      
 
   );
 };
