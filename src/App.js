@@ -12,7 +12,7 @@ import PayCardDetails from "./pages/pay-card-details/pay-card-details-component"
 import ManageStoreManager from "./pages/admin-store-managers/admin-store-managers-component";
 import ManageCategory from "./pages/admin-categories/admin-categories-component";
 import SingleCategory from "./pages/single-category/single-category-page";
-
+import PlaceOrderSuccessful from "./pages/place-order-successful/place-order-successful-component";
 function App() {
   const app = useContext(AppContext);
 
@@ -66,18 +66,37 @@ function App() {
     console.log("Customer");
     routes = (
       <Switch>
-        <Route exact path="/" component={Homepage} />
-        <Route
+        
+      {app.payUserConfirmed ?
+     (<div>
+       <Route exact path="/pay-card" component={PayCardDetails}/>
+       <Redirect to="/pay-card"/>
+     </div>):
+     (<div>
+       
+       {app.payCardConfirmed ?
+       (<div>
+         
+           <Route exact path="/pay-order" component={PayPlaceOrder}/>
+           <Route exact path="/pay-order-success" component={PlaceOrderSuccessful}/>
+           <Redirect to="/pay-order"/>
+       </div>) : 
+       (<div>
+       <Route exact path="/" component={Homepage}/>
+       <Route
           exact
           path="/product-category/:category"
           component={SingleCategory}
         />
-        <Route exact path="/checkout-page" component={Checkout} />
-        <Route exact path="/place-order" component={PayPlaceOrder} />
-        <Route exact path="/pay-user" component={PayUserDetails} />
-        <Route exact path="/pay-card" component={PayCardDetails} />
-        <Redirect to="/" />
-      </Switch>
+       <Route exact path="/checkout-page" component={Checkout}/>
+       <Route exact path="/pay-user" component={PayUserDetails}/>
+       <Redirect to="/"/>
+       </div>)}
+       
+   </div>)}
+    
+   </Switch>
+     
     );
   }
 
