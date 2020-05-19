@@ -29,7 +29,7 @@ const LoginForm = props => {
 
   const onSubmitHand = async (values, {setSubmitting}) => {
     setLoading(true);
-    console.log('login eke submit athulata awa'+values);
+    console.log('login eke submit athulata awa' + values);
     console.log(values);
     setloginData(values);
 
@@ -49,9 +49,9 @@ const LoginForm = props => {
         throw new Error(responseData.message);
       }
       responseError = responseData.message;
-    console.log(responseData.userDetails);
+      console.log(responseData.userDetails);
       appContext.login();
-    console.log( values);
+      console.log(values);
       appContext.addCurrentUser(values);
       console.log(appContext.addCurrentUser(responseData.userDetails));
       setLoading(false);
@@ -151,35 +151,7 @@ const LoginForm = props => {
                   <span>Forgot Password</span>
                 </Col>
               </Link>
-              <Link to="/admin-login">
-                <Col
-                  md={6}
-                  style={{
-                    paddingTop: "7px",
-                    fontWeight: "500",
-                    color: "red",
-                    fontSize: "14px",
-                    maxWidth: "100%"
-                  }}
-                >
-                  <span>Admin Login</span>
-                </Col>
-              </Link>
             </Row>
-            <Link to="/categories">
-              <Col
-                md={6}
-                style={{
-                  paddingTop: "7px",
-                  fontWeight: "500",
-                  color: "red",
-                  fontSize: "14px",
-                  maxWidth: "100%"
-                }}
-              >
-                <span>Categories</span>
-              </Col>
-            </Link>
             <Row/>
             {errorss && <div id="loginServerError">{errorss}</div>}
           </Form>

@@ -1,6 +1,5 @@
 import AddStoreManagerForm from '../../components/admin-store-manager-form/admin-store-manager-form.component'
-import EditStoreManagerForm
-  from '../../components/admin-store-manager-form-edit/admin-store-manager-form-edit.component'
+import EditManagerForm from '../../components/admin-store-manager-form-edit/admin-store-manager-form-edit.component'
 import StoreManagerTable from '../../components/admin-store-managers-table/admin-store-managers-table.component'
 import './admin-store-managers-styles.scss'
 import React, {useContext} from 'react'
@@ -12,14 +11,14 @@ const ManageStoreManager = props => {
   const app = useContext(AppContext)
 
   if (app.editStoreManager)
-    route = (<EditStoreManagerForm/>)
+    route = (<EditManagerForm/>)
   else
     route = (<AddStoreManagerForm/>)
 
   return (
-    <div className='storeManagerMain container' style={{maxWidth: "1303px"}}>
+    <div className='storeManagerMain container' style={{maxWidth: '1300px'}}>
       <h1>Manage Store Managers</h1>
-      <Row  style={{maxWidth: "1286px"}}>
+      <Row style={{maxWidth: '1300px'}}>
         <Col sm='4'>
           <div className='storeManagerForm'>
             {route}

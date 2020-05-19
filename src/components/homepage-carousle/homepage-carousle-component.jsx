@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Carousel } from "react-bootstrap";
+import React, {useState} from "react";
+import {Carousel} from "react-bootstrap";
 import "./homepage-carousle-style.scss";
 
 const HomePageCarousle = (props) => {

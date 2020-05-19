@@ -23,7 +23,7 @@ const schema = yup.object().shape({
       /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/g,
       'Please enter a valid phone number.'
     )
-    
+
 })
 
 let errors_ = ''
@@ -64,7 +64,7 @@ const EditStoreManagerForm = props => {
 
   const onSubmitHand = async (values, {setSubmitting}) => {
     console.log(values)
-    
+
     setLoading(true)
     setStoreManagerData(values)
     store_manager = {...values}
@@ -74,7 +74,7 @@ const EditStoreManagerForm = props => {
       }
       userId = appContext.editStoreManagerId
       appContext.storeManagerEdit();
-      const response = await fetch('http://localhost:5000/admin/storemanager/'+userId, {
+      const response = await fetch('http://localhost:5000/admin/storemanager/' + userId, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -83,7 +83,7 @@ const EditStoreManagerForm = props => {
       })
       const responseData = await response.json()
       setLoading(false)
-       
+
     } catch (errors_) {
       setLoading(false)
       setError(errors_.message || 'Something went wrong, try again later.')

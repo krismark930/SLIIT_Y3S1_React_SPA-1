@@ -53,7 +53,6 @@ const PayPlaceOrder = () => {
   }
 
 
-
   return (
     <div className="checkout-page">
       <div className="checkout-header">
@@ -80,14 +79,16 @@ const PayPlaceOrder = () => {
       <div className="total"><h6>(It will be delivered within 10 days)</h6></div>
       <div className="total">TOTAL: ${total}</div>
       <Link to="/pay-order-success">
-        <Button className="buyNowBtn" type="submit" style={{float: "right"}} >
+        <Button className="buyNowBtn" type="submit" style={{float: "right"}}>
           Buy Order
         </Button>
       </Link>
-      <Link to="/" onClick={() => {setConfirmedOrderCancel()} } >
-         <Button className="buyNowBtn" type="reset" style={{float: "right"}} >
-            Cancel
-         </Button>
+      <Link to="/" onClick={() => {
+        setConfirmedOrderCancel()
+      }}>
+        <Button className="buyNowBtn" type="reset" style={{float: "right"}}>
+          Cancel
+        </Button>
       </Link>
 
     </div>
