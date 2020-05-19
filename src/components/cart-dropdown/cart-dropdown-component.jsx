@@ -34,6 +34,12 @@ import {AppContext} from "../../Context/app-context";
 const CartDropdown = ({checkoutToggle}) => {
   const appContext = useContext(AppContext);
 
+  const setFalseCardAndUser = () => {
+    console.log("go to checkout eka click kala");
+    appContext.setFalsePayUserConfirmed();
+    appContext.setFalsePayCardConfirmed();
+  }
+
   return (
     <div className="cart-dropdown">
       <div className="cart-items">
@@ -46,7 +52,7 @@ const CartDropdown = ({checkoutToggle}) => {
         )}
       </div>
 
-      <Link to="/checkout-page">
+    <Link to="/checkout-page" onClick={() => {setFalseCardAndUser()} }>
         <Button
           type="submit"
           style={{marginTop: "10px"}}
