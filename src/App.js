@@ -36,6 +36,7 @@ function App() {
 
   console.log("-------------------------------");
   console.log(app);
+  console.log(app.currentUser[0]);
 
   // console.log(app.loggedin + ' routes check')
   console.log(app.currentUser[0].type);

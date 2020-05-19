@@ -29,6 +29,7 @@ const LoginForm = props => {
 
   const onSubmitHand = async (values, {setSubmitting}) => {
     setLoading(true);
+    console.log('login eke submit athulata awa'+values);
     console.log(values);
     setloginData(values);
 
