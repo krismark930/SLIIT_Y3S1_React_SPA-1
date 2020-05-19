@@ -2,6 +2,8 @@ import {createContext} from 'react'
 
 export const AppContext = createContext({
   loggedin: false,
+  payUserConfirmed:false,
+  payCardConfirmed:false,
   editPayUser: false,
   editPayCard: false,
   hidden: false,
@@ -38,6 +40,14 @@ export const AppContext = createContext({
   logout: state => {
   },
   login: state => {
+  },
+  setTruePayUserConfirmed: state => {
+  },
+  setFalsePayUserConfirmed: state => {
+  },
+  setTruePayCardConfirmed: state => {
+  },
+  setFalsePayCardConfirmed: state => {
   },
   addCurrentUser: user => {
   },

@@ -3,6 +3,8 @@ import { AppContext } from "./app-context";
 
 const GlobalState = (props) => {
   const [loggedin, setLoggedin] = useState(false);
+  const [payUserConfirmed, setPayUserConfirmed] = useState(false);
+  const [payCardConfirmed, setPayCardConfirmed] = useState(false);
   const [editPayUser, setEditPayUser] = useState(false);
   const [editPayUserId, setEditPayUserId] = useState("1");
   const [editPayCard, setEditPayCard] = useState(false);
@@ -227,6 +229,20 @@ const GlobalState = (props) => {
     setEditPayCardId(id);
   };
 
+  const setTruePayUserConfirmed = state => {
+    setPayUserConfirmed(true);
+  };
+
+  const setTruePayCardConfirmed = state => {
+    setPayCardConfirmed(true);
+  };
+  const setFalsePayUserConfirmed = state => {
+    setPayUserConfirmed(false);
+  };
+
+  const setFalsePayCardConfirmed = state => {
+    setPayCardConfirmed(false);
+  };
   const storeManagerEdit = (state) => {
     setEditStoreManager(true);
   };
@@ -277,6 +293,8 @@ const GlobalState = (props) => {
         hidden: hidden,
         products: products,
         loggedin: loggedin,
+        payUserConfirmed:payUserConfirmed,
+        payCardConfirmed:payCardConfirmed,
         cart: cart,
         currentUser: currentUser,
         payUserDetails: payUserDetails,
@@ -298,6 +316,10 @@ const GlobalState = (props) => {
         setEditPayCardID: setEditPayCardID,
         login: login,
         logout: logout,
+        setTruePayUserConfirmed:setTruePayUserConfirmed,
+        setTruePayCardConfirmed:setTruePayCardConfirmed,
+        setFalsePayUserConfirmed: setFalsePayUserConfirmed,
+        setFalsePayCardConfirmed:setFalsePayCardConfirmed,
         addEditPayUserDetails: addEditPayUserDetails,
         addEditPayCardDetails: addEditPayCardDetails,
         addCurrentUser: addCurrentUser,
