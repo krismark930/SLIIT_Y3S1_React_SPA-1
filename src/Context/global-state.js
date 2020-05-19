@@ -9,10 +9,60 @@ const GlobalState = (props) => {
   const [editPayCardId, setEditPayCardId] = useState("1");
   const [hidden, setHidden] = useState(true);
   const [products, setProducts] = useState([
-    { id: "p1", title: "Gaming Mouse", price: 29.99 },
-    { id: "p2", title: "Harry Potter 3", price: 9.99 },
-    { id: "p3", title: "Used plastic bottle", price: 0.99 },
-    { id: "p4", title: "Half-dried plant", price: 2.99 },
+    {
+      title: "Women",
+      price: 123.0,
+      category: "Women",
+      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    },
+    {
+      title: "Women",
+      price: 123.0,
+      category: "Women",
+      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    },
+    {
+      title: "Men",
+      price: 123.0,
+      category: "Men",
+      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    },
+    {
+      title: "Men",
+      price: 123.0,
+      category: "Men",
+      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    },
+    {
+      title: "Shoes",
+      price: 123.0,
+      category: "Shoes",
+      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    },
+    {
+      title: "Women",
+      price: 123.0,
+      category: "Women",
+      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    },
+    {
+      title: "Produt1",
+      price: 123.0,
+      category: "Women",
+      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    },
+    {
+      title: "Produt1",
+      price: 123.0,
+      category: "Women",
+      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    },
+    {
+      title: "Produt1",
+      price: 123.0,
+      category: "Hats",
+      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    },
   ]);
   const [cart, setCart] = useState([]);
   const [currentUser, setCurrentUser] = useState([{ type: "Null" }]);
@@ -26,7 +76,20 @@ const GlobalState = (props) => {
   const [storeManagers, setStoreManagers] = useState([]);
   const [editCategory, setEditCategory] = useState(false);
   const [editCategoryId, setEditCategoryID] = useState("1");
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([
+    {
+      categoryTitle: "Hats",
+    },
+    {
+      categoryTitle: "Men",
+    },
+    {
+      categoryTitle: "Women",
+    },
+    {
+      categoryTitle: "Shoes",
+    },
+  ]);
 
   const addItemToCart = (item) => {
     console.log();

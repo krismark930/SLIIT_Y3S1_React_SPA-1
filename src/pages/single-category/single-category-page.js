@@ -1,68 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CardDeck } from "react-bootstrap";
 import HomeItem from "../../components/home-item/home-item-component";
+import { AppContext } from "../../Context/app-context";
 
 const SingleCategory = (props) => {
-  const products = [
-    {
-      title: "Women",
-      price: 123.0,
-      category: "Women",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Women",
-      price: 123.0,
-      category: "Women",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Men",
-      price: 123.0,
-      category: "Men",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Men",
-      price: 123.0,
-      category: "Men",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Shoes",
-      price: 123.0,
-      category: "Shoes",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Women",
-      price: 123.0,
-      category: "Women",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Produt1",
-      price: 123.0,
-      category: "Women",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Produt1",
-      price: 123.0,
-      category: "Women",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Produt1",
-      price: 123.0,
-      category: "Hats",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-  ];
-
+  const appContext = useContext(AppContext);
   console.log(props.match.params.category);
 
-  var filtered = products.filter(
+  var filtered = appContext.products.filter(
     (item) => item.category == props.match.params.category
   );
 
