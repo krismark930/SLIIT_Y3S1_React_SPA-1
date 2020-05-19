@@ -2,8 +2,8 @@ import {createContext} from 'react'
 
 export const AppContext = createContext({
   loggedin: false,
-  payUserConfirmed:false,
-  payCardConfirmed:false,
+  payUserConfirmed: false,
+  payCardConfirmed: false,
   editPayUser: false,
   editPayCard: false,
   hidden: false,

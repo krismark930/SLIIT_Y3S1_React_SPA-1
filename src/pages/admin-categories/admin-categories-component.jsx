@@ -16,15 +16,15 @@ const ManageCategory = props => {
     route = (<AddCategoryForm/>)
 
   return (
-    <div className='categoryMain'>
+    <div className='categoryMain container' style={{maxWidth: '1300px'}}>
       <h1>Manage Product Categories</h1>
-      <Row className='container'>
-        <Col sm='6'>
+      <Row style={{maxWidth: '1300px'}}>
+        <Col sm='4'>
           <div className='categoryForm'>
             {route}
           </div>
         </Col>
-        <Col sm='6'>
+        <Col sm='8'>
           <div className='categoryTable'>
             <CategoryTable/>
           </div>

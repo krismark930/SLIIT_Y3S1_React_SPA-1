@@ -52,7 +52,9 @@ const CartDropdown = ({checkoutToggle}) => {
         )}
       </div>
 
-    <Link to="/checkout-page" onClick={() => {setFalseCardAndUser()} }>
+      <Link to="/checkout-page" onClick={() => {
+        setFalseCardAndUser()
+      }}>
         <Button
           type="submit"
           style={{marginTop: "10px"}}

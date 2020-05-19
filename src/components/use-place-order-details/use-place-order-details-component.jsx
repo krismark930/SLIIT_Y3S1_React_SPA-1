@@ -30,7 +30,7 @@ const UsePlaceOrderDetails = ({cartItem}) => {
        
       </span>
       <span className="price">{cartItem.price}</span>
-      
+
     </div>
   );
 };

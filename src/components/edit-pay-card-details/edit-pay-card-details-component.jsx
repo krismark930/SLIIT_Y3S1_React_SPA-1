@@ -1,8 +1,7 @@
-import React, {useContext, useState,useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Formik} from "formik";
-import {Button, Col, Form, Spinner} from "react-bootstrap";
+import {Button, Col, Form} from "react-bootstrap";
 import * as yup from "yup";
-import {FaSignInAlt} from "react-icons/fa";
 import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
 import axios from 'axios';
@@ -16,7 +15,7 @@ const schema = yup.object().shape({
     .min(2, " cardType must have at least 2 characters")
     .required("Enter the card type"),
 
-    cardNumber: yup
+  cardNumber: yup
     .string()
     .min(2, "card number must have at least 2 characters")
     .required("Enter the card number"),
@@ -24,60 +23,59 @@ const schema = yup.object().shape({
 });
 
 
-const EditPayCardDetails  = props => {
+const EditPayCardDetails = props => {
   var payCard;
-  
+
 
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [payCardDetails, setPayCardDetails] = useState({
-    email:"",
+    email: "",
     cardType: "",
     cardNumber: "",
     isSave: false
   });
 
   //var payCard;
-  var currentEmail ;
+  var currentEmail;
   var cardid;
 
-  
 
   console.log(payCardDetails);
-  
-    const initialCard = appContext.editPayCardDetails;
- 
+
+  const initialCard = appContext.editPayCardDetails;
+
   //console.log("Ane manda me initial ekata ganna ewa");
 
-  
+
   //console.log(initialCard[0]);
   //console.log(initialCard.name );
 
 
   useEffect(() => {
-    
-    
+
+
     //console.log("meka thama edit karana id eka");
     //console.log(cardid);
 
 
-   axios.get('http://localhost:5000/payments/pay-card/'+cardid)
+    axios.get('http://localhost:5000/payments/pay-card/' + cardid)
       .then(response => {
 
-        setPayCardDetails(response.data); 
-        setDetails(response.data); 
+        setPayCardDetails(response.data);
+        setDetails(response.data);
         //console.log("me edit wenna ena data");
         //console.log(response.data);     
-       
-        
-   })
+
+
+      })
       .catch(function (error) {
         console.log(error);
       })
-     
 
-  },[cardid]);
+
+  }, [cardid]);
 
   const setConfirmedCardCancel = () => {
     console.log("edit pay card eke cancel click kala");
@@ -89,9 +87,9 @@ const EditPayCardDetails  = props => {
     payCard = data;
     //console.log("me thama payCard");
     //console.log(payCard);
-}
+  }
 
-console.log(appContext.editPayCardDetails[0]);
+  console.log(appContext.editPayCardDetails[0]);
 
 
 //appContext.addPayCardDetails(payCard);
@@ -99,87 +97,87 @@ console.log(appContext.editPayCardDetails[0]);
 //console.log(appContext.PayCardDetails);
 
   //console.log("me payCardDetails ekata set una ewa");
- // console.log(payCardDetails);
+  // console.log(payCardDetails);
 
- /* const onChangeName = (e) => {
-       setPayCardDetails({name:e.target.value});
-  }
+  /* const onChangeName = (e) => {
+        setPayCardDetails({name:e.target.value});
+   }
 
-  const onChangePhone = (e) => {
-    setPayCardDetails({phone:e.target.value});
-  }
+   const onChangePhone = (e) => {
+     setPayCardDetails({phone:e.target.value});
+   }
 
-  const onChangeAddress = (e) => {
-    setPayCardDetails({address:e.target.value});
-  }
+   const onChangeAddress = (e) => {
+     setPayCardDetails({address:e.target.value});
+   }
 
-  const onChangeCity = (e) => {
-    setPayCardDetails({city:e.target.value});
-  }
+   const onChangeCity = (e) => {
+     setPayCardDetails({city:e.target.value});
+   }
 
-  const onChangeProvince = (e) => {
-    setPayCardDetails({province:e.target.value});
-  }
+   const onChangeProvince = (e) => {
+     setPayCardDetails({province:e.target.value});
+   }
 
-  const onChangeIsSave = (e) => {
-    setPayCardDetails({isSave:e.target.value});
-  }
+   const onChangeIsSave = (e) => {
+     setPayCardDetails({isSave:e.target.value});
+   }
 
-  const onSubmit = async(e)  => {
-    e.preventDefault();
+   const onSubmit = async(e)  => {
+     e.preventDefault();
 
-    appContext.currentCard.forEach(card => {
-      currentEmail = card.email;
-      //console.log(currentEmail);
-    
-    });
-    const payCard = {
-      email:currentEmail,
-      name: payCardDetails.name,
-      phone: payCardDetails.phone,
-      address: payCardDetails.address,
-      city: payCardDetails.city,
-      province:payCardDetails.province,
-      isSave: payCardDetails.isSave
-      
-    }
+     appContext.currentCard.forEach(card => {
+       currentEmail = card.email;
+       //console.log(currentEmail);
 
-    console.log(payCard);
+     });
+     const payCard = {
+       email:currentEmail,
+       name: payCardDetails.name,
+       phone: payCardDetails.phone,
+       address: payCardDetails.address,
+       city: payCardDetails.city,
+       province:payCardDetails.province,
+       isSave: payCardDetails.isSave
 
-    try {
-      if(payCard.isSave){
-        appContext.addPayCardDetails(payCard);
-      }
-      const response = await fetch("http://localhost:5000/payments/pay-card/update/"+ cardid,{
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payUser)
-      });
+     }
 
-      const responseData = await response.json();
-      console.log(responseData);
-      if (!responseData.login) {
-        setError("lol");
-        
-        throw new Error(responseData.message);
-      }
+     console.log(payCard);
 
-      appContext.login();
-      setLoading(false);
-      console.log(responseData);
-    } catch (errorss) {
-      console.log(errorss);
-      setLoading(false);
-      setError(errorss.message || "Something went wrong, try again later");
-    }
-  }*/
-  
+     try {
+       if(payCard.isSave){
+         appContext.addPayCardDetails(payCard);
+       }
+       const response = await fetch("http://localhost:5000/payments/pay-card/update/"+ cardid,{
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json"
+         },
+         body: JSON.stringify(payUser)
+       });
 
- const onSubmitHandle = async (values, {setSubmitting}) => {
+       const responseData = await response.json();
+       console.log(responseData);
+       if (!responseData.login) {
+         setError("lol");
 
-    
+         throw new Error(responseData.message);
+       }
+
+       appContext.login();
+       setLoading(false);
+       console.log(responseData);
+     } catch (errorss) {
+       console.log(errorss);
+       setLoading(false);
+       setError(errorss.message || "Something went wrong, try again later");
+     }
+   }*/
+
+
+  const onSubmitHandle = async (values, {setSubmitting}) => {
+
+
     //console.log("Ane manda");
     //console.log(values);
     setLoading(true);
@@ -187,46 +185,45 @@ console.log(appContext.editPayCardDetails[0]);
     appContext.currentUser.forEach(user => {
       currentEmail = user.email;
       console.log(currentEmail);
-      setPayCardDetails({...values, email:currentEmail});
+      setPayCardDetails({...values, email: currentEmail});
     });
 
-    payCard = {...values, email:currentEmail};
-  
+    payCard = {...values, email: currentEmail};
+
 
     appContext.setFalsePayUserConfirmed();
     appContext.setTruePayCardConfirmed();
 
     try {
-      if(values.isSave){
+      if (values.isSave) {
         console.log(values.isSave);
         console.log(values);
         appContext.addPayCardDetails(payCard);
 
-        cardid= appContext.editPayCardId;
- 
-       const response = await fetch("http://localhost:5000/payments/pay-card/update/"+cardid, {
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json"
-         },
-         body: JSON.stringify(payCard)
-       });
+        cardid = appContext.editPayCardId;
 
-       const responseData = await response.json();
-       console.log(responseData);
-       if (!responseData.login) {
-         setError("lol");
-        
-         throw new Error(responseData.message);
-       }
-    
-       //appContext.login();
-       setLoading(false);
-       //console.log(responseData);
+        const response = await fetch("http://localhost:5000/payments/pay-card/update/" + cardid, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payCard)
+        });
+
+        const responseData = await response.json();
+        console.log(responseData);
+        if (!responseData.login) {
+          setError("lol");
+
+          throw new Error(responseData.message);
+        }
+
+        //appContext.login();
+        setLoading(false);
+        //console.log(responseData);
       }
-      
 
-      
+
     } catch (errorss) {
       console.log(errorss);
       setLoading(false);
@@ -234,32 +231,31 @@ console.log(appContext.editPayCardDetails[0]);
     }
 
 
-  
   };
 
   return (
     <React.Fragment>
-    <div className="addPayCardDetailsFormHead">
-      <Formik
-        validationSchema={schema}
-        onSubmit={onSubmitHandle}
-        initialValues={appContext.editPayCardDetails[0]}
-         >
-        {({
-            handleSubmit,
-            isSubmitting,
-            handleChange,
-            handleBlur,
-            values,
-            touched,
-            isValid,
-            errors
-          }) => (
-          <Form noValidate onSubmit={handleSubmit}>
-             <Form.Row><Form.Label><h1>Card Details</h1></Form.Label></Form.Row>
-           
-            
-             <Form.Row>
+      <div className="addPayCardDetailsFormHead">
+        <Formik
+          validationSchema={schema}
+          onSubmit={onSubmitHandle}
+          initialValues={appContext.editPayCardDetails[0]}
+        >
+          {({
+              handleSubmit,
+              isSubmitting,
+              handleChange,
+              handleBlur,
+              values,
+              touched,
+              isValid,
+              errors
+            }) => (
+            <Form noValidate onSubmit={handleSubmit}>
+              <Form.Row><Form.Label><h1>Card Details</h1></Form.Label></Form.Row>
+
+
+              <Form.Row>
                 <Form.Group as={Col} md="12" controlId="validationFormik04">
                   <Form.Label>Card Type</Form.Label>
                   <Form.Control
@@ -294,54 +290,55 @@ console.log(appContext.editPayCardDetails[0]);
                   </Form.Control.Feedback>
                 </Form.Group>
 
-                </Form.Row>
+              </Form.Row>
 
               <Form.Row>
-              <Form.Group as={Col} md="12" controlId="validationFormik04">
-               <Form.Control
+                <Form.Group as={Col} md="12" controlId="validationFormik04">
+                  <Form.Control
                     type="checkbox"
-                    name="isSave" 
-                    value={values.isSave }
+                    name="isSave"
+                    value={values.isSave}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={touched.isSave  && errors.isSave }
-                    isValid={touched.isSave  && !errors.isSave }
+                    isInvalid={touched.isSave && errors.isSave}
+                    isValid={touched.isSave && !errors.isSave}
                   />
                   <Form.Control.Feedback type="invalid">
-                    {errors.isSave }
+                    {errors.isSave}
                   </Form.Control.Feedback>
 
                   <Form.Label>Save for future</Form.Label>
-               </Form.Group>
+                </Form.Group>
 
-             
 
               </Form.Row>
 
-         
+
               <Button
                 type="submit"
                 disabled={isSubmitting}
                 style={{marginTop: "5px", marginRight: "5px"}}
               >
                 Confirm
-              </Button>  
+              </Button>
 
             </Form>
-        )}
-      </Formik>
+          )}
+        </Formik>
 
-      <Link to="/" onClick={() => {setConfirmedCardCancel()} }>
-              <Button
-                type="submit"
-                style={{marginTop: "5px", marginRight: "5px"}}
-              >
-                Cancel
-              </Button>
-              </Link>
-    </div>
-  </React.Fragment>
-  
+        <Link to="/" onClick={() => {
+          setConfirmedCardCancel()
+        }}>
+          <Button
+            type="submit"
+            style={{marginTop: "5px", marginRight: "5px"}}
+          >
+            Cancel
+          </Button>
+        </Link>
+      </div>
+    </React.Fragment>
+
   );
 };
 
