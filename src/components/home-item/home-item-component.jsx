@@ -9,7 +9,10 @@ const HomeItem = ({ item }) => {
   const titlePrice = `${item.title}    $${item.price} `;
 
   return (
-    <Card className="col-3" style={{ alignItems: "center" }}>
+    <Card
+      className="col-3"
+      style={{ alignItems: "center", maxWidth: "23%", margin: "10px 8px" }}
+    >
       <Card.Img
         variant="top"
         style={{ width: "215px", height: "238px", margin: "10px" }}
