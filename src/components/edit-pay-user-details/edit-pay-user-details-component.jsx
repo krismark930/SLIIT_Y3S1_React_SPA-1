@@ -347,12 +347,11 @@ const EditPayUserDetails = props => {
               
               <Button
                 type="button"
-                className="outline"
                 onClick={handleReset}
                 disabled={isSubmitting}
                 style={{marginTop: "5px", marginRight: "5px"}}
               >
-              Reset
+              Reset to Saved Data
              </Button>
 
               <Link to="/" style={{marginTop: "5px", marginRight: "5px"}}>
