@@ -100,7 +100,7 @@ const AddStoreManagerForm = props => {
             }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik01'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>First Name</Form.Label>
                   <Form.Control
                     placeholder='First Name'
@@ -118,7 +118,7 @@ const AddStoreManagerForm = props => {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik02'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Last Name</Form.Label>
                   <Form.Control
                     placeholder='Last Name'
@@ -136,7 +136,7 @@ const AddStoreManagerForm = props => {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik04'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Email</Form.Label>
                   <Form.Control
                     type='email'
@@ -154,7 +154,7 @@ const AddStoreManagerForm = props => {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik03'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Phone Number</Form.Label>
                   <Form.Control
                     placeholder='Phone Number'
@@ -172,7 +172,7 @@ const AddStoreManagerForm = props => {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik05'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Password</Form.Label>
                   <Form.Control
                     placeholder='Password'
@@ -190,7 +190,7 @@ const AddStoreManagerForm = props => {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik05'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Confirm Password</Form.Label>
                   <Form.Control
                     placeholder='Confirm Password'
@@ -202,19 +202,13 @@ const AddStoreManagerForm = props => {
                     isInvalid={touched.passwordConfirm && errors.passwordConfirm}
                     isValid={touched.passwordConfirm && !errors.passwordConfirm}
                   />
-                  {loading && (
-                    <Spinner
-                      animation='border'
-                      style={{textAlign: 'center', marginLeft: '49%'}}
-                    />
-                  )}
                   <Form.Control.Feedback type='invalid'>
                     {errors.passwordConfirm}
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} controlId='formGridState'>
+                <Form.Group as={Col}>
                   <Form.Label>
                     Password Reset Question{' '}
                   </Form.Label>
@@ -249,7 +243,7 @@ const AddStoreManagerForm = props => {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik05'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Answer to Password Reset Question</Form.Label>
                   <Form.Control
                     placeholder='Answer to Password Reset Question'
@@ -266,6 +260,12 @@ const AddStoreManagerForm = props => {
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
+              {loading && (
+                <Spinner
+                  animation='border'
+                  style={{textAlign: 'center', marginLeft: '48%'}}
+                />
+              )}
               <Button
                 type='submit'
                 disabled={isSubmitting}

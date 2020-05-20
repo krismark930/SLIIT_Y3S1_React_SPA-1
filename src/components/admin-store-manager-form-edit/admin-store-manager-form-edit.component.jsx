@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {Formik} from 'formik'
-import {Button, Col, Form} from 'react-bootstrap'
+import {Button, Col, Form, Spinner} from 'react-bootstrap'
 import * as yup from 'yup'
 import {FaUserEdit} from 'react-icons/fa'
 import {AppContext} from '../../Context/app-context'
@@ -23,7 +23,6 @@ const schema = yup.object().shape({
       /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/g,
       'Please enter a valid phone number.'
     )
-
 })
 
 let errors_ = ''
@@ -37,11 +36,7 @@ const EditStoreManagerForm = props => {
     firstName: '',
     lastName: '',
     teleNo: '',
-    passwordConfirm: '',
-    email: '',
-    password: '',
-    passwordResetQuestion: '',
-    answer: ''
+    email: ''
   })
 
   let userId
@@ -60,18 +55,15 @@ const EditStoreManagerForm = props => {
       .catch(function (error) {
         console.log(error)
       })
-  }, [setDetails, userId])
+  }, [setDetails])
 
   const onSubmitHand = async (values, {setSubmitting}) => {
-    console.log(values)
-
     setLoading(true)
     setStoreManagerData(values)
     store_manager = {...values}
     try {
-      if (values.isSave) {
+      if (values.isSave)
         appContext.addStoreManagers(store_manager)
-      }
       userId = appContext.editStoreManagerId
       appContext.storeManagerEdit();
       const response = await fetch('http://localhost:5000/admin/storemanager/' + userId, {
@@ -110,7 +102,7 @@ const EditStoreManagerForm = props => {
             }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik01'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>First Name</Form.Label>
                   <Form.Control
                     placeholder='First Name'
@@ -128,7 +120,7 @@ const EditStoreManagerForm = props => {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik02'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Last Name</Form.Label>
                   <Form.Control
                     placeholder='Last Name'
@@ -146,7 +138,7 @@ const EditStoreManagerForm = props => {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik04'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Email</Form.Label>
                   <Form.Control
                     type='email'
@@ -164,7 +156,7 @@ const EditStoreManagerForm = props => {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik03'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Phone Number</Form.Label>
                   <Form.Control
                     placeholder='Phone Number'
@@ -181,6 +173,12 @@ const EditStoreManagerForm = props => {
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
+              {loading && (
+                <Spinner
+                  animation='border'
+                  style={{textAlign: 'center', marginLeft: '48%'}}
+                />
+              )}
               <Button
                 type='submit'
                 disabled={isSubmitting}
