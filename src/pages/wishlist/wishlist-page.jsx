@@ -18,33 +18,33 @@ const WishListPage = (props) => {
   //   console.log(Object.values(lists[0]));
   //   setWishList(appContext.);
 
-  //   useEffect(async () => {
-  //     let responseData = 0;
-  //     const mail = appContext.currentUser[0].email;
-  //     var responseError = "";
-  //     try {
-  //       const response = await fetch(
-  //         `http://localhost:5000/users/getWishList/${mail}`,
-  //         {
-  //           method: "GET",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify(),
-  //         }
-  //       );
+  useEffect(async () => {
+    let responseData = 0;
+    const mail = appContext.currentUser[0].email;
+    var responseError = "";
+    try {
+      const response = await fetch(
+        `http://localhost:5000/users/getWishList/${mail}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(),
+        }
+      );
 
-  //       responseData = await response.json();
-  //       console.log(responseData.wishList);
+      responseData = await response.json();
+      console.log(responseData.wishList);
 
-  //       responseError = responseData.message;
-  //       console.log(responseData);
-  //     } catch (err) {
-  //       console.log(err.message);
-  //     }
-  //     // appContext.setWishListmethod(responseData.wishList);
-  //     setWishList(responseData.wishList);
-  //   }, []);
+      responseError = responseData.message;
+      console.log(responseData);
+    } catch (err) {
+      console.log(err.message);
+    }
+    // appContext.setWishListmethod(responseData.wishList);
+    setWishList(responseData.wishList);
+  }, []);
 
   //   var filtered = products.filter((item) => item.category == category);
   console.log(wishList);
