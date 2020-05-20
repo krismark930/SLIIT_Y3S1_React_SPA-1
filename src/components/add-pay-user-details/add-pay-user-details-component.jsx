@@ -123,6 +123,7 @@ const AddPayUserDetails = props => {
         >
           {({
               handleSubmit,
+              handleReset,
               isSubmitting,
               handleChange,
               handleBlur,
@@ -297,14 +298,17 @@ const AddPayUserDetails = props => {
                 Confirm
               </Button>
 
+              <Button
+                type="button"
+                className="outline"
+                onClick={handleReset}
+                disabled={isSubmitting}
+              >
+              Cancel
+             </Button>
+
               <Link to="/">
-                <Button
-                  type="reset"
-                  disabled={isSubmitting}
-                  style={{marginTop: "5px", marginRight: "5px"}}
-                >
-                  Cancel
-                </Button>
+               Back to Home
               </Link>
 
 
