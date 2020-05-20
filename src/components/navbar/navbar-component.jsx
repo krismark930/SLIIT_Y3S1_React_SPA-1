@@ -31,18 +31,11 @@ const MainNavbar = (props) => {
             <Nav.Link href="#about">About</Nav.Link>
             {appContext.loggedin ? (
               <Nav>
-                <Link to="/store-managers">Store Managers</Link>
-                <Nav.Link>
-                  <Link to="/wishlist">
-                    <Button
-                      variant="outline-success"
-                      style={{ padding: "3px" }}
-                    >
-                      Wish List
-                    </Button>
-                  </Link>
-                </Nav.Link>
-                <Link to="/categories">Categories</Link>
+                <Link to="/wishlist">
+                  <Nav.Link href="#about">Wish List</Nav.Link>
+                </Link>
+                {/* <Link to="/store-managers">Store Managers</Link>
+                <Link to="/categories">Categories</Link> */}
                 <div className="dripdowntoggles">
                   <Nav.Link
                     onClick={appContext.toggleDropdownHidden}

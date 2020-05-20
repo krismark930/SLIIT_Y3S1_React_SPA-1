@@ -121,6 +121,36 @@ const GlobalState = (props) => {
     setCart(updatedCart);
   };
 
+  const addToWishList = async (productTitle) => {
+    let responseData = 0;
+    const mail = currentUser[0].email;
+    var responseError = "";
+
+    var objs = {
+      userID: mail,
+      productID: productTitle,
+    };
+    try {
+      const response = await fetch(
+        `http://localhost:5000/users/addToWishList`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(objs),
+        }
+      );
+
+      responseData = await response.json();
+
+      responseError = responseData.message;
+      console.log(responseData);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   const setWishListmethod = async (wishlist) => {
     console.log("setWishListmethod");
 
@@ -384,6 +414,7 @@ const GlobalState = (props) => {
         addCategories: addCategories,
         setWishListmethod: setWishListmethod,
         getWishList: getWishList,
+        addToWishList: addToWishList,
       }}
     >
       {props.children}
