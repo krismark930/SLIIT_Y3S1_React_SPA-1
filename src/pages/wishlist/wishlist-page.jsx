@@ -42,26 +42,61 @@ const WishListPage = (props) => {
     } catch (err) {
       console.log(err.message);
     }
+
+    responseData.wishList.forEach(async (item) => {
+      filtered = appContext.products.filter(
+        (pitem) => pitem.title == item.productID
+      );
+
+      var fill = filtered.concat(filteredAll);
+
+      filteredAll = fill;
+    });
     // appContext.setWishListmethod(responseData.wishList);
-    setWishList(responseData.wishList);
+    setWishList(filteredAll);
   }, []);
 
   //   var filtered = products.filter((item) => item.category == category);
   console.log(wishList);
+  console.log("------");
   console.log(appContext);
 
-  wishList.forEach(async (item) => {
-    filtered = appContext.products.filter(
-      (pitem) => pitem.title == item.productID
-    );
+  //   wishList.forEach(async (item) => {
+  //     filtered = appContext.products.filter(
+  //       (pitem) => pitem.title == item.productID
+  //     );
 
-    var fill = filtered.concat(filteredAll);
+  //     var fill = filtered.concat(filteredAll);
 
-    filteredAll = fill;
-  });
+  //     filteredAll = fill;
+  //   });
 
-  console.log(filteredAll);
+  const removeWishItem = async (title) => {
+    let responseData = 0;
+    const mail = appContext.currentUser[0].email;
+    var responseError = "";
+    try {
+      const response = await fetch(
+        `http://localhost:5000/users/deleteFromWishList/${mail}/${title}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(),
+        }
+      );
 
+      responseData = await response.json();
+
+      console.log(responseData.message);
+    } catch (err) {
+      console.log(err.message);
+    }
+
+    let arr = wishList.filter((pitem) => pitem.title != title);
+    setWishList(arr);
+  };
   return (
     <div className="wishlist-page">
       <h2>Wish List</h2>
@@ -81,8 +116,12 @@ const WishListPage = (props) => {
         </div>
       </div> */}
 
-      {filteredAll.map((item) => (
-        <WishListItem key={item.id} product={item} />
+      {wishList.map((item) => (
+        <WishListItem
+          key={item.id}
+          product={item}
+          removeWishItem={removeWishItem}
+        />
       ))}
       {/* <div className="total">TOTAL: ${total}</div> */}
       <Link to="/pay-user">
