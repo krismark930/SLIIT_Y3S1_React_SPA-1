@@ -1,16 +1,16 @@
 import React, {useContext, useEffect, useState} from "react";
 
 import "./display-delivery-charges-styles.scss";
-//import {Button} from "react-bootstrap";
-//import CheckoutItem from "../../components/checkout-item/checkout-item-component";
-//import {AppContext} from "../../Context/app-context";
+import {Button} from "react-bootstrap";
+import {Link} from "react-router-dom";
+
 
 
 const DisplayDeliveryCharges = (props) => {
 
   return (
-    <div>
-  (<div>
+    
+  <div>
           <table className="table">
             <thead className="thead-light">
             <tr>
@@ -59,11 +59,14 @@ const DisplayDeliveryCharges = (props) => {
 
 
           </table>
+          <Link to="/pay-order">
+                <Button style={{float: "center"}}>Cancel</Button>
+              </Link>
         </div>
-      )}
+     
 
 
-    </div>
+  
 
 
   );
