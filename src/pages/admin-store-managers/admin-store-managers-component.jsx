@@ -34,4 +34,4 @@ const ManageStoreManager = props => {
   )
 }
 
-export default React.memo(ManageStoreManager)
+export default ManageStoreManager

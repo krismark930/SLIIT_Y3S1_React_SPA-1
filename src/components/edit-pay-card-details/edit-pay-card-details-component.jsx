@@ -330,8 +330,8 @@ const EditPayCardDetails = props => {
                 disabled={isSubmitting}
                 style={{marginTop: "5px", marginRight: "5px"}}
               >
-              Reset to Saved Data
-             </Button>
+                Reset to Saved Data
+              </Button>
 
             </Form>
           )}
@@ -340,7 +340,7 @@ const EditPayCardDetails = props => {
         <Link to="/" onClick={() => {
           setConfirmedCardCancel()
         }} style={{marginTop: "5px", marginRight: "5px"}}>
-         Back to Home
+          Back to Home
         </Link>
       </div>
     </React.Fragment>

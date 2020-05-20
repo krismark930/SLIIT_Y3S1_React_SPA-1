@@ -304,11 +304,11 @@ const AddPayUserDetails = props => {
                 onClick={handleReset}
                 disabled={isSubmitting}
               >
-              Reset
-             </Button>
+                Reset
+              </Button>
 
               <Link to="/" style={{marginTop: "5px", marginRight: "5px"}}>
-               Back to Home
+                Back to Home
               </Link>
 
 
