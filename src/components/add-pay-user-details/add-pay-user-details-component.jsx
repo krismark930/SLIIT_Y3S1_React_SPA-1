@@ -230,7 +230,7 @@ const AddPayUserDetails = props => {
                       !errors.province
                     }
                   >
-                   
+                    <option>Choose province</option>
                     <option value="Western">
                       1.Western{" "}
                     </option>
@@ -304,10 +304,10 @@ const AddPayUserDetails = props => {
                 onClick={handleReset}
                 disabled={isSubmitting}
               >
-              Cancel
+              Reset
              </Button>
 
-              <Link to="/">
+              <Link to="/" style={{marginTop: "5px", marginRight: "5px"}}>
                Back to Home
               </Link>
 

@@ -45,6 +45,7 @@ const Checkout = () => {
 
   const setFalseEdit = () => {
     appContext.payUserEditFalse();
+    appContext.payCardEditFalse();
   }
 
   return (

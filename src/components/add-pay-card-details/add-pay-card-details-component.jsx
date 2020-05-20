@@ -121,6 +121,7 @@ const AddPayCardDetails = props => {
         >
           {({
               handleSubmit,
+              handleReset,
               isSubmitting,
               handleChange,
               handleBlur,
@@ -200,19 +201,24 @@ const AddPayCardDetails = props => {
                 Confirm
               </Button>
 
+              <Button
+                type="button"
+                className="outline"
+                onClick={handleReset}
+                disabled={isSubmitting}
+                style={{marginTop: "5px", marginRight: "5px"}}
+              >
+              Reset
+             </Button>
+
             </Form>
           )}
         </Formik>
 
         <Link to="/" onClick={() => {
           setConfirmedCardCancel()
-        }}>
-          <Button
-            type="submit"
-            style={{marginTop: "5px", marginRight: "5px"}}
-          >
-            Cancel
-          </Button>
+        }} style={{marginTop: "5px", marginRight: "5px"}}>
+          Back to Home
         </Link>
       </div>
     </React.Fragment>
