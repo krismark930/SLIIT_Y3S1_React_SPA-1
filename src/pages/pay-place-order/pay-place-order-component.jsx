@@ -76,7 +76,7 @@ const PayPlaceOrder = () => {
       ))}
       <div className="total"><h5>Sub Total: ${subtotal}</h5></div>
       <div className="total"><h5>Delivery Fee: ${delivery}</h5></div>
-      <div className="total"><h6>(It will be delivered within 10 days)</h6></div>
+      <Link to="/delivery-charges" >How to add delivery charges?</Link>
       <div className="total">TOTAL: ${total}</div>
       <Link to="/pay-order-success">
         <Button className="buyNowBtn" type="submit" style={{float: "right"}}>
@@ -90,6 +90,8 @@ const PayPlaceOrder = () => {
           Cancel
         </Button>
       </Link>
+
+      <div className="total"><h6>(It will be delivered within 10 days)</h6></div>
 
     </div>
   );
