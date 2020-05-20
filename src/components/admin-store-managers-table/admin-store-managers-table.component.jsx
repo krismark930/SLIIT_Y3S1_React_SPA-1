@@ -22,7 +22,9 @@ const ManageStoreManagerTable = () => {
   }
 
   useEffect(() => {
-    getStoreManagers()
+    getStoreManagers().then(r => {
+      console.log(getStoreManagers())
+    })
   }, [getStoreManagers, storeManagers])
 
   const EditStoreManager = (id) => {
@@ -31,7 +33,6 @@ const ManageStoreManagerTable = () => {
     appContext.setEditStoreManagerId(id)
     axios.get('http://localhost:5000/admin/storemanager/' + id)
       .then(response => {
-        // console.log(response.data)
         appContext.addStoreManagers(response.data)
       })
       .catch(function (error) {
