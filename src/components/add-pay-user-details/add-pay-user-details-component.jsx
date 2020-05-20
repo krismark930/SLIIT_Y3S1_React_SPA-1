@@ -230,7 +230,7 @@ const AddPayUserDetails = props => {
                       !errors.province
                     }
                   >
-                    <option></option>
+                   
                     <option value="Western">
                       1.Western{" "}
                     </option>
