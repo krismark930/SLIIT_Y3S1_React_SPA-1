@@ -13,55 +13,64 @@ const GlobalState = (props) => {
   const [wishList, setWishList] = useState();
   const [products, setProducts] = useState([
     {
-      title: "Women",
+      title: "Women1",
+      id: 1,
       price: 123.0,
       category: "Women",
       productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
     },
     {
       title: "Women",
+      id: 2,
       price: 123.0,
       category: "Women",
       productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
     },
     {
-      title: "Men",
+      title: "Men1",
+      id: 3,
       price: 123.0,
       category: "Men",
       productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
     },
     {
       title: "Men",
+      id: 4,
       price: 123.0,
       category: "Men",
       productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
     },
     {
-      title: "Shoes",
+      title: "Shoes1",
+      id: 5,
       price: 123.0,
       category: "Shoes",
       productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
     },
     {
       title: "Women",
+      id: 6,
+      price: 123.0,
+      category: "Women",
+      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    },
+    {
+      title: "Product11",
+      id: 7,
       price: 123.0,
       category: "Women",
       productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
     },
     {
       title: "Product1",
+      id: 8,
       price: 123.0,
       category: "Women",
       productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
     },
     {
       title: "Product1",
-      price: 123.0,
-      category: "Women",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Product1",
+      id: 9,
       price: 123.0,
       category: "Hats",
       productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
@@ -112,39 +121,21 @@ const GlobalState = (props) => {
     setCart(updatedCart);
   };
 
-  const setWishListmethod = async () => {
+  const setWishListmethod = async (wishlist) => {
     console.log("setWishListmethod");
-    let responseData = 0;
-    const mail = currentUser[0].email;
-    var responseError = "";
-    try {
-      const response = await fetch(
-        `http://localhost:5000/users/getWishList/${mail}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(),
-        }
-      );
 
-      responseData = await response.json();
-      console.log(responseData.wishList);
-
-      responseError = responseData.message;
-      console.log(responseData);
-    } catch (err) {
-      console.log(err.message);
-    }
-    const wishLis = responseData.wishList;
+    const wishLis = wishList;
     let wishL = [];
-    wishL.push({ ...wishLis });
+    wishL.push(...wishLis);
     console.log(wishL);
     setWishList(wishL);
     console.log(wishList);
   };
 
+  const getWishList = () => {
+    console.log("getwishlist");
+    return wishList;
+  };
   // const deleteWishListItem = async (productID) => {
 
   //   console.log("deleteWishListItem");
@@ -392,6 +383,7 @@ const GlobalState = (props) => {
         setEditCategoryId: setEditCategoryId,
         addCategories: addCategories,
         setWishListmethod: setWishListmethod,
+        getWishList: getWishList,
       }}
     >
       {props.children}

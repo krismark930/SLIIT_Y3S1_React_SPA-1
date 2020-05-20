@@ -32,7 +32,7 @@ const MainNavbar = (props) => {
             {appContext.loggedin ? (
               <Nav>
                 <Link to="/store-managers">Store Managers</Link>
-                <Nav.Link onClick={appContext.setWishListmethod}>
+                <Nav.Link>
                   <Link to="/wishlist">
                     <Button
                       variant="outline-success"

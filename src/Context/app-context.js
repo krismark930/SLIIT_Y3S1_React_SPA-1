@@ -61,4 +61,5 @@ export const AppContext = createContext({
   setEditCategoryId: (id) => {},
   addCategories: (category) => {},
   setWishListmethod: () => {},
+  getWishList: () => {},
 });
