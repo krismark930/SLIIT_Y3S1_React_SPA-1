@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
-import { AppContext } from "../../Context/app-context";
+import React, {useContext, useEffect, useState} from "react";
+import {AppContext} from "../../Context/app-context";
 import WishListItem from "../../components/wishlist-item/wishlist-item-component";
-import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import {Link} from "react-router-dom";
+import {Button} from "react-bootstrap";
 import "./wishlist-styles.scss";
 
 const WishListPage = (props) => {
@@ -52,7 +52,7 @@ const WishListPage = (props) => {
 
       filteredAll = fill;
     });
-    // appContext.setWishListmethod(responseData.wishList);
+    // appContext.setWishListMethod(responseData.wishList);
     setWishList(filteredAll);
   }, []);
 
@@ -125,7 +125,7 @@ const WishListPage = (props) => {
       ))}
       {/* <div className="total">TOTAL: ${total}</div> */}
       <Link to="/pay-user">
-        <Button className="buyNowBtn" type="submit" style={{ float: "right" }}>
+        <Button className="buyNowBtn" type="submit" style={{float: "right"}}>
           Add to Cart
         </Button>
       </Link>
