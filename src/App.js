@@ -14,6 +14,7 @@ import ManageCategory from './pages/admin-categories/admin-categories-component'
 import SingleCategory from './pages/single-category/single-category-page'
 import PlaceOrderSuccessful from './pages/place-order-successful/place-order-successful-component'
 import WishListPage from './pages/wishlist/wishlist-page'
+import DisplayDeliveryCharges from './pages/display-delivery-charges/display-delivery-charges-component'
 
 function App() {
   const app = useContext(AppContext)
@@ -58,6 +59,7 @@ function App() {
               <div>
                 <Route exact path='/pay-order' component={PayPlaceOrder}/>
                 <Route exact path='/pay-order-success' component={PlaceOrderSuccessful}/>
+                <Route exact path='/delivery-charges' component={DisplayDeliveryCharges}/>
                 <Redirect to='/pay-order'/>
               </div>
             ) : (
