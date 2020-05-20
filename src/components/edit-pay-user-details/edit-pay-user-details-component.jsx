@@ -169,6 +169,7 @@ const EditPayUserDetails = props => {
         >
           {({
               handleSubmit,
+              handleReset,
               isSubmitting,
               handleChange,
               handleBlur,
@@ -275,7 +276,7 @@ const EditPayUserDetails = props => {
                       !errors.province
                     }
                   >
-                   
+                    <option>Choose province</option>
                     <option value="Western">
                       1.Western{" "}
                     </option>
@@ -343,14 +344,19 @@ const EditPayUserDetails = props => {
                 Confirm
               </Button>
 
-              <Link to="/">
-                <Button
-                  type="reset"
-                  disabled={isSubmitting}
-                  style={{marginTop: "5px", marginRight: "5px"}}
-                >
-                  Cancel
-                </Button>
+              
+              <Button
+                type="button"
+                className="outline"
+                onClick={handleReset}
+                disabled={isSubmitting}
+                style={{marginTop: "5px", marginRight: "5px"}}
+              >
+              Reset
+             </Button>
+
+              <Link to="/" style={{marginTop: "5px", marginRight: "5px"}}>
+               Back to Home
               </Link>
 
 

@@ -105,12 +105,12 @@ const PayCardDetails = props => {
                       !errors.type
                     }
                   >
-                    
-                    <option value="cash">
-                     Cash on Delivery {" "}
+                    <option>Choose payment method</option>
+                    <option value="cash" >
+                     1.Cash on Delivery {" "}
                     </option>
                     <option value="card">
-                     Card Payment{" "}
+                     2.Card Payment{" "}
                     </option>
                     
                     
