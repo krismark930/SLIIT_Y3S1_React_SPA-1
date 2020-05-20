@@ -35,6 +35,10 @@ const PayCardDetails = props => {
   });
   const [card, setCardPayment] = useState(false);
 
+  const setConfirmedCardCancel = () => {
+    console.log("add pay card eke payment type select karana eke cancel click kala");
+    app.setFalsePayUserConfirmed();
+  }
 
 
  const onSubmitHandle = async (values, {setSubmitting}) => {
@@ -101,7 +105,7 @@ const PayCardDetails = props => {
                       !errors.type
                     }
                   >
-                    <option></option>
+                    
                     <option value="cash">
                      Cash on Delivery {" "}
                     </option>
@@ -125,6 +129,18 @@ const PayCardDetails = props => {
               >
                 Confirm
               </Button>
+
+              <Link to="/" onClick={() => {
+                    setConfirmedCardCancel()
+             }}>
+            <Button
+            type="submit"
+            style={{marginTop: "5px", marginRight: "5px"}}
+            >
+            Cancel
+          </Button>
+        </Link>
+
 
             </Form>
           )}
