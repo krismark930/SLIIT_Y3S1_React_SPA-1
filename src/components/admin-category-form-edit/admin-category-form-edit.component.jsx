@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {Formik} from 'formik'
-import {Button, Col, Form} from 'react-bootstrap'
+import {Button, Col, Form, Spinner} from 'react-bootstrap'
 import * as yup from 'yup'
 import {FaEdit} from 'react-icons/fa'
 import {AppContext} from '../../Context/app-context'
@@ -10,15 +10,12 @@ import axios from 'axios'
 const schema = yup.object().shape({
   categoryTitle: yup
     .string()
-    .min(2, 'Category title must be at least 2 characters long.')
-    .required('Please enter the category title.'),
+    .min(2, 'Category title must be at least 2 characters long.'),
   categoryDescription: yup
     .string()
-    .min(5, 'Category description must be at least 2 characters long.')
-    .required('Please enter the category description.'),
+    .min(5, 'Category description must be at least 5 characters long.'),
   categoryImage: yup
     .string()
-    .required('Please enter the category image.')
 })
 
 let errors_ = ''
@@ -35,7 +32,6 @@ const EditCategoryForm = props => {
   })
 
   let categoryId
-  console.log(appContext.categories[0])
 
   const setDetails = (data) => {
     category = data
@@ -50,19 +46,19 @@ const EditCategoryForm = props => {
       .catch(function (error) {
         console.log(error)
       })
-  }, [setDetails, categoryId])
+  }, [setDetails])
 
   const onSubmitHand = async (values, {setSubmitting}) => {
     setLoading(true)
     setCategoryData(values)
     category = {...values}
     try {
-      if (values.isSave) {
+      if (values.isSave)
         appContext.addCategories(category)
-      }
       categoryId = appContext.editCategoryId
-      const response = await fetch('http://localhost:5000/admin/category', {
-        method: 'POST',
+      appContext.categoryEdit()
+      const response = await fetch('http://localhost:5000/admin/category/' + categoryId, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -96,13 +92,13 @@ const EditCategoryForm = props => {
             }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik01'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Title</Form.Label>
                   <Form.Control
                     placeholder='Title'
                     type='text'
                     name='categoryTitle'
-                    value={values.categoryTitle}
+                    value={appContext.categories[0].categoryTitle}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={touched.categoryTitle && errors.categoryTitle}
@@ -114,13 +110,13 @@ const EditCategoryForm = props => {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik02'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Description</Form.Label>
                   <Form.Control
                     placeholder='Description'
                     type='text'
                     name='categoryDescription'
-                    value={values.categoryDescription}
+                    value={appContext.categories[0].categoryDescription}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={touched.categoryDescription && errors.categoryDescription}
@@ -132,13 +128,13 @@ const EditCategoryForm = props => {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik04'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Image</Form.Label>
                   <Form.Control
                     type='text'
                     placeholder='Image'
                     name='categoryImage'
-                    value={values.categoryImage}
+                    value={appContext.categories[0].categoryImage}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     isInvalid={touched.categoryImage && errors.categoryImage}
@@ -149,6 +145,12 @@ const EditCategoryForm = props => {
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
+              {loading && (
+                <Spinner
+                  animation='border'
+                  style={{textAlign: 'center', marginLeft: '48%'}}
+                />
+              )}
               <Button
                 type='submit'
                 disabled={isSubmitting}

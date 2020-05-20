@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react'
 import {Formik} from 'formik'
-import {Button, Col, Form} from 'react-bootstrap'
+import {Button, Col, Form, Spinner} from 'react-bootstrap'
 import * as yup from 'yup'
 import {FaPlusCircle} from 'react-icons/fa'
 import {AppContext} from '../../Context/app-context'
@@ -13,7 +13,7 @@ const schema = yup.object().shape({
     .required('Please enter the category title.'),
   categoryDescription: yup
     .string()
-    .min(5, 'Category description must be at least 2 characters long.')
+    .min(5, 'Category description must be at least 5 characters long.')
     .required('Please enter the category description.'),
   categoryImage: yup
     .string()
@@ -71,7 +71,7 @@ const AddCategoryForm = props => {
             }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik01'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Title</Form.Label>
                   <Form.Control
                     placeholder='Title'
@@ -89,7 +89,7 @@ const AddCategoryForm = props => {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik02'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Description</Form.Label>
                   <Form.Control
                     placeholder='Description'
@@ -107,7 +107,7 @@ const AddCategoryForm = props => {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md='12' controlId='validationFormik04'>
+                <Form.Group as={Col} md='12'>
                   <Form.Label>Image</Form.Label>
                   <Form.Control
                     type='text'
@@ -124,6 +124,12 @@ const AddCategoryForm = props => {
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
+              {loading && (
+                <Spinner
+                  animation='border'
+                  style={{textAlign: 'center', marginLeft: '48%'}}
+                />
+              )}
               <Button
                 type='submit'
                 disabled={isSubmitting}

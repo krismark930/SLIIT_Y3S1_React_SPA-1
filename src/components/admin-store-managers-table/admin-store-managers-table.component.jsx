@@ -23,7 +23,6 @@ const ManageStoreManagerTable = () => {
 
   useEffect(() => {
     getStoreManagers().then(r => {
-      console.log(getStoreManagers())
     })
   }, [getStoreManagers, storeManagers])
 

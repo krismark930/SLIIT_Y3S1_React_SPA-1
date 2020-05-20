@@ -23,7 +23,6 @@ const ManageCategoryTable = () => {
 
   useEffect(() => {
     getCategories().then(r => {
-      console.log(getCategories())
     })
   }, [getCategories, categories])
 
