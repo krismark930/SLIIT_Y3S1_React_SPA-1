@@ -330,7 +330,7 @@ const EditPayCardDetails = props => {
                 disabled={isSubmitting}
                 style={{marginTop: "5px", marginRight: "5px"}}
               >
-              Reset
+              Reset to Saved Data
              </Button>
 
             </Form>
