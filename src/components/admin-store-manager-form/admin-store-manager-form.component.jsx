@@ -25,22 +25,7 @@ const schema = yup.object().shape({
       /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/g,
       'Please enter a valid phone number.'
     )
-    .required('Please enter the phone number.'),
-  password: yup
-    .string()
-    .min(5, 'Password must be at least 5 characters long.')
-    .required('Please enter the password.'),
-  passwordConfirm: yup
-    .string()
-    .min(5, 'Password must be at least 5 characters long.')
-    .required('Please enter the password again for confirmation.')
-    .oneOf([yup.ref('password'), null], 'Please make sure the two passwords match.'),
-  passwordResetQuestion: yup
-    .string()
-    .required('Please select the password reset question.'),
-  answer: yup
-    .string()
-    .required('Please enter the answer for the password reset question.')
+    .required('Please enter the phone number.')
 })
 
 let errors_ = ''
@@ -53,15 +38,12 @@ const AddStoreManagerForm = props => {
     firstName: '',
     lastName: '',
     teleNo: '',
-    passwordConfirm: '',
-    email: '',
-    password: '',
-    passwordResetQuestion: '',
-    answer: ''
+    email: ''
   })
 
   const onSubmitHand = async (values, {setSubmitting}) => {
     setLoading(true)
+    values.password = 'Password'
     setStoreManagerData(values)
     try {
       const response = await fetch('http://localhost:5000/admin/storemanager', {
@@ -72,7 +54,6 @@ const AddStoreManagerForm = props => {
         body: JSON.stringify(values)
       })
       const responseData = await response.json()
-      values.firstName("")
       setLoading(false)
     } catch (errors_) {
       setLoading(false)
@@ -168,95 +149,6 @@ const AddStoreManagerForm = props => {
                   />
                   <Form.Control.Feedback type='invalid'>
                     {errors.teleNo}
-                  </Form.Control.Feedback>
-                </Form.Group>
-              </Form.Row>
-              <Form.Row>
-                <Form.Group as={Col} md='12'>
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    placeholder='Password'
-                    type='password'
-                    name='password'
-                    value={values.password}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={touched.password && errors.password}
-                    isValid={touched.password && !errors.password}
-                  />
-                  <Form.Control.Feedback type='invalid'>
-                    {errors.password}
-                  </Form.Control.Feedback>
-                </Form.Group>
-              </Form.Row>
-              <Form.Row>
-                <Form.Group as={Col} md='12'>
-                  <Form.Label>Confirm Password</Form.Label>
-                  <Form.Control
-                    placeholder='Confirm Password'
-                    type='password'
-                    name='passwordConfirm'
-                    value={values.passwordConfirm}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={touched.passwordConfirm && errors.passwordConfirm}
-                    isValid={touched.passwordConfirm && !errors.passwordConfirm}
-                  />
-                  <Form.Control.Feedback type='invalid'>
-                    {errors.passwordConfirm}
-                  </Form.Control.Feedback>
-                </Form.Group>
-              </Form.Row>
-              <Form.Row>
-                <Form.Group as={Col}>
-                  <Form.Label>
-                    Password Reset Question{' '}
-                  </Form.Label>
-                  <Form.Control
-                    as='select'
-                    placeholder='Password Reset Question'
-                    type='select'
-                    name='passwordResetQuestion'
-                    value={values.passwordResetQuestion}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={
-                      touched.passwordResetQuestion &&
-                      errors.passwordResetQuestion
-                    }
-                    isValid={
-                      touched.passwordResetQuestion &&
-                      !errors.passwordResetQuestion
-                    }
-                  >
-                    <option/>
-                    <option value='What is your favorite food?'>
-                      What is your favorite food?{' '}
-                    </option>
-                    <option value='What is your favorite color?'>
-                      What is your favorite color?{' '}
-                    </option>
-                  </Form.Control>
-                  <Form.Control.Feedback type='invalid'>
-                    {errors.passwordResetQuestion}
-                  </Form.Control.Feedback>
-                </Form.Group>
-              </Form.Row>
-              <Form.Row>
-                <Form.Group as={Col} md='12'>
-                  <Form.Label>Answer to Password Reset Question</Form.Label>
-                  <Form.Control
-                    placeholder='Answer to Password Reset Question'
-                    type='text'
-                    name='answer'
-                    value={values.answer}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={touched.answer && errors.answer}
-                    isValid={touched.answer && !errors.answer}
-                  />
-                  <Form.Control.Feedback type='invalid'>
-                    {errors.answer}
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>

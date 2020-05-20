@@ -88,20 +88,7 @@ const GlobalState = (props) => {
   const [storeManagers, setStoreManagers] = useState([])
   const [editCategory, setEditCategory] = useState(false)
   const [editCategoryId, setEditCategoryID] = useState('1')
-  const [categories, setCategories] = useState([
-    {
-      categoryTitle: 'Hats',
-    },
-    {
-      categoryTitle: 'Men',
-    },
-    {
-      categoryTitle: 'Women',
-    },
-    {
-      categoryTitle: 'Shoes',
-    }
-  ])
+  const [categories, setCategories] = useState([])
 
   const addItemToCart = (item) => {
     const updatedCart = cart

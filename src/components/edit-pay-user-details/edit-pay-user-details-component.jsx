@@ -344,18 +344,18 @@ const EditPayUserDetails = props => {
                 Confirm
               </Button>
 
-              
+
               <Button
                 type="button"
                 onClick={handleReset}
                 disabled={isSubmitting}
                 style={{marginTop: "5px", marginRight: "5px"}}
               >
-              Reset to Saved Data
-             </Button>
+                Reset to Saved Data
+              </Button>
 
               <Link to="/" style={{marginTop: "5px", marginRight: "5px"}}>
-               Back to Home
+                Back to Home
               </Link>
 
 

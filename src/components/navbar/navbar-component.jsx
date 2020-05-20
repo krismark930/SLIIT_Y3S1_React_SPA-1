@@ -34,8 +34,12 @@ const MainNavbar = (props) => {
                 <Link to='/wishlist'>
                   <Nav.Link href='#about'>Wish List</Nav.Link>
                 </Link>
-                <Link to='/store-managers'>Store Managers</Link>
-                <Link to='/categories'>Categories</Link>
+                <Link to='/store-managers'>
+                  <Nav.Link href={'/store-managers'}>Store Managers</Nav.Link>
+                </Link>
+                <Link to='/categories'>
+                  <Nav.Link href={'/categories'}>Categories</Nav.Link>
+                </Link>
                 <div className='dripdowntoggles'>
                   <Nav.Link
                     onClick={appContext.toggleDropdownHidden}

@@ -34,4 +34,4 @@ const ManageCategory = props => {
   )
 }
 
-export default React.memo(ManageCategory)
+export default ManageCategory

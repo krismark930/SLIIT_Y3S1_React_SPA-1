@@ -40,7 +40,6 @@ const EditStoreManagerForm = props => {
   })
 
   let userId
-  console.log(appContext.storeManagers[0])
 
   const setDetails = (data) => {
     store_manager = data
@@ -75,7 +74,6 @@ const EditStoreManagerForm = props => {
       })
       const responseData = await response.json()
       setLoading(false)
-
     } catch (errors_) {
       setLoading(false)
       setError(errors_.message || 'Something went wrong, try again later.')

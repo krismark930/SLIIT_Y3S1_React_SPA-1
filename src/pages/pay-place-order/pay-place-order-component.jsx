@@ -76,7 +76,7 @@ const PayPlaceOrder = () => {
       ))}
       <div className="total"><h5>Sub Total: ${subtotal}</h5></div>
       <div className="total"><h5>Delivery Fee: ${delivery}</h5></div>
-      <Link to="/delivery-charges" >How to add delivery charges?</Link>
+      <Link to="/delivery-charges">How to add delivery charges?</Link>
       <div className="total">TOTAL: ${total}</div>
       <Link to="/pay-order-success">
         <Button className="buyNowBtn" type="submit" style={{float: "right"}}>

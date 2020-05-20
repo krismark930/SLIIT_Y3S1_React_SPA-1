@@ -208,8 +208,8 @@ const AddPayCardDetails = props => {
                 disabled={isSubmitting}
                 style={{marginTop: "5px", marginRight: "5px"}}
               >
-              Reset
-             </Button>
+                Reset
+              </Button>
 
             </Form>
           )}
