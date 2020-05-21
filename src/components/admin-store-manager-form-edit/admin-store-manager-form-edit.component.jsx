@@ -50,6 +50,7 @@ const EditStoreManagerForm = () => {
       })
       await response.json();
       setLoading(false)
+      appContext.editStoreManagerFalse()
     } catch (errors_) {
       setLoading(false)
     }

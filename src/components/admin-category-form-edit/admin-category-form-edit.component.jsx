@@ -41,6 +41,7 @@ const EditCategoryForm = () => {
       })
       await response.json();
       setLoading(false)
+      appContext.editCategoryFalse()
     } catch (errors_) {
       setLoading(false)
     }
