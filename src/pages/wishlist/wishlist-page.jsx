@@ -1,8 +1,8 @@
-import React, {useContext, useEffect, useState} from "react";
-import {AppContext} from "../../Context/app-context";
+import React, { useContext, useState, useEffect } from "react";
+import { AppContext } from "../../Context/app-context";
 import WishListItem from "../../components/wishlist-item/wishlist-item-component";
-import {Link} from "react-router-dom";
-import {Button} from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import "./wishlist-styles.scss";
 
 const WishListPage = (props) => {
@@ -18,42 +18,10 @@ const WishListPage = (props) => {
   //   console.log(Object.values(lists[0]));
   //   setWishList(appContext.);
 
-  useEffect(async () => {
+  useEffect(() => {
     let responseData = 0;
-    const mail = appContext.currentUser[0].email;
-    var responseError = "";
-    try {
-      const response = await fetch(
-        `http://localhost:5000/users/getWishList/${mail}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(),
-        }
-      );
 
-      responseData = await response.json();
-      console.log(responseData.wishList);
-
-      responseError = responseData.message;
-      console.log(responseData);
-    } catch (err) {
-      console.log(err.message);
-    }
-
-    responseData.wishList.forEach(async (item) => {
-      filtered = appContext.products.filter(
-        (pitem) => pitem.title == item.productID
-      );
-
-      var fill = filtered.concat(filteredAll);
-
-      filteredAll = fill;
-    });
-    // appContext.setWishListMethod(responseData.wishList);
-    setWishList(filteredAll);
+    setWishList(appContext.wishList);
   }, []);
 
   //   var filtered = products.filter((item) => item.category == category);
@@ -124,11 +92,15 @@ const WishListPage = (props) => {
         />
       ))}
       {/* <div className="total">TOTAL: ${total}</div> */}
-      <Link to="/pay-user">
-        <Button className="buyNowBtn" type="submit" style={{float: "right"}}>
-          Add to Cart
-        </Button>
-      </Link>
+
+      <Button
+        className="buyNowBtn"
+        type="submit"
+        style={{ float: "right" }}
+        onClick={() => appContext.addWishListToCart(wishList)}
+      >
+        Add to Cart
+      </Button>
     </div>
   );
 };

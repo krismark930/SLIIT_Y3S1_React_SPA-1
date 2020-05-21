@@ -1,22 +1,19 @@
-import React, {useContext, useState} from "react";
-import {Formik} from "formik";
-import {Button, Col, Form, Row, Spinner} from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Formik } from "formik";
+import { Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import * as yup from "yup";
-import {FaSignInAlt} from "react-icons/fa";
-import {AppContext} from "../../Context/app-context";
-import {Link} from "react-router-dom";
+import { FaSignInAlt } from "react-icons/fa";
+import { AppContext } from "../../Context/app-context";
+import { Link } from "react-router-dom";
 
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email()
-    .required("Enter the email"),
-  password: yup.string().required("Enter the password")
+  email: yup.string().email().required("Enter the email"),
+  password: yup.string().required("Enter the password"),
 });
 
 var errorss = "";
 
-const LoginForm = props => {
+const LoginForm = (props) => {
   const [loading, setLoading] = useState(false);
   const appContext = useContext(AppContext);
   const [errorLogin, seterrorLogin] = useState(null);
@@ -24,12 +21,12 @@ const LoginForm = props => {
   var responseError = "";
   const [loginData, setloginData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
-  const onSubmitHand = async (values, {setSubmitting}) => {
+  const onSubmitHand = async (values, { setSubmitting }) => {
     setLoading(true);
-    console.log('login eke submit athulata awa' + values);
+    console.log("login eke submit athulata awa" + values);
     console.log(values);
     setloginData(values);
 
@@ -37,9 +34,9 @@ const LoginForm = props => {
       const response = await fetch("http://localhost:5000/users/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(values)
+        body: JSON.stringify(values),
       });
 
       const responseData = await response.json();
@@ -53,6 +50,7 @@ const LoginForm = props => {
       appContext.login();
       console.log(values);
       appContext.addCurrentUser(values);
+      appContext.setWishListmethod(values.email);
       console.log(appContext.addCurrentUser(responseData.userDetails));
       setLoading(false);
     } catch (err) {
@@ -70,19 +68,19 @@ const LoginForm = props => {
         onSubmit={onSubmitHand}
         initialValues={{
           email: loginData.email,
-          password: loginData.password
+          password: loginData.password,
         }}
       >
         {({
-            handleSubmit,
-            isSubmitting,
-            handleChange,
-            handleBlur,
-            values,
-            touched,
-            isValid,
-            errors
-          }) => (
+          handleSubmit,
+          isSubmitting,
+          handleChange,
+          handleBlur,
+          values,
+          touched,
+          isValid,
+          errors,
+        }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Form.Row>
               <Form.Group as={Col} md="12" controlId="validationFormik01">
@@ -116,7 +114,7 @@ const LoginForm = props => {
                 {loading && (
                   <Spinner
                     animation="border"
-                    style={{textAlign: "center", marginLeft: "44%"}}
+                    style={{ textAlign: "center", marginLeft: "44%" }}
                   />
                 )}
                 <Form.Control.Feedback type="invalid">
@@ -130,7 +128,7 @@ const LoginForm = props => {
                   <FaSignInAlt
                     style={{
                       marginRight: "10px",
-                      marginBottom: "3px"
+                      marginBottom: "3px",
                     }}
                   />
                   Login
@@ -145,14 +143,14 @@ const LoginForm = props => {
                     fontWeight: "500",
                     color: "red",
                     fontSize: "14px",
-                    maxWidth: "100%"
+                    maxWidth: "100%",
                   }}
                 >
                   <span>Forgot Password</span>
                 </Col>
               </Link>
             </Row>
-            <Row/>
+            <Row />
             {errorss && <div id="loginServerError">{errorss}</div>}
           </Form>
         )}
