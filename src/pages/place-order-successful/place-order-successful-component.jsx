@@ -1,7 +1,8 @@
-import React, {useContext} from "react";
+import React, {useContext,useState} from "react";
 import {Button, Card, Col, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {AppContext} from "../../Context/app-context";
+import Modal from 'react-bootstrap/Modal'
 
 
 const PlaceOrderSuccessful = props => {
@@ -12,12 +13,43 @@ const PlaceOrderSuccessful = props => {
   console.log("user" + appContext.payUserConfirmed);
   console.log("card" + appContext.payCardConfirmed);
 
+  const [show, setShow] = useState(true);
+
+  const handleClose = () => setShow(false);
+  //const handleShow = () => setShow(true);
+
   const setConfirmedBackToHome = () => {
     console.log("place order success eke back to home click kala");
     appContext.setFalsePayCardConfirmed();
   }
 
+
   return (
+    
+     
+<div>
+      <Modal show={show} onHide={handleClose}>
+        
+          <Modal.Title>Confirm Message</Modal.Title>
+        
+        <Modal.Body>Your Order has been confirmed successfully!</Modal.Body>
+        <Modal.Footer>
+        
+        <Link to="/" onClick={() => {
+                setConfirmedBackToHome()
+              }}>
+          <Button variant="primary">
+            OK
+          </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
+      </div>
+  );
+}
+
+
+ /* return (
     <div className="updatePAsswordComponentHead">
       <div className="container">
 
@@ -48,5 +80,7 @@ const PlaceOrderSuccessful = props => {
     </div>
   );
 };
+*/
+
 
 export default PlaceOrderSuccessful;
