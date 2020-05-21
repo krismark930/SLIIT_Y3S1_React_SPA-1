@@ -76,11 +76,14 @@ const AddPayUserDetails = props => {
     console.log(currentEmail);
     console.log(payUser);
 
+    //pay userwa context ekata daganna
+    appContext.addPayUserDetails(payUser);
+
     appContext.setTruePayUserConfirmed();
 
     try {
       if (values.isSave) {
-        appContext.addPayUserDetails(payUser);
+        //appContext.addPayUserDetails(payUser);
 
         const response = await fetch("http://localhost:5000/payments/pay-user", {
           method: "POST",
