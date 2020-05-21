@@ -22,7 +22,6 @@ const UsePayUserDetails = () => {
 
   var currentEmail;
 
-
   useEffect(() => {
     appContext.currentUser.forEach(user => {
       currentEmail = user.email;
@@ -82,6 +81,7 @@ const UsePayUserDetails = () => {
         if ((payUser.email === currentEmail) && (payUser.isSave)) {
           setPayUserDetails(payUser);
           appContext.addEditPayUserDetails(payUser);
+          
         }
 
       });
@@ -106,8 +106,9 @@ const UsePayUserDetails = () => {
 
   const setConfirmedUser = () => {
     appContext.setTruePayUserConfirmed();
-
-  }
+     //pay user savewa context ekata daganna
+     appContext.addPayUserDetails(payUserDetails);
+ }
 
 
   return (
