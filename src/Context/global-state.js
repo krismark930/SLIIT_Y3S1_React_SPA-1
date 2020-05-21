@@ -192,14 +192,14 @@ const GlobalState = (props) => {
       console.log(err.message);
     }
 
-    /*responseData.wishList.forEach((item) => {
+    responseData.wishList.forEach((item) => {
       console.log(item);
       var filtered = products.filter((pitem) => pitem.title == item.productID);
 
       var fill = filtered.concat(filteredAll);
       console.log(filtered);
       filteredAll = fill;
-    });*/
+    });
     console.log("fileredAll");
     console.log(filteredAll);
     if (filteredAll.length) {
