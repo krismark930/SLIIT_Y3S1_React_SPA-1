@@ -6,8 +6,6 @@ import axios from 'axios'
 
 const ManageStoreManagerTable = () => {
   const appContext = useContext(AppContext)
-  const [loading, setLoading] = useState(false)
-  const [isDelete, setIsDelete] = useState(false)
   const [storeManagers, setStoreManagers] = useState([])
 
   const getStoreManagers = async () => {
@@ -22,7 +20,7 @@ const ManageStoreManagerTable = () => {
   }
 
   useEffect(() => {
-    getStoreManagers().then(r => {
+    getStoreManagers().then(() => {
     })
   }, [storeManagers])
 
@@ -44,14 +42,10 @@ const ManageStoreManagerTable = () => {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
-        },
+        }
       })
-      const responseData = await response.json()
-      if (responseData)
-        setIsDelete(true)
-      setLoading(false)
+      await response.json()
     } catch (errors) {
-      setLoading(false)
       console.log(errors)
     }
   }
