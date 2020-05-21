@@ -24,7 +24,7 @@ const ManageCategoryTable = () => {
   useEffect(() => {
     getCategories().then(r => {
     })
-  }, [getCategories, categories])
+  }, [categories])
 
   const EditCategory = (id) => {
     appContext.categoryEdit()
@@ -62,7 +62,6 @@ const ManageCategoryTable = () => {
         <thead>
         <th style={{borderBottom: 'solid darkblue 2px'}}>Title</th>
         <th style={{borderBottom: 'solid darkblue 2px'}}>Description</th>
-        <th style={{borderBottom: 'solid darkblue 2px'}}>Image</th>
         <th style={{borderBottom: 'solid darkblue 2px'}}/>
         <th style={{borderBottom: 'solid darkblue 2px'}}/>
         </thead>
@@ -72,7 +71,6 @@ const ManageCategoryTable = () => {
             <tr key={category._id}>
               <td>{category.categoryTitle}</td>
               <td>{category.categoryDescription}</td>
-              <td>{category.categoryImage}</td>
               <td>
                 <button onClick={() => EditCategory(category._id)} style={{color: 'darkgreen'}}>
                   <FaEdit size={25}/>

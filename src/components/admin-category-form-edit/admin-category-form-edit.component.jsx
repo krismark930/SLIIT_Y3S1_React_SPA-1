@@ -1,11 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {Formik} from 'formik'
 import {Button, Col, Form, Spinner} from 'react-bootstrap'
 import * as yup from 'yup'
 import {FaEdit} from 'react-icons/fa'
 import {AppContext} from '../../Context/app-context'
 import './admin-category-form-edit-styles.scss'
-import axios from 'axios'
 
 const schema = yup.object().shape({
   categoryTitle: yup
@@ -13,9 +12,7 @@ const schema = yup.object().shape({
     .min(2, 'Category title must be at least 2 characters long.'),
   categoryDescription: yup
     .string()
-    .min(5, 'Category description must be at least 5 characters long.'),
-  categoryImage: yup
-    .string()
+    .min(5, 'Category description must be at least 5 characters long.')
 })
 
 let errors_ = ''
@@ -27,26 +24,10 @@ const EditCategoryForm = props => {
   const [error, setError] = useState()
   const [categoryData, setCategoryData] = useState({
     categoryTitle: '',
-    categoryDescription: '',
-    categoryImage: ''
+    categoryDescription: ''
   })
 
   let categoryId
-
-  const setDetails = (data) => {
-    category = data
-  }
-
-  useEffect(() => {
-    axios.get('http://localhost:5000/admin/category/' + categoryId)
-      .then(response => {
-        setCategoryData(response.data)
-        setDetails(response.data)
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
-  }, [setDetails])
 
   const onSubmitHand = async (values, {setSubmitting}) => {
     setLoading(true)
@@ -124,24 +105,6 @@ const EditCategoryForm = props => {
                   />
                   <Form.Control.Feedback type='invalid'>
                     {errors.categoryDescription}
-                  </Form.Control.Feedback>
-                </Form.Group>
-              </Form.Row>
-              <Form.Row>
-                <Form.Group as={Col} md='12'>
-                  <Form.Label>Image</Form.Label>
-                  <Form.Control
-                    type='text'
-                    placeholder='Image'
-                    name='categoryImage'
-                    value={appContext.categories[0].categoryImage}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={touched.categoryImage && errors.categoryImage}
-                    isValid={touched.categoryImage && !errors.categoryImage}
-                  />
-                  <Form.Control.Feedback type='invalid'>
-                    {errors.categoryImage}
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
