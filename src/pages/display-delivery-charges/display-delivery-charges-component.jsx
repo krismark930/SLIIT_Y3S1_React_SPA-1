@@ -13,45 +13,45 @@ const DisplayDeliveryCharges = (props) => {
       <table className="table" style={{float: "center"}}>
         <thead className="thead-light">
         <tr>
-          <th>Province</th>
-          <th>Delivery Fee</th>
+          <th style={{textAlign: "center"}}>Province</th>
+          <th style={{textAlign: "center"}}> Delivery Fee</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td style={{textAlign: "left"}}>1.Western</td>
+          <td >1.Western</td>
           <td>$100</td>
         </tr>
         <tr>
-          <td style={{textAlign: "left"}}>2.Eastern</td>
+          <td >2.Eastern</td>
           <td>$200</td>
         </tr>
         <tr>
-          <td style={{textAlign: "left"}}>3.North Central</td>
+          <td >3.North Central</td>
           <td>$300</td>
         </tr>
         <tr>
-          <td style={{textAlign: "left"}}>4.Northern</td>
+          <td >4.Northern</td>
           <td>$400</td>
         </tr>
         <tr>
-          <td style={{textAlign: "left"}}>5.North Western</td>
+          <td >5.North Western</td>
           <td>$500</td>
         </tr>
         <tr>
-          <td style={{textAlign: "left"}}>6.Sabaragamuwa</td>
+          <td >6.Sabaragamuwa</td>
           <td>$600</td>
         </tr>
         <tr>
-          <td style={{textAlign: "left"}}>7.Southern</td>
+          <td >7.Southern</td>
           <td>$700</td>
         </tr>
         <tr>
-          <td style={{textAlign: "left"}}>8.Uva</td>
+          <td >8.Uva</td>
           <td>$800</td>
         </tr>
         <tr>
-          <td style={{textAlign: "left"}}>9.Central</td>
+          <td >9.Central</td>
           <td>$900</td>
         </tr>
         </tbody>
