@@ -24,20 +24,9 @@ const WishListPage = (props) => {
     setWishList(appContext.wishList);
   }, []);
 
-  //   var filtered = products.filter((item) => item.category == category);
   console.log(wishList);
   console.log("------");
   console.log(appContext);
-
-  //   wishList.forEach(async (item) => {
-  //     filtered = appContext.products.filter(
-  //       (pitem) => pitem.title == item.productID
-  //     );
-
-  //     var fill = filtered.concat(filteredAll);
-
-  //     filteredAll = fill;
-  //   });
 
   const removeWishItem = async (title) => {
     let responseData = 0;
@@ -56,7 +45,7 @@ const WishListPage = (props) => {
       );
 
       responseData = await response.json();
-
+      appContext.setWishListmethod(appContext.currentUser[0].email);
       console.log(responseData.message);
     } catch (err) {
       console.log(err.message);

@@ -1,9 +1,9 @@
-import React, {useContext, useState} from "react";
-import {Formik} from "formik";
-import {Button, Col, Form, Spinner} from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Formik } from "formik";
+import { Button, Col, Form, Spinner } from "react-bootstrap";
 import * as yup from "yup";
-import {FaSignInAlt} from "react-icons/fa";
-import {AppContext} from "../../Context/app-context";
+import { FaSignInAlt } from "react-icons/fa";
+import { AppContext } from "../../Context/app-context";
 
 import "./signup-form.scss";
 
@@ -16,10 +16,7 @@ const schema = yup.object().shape({
     .string()
     .min(2, "last name must have at least 2 characters")
     .required("Enter the last name"),
-  email: yup
-    .string()
-    .email()
-    .required("Enter the email"),
+  email: yup.string().email().required("Enter the email"),
   teleNo: yup
     .string()
     .matches(
@@ -37,12 +34,12 @@ const schema = yup.object().shape({
     .required("Confirm the password")
     .oneOf([yup.ref("password"), null], "Passwords must match"),
   passwordResetQuestion: yup.string().required("Select a question"),
-  answer: yup.string().required("Enter the password")
+  answer: yup.string().required("Enter the password"),
 });
 
 var errorss = "";
 
-const SignupForm = props => {
+const SignupForm = (props) => {
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
@@ -54,10 +51,10 @@ const SignupForm = props => {
     email: "",
     password: "",
     passwordResetQuestion: "",
-    answer: ""
+    answer: "",
   });
 
-  const onSubmitHand = async (values, {setSubmitting}) => {
+  const onSubmitHand = async (values, { setSubmitting }) => {
     setLoading(true);
 
     console.log(values);
@@ -67,9 +64,9 @@ const SignupForm = props => {
       const response = await fetch("http://localhost:5000/users/signup", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(values)
+        body: JSON.stringify(values),
       });
 
       const responseData = await response.json();
@@ -79,8 +76,9 @@ const SignupForm = props => {
         errorss = responseData.message;
         throw new Error(responseData.message);
       }
-
+      appContext.addCurrentUser(responseData.user);
       appContext.login();
+
       setLoading(false);
       console.log(responseData);
     } catch (errorss) {
@@ -101,15 +99,15 @@ const SignupForm = props => {
           initialValues={signUpData}
         >
           {({
-              handleSubmit,
-              isSubmitting,
-              handleChange,
-              handleBlur,
-              values,
-              touched,
-              isValid,
-              errors
-            }) => (
+            handleSubmit,
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            values,
+            touched,
+            isValid,
+            errors,
+          }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
@@ -219,7 +217,7 @@ const SignupForm = props => {
                   {loading && (
                     <Spinner
                       animation="border"
-                      style={{textAlign: "center", marginLeft: "49%"}}
+                      style={{ textAlign: "center", marginLeft: "49%" }}
                     />
                   )}
 
@@ -282,13 +280,13 @@ const SignupForm = props => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                style={{marginTop: "5px"}}
+                style={{ marginTop: "5px" }}
               >
                 <FaSignInAlt
                   style={{
                     marginRight: "10px",
                     marginBottom: "3px",
-                    transform: "rotate(270deg)"
+                    transform: "rotate(270deg)",
                   }}
                 />
                 SignUp
