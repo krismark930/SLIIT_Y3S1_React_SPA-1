@@ -43,7 +43,6 @@ const AddStoreManagerForm = props => {
 
   const onSubmitHand = async (values, {setSubmitting}) => {
     setLoading(true)
-    values.password = 'Password'
     setStoreManagerData(values)
     try {
       const response = await fetch('http://localhost:5000/admin/storemanager', {
