@@ -9,12 +9,12 @@ import UpdatePassword from './pages/forgot-password/forgot-password-component'
 import {AppContext} from './Context/app-context'
 import PayUserDetails from './pages/pay-user-details/pay-user-details-component'
 import PayCardDetails from './pages/pay-card-details/pay-card-details-component'
-import ManageStoreManager from './pages/admin-store-managers/admin-store-managers-component'
-import ManageCategory from './pages/admin-categories/admin-categories-component'
 import SingleCategory from './pages/single-category/single-category-page'
 import PlaceOrderSuccessful from './pages/place-order-successful/place-order-successful-component'
 import WishListPage from './pages/wishlist/wishlist-page'
 import DisplayDeliveryCharges from './pages/display-delivery-charges/display-delivery-charges-component'
+import ManageStoreManager from './pages/admin-store-managers/admin-store-managers-component'
+import ManageCategory from './pages/admin-categories/admin-categories-component'
 
 function App() {
   const app = useContext(AppContext)

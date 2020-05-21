@@ -24,7 +24,7 @@ const ManageStoreManagerTable = () => {
   useEffect(() => {
     getStoreManagers().then(r => {
     })
-  }, [getStoreManagers, storeManagers])
+  }, [storeManagers])
 
   const EditStoreManager = (id) => {
     appContext.storeManagerEdit()

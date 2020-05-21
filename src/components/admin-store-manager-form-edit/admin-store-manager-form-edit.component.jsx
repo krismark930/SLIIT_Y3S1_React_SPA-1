@@ -1,11 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {Formik} from 'formik'
 import {Button, Col, Form, Spinner} from 'react-bootstrap'
 import * as yup from 'yup'
 import {FaUserEdit} from 'react-icons/fa'
 import {AppContext} from '../../Context/app-context'
 import './admin-store-manager-form-edit-styles.scss'
-import axios from 'axios'
 
 const schema = yup.object().shape({
   firstName: yup
@@ -40,21 +39,6 @@ const EditStoreManagerForm = props => {
   })
 
   let userId
-
-  const setDetails = (data) => {
-    store_manager = data
-  }
-
-  useEffect(() => {
-    axios.get('http://localhost:5000/admin/storemanager/' + userId)
-      .then(response => {
-        setStoreManagerData(response.data)
-        setDetails(response.data)
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
-  }, [setDetails])
 
   const onSubmitHand = async (values, {setSubmitting}) => {
     setLoading(true)
