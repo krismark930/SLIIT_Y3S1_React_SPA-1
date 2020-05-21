@@ -81,7 +81,7 @@ const UsePayUserDetails = () => {
         if ((payUser.email === currentEmail) && (payUser.isSave)) {
           setPayUserDetails(payUser);
           appContext.addEditPayUserDetails(payUser);
-          
+
         }
 
       });
@@ -106,9 +106,9 @@ const UsePayUserDetails = () => {
 
   const setConfirmedUser = () => {
     appContext.setTruePayUserConfirmed();
-     //pay user savewa context ekata daganna
-     appContext.addPayUserDetails(payUserDetails);
- }
+    //pay user savewa context ekata daganna
+    appContext.addPayUserDetails(payUserDetails);
+  }
 
 
   return (

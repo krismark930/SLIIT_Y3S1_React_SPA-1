@@ -19,39 +19,39 @@ const DisplayDeliveryCharges = (props) => {
         </thead>
         <tbody>
         <tr>
-          <td >1.Western</td>
+          <td>1.Western</td>
           <td>$100</td>
         </tr>
         <tr>
-          <td >2.Eastern</td>
+          <td>2.Eastern</td>
           <td>$200</td>
         </tr>
         <tr>
-          <td >3.North Central</td>
+          <td>3.North Central</td>
           <td>$300</td>
         </tr>
         <tr>
-          <td >4.Northern</td>
+          <td>4.Northern</td>
           <td>$400</td>
         </tr>
         <tr>
-          <td >5.North Western</td>
+          <td>5.North Western</td>
           <td>$500</td>
         </tr>
         <tr>
-          <td >6.Sabaragamuwa</td>
+          <td>6.Sabaragamuwa</td>
           <td>$600</td>
         </tr>
         <tr>
-          <td >7.Southern</td>
+          <td>7.Southern</td>
           <td>$700</td>
         </tr>
         <tr>
-          <td >8.Uva</td>
+          <td>8.Uva</td>
           <td>$800</td>
         </tr>
         <tr>
-          <td >9.Central</td>
+          <td>9.Central</td>
           <td>$900</td>
         </tr>
         </tbody>

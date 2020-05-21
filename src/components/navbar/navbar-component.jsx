@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import { Button, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, {useContext} from "react";
+import {Button, Nav, Navbar} from "react-bootstrap";
+import {Link} from "react-router-dom";
 import "./navbar-style.scss";
-import { FaCartArrowDown } from "react-icons/fa";
-import { IconContext } from "react-icons";
+import {FaCartArrowDown} from "react-icons/fa";
+import {IconContext} from "react-icons";
 import CartDropdown from "../cart-dropdown/cart-dropdown-component";
-import { AppContext } from "../../Context/app-context";
+import {AppContext} from "../../Context/app-context";
 
 const MainNavbar = (props) => {
   const appContext = useContext(AppContext);
@@ -17,12 +17,12 @@ const MainNavbar = (props) => {
         expand="md"
         bg="dark"
         variant="dark"
-        style={{ width: "100%", backgroundColor: "dark" }}
+        style={{width: "100%", backgroundColor: "dark"}}
       >
         <Link to="/">
           <Navbar.Brand href="#home">Home</Navbar.Brand>
         </Link>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="#features">Shop</Nav.Link>
@@ -54,16 +54,16 @@ const MainNavbar = (props) => {
                         size: "2rem",
                       }}
                     >
-                      <FaCartArrowDown />
+                      <FaCartArrowDown/>
                     </IconContext.Provider>
                   </Nav.Link>
-                  {appContext.hidden ? null : <CartDropdown />}
+                  {appContext.hidden ? null : <CartDropdown/>}
                 </div>
                 <Nav.Link onClick={appContext.logout}>
                   <Link to="/">
                     <Button
                       variant="outline-success"
-                      style={{ padding: "3px" }}
+                      style={{padding: "3px"}}
                     >
                       Sign Out
                     </Button>
@@ -75,7 +75,7 @@ const MainNavbar = (props) => {
                 <Link to="/signin-signup">
                   <Button
                     variant="outline-success"
-                    style={{ padding: "3px", margin: "4px 6px" }}
+                    style={{padding: "3px", margin: "4px 6px"}}
                   >
                     Sign In
                   </Button>

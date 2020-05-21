@@ -34,7 +34,7 @@ const PayPlaceOrder = () => {
 
   var userProvince;
 
- 
+
   appContext.payUserDetails.forEach(user => {
     userProvince = user.province;
   });
@@ -45,31 +45,31 @@ const PayPlaceOrder = () => {
   var subtotals = 0;
   console.log(userProvince);
 
-  if(userProvince === "Western"){
+  if (userProvince === "Western") {
     delivery = 100.00;
   }
-  if(userProvince === "Eastern"){
+  if (userProvince === "Eastern") {
     delivery = 200.00;
   }
-  if(userProvince === "North Central"){
+  if (userProvince === "North Central") {
     delivery = 300.00;
   }
-  if(userProvince === "Northern"){
+  if (userProvince === "Northern") {
     delivery = 400.00;
   }
-  if(userProvince === "North Western"){
+  if (userProvince === "North Western") {
     delivery = 500.00;
   }
-  if(userProvince === "Sabaragamuwa"){
+  if (userProvince === "Sabaragamuwa") {
     delivery = 600.00;
   }
-  if(userProvince === "Southern"){
+  if (userProvince === "Southern") {
     delivery = 700.00;
   }
-  if(userProvince === "Uva"){
+  if (userProvince === "Uva") {
     delivery = 800.00;
   }
-  if(userProvince === "Central"){
+  if (userProvince === "Central") {
     delivery = 900.00;
   }
 
