@@ -18,20 +18,14 @@ const schema = yup.object().shape({
 let errors_ = ''
 let category
 
-const EditCategoryForm = props => {
+const EditCategoryForm = () => {
   const appContext = useContext(AppContext)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState()
-  const [categoryData, setCategoryData] = useState({
-    categoryTitle: '',
-    categoryDescription: ''
-  })
 
   let categoryId
 
-  const onSubmitHand = async (values, {setSubmitting}) => {
+  const onSubmitHand = async (values) => {
     setLoading(true)
-    setCategoryData(values)
     category = {...values}
     try {
       if (values.isSave)
@@ -45,11 +39,10 @@ const EditCategoryForm = props => {
         },
         body: JSON.stringify(category)
       })
-      const responseData = await response.json()
+      await response.json();
       setLoading(false)
     } catch (errors_) {
       setLoading(false)
-      setError(errors_.message || 'Something went wrong, try again later.')
     }
   }
 
@@ -66,9 +59,7 @@ const EditCategoryForm = props => {
               isSubmitting,
               handleChange,
               handleBlur,
-              values,
               touched,
-              isValid,
               errors
             }) => (
             <Form noValidate onSubmit={handleSubmit}>

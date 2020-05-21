@@ -30,10 +30,9 @@ const schema = yup.object().shape({
 
 let errors_ = ''
 
-const AddStoreManagerForm = props => {
-  const appContext = useContext(AppContext)
+const AddStoreManagerForm = () => {
+  useContext(AppContext);
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState()
   const [storeManagerData, setStoreManagerData] = useState({
     firstName: '',
     lastName: '',
@@ -41,7 +40,7 @@ const AddStoreManagerForm = props => {
     email: ''
   })
 
-  const onSubmitHand = async (values, {setSubmitting}) => {
+  const onSubmitHand = async (values) => {
     setLoading(true)
     setStoreManagerData(values)
     try {
@@ -52,11 +51,10 @@ const AddStoreManagerForm = props => {
         },
         body: JSON.stringify(values)
       })
-      const responseData = await response.json()
+      await response.json();
       setLoading(false)
     } catch (errors_) {
       setLoading(false)
-      setError(errors_.message || 'Something went wrong, please try again later.')
     }
   }
 
@@ -75,7 +73,6 @@ const AddStoreManagerForm = props => {
               handleBlur,
               values,
               touched,
-              isValid,
               errors
             }) => (
             <Form noValidate onSubmit={handleSubmit}>

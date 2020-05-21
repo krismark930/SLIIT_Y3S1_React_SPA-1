@@ -6,8 +6,6 @@ import axios from 'axios'
 
 const ManageCategoryTable = () => {
   const appContext = useContext(AppContext)
-  const [loading, setLoading] = useState(false)
-  const [isDelete, setIsDelete] = useState(false)
   const [categories, setCategories] = useState([])
 
   const getCategories = async () => {
@@ -22,7 +20,7 @@ const ManageCategoryTable = () => {
   }
 
   useEffect(() => {
-    getCategories().then(r => {
+    getCategories().then(() => {
     })
   }, [categories])
 
@@ -44,14 +42,10 @@ const ManageCategoryTable = () => {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
-        },
+        }
       })
-      const responseData = await response.json()
-      if (responseData)
-        setIsDelete(true)
-      setLoading(false)
+      await response.json()
     } catch (errors) {
-      setLoading(false)
       console.log(errors)
     }
   }
