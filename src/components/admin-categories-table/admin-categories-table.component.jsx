@@ -53,12 +53,12 @@ const ManageCategoryTable = () => {
 
   return (
     <div>
-      <table className='table' style={{border: 'solid darkblue 2px'}}>
-        <thead>
-        <th style={{borderBottom: 'solid darkblue 2px'}}>Title</th>
-        <th style={{borderBottom: 'solid darkblue 2px'}}>Description</th>
-        <th style={{borderBottom: 'solid darkblue 2px'}}/>
-        <th style={{borderBottom: 'solid darkblue 2px'}}/>
+      <table className='table' style={{border: 'solid darkblue 1px'}}>
+        <thead style={{backgroundColor: '#0350a2'}}>
+        <th style={{borderBottom: 'solid darkblue 1px'}}>Title</th>
+        <th style={{borderBottom: 'solid darkblue 1px'}}>Description</th>
+        <th style={{borderBottom: 'solid darkblue 1px'}}/>
+        <th style={{borderBottom: 'solid darkblue 1px'}}/>
         </thead>
         <tbody>
         {categories.map((category) => {
