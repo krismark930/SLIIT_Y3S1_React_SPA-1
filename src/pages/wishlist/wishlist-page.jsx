@@ -3,6 +3,7 @@ import { AppContext } from "../../Context/app-context";
 import WishListItem from "../../components/wishlist-item/wishlist-item-component";
 import { Button } from "react-bootstrap";
 import "./wishlist-styles.scss";
+import { FaRegHourglass } from "react-icons/fa";
 
 const WishListPage = (props) => {
   const appContext = useContext(AppContext);
@@ -95,17 +96,28 @@ const WishListPage = (props) => {
     <div className="wishlist-page">
       <h2>Wish List</h2>
       {wishList.length ? null : (
-        <p
-          style={{
-            marginTop: "100px",
-            fontSize: "25px",
-            color: "red",
-            fontWeight: "600",
-            fontFamily: "Lemonada",
-          }}
-        >
-          There's nothing in the Wish List
-        </p>
+        <div style={{ textAlign: "center" }}>
+          <p
+            style={{
+              marginTop: "100px",
+              fontSize: "25px",
+              color: "rgb(0, 123, 255)",
+              fontWeight: "600",
+              fontFamily: "Lemonada",
+            }}
+          >
+            There's nothing in the Wish List
+          </p>
+
+          <FaRegHourglass
+            style={{
+              marginRight: "10px",
+              marginBottom: "3px",
+              fontSize: "123px",
+              color: "rgb(0, 123, 255)",
+            }}
+          />
+        </div>
       )}
       {/* <div className="checkout-header">
         <div className="header-block">
