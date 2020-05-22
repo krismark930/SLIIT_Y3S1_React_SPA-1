@@ -6,7 +6,7 @@ import React, {useContext} from 'react'
 import {Col, Row} from 'react-bootstrap'
 import {AppContext} from '../../Context/app-context'
 
-const ManageCategory = props => {
+const ManageCategory = () => {
   let route
   const app = useContext(AppContext)
 

@@ -142,7 +142,6 @@ const GlobalState = (props) => {
     let responseData = 0;
     const mail = currentUser[0].email;
     var responseError = "";
-
     var objs = {
       userID: mail,
       productID: productTitle,
@@ -357,7 +356,6 @@ const GlobalState = (props) => {
     const updatedFirstName = [];
     updatedFirstName.push({ ...name });
     console.log(updatedFirstName);
-
     setCurrentUserFirstName(updatedFirstName);
   };
 
@@ -365,7 +363,6 @@ const GlobalState = (props) => {
     const updatedLastName = [];
     updatedLastName.push({ ...name });
     console.log(updatedLastName);
-
     setCurrentUserLastName(updatedLastName);
   };
 
@@ -467,16 +464,15 @@ const GlobalState = (props) => {
         editPayCardDetails: editPayCardDetails,
         payCardDetails: payCardDetails,
         payOrderDetails: payOrderDetails,
+        checkAdmin: checkAdmin,
+        checkCustomer: checkCustomer,
+        checkStoreManager: checkStoreManager,
         editStoreManager: editStoreManager,
         editStoreManagerId: editStoreManagerId,
         storeManagers: storeManagers,
         editCategory: editCategory,
         editCategoryId: editCategoryId,
         categories: categories,
-        checkAdmin: checkAdmin,
-        checkCustomer: checkCustomer,
-        checkStoreManager: checkStoreManager,
-
         payUserEdit: payUserEdit,
         payUserEditFalse: payUserEditFalse,
         setEditPayUserID: setEditPayUserID,
@@ -485,7 +481,6 @@ const GlobalState = (props) => {
         setEditPayCardID: setEditPayCardID,
         login: login,
         logout: logout,
-
         setTruePayUserConfirmed: setTruePayUserConfirmed,
         setTruePayCardConfirmed: setTruePayCardConfirmed,
         setFalsePayUserConfirmed: setFalsePayUserConfirmed,
@@ -506,6 +501,9 @@ const GlobalState = (props) => {
         setWishListmethod: setWishListmethod,
 
         addToWishList: addToWishList,
+        setCheckAdminMethod: setCheckAdminMethod,
+        setCheckCustomerMethod: setCheckCustomerMethod,
+        setChecksetCheckStoreManagerMethod: setChecksetCheckStoreManagerMethod,
         storeManagerEdit: storeManagerEdit,
         editStoreManagerFalse: editStoreManagerFalse,
         setEditStoreManagerId: setEditStoreManagerId,
@@ -514,9 +512,6 @@ const GlobalState = (props) => {
         editCategoryFalse: editCategoryFalse,
         setEditCategoryId: setEditCategoryId,
         addCategories: addCategories,
-        setCheckAdminMethod: setCheckAdminMethod,
-        setCheckCustomerMethod: setCheckCustomerMethod,
-        setChecksetCheckStoreManagerMethod: setChecksetCheckStoreManagerMethod,
       }}
     >
       {props.children}
