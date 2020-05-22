@@ -29,9 +29,18 @@ const MainNavbar = () => {
             {appContext.loggedin ? (
               <Nav>
                 {appContext.checkCustomer ? (
-                  <Link to="/wishlist">
-                    <Nav.Link href="#wish_list">Wish List</Nav.Link>
-                  </Link>
+                  <Nav>
+                    <Link to="/wishlist">
+                      <Nav.Link href="#wish_list">Wish List</Nav.Link>
+                    </Link>
+                    <Link to="/comment">
+                      <Nav.Link href="#comments">Comments</Nav.Link>
+                    </Link>
+                    <Nav>
+                      <Nav.Link href="#contact_us">Contact Us</Nav.Link>
+                      <Nav.Link href="#about_us">About Us</Nav.Link>
+                    </Nav>
+                  </Nav>
                 ) : null}
                 {appContext.checkAdmin ? (
                   <Nav>
@@ -72,13 +81,6 @@ const MainNavbar = () => {
                       </IconContext.Provider>
                     </Nav.Link>
                     {appContext.hidden ? null : <CartDropdown />}
-                    <Nav>
-                      <Link to="/comment">
-                        <Nav.Link href="#comments">Comments</Nav.Link>
-                      </Link>
-                      <Nav.Link href="#contact_us">Contact Us</Nav.Link>
-                      <Nav.Link href="#about_us">About Us</Nav.Link>
-                    </Nav>
                   </div>
                 ) : null}
                 <Nav.Link onClick={appContext.logout}>
