@@ -18,7 +18,7 @@ const LoginSignup = (props) => {
             <div
               className="loginSignupPageLginForm"
               style={{
-                background: "white",
+                background: "rgba(255, 255, 255, 0.26)",
                 borderRadius: "8px",
                 padding: "6%",
               }}
@@ -50,7 +50,10 @@ const LoginSignup = (props) => {
           <Col md="6" className="clll">
             <div
               className="loginSignupPageSignupForm"
-              style={{ background: "white", borderRadius: "8px" }}
+              style={{
+                background: "rgba(255, 255, 255, 0.26)",
+                borderRadius: "8px",
+              }}
             >
               <h4
                 style={{

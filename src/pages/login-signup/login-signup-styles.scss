@@ -1,6 +1,8 @@
 .loginSignupMainHead {
   margin-top: 10%;
   margin-bottom: 4%;
+  background: url("../../assets//Layer\ 4.svg") no-repeat;
+  background-size: cover;
 
   .container {
     max-width: 1300px;
@@ -18,7 +20,7 @@
   .loginSignupPageLginForm {
     border-radius: 8px;
     padding: 20px;
-    border: 2px solid #007bff;
+    border: 2px solid rgba(0, 123, 255, 0.55);
 
     h4 {
       //   margin-left: 13px;
@@ -36,7 +38,7 @@
   .loginSignupPageSignupForm {
     border-radius: 8px;
     padding: 20px;
-    border: 2px solid #007bff;
+    border: 2px solid rgba(0, 123, 255, 0.55);
 
     h4 {
       font-size: 30px;
