@@ -12,16 +12,16 @@ const Footer = () => {
               <a href='/'>Home</a>
             </li>
             <li>
-              <a href='#m'>About</a>
+              <a href='#about_us'>About Us</a>
             </li>
             <li>
-              <a href='#'>Services</a>
+              <a href='#services'>Services</a>
             </li>
             <li>
-              <a href='#'>Blog</a>
+              <a href='#blog'>Blog</a>
             </li>
             <li>
-              <a href='#'>Contact</a>
+              <a href='#contact_us'>Contact Us</a>
             </li>
           </ul>
           <p class='text-center'>
@@ -29,22 +29,22 @@ const Footer = () => {
           </p>
           <ul class='social_footer_ul'>
             <li>
-              <a href='#'>
+              <a href='#facebook'>
                 <i class='fab fa-facebook-f'/>
               </a>
             </li>
             <li>
-              <a href='#'>
+              <a href='#twitter'>
                 <i class='fab fa-twitter'/>
               </a>
             </li>
             <li>
-              <a href='#'>
+              <a href='#linkedin'>
                 <i class='fab fa-linkedin'/>
               </a>
             </li>
             <li>
-              <a href='#'>
+              <a href='#instagram'>
                 <i class='fab fa-instagram'/>
               </a>
             </li>
