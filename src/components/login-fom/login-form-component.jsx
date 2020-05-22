@@ -40,13 +40,31 @@ const LoginForm = (props) => {
       });
 
       const responseData = await response.json();
-      console.log(responseData.userDetails);
+      // console.log(responseData.userDetails);
+
       if (!responseData.login) {
         errorss = responseData.message;
         throw new Error(responseData.message);
       }
       responseError = responseData.message;
-      console.log(responseData.userDetails);
+      // console.log(responseData.userDetails);
+      if (responseData.type == "Administrator") {
+        console.log("--------------");
+        // console.log(responseData.type);
+        console.log("Administrator");
+        appContext.setCheckAdminMethod();
+      } else if (responseData.type == "Store Manager") {
+        console.log("--------------");
+        console.log("Store Manager");
+        // console.log(responseData.type);
+        appContext.setChecksetCheckStoreManagerMethod();
+      } else if (responseData.type == "Customer") {
+        console.log("--------------");
+        console.log(responseData.type);
+        console.log("Customerrdfdsfsdfsdf");
+        appContext.setCheckCustomerMethod();
+      }
+
       appContext.login();
       console.log("-------------");
       console.log(responseData.userDetails);

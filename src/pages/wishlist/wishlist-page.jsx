@@ -76,6 +76,7 @@ const WishListPage = (props) => {
       responseData = await response.json();
       appContext.setWishListmethod(appContext.currentUser[0].email);
       console.log(responseData.message);
+      console.log(appContext);
     } catch (err) {
       console.log(err.message);
     }
