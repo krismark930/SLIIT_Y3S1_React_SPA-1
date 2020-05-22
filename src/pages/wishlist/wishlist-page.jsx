@@ -1,7 +1,7 @@
-import React, {useContext, useEffect, useState} from "react";
-import {AppContext} from "../../Context/app-context";
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../Context/app-context";
 import WishListItem from "../../components/wishlist-item/wishlist-item-component";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./wishlist-styles.scss";
 
 const WishListPage = (props) => {
@@ -57,13 +57,14 @@ const WishListPage = (props) => {
     setWishList([]);
   };
 
-  const removeWishItem = async (title) => {
+  const removeWishItem = async (product) => {
     let responseData = 0;
     const mail = appContext.currentUser[0].email;
     var responseError = "";
+    let titles = product.title;
     try {
       const response = await fetch(
-        `http://localhost:5000/users/deleteFromWishList/${mail}/${title}`,
+        `http://localhost:5000/users/deleteFromWishList/${mail}/${titles}`,
         {
           method: "DELETE",
           headers: {
@@ -73,6 +74,12 @@ const WishListPage = (props) => {
         }
       );
 
+      let tempChnage = { ...product, wishList: 0 };
+
+      console.log(tempChnage);
+
+      appContext.setChangeWishListProduct(tempChnage);
+
       responseData = await response.json();
       appContext.setWishListmethod(appContext.currentUser[0].email);
       console.log(responseData.message);
@@ -81,7 +88,7 @@ const WishListPage = (props) => {
       console.log(err.message);
     }
 
-    let arr = wishList.filter((pitem) => pitem.title != title);
+    let arr = wishList.filter((pitem) => pitem.title != product.title);
     setWishList(arr);
   };
   return (
@@ -115,7 +122,7 @@ const WishListPage = (props) => {
       <Button
         className="buyNowBtn"
         type="submit"
-        style={{float: "right"}}
+        style={{ float: "right" }}
         onClick={() => moveWishListToCart()}
       >
         Add to Cart

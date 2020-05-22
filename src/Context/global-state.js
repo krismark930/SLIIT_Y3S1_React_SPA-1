@@ -13,6 +13,7 @@ const GlobalState = (props) => {
   const [wishList, setWishList] = useState();
   const [checkAdmin, setCheckAdmin] = useState(false);
   const [checkCustomer, setCheckCustomer] = useState(false);
+
   const [checkStoreManager, setCheckStoreManager] = useState(false);
   const [products, setProducts] = useState([
     {
@@ -51,7 +52,7 @@ const GlobalState = (props) => {
       productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
     },
     {
-      title: "Women",
+      title: "Women2",
       id: 6,
       price: 123.0,
       category: "Women",
@@ -65,7 +66,7 @@ const GlobalState = (props) => {
       productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
     },
     {
-      title: "Product1",
+      title: "Product12",
       id: 8,
       price: 123.0,
       category: "Women",
@@ -93,6 +94,7 @@ const GlobalState = (props) => {
   const [storeManagers, setStoreManagers] = useState([]);
   const [editCategory, setEditCategory] = useState(false);
   const [editCategoryId, setEditCategoryID] = useState("1");
+  const [tempProducts, setTempProducts] = useState(products);
   const [categories, setCategories] = useState([
     {
       categoryTitle: "Hats",
@@ -181,6 +183,15 @@ const GlobalState = (props) => {
   //   return wishList;
   // };
 
+  const setChangeWishListProduct = (product) => {
+    // let tempProduct = products;
+    // var filtered = products.filter((pitem) => pitem.title != product.title);
+    // filtered.push(product);
+    // setProducts(filtered);
+    // console.log("//////////////////");
+    // console.log(filtered);
+  };
+  const products1 = tempProducts;
   const setWishListmethod = async (mail) => {
     console.log("setWishListmethod");
     let filteredAll = [];
@@ -205,7 +216,7 @@ const GlobalState = (props) => {
     } catch (err) {
       console.log(err.message);
     }
-    var filtering = products;
+    var filtering = products1;
     responseData.wishList.forEach((item) => {
       console.log(item);
       var filtered = products.filter((pitem) => pitem.title == item.productID);
@@ -213,28 +224,29 @@ const GlobalState = (props) => {
       console.log(filtered);
       filteredAll = fill;
 
-      products.forEach((pitem) => {
-        if (pitem.title == item.productID) {
-          let temp = { ...pitem, wishList: 1 };
+      // products.forEach((pitem) => {
+      //   if (pitem.title == item.productID) {
+      //     let temp = { ...pitem, wishList: 1 };
 
-          filtering = filtering.filter(
-            (pitem) => pitem.title != item.productID
-          );
-          // let temp2 = filtering;
-          filtering.push(temp);
+      //     filtering = filtering.filter(
+      //       (pitem) => pitem.title != item.productID
+      //     );
+      //     // let temp2 = filtering;
+      //     filtering.push(temp);
 
-          console.log("++++++++++++++++++++++");
-          console.log(filtering);
-        }
-      });
+      //     console.log("++++++++++++++++++++++");
+      //     console.log(filtering);
+      //   }
+      // });
     });
     // console.log("fileredAll");
     // console.log(filteredAll);
-    if (filteredAll.length) {
-      filteredAll.splice(-1, 1);
-    }
+    // if (filteredAll.length) {
+    //   filteredAll.splice(-1, 1);
+    // }
     // console.log(filteredAll);
     setWishList(filteredAll);
+    setProducts(filtering);
   };
 
   // const deleteWishListItem = async (productID) => {
@@ -466,6 +478,7 @@ const GlobalState = (props) => {
         payOrderDetails: payOrderDetails,
         checkAdmin: checkAdmin,
         checkCustomer: checkCustomer,
+        tempProducts: tempProducts,
         checkStoreManager: checkStoreManager,
         editStoreManager: editStoreManager,
         editStoreManagerId: editStoreManagerId,
@@ -497,6 +510,7 @@ const GlobalState = (props) => {
         removeCompletelyItemFromCart: removeCompletelyItemFromCart,
         removeItemFromCart: removeItemFromCart,
         toggleDropdownHidden: toggleDropdownHidden,
+        setChangeWishListProduct: setChangeWishListProduct,
 
         setWishListmethod: setWishListmethod,
 
