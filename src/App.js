@@ -10,6 +10,7 @@ import UpdatePassword from './pages/forgot-password/forgot-password-component'
 import {AppContext} from './Context/app-context'
 import PayUserDetails from './pages/pay-user-details/pay-user-details-component'
 import PayCardDetails from './pages/pay-card-details/pay-card-details-component'
+import ProductComments from './pages/product-comments/product-comments-component'
 import SingleCategory from './pages/single-category/single-category-page'
 import PlaceOrderSuccessful from './pages/place-order-successful/place-order-successful-component'
 import WishListPage from './pages/wishlist/wishlist-page'
@@ -70,6 +71,7 @@ function App() {
                 <Route exact path='/checkout-page' component={Checkout}/>
                 <Route exact path='/pay-user' component={PayUserDetails}/>
                 <Route exact path='/wishlist' component={WishListPage}/>
+                <Route exact path='/comment' component={ProductComments}/>
                 <Redirect to='/'/>
               </div>
             )}

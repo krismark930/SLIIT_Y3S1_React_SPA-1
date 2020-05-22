@@ -73,6 +73,9 @@ const MainNavbar = () => {
                             appContext.hidden ? null :
                               <CartDropdown/>
                           }
+                          <Link to='/comment'>
+                          <Nav.Link href='#about'>Comments</Nav.Link>
+                        </Link>
                         </div>
                       ) :
                       null
