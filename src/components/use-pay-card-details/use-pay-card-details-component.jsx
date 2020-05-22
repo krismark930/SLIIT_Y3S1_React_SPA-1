@@ -10,6 +10,7 @@ const UsePayCardDetails = () => {
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
+  const [isData, setIsData] = useState();
   const [payCardDetails, setPayCardDetails] = useState({
     email: "",
     cardType: "",
@@ -18,6 +19,8 @@ const UsePayCardDetails = () => {
   });
 
   var currentEmail;
+  var countThis = 0;
+  var countAll;
 
 
   useEffect(() => {
@@ -77,11 +80,30 @@ const UsePayCardDetails = () => {
       const responseData = await response.json();
       //const cardid= appContext.editPayCardId;
 
+      countAll = responseData.length;
+
+      if(countAll === 0){
+        setIsData(true);
+      }
+      else{
+        setIsData(false);
+      }
+
       responseData.map(payCard => {
         if ((payCard.email === currentEmail) && (payCard.isSave)) {
 
           setPayCardDetails(payCard);
           appContext.addEditPayCardDetails(payCard);
+          countThis = countThis + 1;
+        }
+
+        if(countAll != 0){
+          if(countThis === 0){
+            setIsData(true);
+          }
+          else{
+            setIsData(false);
+          }
         }
 
       });
@@ -115,7 +137,7 @@ const UsePayCardDetails = () => {
 
   return (
     <div>
-      {isDelete ? (<div><h2>There is no saved data to display</h2></div>) : (<div>
+      {(isData || isDelete ) ? (<div><h2>There is no saved data to display</h2></div>) : (<div>
           <h2>Saved Card Details</h2>
           <table className="table">
 
