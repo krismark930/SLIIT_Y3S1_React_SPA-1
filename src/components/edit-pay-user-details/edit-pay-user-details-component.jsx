@@ -299,10 +299,10 @@ const EditPayUserDetails = props => {
                     <option value="Sabaragamuwa">
                       6.Sabaragamuwa{" "}
                     </option>
-                    <option value=" Southern">
+                    <option value="Southern">
                       7. Southern{" "}
                     </option>
-                    <option value=" Uva">
+                    <option value="Uva">
                       8. Uva{" "}
                     </option>
                     <option value="Central">
