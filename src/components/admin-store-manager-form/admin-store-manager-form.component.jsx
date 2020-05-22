@@ -42,7 +42,14 @@ const AddStoreManagerForm = () => {
     email: ''
   })
 
-  const onSubmitHandle = async (values) => {
+  const resetValues = {
+    firstName: '',
+    lastName: '',
+    teleNo: '',
+    email: ''
+  }
+
+  const onSubmitHandle = async (values, {resetForm}) => {
     setLoading(true)
     setStoreManagerData(values)
     try {
@@ -57,6 +64,13 @@ const AddStoreManagerForm = () => {
       setLoading(false)
     } catch (errors_) {
       setLoading(false)
+    }
+    try {
+      resetForm({
+        values: resetValues
+      })
+    } catch (error) {
+      console.log(error)
     }
   }
 
