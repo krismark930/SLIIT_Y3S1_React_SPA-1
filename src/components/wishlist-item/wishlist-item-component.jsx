@@ -1,18 +1,18 @@
-import React, { useContext, useState } from "react";
-import { AppContext } from "../../Context/app-context";
+import React, {useContext, useState} from "react";
+import {AppContext} from "../../Context/app-context";
 import "./wishlist-item-styles.scss";
-import { Modal, Button } from "react-bootstrap";
+import {Button, Modal} from "react-bootstrap";
 
-const WishListItem = ({ product, removeWishItem }) => {
+const WishListItem = ({product, removeWishItem}) => {
   const appContext = useContext(AppContext);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
-    <div className="wishlist-item" style={{ alignItems: "center" }}>
+    <div className="wishlist-item" style={{alignItems: "center"}}>
       <div className="image-container">
-        <img src={require("../../assets/img1.jpg")} alt="item" />
+        <img src={require("../../assets/img1.jpg")} alt="item"/>
       </div>
       <span className="name">{product.title}</span>
 
