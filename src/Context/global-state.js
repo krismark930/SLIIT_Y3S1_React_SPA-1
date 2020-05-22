@@ -81,6 +81,8 @@ const GlobalState = (props) => {
   ]);
   const [cart, setCart] = useState([]);
   const [currentUser, setCurrentUser] = useState([{ type: "Null" }]);
+  const [ currentUserFirstName, setCurrentUserFirstName] = useState([]);
+  const [ currentUserLastName, setCurrentUserLastName] = useState([]);
   const [payUserDetails, setPayUserDetails] = useState([]);
   const [editPayUserDetails, setEditPayUserDetails] = useState([]);
   const [editPayCardDetails, setEditPayCardDetails] = useState([]);
@@ -336,6 +338,22 @@ const GlobalState = (props) => {
     setCurrentUser(updatedCurrentUser);
   };
 
+  const  addCurrentUserFirstName = name => {
+    const updatedFirstName = [] ;
+    updatedFirstName.push({...name});
+    console.log(updatedFirstName);    
+
+    setCurrentUserFirstName(updatedFirstName);
+  };
+
+  const  addCurrentUserLastName = name => {
+    const updatedLastName = [] ;
+    updatedLastName.push({...name});
+    console.log(updatedLastName);    
+
+    setCurrentUserLastName(updatedLastName);
+  };
+
   const payUserEdit = (state) => {
     setEditPayUser(true);
   };
@@ -427,6 +445,8 @@ const GlobalState = (props) => {
         payCardConfirmed: payCardConfirmed,
         cart: cart,
         currentUser: currentUser,
+        currentUserFirstName: currentUserFirstName,
+        currentUserLastName: currentUserLastName,
         payUserDetails: payUserDetails,
         editPayUserDetails: editPayUserDetails,
         editPayCardDetails: editPayCardDetails,
@@ -458,6 +478,8 @@ const GlobalState = (props) => {
         addEditPayUserDetails: addEditPayUserDetails,
         addEditPayCardDetails: addEditPayCardDetails,
         addCurrentUser: addCurrentUser,
+        addCurrentUserFirstName: addCurrentUserFirstName,
+        addCurrentUserLastName: addCurrentUserLastName,
         addItemToCart: addItemToCart,
         addPayUserDetails: addPayUserDetails,
         addPayCardDetails: addPayCardDetails,
