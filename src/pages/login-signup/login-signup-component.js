@@ -7,7 +7,10 @@ import SignupForm from "../../components/signup-form/signup-form-component";
 
 const LoginSignup = (props) => {
   return (
-    <div className="loginSignupMainHead">
+    <div
+      className="loginSignupMainHead"
+      style={{ marginTop: "10%", marginBottom: "4%" }}
+    >
       {/* <ProductAdd/> */}
       <div className="container">
         <Row>
@@ -17,7 +20,9 @@ const LoginSignup = (props) => {
               style={{ background: "white", borderRadius: "8px" }}
             >
               <h4>I already have an account </h4>
-              <p>Signin using email and password</p>
+              <p style={{ textAlign: "center" }}>
+                Signin using email and password
+              </p>
               <LoginForm />
             </div>
           </Col>
@@ -26,8 +31,10 @@ const LoginSignup = (props) => {
               className="loginSignupPageSignupForm"
               style={{ background: "white", borderRadius: "8px" }}
             >
-              <h4>I don't have an account </h4>
-              <p>Signin using required details</p>
+              <h4 style={{ textAlign: "center" }}>I don't have an account </h4>
+              <p style={{ textAlign: "center" }}>
+                Signin using required details
+              </p>
               <SignupForm />
             </div>
           </Col>

@@ -24,10 +24,7 @@ const MainNavbar = () => {
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#features">Shop</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
+          <Nav className="mr-auto"></Nav>
           <Nav className=" float-right">
             {appContext.loggedin ? (
               <Nav>
