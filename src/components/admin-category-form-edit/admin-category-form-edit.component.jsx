@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react'
 import {Formik} from 'formik'
 import {Button, Col, Form, Spinner} from 'react-bootstrap'
 import * as yup from 'yup'
-import {FaBrush, FaEdit} from 'react-icons/fa'
+import {FaArrowAltCircleLeft, FaBrush, FaEdit} from 'react-icons/fa'
 import {AppContext} from '../../Context/app-context'
 import './admin-category-form-edit-styles.scss'
 
@@ -45,6 +45,10 @@ const EditCategoryForm = () => {
     } catch (errors_) {
       setLoading(false)
     }
+  }
+
+  const goBack = async () => {
+    appContext.editCategoryFalse()
   }
 
   return (
@@ -108,14 +112,39 @@ const EditCategoryForm = () => {
                 />
               )}
               <Form.Row>
-                <Form.Group as={Col} md='6'>
+                <Form.Group as={Col} md='4'>
+                  <Button
+                    type='button'
+                    onClick={goBack}
+                    disabled={isSubmitting}
+                    style={{
+                      marginTop: '15%',
+                      marginLeft: '10%',
+                      marginRight: 'auto',
+                      paddingLeft: '15px',
+                      paddingRight: '15px',
+                      paddingTop: '10px',
+                      paddingBottom: '10px'
+                    }}
+                  >
+                    <FaArrowAltCircleLeft
+                      style={{
+                        marginRight: '9px',
+                        marginBottom: '6px'
+                      }}
+                    />
+                    Back
+                  </Button>
+                </Form.Group>
+                <Form.Group as={Col} md='4'>
                   <Button
                     type='button'
                     onClick={handleReset}
                     disabled={isSubmitting}
                     style={{
-                      marginTop: '10%',
-                      marginLeft: '30%',
+                      marginTop: '15%',
+                      marginLeft: '13%',
+                      marginRight: 'auto',
                       paddingLeft: '15px',
                       paddingRight: '15px',
                       paddingTop: '10px',
@@ -131,13 +160,14 @@ const EditCategoryForm = () => {
                     Reset
                   </Button>
                 </Form.Group>
-                <Form.Group as={Col} md='6'>
+                <Form.Group as={Col} md='4'>
                   <Button
                     type='submit'
                     disabled={isSubmitting}
                     style={{
-                      marginTop: '10%',
-                      marginLeft: '20%',
+                      marginTop: '15%',
+                      marginLeft: '17%',
+                      marginRight: 'auto',
                       paddingLeft: '15px',
                       paddingRight: '15px',
                       paddingTop: '10px',
