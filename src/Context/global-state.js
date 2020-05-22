@@ -106,6 +106,18 @@ const GlobalState = (props) => {
     },
   ]);
 
+  const setCheckAdminMethod = () => {
+    setCheckAdmin(true);
+  };
+
+  const setCheckCustomerMethod = () => {
+    setCheckCustomer(true);
+  };
+
+  const setChecksetCheckStoreManagerMethod = () => {
+    setCheckStoreManager(true);
+  };
+
   const addItemToCart = (item) => {
     const updatedCart = cart;
     let itemId = item.id;
@@ -461,6 +473,9 @@ const GlobalState = (props) => {
         editCategoryFalse: editCategoryFalse,
         setEditCategoryId: setEditCategoryId,
         addCategories: addCategories,
+        setCheckAdminMethod: setCheckAdminMethod,
+        setCheckCustomerMethod: setCheckCustomerMethod,
+        setChecksetCheckStoreManagerMethod: setChecksetCheckStoreManagerMethod,
       }}
     >
       {props.children}

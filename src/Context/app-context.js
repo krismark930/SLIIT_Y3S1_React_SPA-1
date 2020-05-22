@@ -67,4 +67,7 @@ export const AppContext = createContext({
   editCategoryFalse: (state) => {},
   setEditCategoryId: (id) => {},
   addCategories: (category) => {},
+  setCheckAdminMethod: () => {},
+  setCheckCustomerMethod: () => {},
+  setChecksetCheckStoreManagerMethod: () => {},
 });
