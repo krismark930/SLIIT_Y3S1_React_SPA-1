@@ -22,6 +22,7 @@
     "react-scripts": "3.4.0",
     "semantic-ui-react": "^0.87.3",
     "typescript": "^3.8.3",
+    "webfontloader": "^1.6.28",
     "yup": "^0.28.3"
   },
   "scripts": {

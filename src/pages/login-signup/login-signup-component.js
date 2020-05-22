@@ -17,10 +17,29 @@ const LoginSignup = (props) => {
           <Col md="4">
             <div
               className="loginSignupPageLginForm"
-              style={{ background: "white", borderRadius: "8px" }}
+              style={{
+                background: "white",
+                borderRadius: "8px",
+                padding: "6%",
+              }}
             >
-              <h4>I already have an account </h4>
-              <p style={{ textAlign: "center" }}>
+              <h4
+                style={{
+                  fontFamily: "Lemonada",
+                  textAlign: "center",
+                  fontSize: "23px",
+                }}
+              >
+                I already have an account{" "}
+              </h4>
+              <p
+                style={{
+                  fontFamily: "Work Sans",
+                  textAlign: "center",
+                  fontSize: "14px",
+                  marginBottom: "15px",
+                }}
+              >
                 Signin using email and password
               </p>
               <LoginForm />

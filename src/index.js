@@ -5,13 +5,13 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import GlobalState from "./Context/global-state";
-// import WebFont from "webfontloader";
+import WebFont from "webfontloader";
 
-// WebFont.load({
-//   google: {
-//     families: ["Work Sans", "Lemonada", "Roboto Slab", "Dancing Script"],
-//   },
-// });
+WebFont.load({
+  google: {
+    families: ["Work Sans", "Lemonada", "Roboto Slab", "Dancing Script"],
+  },
+});
 
 ReactDOM.render(
   <BrowserRouter>
