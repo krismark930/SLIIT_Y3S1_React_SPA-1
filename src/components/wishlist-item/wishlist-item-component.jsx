@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
-import { AppContext } from "../../Context/app-context";
+import React, {useContext, useState} from "react";
+import {AppContext} from "../../Context/app-context";
 import "./wishlist-item-styles.scss";
-import { Modal, Button } from "react-bootstrap";
+import {Button, Modal} from "react-bootstrap";
 
 const WishListItem = ({product, removeWishItem}) => {
   const appContext = useContext(AppContext);
