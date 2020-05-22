@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react'
 import {Formik} from 'formik'
 import {Button, Col, Form, Spinner} from 'react-bootstrap'
 import * as yup from 'yup'
-import {FaUserEdit} from 'react-icons/fa'
+import {FaBrush, FaUserEdit} from 'react-icons/fa'
 import {AppContext} from '../../Context/app-context'
 import './admin-store-manager-form-edit-styles.scss'
 
@@ -22,6 +22,8 @@ const schema = yup.object().shape({
       /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/g,
       'Please enter a valid phone number.'
     )
+    .max(10, 'Please enter a valid phone number with only 10 digits.')
+    .min(10, 'Please enter a valid phone number with 10 digits.')
 })
 
 let errors_ = ''
@@ -66,6 +68,7 @@ const EditStoreManagerForm = () => {
         >
           {({
               handleSubmit,
+              handleReset,
               isSubmitting,
               handleChange,
               handleBlur,
@@ -151,26 +154,53 @@ const EditStoreManagerForm = () => {
                   style={{textAlign: 'center', marginLeft: '48%'}}
                 />
               )}
-              <Button
-                type='submit'
-                disabled={isSubmitting}
-                style={{
-                  marginTop: '3%',
-                  marginLeft: '40%',
-                  paddingLeft: '15px',
-                  paddingRight: '15px',
-                  paddingTop: '10px',
-                  paddingBottom: '10px'
-                }}
-              >
-                <FaUserEdit
-                  style={{
-                    marginRight: '9px',
-                    marginBottom: '6px'
-                  }}
-                />
-                Edit
-              </Button>
+              <Form.Row>
+                <Form.Group as={Col} md='6'>
+                  <Button
+                    type='button'
+                    onClick={handleReset}
+                    disabled={isSubmitting}
+                    style={{
+                      marginTop: '10%',
+                      marginLeft: '30%',
+                      paddingLeft: '15px',
+                      paddingRight: '15px',
+                      paddingTop: '10px',
+                      paddingBottom: '10px'
+                    }}
+                  >
+                    <FaBrush
+                      style={{
+                        marginRight: '9px',
+                        marginBottom: '6px'
+                      }}
+                    />
+                    Reset
+                  </Button>
+                </Form.Group>
+                <Form.Group as={Col} md='6'>
+                  <Button
+                    type='submit'
+                    disabled={isSubmitting}
+                    style={{
+                      marginTop: '10%',
+                      marginLeft: '20%',
+                      paddingLeft: '15px',
+                      paddingRight: '15px',
+                      paddingTop: '10px',
+                      paddingBottom: '10px'
+                    }}
+                  >
+                    <FaUserEdit
+                      style={{
+                        marginRight: '9px',
+                        marginBottom: '6px'
+                      }}
+                    />
+                    Edit
+                  </Button>
+                </Form.Group>
+              </Form.Row>
               {errors_ && <div id='serverErrors'>{errors_}</div>}
             </Form>
           )}

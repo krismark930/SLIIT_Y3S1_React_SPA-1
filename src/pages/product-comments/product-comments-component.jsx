@@ -6,7 +6,6 @@ import AddComment from "../../components/add-comment/add-comment-component";
 import DisplayComments from "../../components/display-comments/display-comments-component";
 
 
-
 import {AppContext} from "../../Context/app-context";
 
 
@@ -14,11 +13,11 @@ const ProductComments = props => {
   let route;
   const app = useContext(AppContext);
 
- /* if (app.editPayUser) {
-    route = (<EditPayUserDetails/>);
-  } else {
-    route = (<AddPayUserDetails/>);
-  }*/
+  /* if (app.editPayUser) {
+     route = (<EditPayUserDetails/>);
+   } else {
+     route = (<AddPayUserDetails/>);
+   }*/
 
   const productId = 1;
 
@@ -30,7 +29,7 @@ const ProductComments = props => {
             <div className="loginSignupPageLginForm">
 
 
-            <AddComment pid={productId}/>
+              <AddComment pid={productId}/>
             </div>
           </Col>
           <Col md="6" className="clll">
