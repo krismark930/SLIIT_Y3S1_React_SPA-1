@@ -1,5 +1,6 @@
 import React from "react";
 import "./footer-styles.scss";
+
 const Footer = (p) => {
   return (
     <div>
@@ -27,7 +28,7 @@ const Footer = (p) => {
           </ul>
 
           <p class="text-center">
-            Copyright @2020 | Designed With by <a href="#">SLIIT AF GRP</a>
+            Copyright @2020 | Designed by <a href="#">SLIIT AF GROUP</a>
           </p>
 
           <ul class="social_footer_ul">
