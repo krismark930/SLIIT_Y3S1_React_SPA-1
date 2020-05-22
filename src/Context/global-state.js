@@ -169,19 +169,19 @@ const GlobalState = (props) => {
   };
 
   // const setWishListMethod = async (wishlist) => {
-  //   console.log("setWishListMethod");
-  //   const wishLis = wishList;
-  //   let wishL = [];
-  //   wishL.push(...wishLis);
-  //   console.log(wishL);
-  //   setWishList(wishL);
-  //   console.log(wishList);
-  // };
+  //   console.log('setWishListMethod')
+  //   const wishLis = wishList
+  //   let wishL = []
+  //   wishL.push(...wishLis)
+  //   console.log(wishL)
+  //   setWishList(wishL)
+  //   console.log(wishList)
+  // }
 
   // const getWishList = () => {
-  //   console.log("getWishList");
-  //   return wishList;
-  // };
+  //   console.log('getWishList')
+  //   return wishList
+  // }
 
   const setChangeWishListProduct = (product) => {
     // let tempProduct = products;
@@ -223,17 +223,14 @@ const GlobalState = (props) => {
       var fill = filtered.concat(filteredAll);
       console.log(filtered);
       filteredAll = fill;
-
       products.forEach((pitem) => {
         if (pitem.title == item.productID) {
           let temp = { ...pitem, wishList: 1 };
-
           filtering = filtering.filter(
             (pitem) => pitem.title != item.productID
           );
-          // let temp2 = filtering;
+          // let temp2 = filtering
           filtering.push(temp);
-
           console.log("++++++++++++++++++++++");
           console.log(filtering);
         }
@@ -486,6 +483,7 @@ const GlobalState = (props) => {
         editCategory: editCategory,
         editCategoryId: editCategoryId,
         categories: categories,
+
         payUserEdit: payUserEdit,
         payUserEditFalse: payUserEditFalse,
         setEditPayUserID: setEditPayUserID,
@@ -513,7 +511,6 @@ const GlobalState = (props) => {
         setChangeWishListProduct: setChangeWishListProduct,
 
         setWishListmethod: setWishListmethod,
-
         addToWishList: addToWishList,
         setCheckAdminMethod: setCheckAdminMethod,
         setCheckCustomerMethod: setCheckCustomerMethod,

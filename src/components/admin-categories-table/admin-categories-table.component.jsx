@@ -14,6 +14,7 @@ const ManageCategoryTable = () => {
       const responseData = await response.json()
       setCategories(responseData)
       appContext.addCategories(responseData)
+      appContext.editStoreManagerFalse()
     } catch (errors) {
       console.log(errors)
     }

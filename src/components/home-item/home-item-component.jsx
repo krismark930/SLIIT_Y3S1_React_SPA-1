@@ -35,6 +35,7 @@ const HomeItem = ({ item }) => {
         {item.wishList ? (
           <span>
             <FaHeart
+              // onClick={() => appContext.addToWishList(item)}
               style={{
                 marginRight: "6px",
                 marginLeft: "6px",
@@ -45,6 +46,7 @@ const HomeItem = ({ item }) => {
         ) : (
           <span>
             <FaRegHeart
+              // onClick={() => appContext.addToWishList(item)}
               style={{
                 marginRight: "6px",
                 marginLeft: "6px",

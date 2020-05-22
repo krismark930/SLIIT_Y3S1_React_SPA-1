@@ -33,7 +33,7 @@ const EditStoreManagerForm = () => {
 
   let userId
 
-  const onSubmitHand = async (values) => {
+  const onSubmitHandle = async (values) => {
     setLoading(true)
     store_manager = {...values}
     try {
@@ -61,7 +61,7 @@ const EditStoreManagerForm = () => {
       <div>
         <Formik
           validationSchema={schema}
-          onSubmit={onSubmitHand}
+          onSubmit={onSubmitHandle}
           initialValues={appContext.storeManagers[0]}
         >
           {({
