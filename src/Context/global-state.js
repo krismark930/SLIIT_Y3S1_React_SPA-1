@@ -78,21 +78,19 @@ const GlobalState = (props) => {
       category: 'Hats',
       productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
     },
-  ]);
-  const [cart, setCart] = useState([]);
-  const [currentUser, setCurrentUser] = useState([{ type: "Null" }]);
-  const [ currentUserFirstName, setCurrentUserFirstName] = useState([]);
-  const [ currentUserLastName, setCurrentUserLastName] = useState([]);
-  const [payUserDetails, setPayUserDetails] = useState([]);
-  const [editPayUserDetails, setEditPayUserDetails] = useState([]);
-  const [editPayCardDetails, setEditPayCardDetails] = useState([]);
-  const [payCardDetails, setPayCardDetails] = useState([]);
-  const [payOrderDetails, setPayOrderDetails] = useState([]);
-  const [editStoreManager, setEditStoreManager] = useState(false);
-  const [editStoreManagerId, setEditStoreManagerID] = useState("1");
-  const [storeManagers, setStoreManagers] = useState([]);
-  const [editCategory, setEditCategory] = useState(false);
-  const [editCategoryId, setEditCategoryID] = useState("1");
+  ])
+  const [cart, setCart] = useState([])
+  const [currentUser, setCurrentUser] = useState([{type: 'Null'}])
+  const [payUserDetails, setPayUserDetails] = useState([])
+  const [editPayUserDetails, setEditPayUserDetails] = useState([])
+  const [editPayCardDetails, setEditPayCardDetails] = useState([])
+  const [payCardDetails, setPayCardDetails] = useState([])
+  const [payOrderDetails, setPayOrderDetails] = useState([])
+  const [editStoreManager, setEditStoreManager] = useState(false)
+  const [editStoreManagerId, setEditStoreManagerID] = useState('1')
+  const [storeManagers, setStoreManagers] = useState([])
+  const [editCategory, setEditCategory] = useState(false)
+  const [editCategoryId, setEditCategoryID] = useState('1')
   const [categories, setCategories] = useState([
     {
       categoryTitle: 'Hats',
@@ -337,21 +335,9 @@ const GlobalState = (props) => {
     setCurrentUser(updatedCurrentUser)
   }
 
-  const  addCurrentUserFirstName = name => {
-    const updatedFirstName = [] ;
-    updatedFirstName.push({...name});
-    console.log(updatedFirstName);    
-
-    setCurrentUserFirstName(updatedFirstName);
-  };
-
-  const  addCurrentUserLastName = name => {
-    const updatedLastName = [] ;
-    updatedLastName.push({...name});
-    console.log(updatedLastName);    
-
-    setCurrentUserLastName(updatedLastName);
-  };
+  const payUserEdit = (state) => {
+    setEditPayUser(true)
+  }
 
   const payUserEdit = (state) => {
     setEditPayUser(true)
