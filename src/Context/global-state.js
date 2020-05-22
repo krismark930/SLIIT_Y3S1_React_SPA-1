@@ -79,6 +79,7 @@ const GlobalState = (props) => {
       productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
     },
   ]);
+  const [tempProducts, setTempProducts] = useState(products);
   const [cart, setCart] = useState([]);
   const [currentUser, setCurrentUser] = useState([{type: "Null"}]);
   const [currentUserFirstName, setCurrentUserFirstName] = useState([]);
@@ -93,7 +94,6 @@ const GlobalState = (props) => {
   const [storeManagers, setStoreManagers] = useState([]);
   const [editCategory, setEditCategory] = useState(false);
   const [editCategoryId, setEditCategoryID] = useState("1");
-  const [tempProducts, setTempProducts] = useState(products);
   const [categories, setCategories] = useState([
     {
       categoryTitle: "Hats",
@@ -108,18 +108,6 @@ const GlobalState = (props) => {
       categoryTitle: "Shoes",
     },
   ]);
-
-  const setCheckAdminMethod = () => {
-    setCheckAdmin(true);
-  };
-
-  const setCheckCustomerMethod = () => {
-    setCheckCustomer(true);
-  };
-
-  const setChecksetCheckStoreManagerMethod = () => {
-    setCheckStoreManager(true);
-  };
 
   const addItemToCart = (item) => {
     const updatedCart = cart;
@@ -222,7 +210,6 @@ const GlobalState = (props) => {
       const indexOfItem = products.findIndex(
         (ppitem) => ppitem.title === item.productID
       );
-
       console.log(item);
       var filtered = products.filter((pitem) => pitem.title == item.productID);
       var fill = filtered.concat(filteredAll);
@@ -421,11 +408,23 @@ const GlobalState = (props) => {
     setPayCardConfirmed(false);
   };
 
-  const storeManagerEdit = (state) => {
+  const setCheckAdminMethod = () => {
+    setCheckAdmin(true);
+  };
+
+  const setCheckCustomerMethod = () => {
+    setCheckCustomer(true);
+  };
+
+  const setChecksetCheckStoreManagerMethod = () => {
+    setCheckStoreManager(true);
+  };
+
+  const storeManagerEdit = () => {
     setEditStoreManager(true);
   };
 
-  const editStoreManagerFalse = (state) => {
+  const editStoreManagerFalse = () => {
     setEditStoreManager(false);
   };
 
@@ -439,11 +438,11 @@ const GlobalState = (props) => {
     setStoreManagers(updatedStoreManager);
   };
 
-  const categoryEdit = (state) => {
+  const categoryEdit = () => {
     setEditCategory(true);
   };
 
-  const editCategoryFalse = (state) => {
+  const editCategoryFalse = () => {
     setEditCategory(false);
   };
 
