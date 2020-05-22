@@ -53,14 +53,14 @@ const ManageStoreManagerTable = () => {
 
   return (
     <div>
-      <table className='table' style={{border: 'solid darkblue 2px'}}>
-        <thead>
-        <th style={{borderBottom: 'solid darkblue 2px'}}>First Name</th>
-        <th style={{borderBottom: 'solid darkblue 2px'}}>Last Name</th>
-        <th style={{borderBottom: 'solid darkblue 2px'}}>Email</th>
-        <th style={{borderBottom: 'solid darkblue 2px'}}>Phone Number</th>
-        <th style={{borderBottom: 'solid darkblue 2px'}}/>
-        <th style={{borderBottom: 'solid darkblue 2px'}}/>
+      <table className='table' style={{border: 'solid darkblue 1px'}}>
+        <thead style={{backgroundColor: '#0350a2'}}>
+        <th style={{borderBottom: 'solid darkblue 1px'}}>First Name</th>
+        <th style={{borderBottom: 'solid darkblue 1px'}}>Last Name</th>
+        <th style={{borderBottom: 'solid darkblue 1px'}}>Email</th>
+        <th style={{borderBottom: 'solid darkblue 1px'}}>Phone Number</th>
+        <th style={{borderBottom: 'solid darkblue 1px'}}/>
+        <th style={{borderBottom: 'solid darkblue 1px'}}/>
         </thead>
         <tbody>
         {storeManagers.map((storeManager) => {
