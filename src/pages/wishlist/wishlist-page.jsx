@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../Context/app-context";
+import React, {useContext, useEffect, useState} from "react";
+import {AppContext} from "../../Context/app-context";
 import WishListItem from "../../components/wishlist-item/wishlist-item-component";
-import { Button } from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import "./wishlist-styles.scss";
 import { FaRegHourglass } from "react-icons/fa";
 
@@ -75,7 +75,7 @@ const WishListPage = (props) => {
         }
       );
 
-      let tempChnage = { ...product, wishList: 0 };
+      let tempChnage = {...product, wishList: 0};
 
       console.log(tempChnage);
 
@@ -147,7 +147,7 @@ const WishListPage = (props) => {
         <Button
           className="buyNowBtn"
           type="submit"
-          style={{ float: "right" }}
+          style={{float: "right"}}
           onClick={() => moveWishListToCart()}
         >
           Add to Cart
