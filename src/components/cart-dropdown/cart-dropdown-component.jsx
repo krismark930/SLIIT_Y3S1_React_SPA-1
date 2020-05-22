@@ -1,11 +1,11 @@
-import React, {useContext} from "react";
-import {FaShoppingCart} from "react-icons/fa";
-import {Button} from "react-bootstrap";
+import React, { useContext } from "react";
+import { FaShoppingCart } from "react-icons/fa";
+import { Button } from "react-bootstrap";
 
 import "./cart-dropdown-styles.scss";
 import CartItem from "../cart-item/cart-item-component";
-import {Link} from "react-router-dom";
-import {AppContext} from "../../Context/app-context";
+import { Link } from "react-router-dom";
+import { AppContext } from "../../Context/app-context";
 
 // const cartItems = [
 //   {
@@ -31,39 +31,41 @@ import {AppContext} from "../../Context/app-context";
 //   }
 // ];
 
-const CartDropdown = ({checkoutToggle}) => {
+const CartDropdown = ({ checkoutToggle }) => {
   const appContext = useContext(AppContext);
 
   const setFalseCardAndUser = () => {
-    console.log("go to checkout eka click kala");
     appContext.setFalsePayUserConfirmed();
     appContext.setFalsePayCardConfirmed();
-  }
+  };
 
   return (
     <div className="cart-dropdown">
       <div className="cart-items">
         {appContext.cart.length ? (
-          appContext.cart.map(cartItem => (
-            <CartItem key={cartItem.id} item={cartItem}/>
+          appContext.cart.map((cartItem) => (
+            <CartItem key={cartItem.id} item={cartItem} />
           ))
         ) : (
           <span className="red-text empty-cart">Cart is Empty</span>
         )}
       </div>
 
-      <Link to="/checkout-page" onClick={() => {
-        setFalseCardAndUser()
-      }}>
+      <Link
+        to="/checkout-page"
+        onClick={() => {
+          setFalseCardAndUser();
+        }}
+      >
         <Button
           type="submit"
-          style={{marginTop: "10px"}}
+          style={{ marginTop: "10px", marginLeft: "17%" }}
           onClick={appContext.toggleDropdownHidden}
         >
           <FaShoppingCart
             style={{
               marginRight: "10px",
-              marginBottom: "3px"
+              marginBottom: "3px",
             }}
           />
           Go to checkout
