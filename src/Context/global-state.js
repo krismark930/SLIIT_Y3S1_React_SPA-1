@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { AppContext } from "./app-context";
+import React, {useState} from "react";
+import {AppContext} from "./app-context";
 
 const GlobalState = (props) => {
   const [loggedin, setLoggedin] = useState(false);
@@ -13,7 +13,6 @@ const GlobalState = (props) => {
   const [wishList, setWishList] = useState();
   const [checkAdmin, setCheckAdmin] = useState(false);
   const [checkCustomer, setCheckCustomer] = useState(false);
-
   const [checkStoreManager, setCheckStoreManager] = useState(false);
   const [products, setProducts] = useState([
     {
@@ -81,7 +80,7 @@ const GlobalState = (props) => {
     },
   ]);
   const [cart, setCart] = useState([]);
-  const [currentUser, setCurrentUser] = useState([{ type: "Null" }]);
+  const [currentUser, setCurrentUser] = useState([{type: "Null"}]);
   const [currentUserFirstName, setCurrentUserFirstName] = useState([]);
   const [currentUserLastName, setCurrentUserLastName] = useState([]);
   const [payUserDetails, setPayUserDetails] = useState([]);
@@ -129,7 +128,7 @@ const GlobalState = (props) => {
       (item) => item.id === itemId
     );
     if (updatedItemIndex < 0) {
-      updatedCart.push({ ...item, quantity: 1 });
+      updatedCart.push({...item, quantity: 1});
     } else {
       const updatedItem = {
         ...updatedCart[updatedItemIndex],
@@ -191,7 +190,9 @@ const GlobalState = (props) => {
     // console.log("//////////////////");
     // console.log(filtered);
   };
+
   const products1 = tempProducts;
+
   const setWishListmethod = async (mail) => {
     console.log("setWishListmethod");
     let filteredAll = [];
@@ -225,7 +226,7 @@ const GlobalState = (props) => {
       filteredAll = fill;
       products.forEach((pitem) => {
         if (pitem.title == item.productID) {
-          let temp = { ...pitem, wishList: 1 };
+          let temp = {...pitem, wishList: 1};
           filtering = filtering.filter(
             (pitem) => pitem.title != item.productID
           );
@@ -279,7 +280,7 @@ const GlobalState = (props) => {
 
   const addProducts = (products) => {
     const products_ = [];
-    products_.push({ ...products });
+    products_.push({...products});
     setProducts(products_);
   };
 
@@ -327,50 +328,50 @@ const GlobalState = (props) => {
 
   const addPayCardDetails = (payCard) => {
     const updatedPayCard = [];
-    updatedPayCard.push({ ...payCard });
+    updatedPayCard.push({...payCard});
     setPayCardDetails(updatedPayCard);
   };
 
   const addPayUserDetails = (payUser) => {
     const updatedPayUser = [];
-    updatedPayUser.push({ ...payUser });
+    updatedPayUser.push({...payUser});
     setPayUserDetails(updatedPayUser);
   };
 
   const addEditPayUserDetails = (payUser) => {
     const updatedPayUser = [];
-    updatedPayUser.push({ ...payUser });
+    updatedPayUser.push({...payUser});
     setEditPayUserDetails(updatedPayUser);
   };
 
   const addEditPayCardDetails = (payCard) => {
     const updatedPayCard = [];
-    updatedPayCard.push({ ...payCard });
+    updatedPayCard.push({...payCard});
     setEditPayCardDetails(updatedPayCard);
   };
 
   const addPayOrderDetails = (payOrder) => {
     const updatedPayOrder = [];
-    updatedPayOrder.push({ ...payOrder });
+    updatedPayOrder.push({...payOrder});
     setPayOrderDetails(updatedPayOrder);
   };
 
   const addCurrentUser = (user) => {
     const updatedCurrentUser = [];
-    updatedCurrentUser.push({ ...user });
+    updatedCurrentUser.push({...user});
     setCurrentUser(updatedCurrentUser);
   };
 
   const addCurrentUserFirstName = (name) => {
     const updatedFirstName = [];
-    updatedFirstName.push({ ...name });
+    updatedFirstName.push({...name});
     console.log(updatedFirstName);
     setCurrentUserFirstName(updatedFirstName);
   };
 
   const addCurrentUserLastName = (name) => {
     const updatedLastName = [];
-    updatedLastName.push({ ...name });
+    updatedLastName.push({...name});
     console.log(updatedLastName);
     setCurrentUserLastName(updatedLastName);
   };
@@ -429,7 +430,7 @@ const GlobalState = (props) => {
 
   const addStoreManagers = (storeManager) => {
     const updatedStoreManager = [];
-    updatedStoreManager.push({ ...storeManager });
+    updatedStoreManager.push({...storeManager});
     setStoreManagers(updatedStoreManager);
   };
 
@@ -447,7 +448,7 @@ const GlobalState = (props) => {
 
   const addCategories = (category) => {
     const updatedCategory = [];
-    updatedCategory.push({ ...category });
+    updatedCategory.push({...category});
     setCategories(updatedCategory);
   };
 
@@ -509,7 +510,6 @@ const GlobalState = (props) => {
         removeItemFromCart: removeItemFromCart,
         toggleDropdownHidden: toggleDropdownHidden,
         setChangeWishListProduct: setChangeWishListProduct,
-
         setWishListmethod: setWishListmethod,
         addToWishList: addToWishList,
         setCheckAdminMethod: setCheckAdminMethod,

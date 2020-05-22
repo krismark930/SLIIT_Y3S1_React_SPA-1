@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-import { AppContext } from "../../Context/app-context";
+import React, {useContext} from "react";
+import {AppContext} from "../../Context/app-context";
 import "./wishlist-item-styles.scss";
 
-const WishListItem = ({ product, removeWishItem }) => {
+const WishListItem = ({product, removeWishItem}) => {
   const appContext = useContext(AppContext);
 
   return (
-    <div className="wishlist-item" style={{ alignItems: "center" }}>
+    <div className="wishlist-item" style={{alignItems: "center"}}>
       <div className="image-container">
-        <img src={require("../../assets/img1.jpg")} alt="item" />
+        <img src={require("../../assets/img1.jpg")} alt="item"/>
       </div>
       <span className="name">{product.title}</span>
 
