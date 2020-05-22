@@ -146,11 +146,11 @@ const AddComment = props => {
     }
 
     try {
-   
-      resetForm({values:resvalues})
+
+      resetForm({values: resvalues})
       console.log("me reset eke values thama");
       console.log(values);
-      
+
     } catch (error) {
       console.log(error);
     }
@@ -203,7 +203,7 @@ const AddComment = props => {
 
               <Button
                 type="submit"
-               
+
                 disabled={isSubmitting}
                 style={{marginTop: "5px", marginRight: "5px"}}
               >

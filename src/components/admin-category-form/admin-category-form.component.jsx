@@ -27,7 +27,12 @@ const AddCategoryForm = () => {
     categoryDescription: ''
   })
 
-  const onSubmitHandle = async (values) => {
+  const resetValues = {
+    categoryTitle: '',
+    categoryDescription: ''
+  }
+
+  const onSubmitHandle = async (values, {resetForm}) => {
     setLoading(true)
     setCategoryData(values)
     try {
@@ -42,6 +47,13 @@ const AddCategoryForm = () => {
       setLoading(false)
     } catch (errors_) {
       setLoading(false)
+    }
+    try {
+      resetForm({
+        values: resetValues
+      })
+    } catch (error) {
+      console.log(error)
     }
   }
 
