@@ -43,6 +43,10 @@ const WishListPage = (props) => {
         }
       );
 
+      wishList.forEach((item) => {
+        appContext.addItemToCart(item);
+      });
+
       responseData = await response.json();
       appContext.setWishListmethod(appContext.currentUser[0].email);
       console.log(responseData.message);
