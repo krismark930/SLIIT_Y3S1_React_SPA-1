@@ -1,7 +1,7 @@
-import React, {useContext, useEffect, useState} from "react";
-import {AppContext} from "../../Context/app-context";
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../Context/app-context";
 import WishListItem from "../../components/wishlist-item/wishlist-item-component";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./wishlist-styles.scss";
 
 const WishListPage = (props) => {
@@ -26,6 +26,32 @@ const WishListPage = (props) => {
   console.log(wishList);
   console.log("------");
   console.log(appContext);
+
+  const moveWishListToCart = async () => {
+    let responseData = 0;
+    const mail = appContext.currentUser[0].email;
+    var responseError = "";
+    try {
+      const response = await fetch(
+        `http://localhost:5000/users/deleteWishList/${mail}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(),
+        }
+      );
+
+      responseData = await response.json();
+      appContext.setWishListmethod(appContext.currentUser[0].email);
+      console.log(responseData.message);
+    } catch (err) {
+      console.log(err.message);
+    }
+
+    setWishList([]);
+  };
 
   const removeWishItem = async (title) => {
     let responseData = 0;
@@ -84,8 +110,8 @@ const WishListPage = (props) => {
       <Button
         className="buyNowBtn"
         type="submit"
-        style={{float: "right"}}
-        onClick={() => appContext.addWishListToCart(wishList)}
+        style={{ float: "right" }}
+        onClick={() => moveWishListToCart()}
       >
         Add to Cart
       </Button>
