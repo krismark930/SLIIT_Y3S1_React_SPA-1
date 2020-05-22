@@ -27,6 +27,13 @@ const AddComment = props => {
     comment: ""
   });
 
+  const resvalues = {
+    product_id: "",
+    user_email: "",
+    user_firstName: "",
+    user_lastName: "",
+    comment: ""
+  };
   var productComment;
 
   var productID = props.pid;
@@ -42,7 +49,7 @@ const AddComment = props => {
 
   }, [commentDetails]);
 
-  const onSubmitHandle = async (values, {setSubmitting}) => {
+  const onSubmitHandle = async (values, {setSubmitting, resetForm}) => {
 
     console.log("Ane manda");
     console.log(values);
@@ -138,6 +145,17 @@ const AddComment = props => {
       setError(errorss.message || "Something went wrong, try again later");
     }
 
+    try {
+   
+      resetForm({values:resvalues})
+      console.log("me reset eke values thama");
+      console.log(values);
+      
+    } catch (error) {
+      console.log(error);
+    }
+
+    //document.getElementById("exampleForm").reset();
 
   };
 
@@ -160,7 +178,7 @@ const AddComment = props => {
               isValid,
               errors
             }) => (
-            <Form noValidate onSubmit={handleSubmit}>
+            <Form noValidate onSubmit={handleSubmit} id="exampleForm">
 
 
               <Form.Row>
@@ -185,6 +203,7 @@ const AddComment = props => {
 
               <Button
                 type="submit"
+               
                 disabled={isSubmitting}
                 style={{marginTop: "5px", marginRight: "5px"}}
               >
