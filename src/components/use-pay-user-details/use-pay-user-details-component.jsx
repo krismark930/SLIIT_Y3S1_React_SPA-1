@@ -10,6 +10,7 @@ const UsePayUserDetails = () => {
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
+  const [isData, setIsData] = useState();
   const [payUserDetails, setPayUserDetails] = useState({
     email: "",
     name: "",
@@ -21,6 +22,8 @@ const UsePayUserDetails = () => {
   });
 
   var currentEmail;
+  var countThis = 0;
+  var countAll;
 
   useEffect(() => {
     appContext.currentUser.forEach(user => {
@@ -28,6 +31,9 @@ const UsePayUserDetails = () => {
     });
 
     getPayUserDetails();
+
+   
+    
 
   }, [payUserDetails, currentEmail, isDelete]);
 
@@ -76,17 +82,51 @@ const UsePayUserDetails = () => {
 
       const responseData = await response.json();
       //const userid= appContext.editPayUserId;
+      countAll = responseData.length;
 
+      if(countAll === 0){
+        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        setIsData(true);
+      }
+      else{
+        setIsData(false);
+      }
+      
+      console.log("ganna thanama response data eka");
+      console.log(responseData.length);
+      
+
+      
+
+      
+     
+
+      //response = responseData;
       responseData.map(payUser => {
         if ((payUser.email === currentEmail) && (payUser.isSave)) {
           setPayUserDetails(payUser);
           appContext.addEditPayUserDetails(payUser);
+          countThis = countThis + 1;
 
         }
+        console.log("*************************************************************");
+        console.log(countAll);
+        console.log(countThis);
+        
+
+        
+          if(countThis === 0){
+            setIsData(true);
+          }
+          else{
+            setIsData(false);
+          }
+        
+      
+
 
       });
 
-      console.log(responseData);
       console.log(payUserDetails);
 
 
@@ -94,6 +134,7 @@ const UsePayUserDetails = () => {
       console.log(errorss);
 
     }
+
   }
 
   /* if(isDelete){
@@ -113,7 +154,7 @@ const UsePayUserDetails = () => {
 
   return (
     <div>
-      {isDelete ? (<div><h2>There is no saved data to display</h2></div>) : (<div>
+      {(isData || isDelete )? (<div><h2>There is no saved data to display</h2></div>) : (<div>
           <table className="table">
             <thead className="thead-light">
             <tr>
