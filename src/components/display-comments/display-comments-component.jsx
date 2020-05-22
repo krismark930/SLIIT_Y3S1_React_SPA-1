@@ -6,32 +6,29 @@ import {Button} from "react-bootstrap";
 import {AppContext} from "../../Context/app-context";
 
 
-const DisplayComments = () => {
+const DisplayComments = props=> {
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
-  const [payUserDetails, setPayUserDetails] = useState({
-    email: "",
-    name: "",
-    phone: "",
-    address: "",
-    city: "",
-    province: "",
-    isSave: false
-  });
+  const [commentDetails, setCommentDetails] = useState([]);
 
   var currentEmail;
+  var productId = props.pid ;
+  console.log("!!!!!!!!!!!!!!!!!! " + productId)
+
+  const productComments= [];
+
 
   useEffect(() => {
-    appContext.currentUser.forEach(user => {
+  /*appContext.currentUser.forEach(user => {
       currentEmail = user.email;
     });
+*/
+    getComments();
 
-    getPayUserDetails();
+  }, [commentDetails, currentEmail]);
 
-  }, [payUserDetails, currentEmail, isDelete]);
-
-  const setEditPayUser = (id) => {
+ /* const setEditPayUser = (id) => {
     appContext.payUserEdit();
     appContext.setEditPayUserID(id);
     console.log("hi machan edit wada");
@@ -67,27 +64,43 @@ const DisplayComments = () => {
       setLoading(false);
 
     }
-  }
+  }*/
 
-  const getPayUserDetails = async () => {
+  const getComments = async () => {
     console.log("hi details ganna awa");
     try {
-      const response = await fetch("http://localhost:5000/payments/pay-user");
+      const response = await fetch("http://localhost:5000/comments//product-comment");
 
       const responseData = await response.json();
       //const userid= appContext.editPayUserId;
 
-      responseData.map(payUser => {
-        if ((payUser.email === currentEmail) && (payUser.isSave)) {
-          setPayUserDetails(payUser);
-          appContext.addEditPayUserDetails(payUser);
+      responseData.forEach(comment => {
+        console.log("awa awa for each ekata");
+        //console.log(comment);
+        //console.log(comment.product_id);
+       
+        if (comment.product_id === productId)  {
+          console.log("44444444444 meka thama id eka 1 wana comment");
+          //console.log(comment);
+          
+          productComments.push({ ...comment });
+          
+
+          //setCategories(updatedCategory);
+          //appContext.addEditPayUserDetails(payUser);
 
         }
 
-      });
+      }
+      
 
-      console.log(responseData);
-      console.log(payUserDetails);
+      );
+
+      setCommentDetails( productComments);
+      console.log(productComments);
+
+      //console.log(responseData);
+      console.log(commentDetails);
 
 
     } catch (errorss) {
@@ -102,18 +115,18 @@ const DisplayComments = () => {
      console.log("me is delete check karapu eka");
    }*/
 
-  console.log(isDelete);
+  /*console.log(isDelete);
 
   const setConfirmedUser = () => {
     appContext.setTruePayUserConfirmed();
     //pay user savewa context ekata daganna
     appContext.addPayUserDetails(payUserDetails);
   }
+*/
 
-
-  return (
+  /*return (
     <div>
-      {isDelete ? (<div><h2>There is no saved data to display</h2></div>) : (<div>
+       
           <table className="table">
             <thead className="thead-light">
             <tr>
@@ -164,7 +177,23 @@ const DisplayComments = () => {
     </div>
 
 
+  );*/
+
+  return(
+    <div className="cart-dropdown">
+    <div className="cart-items">
+      
+        {commentDetails.map(comment =>{return(
+          <div>
+            <h6>{comment.user_firstName} {comment.user_lastName}</h6>
+                                    {comment.comment}
+          </div>
+        )})}
+          
+    </div>
+    </div>
   );
+
 };
 
 export default DisplayComments;
