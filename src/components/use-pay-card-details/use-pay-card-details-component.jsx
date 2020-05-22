@@ -82,10 +82,9 @@ const UsePayCardDetails = () => {
 
       countAll = responseData.length;
 
-      if(countAll === 0){
+      if (countAll === 0) {
         setIsData(true);
-      }
-      else{
+      } else {
         setIsData(false);
       }
 
@@ -97,11 +96,10 @@ const UsePayCardDetails = () => {
           countThis = countThis + 1;
         }
 
-        if(countAll != 0){
-          if(countThis === 0){
+        if (countAll != 0) {
+          if (countThis === 0) {
             setIsData(true);
-          }
-          else{
+          } else {
             setIsData(false);
           }
         }
@@ -137,7 +135,7 @@ const UsePayCardDetails = () => {
 
   return (
     <div>
-      {(isData || isDelete ) ? (<div><h2>There is no saved data to display</h2></div>) : (<div>
+      {(isData || isDelete) ? (<div><h2>There is no saved data to display</h2></div>) : (<div>
           <h2>Saved Card Details</h2>
           <table className="table">
 

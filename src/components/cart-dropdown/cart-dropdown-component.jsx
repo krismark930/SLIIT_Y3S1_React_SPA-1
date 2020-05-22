@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import { FaShoppingCart, FaRegHourglass } from "react-icons/fa";
-import { Button } from "react-bootstrap";
+import React, {useContext} from "react";
+import {FaRegHourglass, FaShoppingCart} from "react-icons/fa";
+import {Button} from "react-bootstrap";
 
 import "./cart-dropdown-styles.scss";
 import CartItem from "../cart-item/cart-item-component";
-import { Link } from "react-router-dom";
-import { AppContext } from "../../Context/app-context";
+import {Link} from "react-router-dom";
+import {AppContext} from "../../Context/app-context";
 
 // const cartItems = [
 //   {
@@ -31,7 +31,7 @@ import { AppContext } from "../../Context/app-context";
 //   }
 // ];
 
-const CartDropdown = ({ checkoutToggle }) => {
+const CartDropdown = ({checkoutToggle}) => {
   const appContext = useContext(AppContext);
 
   const setFalseCardAndUser = () => {
@@ -44,10 +44,10 @@ const CartDropdown = ({ checkoutToggle }) => {
       <div className="cart-items">
         {appContext.cart.length ? (
           appContext.cart.map((cartItem) => (
-            <CartItem key={cartItem.id} item={cartItem} />
+            <CartItem key={cartItem.id} item={cartItem}/>
           ))
         ) : (
-          <div style={{ textAlign: "center" }}>
+          <div style={{textAlign: "center"}}>
             <span
               className="red-text empty-cart"
               style={{
@@ -81,7 +81,7 @@ const CartDropdown = ({ checkoutToggle }) => {
       >
         <Button
           type="submit"
-          style={{ marginTop: "10px", marginLeft: "17%" }}
+          style={{marginTop: "10px", marginLeft: "17%"}}
           onClick={appContext.toggleDropdownHidden}
         >
           <FaShoppingCart
