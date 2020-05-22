@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import HomeItem from "../../components/home-item/home-item-component";
-import { AppContext } from "../../Context/app-context";
+import {AppContext} from "../../Context/app-context";
 import "./single-category-styles.scss";
 
 const SingleCategory = (props) => {
@@ -32,7 +32,7 @@ const SingleCategory = (props) => {
           <div className="col">
             <div className="row">
               {filtered.map((item) => {
-                return <HomeItem item={item} />;
+                return <HomeItem item={item}/>;
               })}
             </div>
           </div>

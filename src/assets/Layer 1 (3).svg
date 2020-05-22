@@ -1,1 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1366 767"><defs><style>.cls-1{fill:url(#linear-gradient);}</style><linearGradient id="linear-gradient" y1="383.5" x2="1366" y2="383.5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#e3f5fa"/><stop offset="0.05" stop-color="#dcf3fb"/><stop offset="0.45" stop-color="#a9e7ff"/><stop offset="0.49" stop-color="#90e6ff"/><stop offset="0.59" stop-color="#54e5ff"/><stop offset="0.7" stop-color="#3adaff"/><stop offset="0.9" stop-color="#12c9ff"/><stop offset="1" stop-color="#03c3ff"/></linearGradient></defs><title>Layer 1 (3)</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M0,0H683s-36,320.5,320.5,320.5S1366,507,1366,507V767H0s612-88,350-350S0,0,0,0Z"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 767">
+    <defs>
+        <style>.cls-1{fill:url(#linear-gradient);}</style>
+        <linearGradient id="linear-gradient" y1="383.5" x2="1366" y2="383.5" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#e3f5fa"/>
+            <stop offset="0.05" stop-color="#dcf3fb"/>
+            <stop offset="0.45" stop-color="#a9e7ff"/>
+            <stop offset="0.49" stop-color="#90e6ff"/>
+            <stop offset="0.59" stop-color="#54e5ff"/>
+            <stop offset="0.7" stop-color="#3adaff"/>
+            <stop offset="0.9" stop-color="#12c9ff"/>
+            <stop offset="1" stop-color="#03c3ff"/>
+        </linearGradient>
+    </defs>
+    <title>Layer 1 (3)</title>
+    <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+            <path class="cls-1" d="M0,0H683s-36,320.5,320.5,320.5S1366,507,1366,507V767H0s612-88,350-350S0,0,0,0Z"/>
+        </g>
+    </g>
+</svg>
