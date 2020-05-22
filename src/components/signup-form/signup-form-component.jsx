@@ -103,6 +103,8 @@ const SignupForm = (props) => {
             isSubmitting,
             handleChange,
             handleBlur,
+            resetForm,
+            setFieldValue,
             values,
             touched,
             isValid,
@@ -293,6 +295,7 @@ const SignupForm = (props) => {
               </Button>
               {errorss && <div id="loginServerError">{errorss}</div>}
               <Button
+                onClick={resetForm}
                 type="submit"
                 variant="outline-danger"
                 style={{ marginTop: "5px", float: "right" }}
