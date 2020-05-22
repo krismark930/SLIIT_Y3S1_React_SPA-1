@@ -1,7 +1,7 @@
-import React, {useContext, useEffect, useState} from "react";
-import {AppContext} from "../../Context/app-context";
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../Context/app-context";
 import WishListItem from "../../components/wishlist-item/wishlist-item-component";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./wishlist-styles.scss";
 
 const WishListPage = (props) => {
@@ -74,7 +74,7 @@ const WishListPage = (props) => {
         }
       );
 
-      let tempChnage = {...product, wishList: 0};
+      let tempChnage = { ...product, wishList: 0 };
 
       console.log(tempChnage);
 
@@ -94,6 +94,19 @@ const WishListPage = (props) => {
   return (
     <div className="wishlist-page">
       <h2>Wish List</h2>
+      {wishList.length ? null : (
+        <p
+          style={{
+            marginTop: "100px",
+            fontSize: "25px",
+            color: "red",
+            fontWeight: "600",
+            fontFamily: "Lemonada",
+          }}
+        >
+          There's nothing in the Wish List
+        </p>
+      )}
       {/* <div className="checkout-header">
         <div className="header-block">
           <span>Product</span>
@@ -118,15 +131,16 @@ const WishListPage = (props) => {
         />
       ))}
       {/* <div className="total">TOTAL: ${total}</div> */}
-
-      <Button
-        className="buyNowBtn"
-        type="submit"
-        style={{float: "right"}}
-        onClick={() => moveWishListToCart()}
-      >
-        Add to Cart
-      </Button>
+      {wishList.length ? (
+        <Button
+          className="buyNowBtn"
+          type="submit"
+          style={{ float: "right" }}
+          onClick={() => moveWishListToCart()}
+        >
+          Add to Cart
+        </Button>
+      ) : null}
     </div>
   );
 };
