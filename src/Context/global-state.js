@@ -224,20 +224,20 @@ const GlobalState = (props) => {
       console.log(filtered);
       filteredAll = fill;
 
-      // products.forEach((pitem) => {
-      //   if (pitem.title == item.productID) {
-      //     let temp = { ...pitem, wishList: 1 };
+      products.forEach((pitem) => {
+        if (pitem.title == item.productID) {
+          let temp = { ...pitem, wishList: 1 };
 
-      //     filtering = filtering.filter(
-      //       (pitem) => pitem.title != item.productID
-      //     );
-      //     // let temp2 = filtering;
-      //     filtering.push(temp);
+          filtering = filtering.filter(
+            (pitem) => pitem.title != item.productID
+          );
+          // let temp2 = filtering;
+          filtering.push(temp);
 
-      //     console.log("++++++++++++++++++++++");
-      //     console.log(filtering);
-      //   }
-      // });
+          console.log("++++++++++++++++++++++");
+          console.log(filtering);
+        }
+      });
     });
     // console.log("fileredAll");
     // console.log(filteredAll);
