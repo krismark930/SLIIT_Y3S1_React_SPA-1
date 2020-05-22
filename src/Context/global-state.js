@@ -81,8 +81,8 @@ const GlobalState = (props) => {
   ]);
   const [cart, setCart] = useState([]);
   const [currentUser, setCurrentUser] = useState([{ type: "Null" }]);
-  const [ currentUserFirstName, setCurrentUserFirstName] = useState([]);
-  const [ currentUserLastName, setCurrentUserLastName] = useState([]);
+  const [currentUserFirstName, setCurrentUserFirstName] = useState([]);
+  const [currentUserLastName, setCurrentUserLastName] = useState([]);
   const [payUserDetails, setPayUserDetails] = useState([]);
   const [editPayUserDetails, setEditPayUserDetails] = useState([]);
   const [editPayCardDetails, setEditPayCardDetails] = useState([]);
@@ -167,20 +167,20 @@ const GlobalState = (props) => {
     }
   };
 
-  const setWishListMethod = async (wishlist) => {
-    console.log("setWishListMethod");
-    const wishLis = wishList;
-    let wishL = [];
-    wishL.push(...wishLis);
-    console.log(wishL);
-    setWishList(wishL);
-    console.log(wishList);
-  };
+  // const setWishListMethod = async (wishlist) => {
+  //   console.log("setWishListMethod");
+  //   const wishLis = wishList;
+  //   let wishL = [];
+  //   wishL.push(...wishLis);
+  //   console.log(wishL);
+  //   setWishList(wishL);
+  //   console.log(wishList);
+  // };
 
-  const getWishList = () => {
-    console.log("getWishList");
-    return wishList;
-  };
+  // const getWishList = () => {
+  //   console.log("getWishList");
+  //   return wishList;
+  // };
 
   const setWishListmethod = async (mail) => {
     console.log("setWishListmethod");
@@ -206,20 +206,35 @@ const GlobalState = (props) => {
     } catch (err) {
       console.log(err.message);
     }
-
+    var filtering = products;
     responseData.wishList.forEach((item) => {
       console.log(item);
       var filtered = products.filter((pitem) => pitem.title == item.productID);
       var fill = filtered.concat(filteredAll);
       console.log(filtered);
       filteredAll = fill;
+
+      products.forEach((pitem) => {
+        if (pitem.title == item.productID) {
+          let temp = { ...pitem, wishList: 1 };
+
+          filtering = filtering.filter(
+            (pitem) => pitem.title != item.productID
+          );
+          // let temp2 = filtering;
+          filtering.push(temp);
+
+          console.log("++++++++++++++++++++++");
+          console.log(filtering);
+        }
+      });
     });
-    console.log("fileredAll");
-    console.log(filteredAll);
+    // console.log("fileredAll");
+    // console.log(filteredAll);
     if (filteredAll.length) {
       filteredAll.splice(-1, 1);
     }
-    console.log(filteredAll);
+    // console.log(filteredAll);
     setWishList(filteredAll);
   };
 
@@ -338,18 +353,18 @@ const GlobalState = (props) => {
     setCurrentUser(updatedCurrentUser);
   };
 
-  const  addCurrentUserFirstName = name => {
-    const updatedFirstName = [] ;
-    updatedFirstName.push({...name});
-    console.log(updatedFirstName);    
+  const addCurrentUserFirstName = (name) => {
+    const updatedFirstName = [];
+    updatedFirstName.push({ ...name });
+    console.log(updatedFirstName);
 
     setCurrentUserFirstName(updatedFirstName);
   };
 
-  const  addCurrentUserLastName = name => {
-    const updatedLastName = [] ;
-    updatedLastName.push({...name});
-    console.log(updatedLastName);    
+  const addCurrentUserLastName = (name) => {
+    const updatedLastName = [];
+    updatedLastName.push({ ...name });
+    console.log(updatedLastName);
 
     setCurrentUserLastName(updatedLastName);
   };
@@ -487,9 +502,9 @@ const GlobalState = (props) => {
         removeCompletelyItemFromCart: removeCompletelyItemFromCart,
         removeItemFromCart: removeItemFromCart,
         toggleDropdownHidden: toggleDropdownHidden,
-        setWishListMethod: setWishListMethod,
+
         setWishListmethod: setWishListmethod,
-        getWishList: getWishList,
+
         addToWishList: addToWishList,
         storeManagerEdit: storeManagerEdit,
         editStoreManagerFalse: editStoreManagerFalse,
