@@ -3,6 +3,10 @@ button {
   background: transparent;
 }
 
+button:focus {
+  outline: none !important;
+}
+
 th {
   text-align: center;
   font-size: larger;
