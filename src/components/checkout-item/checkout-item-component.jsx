@@ -1,11 +1,15 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import "./checkout-item-styles.scss";
-import {AppContext} from "../../Context/app-context";
+import { AppContext } from "../../Context/app-context";
+import { Modal, Button } from "react-bootstrap";
 
-const CheckoutItem = ({cartItem}) => {
+const CheckoutItem = ({ cartItem }) => {
   const [quantityHelper, setQuantityHelper] = useState(0);
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   var quantity = cartItem.quantity;
 
   const appContext = useContext(AppContext);
@@ -27,7 +31,7 @@ const CheckoutItem = ({cartItem}) => {
   return (
     <div className="checkout-item">
       <div className="image-container">
-        <img src={cartItem.id} alt="item"/>
+        <img src={cartItem.id} alt="item" />
       </div>
       <span className="name">{cartItem.title}</span>
       <span className="quantity">
@@ -47,12 +51,36 @@ const CheckoutItem = ({cartItem}) => {
         </div>
       </span>
       <span className="price">{cartItem.price}</span>
-      <div
-        className="remove-button"
-        onClick={() => appContext.removeCompletelyItemFromCart(cartItem)}
-      >
+      <div className="remove-button" onClick={handleShow}>
         &#10005;
       </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title
+            style={{
+              textAlign: "center",
+              margin: "auto",
+              width: "100%",
+              fontWeight: "700",
+              fontStyle: "italic",
+            }}
+          >
+            Confirm Delete
+          </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button
+            variant="danger"
+            onClick={() => appContext.removeCompletelyItemFromCart(cartItem)}
+          >
+            Confirm Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

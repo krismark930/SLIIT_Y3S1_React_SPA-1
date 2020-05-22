@@ -8,7 +8,6 @@ import { FaHeart } from "react-icons/fa";
 const HomeItem = ({ item }) => {
   const appContext = useContext(AppContext);
   const urls = item.productImage;
-  const titlePrice = `${item.title}    $${item.price} `;
 
   return (
     <Card
