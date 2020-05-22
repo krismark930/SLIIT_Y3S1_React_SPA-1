@@ -24,34 +24,37 @@ const MainNavbar = () => {
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto"></Nav>
+          <Nav className="mr-auto" />
           <Nav className=" float-right">
             {appContext.loggedin ? (
               <Nav>
                 {appContext.checkCustomer ? (
-                  <Nav>
-                    <Link to="/wishlist">
-                      <Nav.Link href="#about">Wish List</Nav.Link>
-                    </Link>
-                    <Link to="/comment">
-                      <Nav.Link href="#about">Comments</Nav.Link>
-                    </Link>
-                  </Nav>
+                  <Link to="/wishlist">
+                    <Nav.Link href="#wish_list">Wish List</Nav.Link>
+                  </Link>
                 ) : null}
                 {appContext.checkAdmin ? (
                   <Nav>
-                    <Link to="/store-managers">
-                      <Nav.Link href={"/store-managers"}>
-                        Store Managers
-                      </Nav.Link>
+                    <Link
+                      to="/store-managers"
+                      style={{
+                        textDecoration: "none",
+                        marginTop: "8px",
+                      }}
+                    >
+                      <Nav.Link href="#store_managers">Store Managers</Nav.Link>
                     </Link>
-                    <Link to="/categories">
-                      <Nav.Link href={"/categories"}>Categories</Nav.Link>
+                    <Link
+                      to="/categories"
+                      style={{
+                        textDecoration: "none",
+                        marginTop: "8px",
+                      }}
+                    >
+                      <Nav.Link href="#categories">Categories</Nav.Link>
                     </Link>
                   </Nav>
                 ) : null}
-                <Nav.Link href="#contact_us">Contact Us</Nav.Link>
-                <Nav.Link href="#about">About</Nav.Link>
                 {appContext.checkCustomer ? (
                   <div className="dripdowntoggles">
                     <Nav.Link
@@ -69,13 +72,24 @@ const MainNavbar = () => {
                       </IconContext.Provider>
                     </Nav.Link>
                     {appContext.hidden ? null : <CartDropdown />}
+                    <Nav>
+                      <Link to="/comment">
+                        <Nav.Link href="#comments">Comments</Nav.Link>
+                      </Link>
+                      <Nav.Link href="#contact_us">Contact Us</Nav.Link>
+                      <Nav.Link href="#about_us">About Us</Nav.Link>
+                    </Nav>
                   </div>
                 ) : null}
                 <Nav.Link onClick={appContext.logout}>
                   <Link to="/">
                     <Button
-                      variant="outline-success"
-                      style={{ padding: "3px" }}
+                      variant="outline-primary"
+                      style={{
+                        padding: "4px",
+                        margin: "4px 6px",
+                        color: "white",
+                      }}
                     >
                       Sign Out
                     </Button>
@@ -85,12 +99,12 @@ const MainNavbar = () => {
             ) : (
               <Nav>
                 <Nav.Link href="#contact_us">Contact Us</Nav.Link>
-                <Nav.Link href="#about">About</Nav.Link>
+                <Nav.Link href="#about_us">About Us</Nav.Link>
                 <Link to="/signin-signup">
                   <Button
                     variant="outline-primary"
                     style={{
-                      padding: "3px",
+                      padding: "4px",
                       margin: "4px 6px",
                       color: "white",
                     }}
