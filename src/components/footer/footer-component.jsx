@@ -17,14 +17,12 @@ const Footer = (p) => {
             <li>
               <a href="#">Services</a>
             </li>
+
             <li>
-              <a href="http://webenlance.com">Pricing</a>
+              <a href="#">Blog</a>
             </li>
             <li>
-              <a href="http://webenlance.com">Blog</a>
-            </li>
-            <li>
-              <a href="http://webenlance.com">Contact</a>
+              <a href="#">Contact</a>
             </li>
           </ul>
 
@@ -34,22 +32,22 @@ const Footer = (p) => {
 
           <ul class="social_footer_ul">
             <li>
-              <a href="http://webenlance.com">
+              <a href="#">
                 <i class="fab fa-facebook-f"></i>
               </a>
             </li>
             <li>
-              <a href="http://webenlance.com">
+              <a href="#">
                 <i class="fab fa-twitter"></i>
               </a>
             </li>
             <li>
-              <a href="http://webenlance.com">
+              <a href="#">
                 <i class="fab fa-linkedin"></i>
               </a>
             </li>
             <li>
-              <a href="http://webenlance.com">
+              <a href="#">
                 <i class="fab fa-instagram"></i>
               </a>
             </li>
