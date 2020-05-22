@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Formik } from "formik";
 import { Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import * as yup from "yup";
-import { FaSignInAlt } from "react-icons/fa";
+import { FaSignInAlt, FaUnlockAlt } from "react-icons/fa";
 import { AppContext } from "../../Context/app-context";
 import { Link } from "react-router-dom";
 
@@ -153,7 +153,7 @@ const LoginForm = (props) => {
                   Login
                 </Button>
               </Col>
-              <Col md={2}></Col>
+              <Col md={1}></Col>
 
               <Link to="/forgot-password">
                 <Col
@@ -164,9 +164,23 @@ const LoginForm = (props) => {
                     color: "red",
                     fontSize: "14px",
                     maxWidth: "100%",
+                    marginLeft: "14px",
                   }}
                 >
-                  <span>Forgot Password</span>
+                  <Button
+                    type="submit"
+                    variant="outline-danger"
+                    style={{ marginTop: "-6px", float: "right" }}
+                  >
+                    <FaUnlockAlt
+                      style={{
+                        marginRight: "10px",
+                        marginBottom: "3px",
+                        transform: "rotate(270deg)",
+                      }}
+                    />
+                    Forgot Password
+                  </Button>
                 </Col>
               </Link>
             </Row>
