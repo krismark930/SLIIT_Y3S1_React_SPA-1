@@ -31,30 +31,34 @@ const HomeItem = ({ item }) => {
         }}
       >
         <span>{item.title}</span>
-        <span>`$${item.price}`</span>
-        {item.wishList ? (
-          <span>
-            <FaHeart
-              // onClick={() => appContext.addToWishList(item)}
-              style={{
-                marginRight: "6px",
-                marginLeft: "6px",
-                marginBottom: "3px",
-              }}
-            />
-          </span>
-        ) : (
-          <span>
-            <FaRegHeart
-              // onClick={() => appContext.addToWishList(item)}
-              style={{
-                marginRight: "6px",
-                marginLeft: "6px",
-                marginBottom: "3px",
-              }}
-            />
-          </span>
-        )}
+        <span>${item.price}</span>
+        {appContext.loggedin ? (
+          <div>
+            {item.wishList ? (
+              <span>
+                <FaHeart
+                  // onClick={() => appContext.addToWishList(item)}
+                  style={{
+                    marginRight: "6px",
+                    marginLeft: "6px",
+                    marginBottom: "3px",
+                  }}
+                />
+              </span>
+            ) : (
+              <span>
+                <FaRegHeart
+                  onClick={() => appContext.addToWishList(item.title)}
+                  style={{
+                    marginRight: "6px",
+                    marginLeft: "6px",
+                    marginBottom: "3px",
+                  }}
+                />
+              </span>
+            )}
+          </div>
+        ) : null}
       </Card.Title>
 
       <Card.Footer style={{ textAlign: "center", backgroundColor: "white" }}>
@@ -75,25 +79,6 @@ const HomeItem = ({ item }) => {
             }}
           />
         </Button>
-        {appContext.loggedin ? (
-          <Button
-            onClick={() => appContext.addToWishList(item.title)}
-            variant="dark"
-            style={{
-              margin: "0px auto",
-              width: "100%",
-            }}
-          >
-            Add to WishList{" "}
-            <FaCartArrowDown
-              style={{
-                marginRight: "6px",
-                marginLeft: "6px",
-                marginBottom: "3px",
-              }}
-            />
-          </Button>
-        ) : null}
       </Card.Footer>
     </Card>
   );
