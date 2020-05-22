@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 import LoginForm from "../../components/login-fom/login-form-component";
 
 import "./login-signup-styles.scss";
@@ -9,7 +9,7 @@ const LoginSignup = (props) => {
   return (
     <div
       className="loginSignupMainHead"
-      style={{ marginTop: "10%", marginBottom: "4%" }}
+      style={{marginTop: "10%", marginBottom: "4%"}}
     >
       {/* <ProductAdd/> */}
       <div className="container">
@@ -42,19 +42,19 @@ const LoginSignup = (props) => {
               >
                 Signin using email and password
               </p>
-              <LoginForm />
+              <LoginForm/>
             </div>
           </Col>
           <Col md="6" className="clll">
             <div
               className="loginSignupPageSignupForm"
-              style={{ background: "white", borderRadius: "8px" }}
+              style={{background: "white", borderRadius: "8px"}}
             >
-              <h4 style={{ textAlign: "center" }}>I don't have an account </h4>
-              <p style={{ textAlign: "center" }}>
+              <h4 style={{textAlign: "center"}}>I don't have an account </h4>
+              <p style={{textAlign: "center"}}>
                 Signin using required details
               </p>
-              <SignupForm />
+              <SignupForm/>
             </div>
           </Col>
         </Row>

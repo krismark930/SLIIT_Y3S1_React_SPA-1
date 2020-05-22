@@ -1,70 +1,69 @@
 import React, {useContext, useEffect, useState} from "react";
 
 import "./display-comments-styles.scss";
-import {Button} from "react-bootstrap";
 //import CheckoutItem from "../../components/checkout-item/checkout-item-component";
 import {AppContext} from "../../Context/app-context";
 
 
-const DisplayComments = props=> {
+const DisplayComments = props => {
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   const [commentDetails, setCommentDetails] = useState([]);
 
   var currentEmail;
-  var productId = props.pid ;
+  var productId = props.pid;
   console.log("!!!!!!!!!!!!!!!!!! " + productId)
 
-  const productComments= [];
+  const productComments = [];
 
 
   useEffect(() => {
-  /*appContext.currentUser.forEach(user => {
-      currentEmail = user.email;
-    });
-*/
+    /*appContext.currentUser.forEach(user => {
+        currentEmail = user.email;
+      });
+  */
     getComments();
 
   }, [commentDetails, currentEmail]);
 
- /* const setEditPayUser = (id) => {
-    appContext.payUserEdit();
-    appContext.setEditPayUserID(id);
-    console.log("hi machan edit wada");
-    console.log(id);
-  }
+  /* const setEditPayUser = (id) => {
+     appContext.payUserEdit();
+     appContext.setEditPayUserID(id);
+     console.log("hi machan edit wada");
+     console.log(id);
+   }
 
 
-  const DeletePayUser = async (id) => {
-    //console.log("hi oya delete eka athule");
+   const DeletePayUser = async (id) => {
+     //console.log("hi oya delete eka athule");
 
-    try {
+     try {
 
-      const response = await fetch('http://localhost:5000/payments/pay-user/' + id, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json"
-        },
+       const response = await fetch('http://localhost:5000/payments/pay-user/' + id, {
+         method: "DELETE",
+         headers: {
+           "Content-Type": "application/json"
+         },
 
-      });
+       });
 
-      const responseData = await response.json();
-      console.log(responseData);
-      //console.log("hi delete una");
-      // currentEmail = " ";
-      //getPayUserDetails();
-      if (responseData) {
-        setIsDelete(true);
-      }
-      setLoading(false);
+       const responseData = await response.json();
+       console.log(responseData);
+       //console.log("hi delete una");
+       // currentEmail = " ";
+       //getPayUserDetails();
+       if (responseData) {
+         setIsDelete(true);
+       }
+       setLoading(false);
 
-    } catch (errorss) {
-      console.log(errorss);
-      setLoading(false);
+     } catch (errorss) {
+       console.log(errorss);
+       setLoading(false);
 
-    }
-  }*/
+     }
+   }*/
 
   const getComments = async () => {
     console.log("hi details ganna awa");
@@ -75,28 +74,26 @@ const DisplayComments = props=> {
       //const userid= appContext.editPayUserId;
 
       responseData.forEach(comment => {
-        console.log("awa awa for each ekata");
-        //console.log(comment);
-        //console.log(comment.product_id);
-       
-        if (comment.product_id === productId)  {
-          console.log("44444444444 meka thama id eka 1 wana comment");
+          console.log("awa awa for each ekata");
           //console.log(comment);
-          
-          productComments.push({ ...comment });
-          
+          //console.log(comment.product_id);
 
-          //setCategories(updatedCategory);
-          //appContext.addEditPayUserDetails(payUser);
+          if (comment.product_id === productId) {
+            console.log("44444444444 meka thama id eka 1 wana comment");
+            //console.log(comment);
+
+            productComments.push({...comment});
+
+
+            //setCategories(updatedCategory);
+            //appContext.addEditPayUserDetails(payUser);
+
+          }
 
         }
-
-      }
-      
-
       );
 
-      setCommentDetails( productComments);
+      setCommentDetails(productComments);
       console.log(productComments);
 
       //console.log(responseData);
@@ -179,18 +176,20 @@ const DisplayComments = props=> {
 
   );*/
 
-  return(
+  return (
     <div className="cart-dropdown">
-    <div className="cart-items">
-      
-        {commentDetails.map(comment =>{return(
-          <div>
-            <h6>{comment.user_firstName} {comment.user_lastName}</h6>
-                                    {comment.comment}
-          </div>
-        )})}
-          
-    </div>
+      <div className="cart-items">
+
+        {commentDetails.map(comment => {
+          return (
+            <div>
+              <h6>{comment.user_firstName} {comment.user_lastName}</h6>
+              {comment.comment}
+            </div>
+          )
+        })}
+
+      </div>
     </div>
   );
 
