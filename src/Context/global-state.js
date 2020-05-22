@@ -218,6 +218,10 @@ const GlobalState = (props) => {
     }
     var filtering = products1;
     responseData.wishList.forEach((item) => {
+      const indexOfItem = products.findIndex(
+        (ppitem) => ppitem.title === item.productID
+      );
+
       console.log(item);
       var filtered = products.filter((pitem) => pitem.title == item.productID);
       var fill = filtered.concat(filteredAll);
@@ -230,7 +234,8 @@ const GlobalState = (props) => {
             (pitem) => pitem.title != item.productID
           );
           // let temp2 = filtering
-          filtering.push(temp);
+          filtering.splice(indexOfItem, 0, temp);
+          // filtering.push(temp);
           console.log("++++++++++++++++++++++");
           console.log(filtering);
         }
