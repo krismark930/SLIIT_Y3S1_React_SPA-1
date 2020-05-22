@@ -287,6 +287,10 @@ const GlobalState = (props) => {
 
   const logout = (state) => {
     setLoggedin(false);
+    setCheckAdmin(false);
+    setCheckCustomer(false);
+    setCheckStoreManager(false);
+    setCart([]);
     setEditPayUser(false);
     setEditPayCard(false);
     setEditStoreManager(false);
