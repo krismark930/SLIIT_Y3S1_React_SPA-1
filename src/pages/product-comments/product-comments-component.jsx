@@ -19,7 +19,7 @@ const ProductComments = props => {
      route = (<AddPayUserDetails/>);
    }*/
 
-  const productId = 1;
+  const productId = "1";
 
   return (
     <div className="loginSignupMainHead">
