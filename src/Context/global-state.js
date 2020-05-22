@@ -20,64 +20,64 @@ const GlobalState = (props) => {
       id: 1,
       price: 123.0,
       category: 'Women',
-      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
     },
     {
       title: 'Women',
       id: 2,
       price: 123.0,
       category: 'Women',
-      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
     },
     {
       title: 'Men1',
       id: 3,
       price: 123.0,
       category: 'Men',
-      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
     },
     {
       title: 'Men',
       id: 4,
       price: 123.0,
       category: 'Men',
-      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
     },
     {
       title: 'Shoes1',
       id: 5,
       price: 123.0,
       category: 'Shoes',
-      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
     },
     {
       title: 'Women',
       id: 6,
       price: 123.0,
       category: 'Women',
-      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
     },
     {
       title: 'Product11',
       id: 7,
       price: 123.0,
       category: 'Women',
-      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
     },
     {
       title: 'Product1',
       id: 8,
       price: 123.0,
       category: 'Women',
-      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
     },
     {
       title: 'Product1',
       id: 9,
       price: 123.0,
       category: 'Hats',
-      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
-    },
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    }
   ])
   const [cart, setCart] = useState([])
   const [currentUser, setCurrentUser] = useState([{type: 'Null'}])
@@ -95,17 +95,17 @@ const GlobalState = (props) => {
   const [editCategoryId, setEditCategoryID] = useState('1')
   const [categories, setCategories] = useState([
     {
-      categoryTitle: 'Hats',
+      categoryTitle: 'Hats'
     },
     {
-      categoryTitle: 'Men',
+      categoryTitle: 'Men'
     },
     {
-      categoryTitle: 'Women',
+      categoryTitle: 'Women'
     },
     {
-      categoryTitle: 'Shoes',
-    },
+      categoryTitle: 'Shoes'
+    }
   ])
 
   const setCheckAdminMethod = () => {
@@ -391,11 +391,11 @@ const GlobalState = (props) => {
     setPayCardConfirmed(false)
   }
 
-  const storeManagerEdit = (state) => {
+  const storeManagerEdit = () => {
     setEditStoreManager(true)
   }
 
-  const editStoreManagerFalse = (state) => {
+  const editStoreManagerFalse = () => {
     setEditStoreManager(false)
   }
 
@@ -409,11 +409,11 @@ const GlobalState = (props) => {
     setStoreManagers(updatedStoreManager)
   }
 
-  const categoryEdit = (state) => {
+  const categoryEdit = () => {
     setEditCategory(true)
   }
 
-  const editCategoryFalse = (state) => {
+  const editCategoryFalse = () => {
     setEditCategory(false)
   }
 
@@ -458,6 +458,7 @@ const GlobalState = (props) => {
         editCategory: editCategory,
         editCategoryId: editCategoryId,
         categories: categories,
+
         payUserEdit: payUserEdit,
         payUserEditFalse: payUserEditFalse,
         setEditPayUserID: setEditPayUserID,

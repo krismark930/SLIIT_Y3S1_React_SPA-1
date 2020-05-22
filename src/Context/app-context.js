@@ -34,6 +34,7 @@ export const AppContext = createContext({
   editCategory: false,
   editCategoryId: '1',
   categories: [],
+
   addItemToCart: (item) => {
   },
   removeItemFromCart: (productId, state) => {
