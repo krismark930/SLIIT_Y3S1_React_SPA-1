@@ -17,7 +17,7 @@ export const AppContext = createContext({
     {id: 'p1', title: 'Gaming Mouse', price: 29.99},
     {id: 'p2', title: 'Harry Potter 3', price: 9.99},
     {id: 'p3', title: 'Used plastic bottle', price: 0.99},
-    {id: 'p4', title: 'Half-dried plant', price: 2.99},
+    {id: 'p4', title: 'Half-dried plant', price: 2.99}
   ],
   cart: [],
   currentUser: [],
@@ -34,6 +34,7 @@ export const AppContext = createContext({
   editCategory: false,
   editCategoryId: '1',
   categories: [],
+
   addItemToCart: (item) => {
   },
   removeItemFromCart: (productId, state) => {
