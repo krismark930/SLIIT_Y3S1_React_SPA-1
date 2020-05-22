@@ -9,7 +9,7 @@ import { AppContext } from "../../Context/app-context";
 
 const MainNavbar = (props) => {
   const appContext = useContext(AppContext);
-
+  console.log(appContext);
   return (
     <div className="navbar-head">
       <Navbar
@@ -31,11 +31,14 @@ const MainNavbar = (props) => {
           <Nav className=" float-right">
             {appContext.loggedin ? (
               <Nav>
-                <Link to="/wishlist">
-                  <Nav.Link href="#about">Wish List</Nav.Link>
-                </Link>
+                {appContext.checkCustomer ? (
+                  <Link to="/wishlist">
+                    <Nav.Link href="#about">Wish List</Nav.Link>
+                  </Link>
+                ) : null}
+
                 {appContext.checkAdmin ? (
-                  <div>
+                  <Nav>
                     <Link to="/store-managers">
                       <Nav.Link href={"/store-managers"}>
                         Store Managers
@@ -44,28 +47,31 @@ const MainNavbar = (props) => {
                     <Link to="/categories">
                       <Nav.Link href={"/categories"}>Categories</Nav.Link>
                     </Link>
-                  </div>
+                  </Nav>
                 ) : null}
 
                 <Nav.Link href="#contact_us">Contact Us</Nav.Link>
                 <Nav.Link href="#about">About</Nav.Link>
-                <div className="dripdowntoggles">
-                  <Nav.Link
-                    onClick={appContext.toggleDropdownHidden}
-                    className="cartDropdownNavBar"
-                  >
-                    <IconContext.Provider
-                      value={{
-                        color: "white",
-                        className: "global-class-name",
-                        size: "2rem",
-                      }}
+                {appContext.checkCustomer ? (
+                  <div className="dripdowntoggles">
+                    <Nav.Link
+                      onClick={appContext.toggleDropdownHidden}
+                      className="cartDropdownNavBar"
                     >
-                      <FaCartArrowDown />
-                    </IconContext.Provider>
-                  </Nav.Link>
-                  {appContext.hidden ? null : <CartDropdown />}
-                </div>
+                      <IconContext.Provider
+                        value={{
+                          color: "white",
+                          className: "global-class-name",
+                          size: "2rem",
+                        }}
+                      >
+                        <FaCartArrowDown />
+                      </IconContext.Provider>
+                    </Nav.Link>
+                    {appContext.hidden ? null : <CartDropdown />}
+                  </div>
+                ) : null}
+
                 <Nav.Link onClick={appContext.logout}>
                   <Link to="/">
                     <Button
