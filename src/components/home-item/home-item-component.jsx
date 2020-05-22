@@ -34,7 +34,9 @@ const HomeItem = ({ item }) => {
         }}
       >
         <span style={{ fontFamily: "Roboto Slab" }}>{item.title}</span>
-        <span style={{ fontFamily: "Roboto Slab" }}>${item.price}</span>
+        <span style={{ fontFamily: "Roboto Slab", fontWeight: "700" }}>
+          ${item.price}
+        </span>
         {appContext.checkCustomer ? (
           <div>
             {item.wishList ? (
@@ -45,6 +47,7 @@ const HomeItem = ({ item }) => {
                     marginRight: "6px",
                     marginLeft: "6px",
                     marginBottom: "3px",
+                    color: "red",
                   }}
                 />
               </span>
@@ -56,6 +59,7 @@ const HomeItem = ({ item }) => {
                     marginRight: "6px",
                     marginLeft: "6px",
                     marginBottom: "3px",
+                    color: "red",
                   }}
                 />
               </span>
@@ -71,6 +75,8 @@ const HomeItem = ({ item }) => {
           style={{
             margin: "0px auto",
             width: "100%",
+            fontWeight: "700",
+            // fontFamily: "Roboto Slab",
           }}
         >
           Add to Cart{" "}
