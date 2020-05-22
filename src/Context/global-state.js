@@ -81,6 +81,8 @@ const GlobalState = (props) => {
   ])
   const [cart, setCart] = useState([])
   const [currentUser, setCurrentUser] = useState([{type: 'Null'}])
+  const [currentUserFirstName, setCurrentUserFirstName] = useState([])
+  const [currentUserLastName, setCurrentUserLastName] = useState([])
   const [payUserDetails, setPayUserDetails] = useState([])
   const [editPayUserDetails, setEditPayUserDetails] = useState([])
   const [editPayCardDetails, setEditPayCardDetails] = useState([])
@@ -211,7 +213,7 @@ const GlobalState = (props) => {
       console.log(filtered)
       filteredAll = fill
     })
-    console.log('filteredAll')
+    console.log('fileredAll')
     console.log(filteredAll)
     if (filteredAll.length) {
       filteredAll.splice(-1, 1)
@@ -335,8 +337,18 @@ const GlobalState = (props) => {
     setCurrentUser(updatedCurrentUser)
   }
 
-  const payUserEdit = (state) => {
-    setEditPayUser(true)
+  const addCurrentUserFirstName = name => {
+    const updatedFirstName = []
+    updatedFirstName.push({...name})
+    console.log(updatedFirstName)
+    setCurrentUserFirstName(updatedFirstName)
+  }
+
+  const addCurrentUserLastName = name => {
+    const updatedLastName = []
+    updatedLastName.push({...name})
+    console.log(updatedLastName)
+    setCurrentUserLastName(updatedLastName)
   }
 
   const payUserEdit = (state) => {
@@ -379,11 +391,11 @@ const GlobalState = (props) => {
     setPayCardConfirmed(false)
   }
 
-  const storeManagerEdit = () => {
+  const storeManagerEdit = (state) => {
     setEditStoreManager(true)
   }
 
-  const editStoreManagerFalse = () => {
+  const editStoreManagerFalse = (state) => {
     setEditStoreManager(false)
   }
 
@@ -397,11 +409,11 @@ const GlobalState = (props) => {
     setStoreManagers(updatedStoreManager)
   }
 
-  const categoryEdit = () => {
+  const categoryEdit = (state) => {
     setEditCategory(true)
   }
 
-  const editCategoryFalse = () => {
+  const editCategoryFalse = (state) => {
     setEditCategory(false)
   }
 

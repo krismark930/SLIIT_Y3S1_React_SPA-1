@@ -34,7 +34,6 @@ export const AppContext = createContext({
   editCategory: false,
   editCategoryId: '1',
   categories: [],
-
   addItemToCart: (item) => {
   },
   removeItemFromCart: (productId, state) => {
@@ -56,6 +55,10 @@ export const AppContext = createContext({
   setFalsePayCardConfirmed: (state) => {
   },
   addCurrentUser: (user) => {
+  },
+  addCurrentUserFirstName: (name) => {
+  },
+  addCurrentUserLastName: (name) => {
   },
   addPayUserDetails: (payUser) => {
   },
@@ -79,19 +82,19 @@ export const AppContext = createContext({
   },
   setEditPayCardID: (id) => {
   },
+  setWishListmethod: (mail) => {
+  },
+  addToWishList: (product) => {
+  },
+  setWishListMethod: () => {
+  },
+  getWishList: () => {
+  },
   setCheckAdminMethod: () => {
   },
   setCheckCustomerMethod: () => {
   },
   setChecksetCheckStoreManagerMethod: () => {
-  },
-  addToWishList: (product) => {
-  },
-  setWishListmethod: (mail) => {
-  },
-  setWishListMethod: () => {
-  },
-  getWishList: () => {
   },
   storeManagerEdit: () => {
   },
