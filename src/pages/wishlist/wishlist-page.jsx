@@ -3,7 +3,7 @@ import {AppContext} from "../../Context/app-context";
 import WishListItem from "../../components/wishlist-item/wishlist-item-component";
 import {Button} from "react-bootstrap";
 import "./wishlist-styles.scss";
-import { FaRegHourglass } from "react-icons/fa";
+import {FaRegHourglass} from "react-icons/fa";
 
 const WishListPage = (props) => {
   const appContext = useContext(AppContext);
@@ -96,7 +96,7 @@ const WishListPage = (props) => {
     <div className="wishlist-page">
       <h2>Wish List</h2>
       {wishList.length ? null : (
-        <div style={{ textAlign: "center" }}>
+        <div style={{textAlign: "center"}}>
           <p
             style={{
               marginTop: "100px",

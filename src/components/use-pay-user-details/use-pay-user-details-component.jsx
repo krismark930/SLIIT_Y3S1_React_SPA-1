@@ -32,8 +32,6 @@ const UsePayUserDetails = () => {
 
     getPayUserDetails();
 
-   
-    
 
   }, [payUserDetails, currentEmail, isDelete]);
 
@@ -84,22 +82,16 @@ const UsePayUserDetails = () => {
       //const userid= appContext.editPayUserId;
       countAll = responseData.length;
 
-      if(countAll === 0){
+      if (countAll === 0) {
         console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         setIsData(true);
-      }
-      else{
+      } else {
         setIsData(false);
       }
-      
+
       console.log("ganna thanama response data eka");
       console.log(responseData.length);
-      
 
-      
-
-      
-     
 
       //response = responseData;
       responseData.map(payUser => {
@@ -112,17 +104,13 @@ const UsePayUserDetails = () => {
         console.log("*************************************************************");
         console.log(countAll);
         console.log(countThis);
-        
 
-        
-          if(countThis === 0){
-            setIsData(true);
-          }
-          else{
-            setIsData(false);
-          }
-        
-      
+
+        if (countThis === 0) {
+          setIsData(true);
+        } else {
+          setIsData(false);
+        }
 
 
       });
@@ -154,7 +142,7 @@ const UsePayUserDetails = () => {
 
   return (
     <div>
-      {(isData || isDelete )? (<div><h2>There is no saved data to display</h2></div>) : (<div>
+      {(isData || isDelete) ? (<div><h2>There is no saved data to display</h2></div>) : (<div>
           <table className="table">
             <thead className="thead-light">
             <tr>
