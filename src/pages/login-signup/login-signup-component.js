@@ -28,6 +28,8 @@ const LoginSignup = (props) => {
                   fontFamily: "Lemonada",
                   textAlign: "center",
                   fontSize: "23px",
+                  fontWeight: "600",
+                  color: "#3E3B3B",
                 }}
               >
                 I already have an account{" "}
@@ -50,8 +52,27 @@ const LoginSignup = (props) => {
               className="loginSignupPageSignupForm"
               style={{ background: "white", borderRadius: "8px" }}
             >
-              <h4 style={{ textAlign: "center" }}>I don't have an account </h4>
-              <p style={{ textAlign: "center" }}>
+              <h4
+                style={{
+                  textAlign: "center",
+                  fontFamily: "Lemonada",
+
+                  fontSize: "23px",
+                  fontWeight: "600",
+                  color: "#3E3B3B",
+                }}
+              >
+                I don't have an account{" "}
+              </h4>
+              <p
+                style={{
+                  textAlign: "center",
+                  fontFamily: "Work Sans",
+
+                  fontSize: "14px",
+                  marginBottom: "15px",
+                }}
+              >
                 Signin using required details
               </p>
               <SignupForm />
