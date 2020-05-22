@@ -74,8 +74,8 @@ const MainNavbar = () => {
                               <CartDropdown/>
                           }
                           <Link to='/comment'>
-                          <Nav.Link href='#about'>Comments</Nav.Link>
-                        </Link>
+                            <Nav.Link href='#about'>Comments</Nav.Link>
+                          </Link>
                         </div>
                       ) :
                       null
