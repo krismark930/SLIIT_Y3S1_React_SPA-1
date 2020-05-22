@@ -12,7 +12,7 @@ const schema = yup.object().shape({
     .min(2, 'Category title must be at least 2 characters long.'),
   categoryDescription: yup
     .string()
-    .min(5, 'Category description must be at least 5 characters long.')
+    .min(2, 'Category description must be at least 2 characters long.')
 })
 
 let errors_ = ''
@@ -24,7 +24,7 @@ const EditCategoryForm = () => {
 
   let categoryId
 
-  const onSubmitHand = async (values) => {
+  const onSubmitHandle = async (values) => {
     setLoading(true)
     category = {...values}
     try {
@@ -52,7 +52,7 @@ const EditCategoryForm = () => {
       <div>
         <Formik
           validationSchema={schema}
-          onSubmit={onSubmitHand}
+          onSubmit={onSubmitHandle}
           initialValues={appContext.categories[0]}
         >
           {({

@@ -40,7 +40,7 @@ const AddStoreManagerForm = () => {
     email: ''
   })
 
-  const onSubmitHand = async (values) => {
+  const onSubmitHandle = async (values) => {
     setLoading(true)
     setStoreManagerData(values)
     try {
@@ -63,7 +63,7 @@ const AddStoreManagerForm = () => {
       <div>
         <Formik
           validationSchema={schema}
-          onSubmit={onSubmitHand}
+          onSubmit={onSubmitHandle}
           initialValues={storeManagerData}
         >
           {({
