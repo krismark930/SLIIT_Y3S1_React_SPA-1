@@ -1,9 +1,9 @@
-import React, {useContext, useState} from "react";
-import {Formik} from "formik";
-import {Button, Col, Form, Spinner} from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Formik } from "formik";
+import { Button, Col, Form, Spinner } from "react-bootstrap";
 import * as yup from "yup";
-import {FaMinusCircle, FaSignInAlt} from "react-icons/fa";
-import {AppContext} from "../../Context/app-context";
+import { FaMinusCircle, FaSignInAlt } from "react-icons/fa";
+import { AppContext } from "../../Context/app-context";
 
 import "./signup-form.scss";
 
@@ -54,7 +54,7 @@ const SignupForm = (props) => {
     answer: "",
   });
 
-  const onSubmitHand = async (values, {setSubmitting}) => {
+  const onSubmitHand = async (values, { setSubmitting }) => {
     setLoading(true);
 
     console.log(values);
@@ -78,6 +78,7 @@ const SignupForm = (props) => {
       }
       appContext.addCurrentUser(responseData.user);
       appContext.login();
+      appContext.setCheckCustomerMethod();
 
       setLoading(false);
       console.log(responseData);
@@ -99,21 +100,28 @@ const SignupForm = (props) => {
           initialValues={signUpData}
         >
           {({
-              handleSubmit,
-              isSubmitting,
-              handleChange,
-              handleBlur,
-              resetForm,
-              setFieldValue,
-              values,
-              touched,
-              isValid,
-              errors,
-            }) => (
+            handleSubmit,
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            resetForm,
+            setFieldValue,
+            values,
+            touched,
+            isValid,
+            errors,
+          }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
-                  <Form.Label>First Name</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    First Name
+                  </Form.Label>
                   <Form.Control
                     placeholder="First Name"
                     type="text"
@@ -126,11 +134,18 @@ const SignupForm = (props) => {
                   />
 
                   <Form.Control.Feedback type="invalid">
-                    {errors.firstName}
+                    <i>{errors.firstName}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="6" controlId="validationFormik02">
-                  <Form.Label>Last Name</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Last Name
+                  </Form.Label>
                   <Form.Control
                     placeholder="Last Name"
                     type="text"
@@ -143,14 +158,21 @@ const SignupForm = (props) => {
                   />
 
                   <Form.Control.Feedback type="invalid">
-                    {errors.lastName}
+                    <i>{errors.lastName}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
 
               <Form.Row>
                 <Form.Group as={Col} md="12" controlId="validationFormik04">
-                  <Form.Label>Email</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Email
+                  </Form.Label>
                   <Form.Control
                     type="email"
                     placeholder="Email"
@@ -162,12 +184,19 @@ const SignupForm = (props) => {
                     isValid={touched.email && !errors.email}
                   />
                   <Form.Control.Feedback type="invalid">
-                    {errors.email}
+                    <i>{errors.email}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group as={Col} md="12" controlId="validationFormik03">
-                  <Form.Label>Telephone</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Telephone
+                  </Form.Label>
                   <Form.Control
                     placeholder="Telephone Number"
                     type="text"
@@ -180,12 +209,19 @@ const SignupForm = (props) => {
                   />
 
                   <Form.Control.Feedback type="invalid">
-                    {errors.teleNo}
+                    <i>{errors.teleNo}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group as={Col} md="12" controlId="validationFormik05">
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Password
+                  </Form.Label>
                   <Form.Control
                     placeholder="Password"
                     type="password"
@@ -198,12 +234,19 @@ const SignupForm = (props) => {
                   />
 
                   <Form.Control.Feedback type="invalid">
-                    {errors.password}
+                    <i>{errors.password}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group as={Col} md="12" controlId="validationFormik05">
-                  <Form.Label>Confirm Password</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Confirm Password
+                  </Form.Label>
                   <Form.Control
                     placeholder="Confirm Password"
                     type="password"
@@ -219,16 +262,21 @@ const SignupForm = (props) => {
                   {loading && (
                     <Spinner
                       animation="border"
-                      style={{textAlign: "center", marginLeft: "49%"}}
+                      style={{ textAlign: "center", marginLeft: "49%" }}
                     />
                   )}
 
                   <Form.Control.Feedback type="invalid">
-                    {errors.passwordConfirm}
+                    <i>{errors.passwordConfirm}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} controlId="formGridState">
-                  <Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
                     Select a question to update password option..{" "}
                   </Form.Label>
                   <Form.Control
@@ -260,11 +308,18 @@ const SignupForm = (props) => {
                     </option>
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
-                    {errors.passwordResetQuestion}
+                    <i>{errors.passwordResetQuestion}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="12" controlId="validationFormik05">
-                  <Form.Label>Answer to above question</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Answer to above question
+                  </Form.Label>
                   <Form.Control
                     placeholder="Answer"
                     type="text"
@@ -277,7 +332,7 @@ const SignupForm = (props) => {
                   />
 
                   <Form.Control.Feedback type="invalid">
-                    {errors.answer}
+                    <i>{errors.answer}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
@@ -285,7 +340,7 @@ const SignupForm = (props) => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                style={{marginTop: "5px"}}
+                style={{ marginTop: "5px" }}
               >
                 <FaSignInAlt
                   style={{
@@ -296,12 +351,16 @@ const SignupForm = (props) => {
                 />
                 SignUp
               </Button>
-              {errorss && <div id="loginServerError">{errorss}</div>}
+              {errorss && (
+                <div id="loginServerError">
+                  <i>{errorss}</i>
+                </div>
+              )}
               <Button
                 onClick={resetForm}
                 type="submit"
                 variant="outline-danger"
-                style={{marginTop: "5px", float: "right"}}
+                style={{ marginTop: "5px", float: "right" }}
               >
                 <FaMinusCircle
                   style={{
