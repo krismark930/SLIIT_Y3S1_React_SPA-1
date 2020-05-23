@@ -1,9 +1,11 @@
-import React, {useContext, useEffect, useState} from "react";
-import {AppContext} from "../../Context/app-context";
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../Context/app-context";
 import WishListItem from "../../components/wishlist-item/wishlist-item-component";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./wishlist-styles.scss";
-import {FaCartArrowDown, FaRegHourglass} from "react-icons/fa";
+import { FaCartArrowDown, FaRegHourglass } from "react-icons/fa";
+import "aos/dist/aos.css";
+import Aos from "aos";
 
 const WishListPage = (props) => {
   const appContext = useContext(AppContext);
@@ -20,7 +22,7 @@ const WishListPage = (props) => {
 
   useEffect(() => {
     let responseData = 0;
-
+    Aos.init({ duration: 1000 });
     setWishList(appContext.wishList);
   }, []);
 
@@ -75,7 +77,7 @@ const WishListPage = (props) => {
         }
       );
 
-      let tempChnage = {...product, wishList: 0};
+      let tempChnage = { ...product, wishList: 0 };
 
       console.log(tempChnage);
 
@@ -97,9 +99,12 @@ const WishListPage = (props) => {
       <div className="wishlist-page">
         {wishList.length ? (
           <h2
+            data-aos="fade-up"
+            data-aos-duration="600"
+            data-aos-delay="500"
             style={{
               padding: "10px",
-              marginLeft: "10px ",
+              marginLeft: "10px",
               fontSize: "35px",
               marginTop: "5%",
               fontFamily: "Roboto Slab",
@@ -111,7 +116,12 @@ const WishListPage = (props) => {
             Wish List
           </h2>
         ) : (
-          <div style={{textAlign: "center"}}>
+          <div
+            data-aos="fade-up"
+            data-aos-duration="600"
+            data-aos-delay="500"
+            style={{ textAlign: "center" }}
+          >
             <p
               style={{
                 marginTop: "100px",
@@ -160,9 +170,12 @@ const WishListPage = (props) => {
         {/* <div className="total">TOTAL: ${total}</div> */}
         {wishList.length ? (
           <Button
+            data-aos="flip-right"
+            data-aos-duration="600"
+            data-aos-delay="500"
             className="buyNowBtn"
             type="submit"
-            style={{float: "right", marginBottom: "40px"}}
+            style={{ float: "right", marginBottom: "40px" }}
             onClick={() => moveWishListToCart()}
           >
             Add to Cart
