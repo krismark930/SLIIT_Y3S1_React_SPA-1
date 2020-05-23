@@ -10,11 +10,11 @@ var errorss = "";
 var passwordUpdatedd = true;
 var userData = {};
 var responseData = {
-  user: {answer: "red", passwordResetQuestion: "", id: ""}
+  user: {answer: "red", passwordResetQuestion: "", id: ""},
 };
 var schema = {};
 
-const UpdatePassword = props => {
+const UpdatePassword = (props) => {
   const [emailIsValid, setemailIsValid] = useState(false);
   const [userDetails, setuserDetails] = useState({});
 
@@ -28,7 +28,7 @@ const UpdatePassword = props => {
 
   const [loginData, setloginData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   if (emailIsValid) {
@@ -52,14 +52,14 @@ const UpdatePassword = props => {
         .string()
         .min(3, "min")
         .required("Confirm the password")
-        .oneOf([yup.ref("password"), null], "Passwords must match")
+        .oneOf([yup.ref("password"), null], "Passwords must match"),
     });
   } else {
     schema = yup.object().shape({
       email: yup
         .string()
         .email("MUst be a valid email")
-        .required("Enter the email")
+        .required("Enter the email"),
     });
   }
 
@@ -75,9 +75,9 @@ const UpdatePassword = props => {
           {
             method: "POST",
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify(values)
+            body: JSON.stringify(values),
           }
         );
 
@@ -109,10 +109,10 @@ const UpdatePassword = props => {
           {
             method: "POST",
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
             },
 
-            body: JSON.stringify(values)
+            body: JSON.stringify(values),
           }
         );
 
@@ -141,13 +141,22 @@ const UpdatePassword = props => {
       <div className="container">
         {passwordUpdatedd ? (
           <Row>
-            <Col md="5" style={{margin: "auto", marginTop: "102px"}}>
+            <Col
+              md="6"
+              style={{
+                margin: "auto",
+                marginTop: "102px",
+                padding: "20px",
+                borderRadius: "14px",
+                border: "2px solid rgba(0, 123, 255, 0.55)",
+              }}
+            >
               <Formik
                 validationSchema={schema}
                 onSubmit={onSubmitHand}
                 initialValues={{
                   email: loginData.email,
-                  password: loginData.password
+                  password: loginData.password,
                 }}
               >
                 {({
@@ -158,7 +167,7 @@ const UpdatePassword = props => {
                     values,
                     touched,
                     isValid,
-                    errors
+                    errors,
                   }) => (
                   <Form noValidate onSubmit={handleSubmit}>
                     <Form.Row>
@@ -167,7 +176,14 @@ const UpdatePassword = props => {
                         md="12"
                         controlId="validationFormik01"
                       >
-                        <Form.Label>Email</Form.Label>
+                        <Form.Label
+                          style={{
+                            fontFamily: "Roboto Slab",
+                            fontSize: "16px",
+                          }}
+                        >
+                          Email
+                        </Form.Label>
                         <Form.Control
                           type="email"
                           placeholder="Email"
@@ -179,14 +195,19 @@ const UpdatePassword = props => {
                           isValid={touched.email && !errors.email}
                         />
                         <Form.Control.Feedback type="invalid">
-                          {errors.email}
+                          <i> {errors.email}</i>
                         </Form.Control.Feedback>
                       </Form.Group>
 
                       {emailIsValid ? (
                         <div className="col-md-12">
                           <Form.Group controlId="validationFormik02">
-                            <Form.Label>
+                            <Form.Label
+                              style={{
+                                fontFamily: "Roboto Slab",
+                                fontSize: "16px",
+                              }}
+                            >
                               {userData.passwordResetQuestion}
                             </Form.Label>
                             <Form.Control
@@ -201,7 +222,7 @@ const UpdatePassword = props => {
                             />
 
                             <Form.Control.Feedback type="invalid">
-                              {errors.answer}
+                              <i>{errors.answer}</i>
                             </Form.Control.Feedback>
                           </Form.Group>
                           <Form.Group
@@ -220,7 +241,14 @@ const UpdatePassword = props => {
                             />
                           </Form.Group>
                           <Form.Group controlId="validationFormik056">
-                            <Form.Label>New Password</Form.Label>
+                            <Form.Label
+                              style={{
+                                fontFamily: "Roboto Slab",
+                                fontSize: "16px",
+                              }}
+                            >
+                              New Password
+                            </Form.Label>
                             <Form.Control
                               placeholder="Confirm Password"
                               type="password"
@@ -233,11 +261,18 @@ const UpdatePassword = props => {
                             />
 
                             <Form.Control.Feedback type="invalid">
-                              {errors.password}
+                              <i>{errors.password}</i>
                             </Form.Control.Feedback>
                           </Form.Group>{" "}
                           <Form.Group controlId="validationFormik05">
-                            <Form.Label>Confirm Password</Form.Label>
+                            <Form.Label
+                              style={{
+                                fontFamily: "Roboto Slab",
+                                fontSize: "16px",
+                              }}
+                            >
+                              Confirm Password
+                            </Form.Label>
                             <Form.Control
                               placeholder="Confirm Password"
                               type="password"
@@ -256,7 +291,7 @@ const UpdatePassword = props => {
                             />
 
                             <Form.Control.Feedback type="invalid">
-                              {errors.passwordConfirm}
+                              <i>{errors.passwordConfirm}</i>
                             </Form.Control.Feedback>
                           </Form.Group>{" "}
                         </div>
@@ -280,7 +315,7 @@ const UpdatePassword = props => {
                             <FaSignInAlt
                               style={{
                                 marginRight: "10px",
-                                marginBottom: "3px"
+                                marginBottom: "3px",
                               }}
                             />
                             Submit
@@ -305,7 +340,7 @@ const UpdatePassword = props => {
                 style={{
                   borderBlockColor: "grey",
                   borderWidth: "3px",
-                  width: "100%"
+                  width: "100%",
                 }}
               >
                 <p style={{textAlign: "center", fontWeight: "600"}}>

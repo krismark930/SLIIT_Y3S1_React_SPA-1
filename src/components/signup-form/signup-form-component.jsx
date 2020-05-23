@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import {Formik} from "formik";
 import {Button, Col, Form, Spinner} from "react-bootstrap";
 import * as yup from "yup";
-import {FaSignInAlt} from "react-icons/fa";
+import {FaMinusCircle, FaSignInAlt} from "react-icons/fa";
 import {AppContext} from "../../Context/app-context";
 
 import "./signup-form.scss";
@@ -16,10 +16,7 @@ const schema = yup.object().shape({
     .string()
     .min(2, "last name must have at least 2 characters")
     .required("Enter the last name"),
-  email: yup
-    .string()
-    .email()
-    .required("Enter the email"),
+  email: yup.string().email().required("Enter the email"),
   teleNo: yup
     .string()
     .matches(
@@ -37,12 +34,12 @@ const schema = yup.object().shape({
     .required("Confirm the password")
     .oneOf([yup.ref("password"), null], "Passwords must match"),
   passwordResetQuestion: yup.string().required("Select a question"),
-  answer: yup.string().required("Enter the password")
+  answer: yup.string().required("Enter the password"),
 });
 
 var errorss = "";
 
-const SignupForm = props => {
+const SignupForm = (props) => {
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
@@ -54,7 +51,7 @@ const SignupForm = props => {
     email: "",
     password: "",
     passwordResetQuestion: "",
-    answer: ""
+    answer: "",
   });
 
   const onSubmitHand = async (values, {setSubmitting}) => {
@@ -67,9 +64,9 @@ const SignupForm = props => {
       const response = await fetch("http://localhost:5000/users/signup", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(values)
+        body: JSON.stringify(values),
       });
 
       const responseData = await response.json();
@@ -79,8 +76,10 @@ const SignupForm = props => {
         errorss = responseData.message;
         throw new Error(responseData.message);
       }
-
+      appContext.addCurrentUser(responseData.user);
       appContext.login();
+      appContext.setCheckCustomerMethod();
+
       setLoading(false);
       console.log(responseData);
     } catch (errorss) {
@@ -105,15 +104,24 @@ const SignupForm = props => {
               isSubmitting,
               handleChange,
               handleBlur,
+              resetForm,
+              setFieldValue,
               values,
               touched,
               isValid,
-              errors
+              errors,
             }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
-                  <Form.Label>First Name</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    First Name
+                  </Form.Label>
                   <Form.Control
                     placeholder="First Name"
                     type="text"
@@ -126,11 +134,18 @@ const SignupForm = props => {
                   />
 
                   <Form.Control.Feedback type="invalid">
-                    {errors.firstName}
+                    <i>{errors.firstName}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="6" controlId="validationFormik02">
-                  <Form.Label>Last Name</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Last Name
+                  </Form.Label>
                   <Form.Control
                     placeholder="Last Name"
                     type="text"
@@ -143,14 +158,21 @@ const SignupForm = props => {
                   />
 
                   <Form.Control.Feedback type="invalid">
-                    {errors.lastName}
+                    <i>{errors.lastName}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
 
               <Form.Row>
                 <Form.Group as={Col} md="12" controlId="validationFormik04">
-                  <Form.Label>Email</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Email
+                  </Form.Label>
                   <Form.Control
                     type="email"
                     placeholder="Email"
@@ -162,12 +184,19 @@ const SignupForm = props => {
                     isValid={touched.email && !errors.email}
                   />
                   <Form.Control.Feedback type="invalid">
-                    {errors.email}
+                    <i>{errors.email}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group as={Col} md="12" controlId="validationFormik03">
-                  <Form.Label>Telephone</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Telephone
+                  </Form.Label>
                   <Form.Control
                     placeholder="Telephone Number"
                     type="text"
@@ -180,12 +209,19 @@ const SignupForm = props => {
                   />
 
                   <Form.Control.Feedback type="invalid">
-                    {errors.teleNo}
+                    <i>{errors.teleNo}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group as={Col} md="12" controlId="validationFormik05">
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Password
+                  </Form.Label>
                   <Form.Control
                     placeholder="Password"
                     type="password"
@@ -198,12 +234,19 @@ const SignupForm = props => {
                   />
 
                   <Form.Control.Feedback type="invalid">
-                    {errors.password}
+                    <i>{errors.password}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group as={Col} md="12" controlId="validationFormik05">
-                  <Form.Label>Confirm Password</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Confirm Password
+                  </Form.Label>
                   <Form.Control
                     placeholder="Confirm Password"
                     type="password"
@@ -224,11 +267,16 @@ const SignupForm = props => {
                   )}
 
                   <Form.Control.Feedback type="invalid">
-                    {errors.passwordConfirm}
+                    <i>{errors.passwordConfirm}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} controlId="formGridState">
-                  <Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
                     Select a question to update password option..{" "}
                   </Form.Label>
                   <Form.Control
@@ -250,18 +298,28 @@ const SignupForm = props => {
                   >
                     <option></option>
                     <option value="What is the name of your first name ? ">
-                      What is the name of your first name ?{" "}
+                      What is the name of your first pet ?{" "}
                     </option>
                     <option value="What is your favorite color ?">
                       What is your favorite color ?{" "}
                     </option>
+                    <option value="What is your favorite color ?">
+                      Where are your parents met ?{" "}
+                    </option>
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
-                    {errors.passwordResetQuestion}
+                    <i>{errors.passwordResetQuestion}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="12" controlId="validationFormik05">
-                  <Form.Label>Answer to above question</Form.Label>
+                  <Form.Label
+                    style={{
+                      fontFamily: "Roboto Slab",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Answer to above question
+                  </Form.Label>
                   <Form.Control
                     placeholder="Answer"
                     type="text"
@@ -274,7 +332,7 @@ const SignupForm = props => {
                   />
 
                   <Form.Control.Feedback type="invalid">
-                    {errors.answer}
+                    <i>{errors.answer}</i>
                   </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
@@ -288,12 +346,31 @@ const SignupForm = props => {
                   style={{
                     marginRight: "10px",
                     marginBottom: "3px",
-                    transform: "rotate(270deg)"
+                    transform: "rotate(270deg)",
                   }}
                 />
                 SignUp
               </Button>
-              {errorss && <div id="loginServerError">{errorss}</div>}
+              {errorss && (
+                <div id="loginServerError">
+                  <i>{errorss}</i>
+                </div>
+              )}
+              <Button
+                onClick={resetForm}
+                type="submit"
+                variant="outline-danger"
+                style={{marginTop: "5px", float: "right"}}
+              >
+                <FaMinusCircle
+                  style={{
+                    marginRight: "10px",
+                    marginBottom: "3px",
+                    transform: "rotate(270deg)",
+                  }}
+                />
+                Reset Form
+              </Button>
             </Form>
           )}
         </Formik>

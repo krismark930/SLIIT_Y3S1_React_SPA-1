@@ -1,65 +1,124 @@
-import {createContext} from "react";
+import {createContext} from 'react'
 
 export const AppContext = createContext({
+  checkCustomer: false,
+  checkStoreManager: false,
+  checkAdmin: false,
   loggedin: false,
+  payUserConfirmed: false,
+  payCardConfirmed: false,
   editPayUser: false,
-  editPayCard:false,
+  editPayCard: false,
+  tempProducts: [],
   hidden: false,
-  editPayUserId: "1",
-  editPayCardId:"1",
+  wishList: null,
+  editPayUserId: '1',
+  editPayCardId: '1',
   products: [
-    {id: "p1", title: "Gaming Mouse", price: 29.99},
-    {id: "p2", title: "Harry Potter 3", price: 9.99},
-    {id: "p3", title: "Used plastic bottle", price: 0.99},
-    {id: "p4", title: "Half-dried plant", price: 2.99}
+    {id: 'p1', title: 'Gaming Mouse', price: 29.99},
+    {id: 'p2', title: 'Harry Potter 3', price: 9.99},
+    {id: 'p3', title: 'Used plastic bottle', price: 0.99},
+    {id: 'p4', title: 'Half-dried plant', price: 2.99}
   ],
   cart: [],
   currentUser: [],
+  currentUserFirstName: [],
+  currentUserLastName: [],
   payUserDetails: [],
   editPayUserDetails: [],
   payCardDetails: [],
   payOrderDetails: [],
   editPayCardDetails: [],
+  editStoreManager: false,
+  editStoreManagerId: '1',
+  storeManagers: [],
+  editCategory: false,
+  editCategoryId: '1',
+  categories: [],
+  existingCategory: false,
 
-  
-  addItemToCart: item => {
+  addItemToCart: (item) => {
   },
   removeItemFromCart: (productId, state) => {
   },
-  removeCompletelyItemFromCart: item => {
+  removeCompletelyItemFromCart: (item) => {
   },
-  toggleDropdownHidden: state => {
+  toggleDropdownHidden: (state) => {
   },
-  logout: state => {
+  logout: (state) => {
   },
-  login: state => {
+  login: (state) => {
   },
-  addCurrentUser: user => {
+  setTruePayUserConfirmed: (state) => {
   },
-  addPayUserDetails: payUser => {
+  setFalsePayUserConfirmed: (state) => {
   },
-  addPayCardDetails: payUser => {
+  setTruePayCardConfirmed: (state) => {
   },
-  addPayOrderDetails: payUser => {
+  setFalsePayCardConfirmed: (state) => {
   },
-  addEditPayUserDetails: payUser => {
+  addCurrentUser: (user) => {
   },
-  addEditPayCardDetails: payCard => {
+  addCurrentUserFirstName: (name) => {
   },
-  payUserEdit:state => {
+  addCurrentUserLastName: (name) => {
   },
-  payUserEditFalse :state => {
-    
+  addPayUserDetails: (payUser) => {
   },
-  setEditPayUserID:id =>{
-
+  addPayCardDetails: (payUser) => {
   },
-  payCardEdit:state => {
+  addPayOrderDetails: (payUser) => {
   },
-  payCardEditFalse :state => {
-    
+  addEditPayUserDetails: (payUser) => {
   },
-  setEditPayCardID:id =>{
-
+  addEditPayCardDetails: (payCard) => {
+  },
+  payUserEdit: (state) => {
+  },
+  payUserEditFalse: (state) => {
+  },
+  setEditPayUserID: (id) => {
+  },
+  payCardEdit: (state) => {
+  },
+  payCardEditFalse: (state) => {
+  },
+  setEditPayCardID: (id) => {
+  },
+  setWishListmethod: (mail) => {
+  },
+  addToWishList: (product) => {
+  },
+  setWishListMethod: () => {
+  },
+  getWishList: () => {
+  },
+  setChangeWishListProduct: (p) => {
+  },
+  setCheckAdminMethod: () => {
+  },
+  setCheckCustomerMethod: () => {
+  },
+  setChecksetCheckStoreManagerMethod: () => {
+  },
+  storeManagerEdit: () => {
+  },
+  editStoreManagerFalse: () => {
+  },
+  setEditStoreManagerId: () => {
+  },
+  addStoreManagers: () => {
+  },
+  categoryEdit: () => {
+  },
+  editCategoryFalse: () => {
+  },
+  setEditCategoryId: () => {
+  },
+  addCategories: () => {
+  },
+  existingCategoryEdit: () => {
+  },
+  editExistingCategoryFalse: () => {
   }
-});
+})

@@ -1,8 +1,7 @@
-import React, {useContext, useState,useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Formik} from "formik";
-import {Button, Col, Form, Spinner} from "react-bootstrap";
+import {Button, Col, Form} from "react-bootstrap";
 import * as yup from "yup";
-import {FaSignInAlt} from "react-icons/fa";
 import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
 
@@ -20,15 +19,15 @@ const schema = yup.object().shape({
       "Enter a valid telephone number"
     )
     .required("Enter the telephone number"),
-    address: yup
+  address: yup
     .string()
     .min(2, "address must have at least 2 characters")
     .required("Enter the address"),
-    city: yup
+  city: yup
     .string()
     .min(2, "city must have at least 2 characters")
     .required("Enter the city"),
-    province: yup
+  province: yup
     .string()
     .min(2, "province must have at least 2 characters")
     .required("Enter the province")
@@ -41,7 +40,7 @@ const AddPayUserDetails = props => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [payUserDetails, setPayUserDetails] = useState({
-    email:"",
+    email: "",
     name: "",
     phone: "",
     address: "",
@@ -51,16 +50,16 @@ const AddPayUserDetails = props => {
   });
 
   var payUser;
-  var currentEmail ;
+  var currentEmail;
 
   useEffect(() => {
     //console.log(payUserDetails);
     //payUser = payUserDetails;
-    
+
   }, [payUserDetails]);
 
   const onSubmitHandle = async (values, {setSubmitting}) => {
-    
+
     console.log("Ane manda");
     console.log(values);
     setLoading(true);
@@ -68,46 +67,53 @@ const AddPayUserDetails = props => {
     appContext.currentUser.forEach(user => {
       currentEmail = user.email;
       console.log(currentEmail);
-     setPayUserDetails({...values, email:currentEmail});
+      setPayUserDetails({...values, email: currentEmail});
     });
 
-    payUser = {...values, email:currentEmail};
-   
+    payUser = {...values, email: currentEmail};
+
     console.log("Ane manda Bn");
     console.log(currentEmail);
     console.log(payUser);
-   
+
+    //pay userwa context ekata daganna
+    appContext.addPayUserDetails(payUser);
+
+    appContext.setTruePayUserConfirmed();
 
     try {
-      if(values.isSave){
-        appContext.addPayUserDetails(payUser);
-      }
-      const response = await fetch("http://localhost:5000/payments/pay-user", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payUser)
-      });
+      if (values.isSave) {
+        //appContext.addPayUserDetails(payUser);
 
-      const responseData = await response.json();
-      console.log(responseData);
-      if (!responseData.save) {
-        setError("lol");
-        
-        throw new Error(responseData.message);
+        const response = await fetch("http://localhost:5000/payments/pay-user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payUser)
+        });
+
+        const responseData = await response.json();
+        console.log(responseData);
+        if (!responseData.save) {
+          setError("lol");
+
+          throw new Error(responseData.message);
+        }
+
+        //appContext.setTruePayUserConfirmed();
+        //appContext.login();
+        setLoading(false);
+        console.log(responseData);
       }
 
-      //appContext.login();
-      setLoading(false);
-      console.log(responseData);
     } catch (errorss) {
-      console.log(errorss);
+      //console.log(errorss);
       setLoading(false);
       setError(errorss.message || "Something went wrong, try again later");
     }
 
-  
+
   };
 
   return (
@@ -120,6 +126,7 @@ const AddPayUserDetails = props => {
         >
           {({
               handleSubmit,
+              handleReset,
               isSubmitting,
               handleChange,
               handleBlur,
@@ -129,7 +136,7 @@ const AddPayUserDetails = props => {
               errors
             }) => (
             <Form noValidate onSubmit={handleSubmit}>
-             
+
 
               <Form.Row>
                 <Form.Group as={Col} md="12" controlId="validationFormik04">
@@ -183,7 +190,7 @@ const AddPayUserDetails = props => {
                   </Form.Control.Feedback>
                 </Form.Group>
 
-                
+
               </Form.Row>
 
               <Form.Row>
@@ -226,67 +233,66 @@ const AddPayUserDetails = props => {
                       !errors.province
                     }
                   >
-                    <option></option>
+                    <option>Choose province</option>
                     <option value="Western">
-                     1.Western{" "}
+                      1.Western{" "}
                     </option>
                     <option value="Eastern">
-                     2.Eastern{" "}
+                      2.Eastern{" "}
                     </option>
                     <option value="North Central">
-                     3.North Central{" "}
+                      3.North Central{" "}
                     </option>
                     <option value="Northern">
-                     4.Northern{" "}
+                      4.Northern{" "}
                     </option>
                     <option value="North Western">
-                     5.North Western{" "}
+                      5.North Western{" "}
                     </option>
                     <option value="Sabaragamuwa">
-                     6.Sabaragamuwa{" "}
+                      6.Sabaragamuwa{" "}
                     </option>
-                    <option value=" Southern">
-                     7. Southern{" "}
+                    <option value="Southern">
+                      7. Southern{" "}
                     </option>
-                    <option value=" Uva">
-                     8. Uva{" "}
+                    <option value="Uva">
+                      8. Uva{" "}
                     </option>
                     <option value="Central">
-                     9.Central{" "}
+                      9.Central{" "}
                     </option>
-                    
+
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
                     {errors.province}
                   </Form.Control.Feedback>
                 </Form.Group>
-                
-                
+
+
               </Form.Row>
 
               <Form.Row>
-              <Form.Group as={Col} md="12" controlId="validationFormik04">
-               <Form.Control
+                <Form.Group as={Col} md="12" controlId="validationFormik04">
+                  <Form.Control
                     type="checkbox"
-                    name="isSave" 
-                    value={values.isSave }
+                    name="isSave"
+                    value={values.isSave}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={touched.isSave  && errors.isSave }
-                    isValid={touched.isSave  && !errors.isSave }
+                    isInvalid={touched.isSave && errors.isSave}
+                    isValid={touched.isSave && !errors.isSave}
                   />
                   <Form.Control.Feedback type="invalid">
-                    {errors.isSave }
+                    {errors.isSave}
                   </Form.Control.Feedback>
 
                   <Form.Label>Save for future</Form.Label>
-               </Form.Group>
+                </Form.Group>
 
-             
 
               </Form.Row>
 
-         
+
               <Button
                 type="submit"
                 disabled={isSubmitting}
@@ -295,15 +301,19 @@ const AddPayUserDetails = props => {
                 Confirm
               </Button>
 
-              <Link to="/">
               <Button
-                type="reset"
+                type="button"
+                className="outline"
+                onClick={handleReset}
                 disabled={isSubmitting}
-                style={{marginTop: "5px", marginRight: "5px"}}
               >
-                Cancel
+                Reset
               </Button>
+
+              <Link to="/" style={{marginTop: "5px", marginRight: "5px"}}>
+                Back to Home
               </Link>
+
 
             </Form>
           )}

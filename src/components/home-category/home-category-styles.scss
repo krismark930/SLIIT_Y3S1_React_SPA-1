@@ -1,0 +1,31 @@
+// .cardDeckHome {
+//   background-image: url("../../assets/Layer\ 6.svg") no-repeat;
+//   background-size: cover;
+// }
+
+.cardDeckHome {
+  background-image: url("../../assets/Layer\ 4.svg") no-repeat;
+  background-size: cover;
+}
+
+div.vertical-sentence {
+  -ms-writing-mode: tb-rl; /* for IE */
+  -webkit-writing-mode: vertical-rl; /* for Webkit */
+  writing-mode: vertical-rl;
+}
+
+.rotate-characters-back-to-horizontal {
+  -webkit-text-orientation: upright; /* for Webkit */
+  text-orientation: upright;
+}
+
+.categoryNameHome {
+  text-align: center;
+  padding: 10px;
+  margin: auto;
+}
+
+#productCategoryInHome:hover {
+  text-decoration: none;
+  color: blue($color: #000000);
+}

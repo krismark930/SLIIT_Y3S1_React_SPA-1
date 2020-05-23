@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160.5 807">
+    <defs>
+        <style>.cls-1{fill:url(#linear-gradient);}</style>
+        <linearGradient id="linear-gradient" y1="403.5" x2="160.5" y2="403.5" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#fff"/>
+            <stop offset="0.89" stop-color="#00c3ff"/>
+        </linearGradient>
+    </defs>
+    <title>Layer 1</title>
+    <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+            <polygon class="cls-1" points="0 0 160.5 160.5 160.5 649 0 807 0 0"/>
+        </g>
+    </g>
+</svg>

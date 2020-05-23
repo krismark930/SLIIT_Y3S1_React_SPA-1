@@ -1,213 +1,549 @@
-import React, {useState} from "react";
-import {AppContext} from "./app-context";
+import React, {useState} from 'react'
+import {AppContext} from './app-context'
 
-const GlobalState = props => {
-  const [loggedin, setLoggedin] = useState(false);
-  const [editPayUser, setEditPayUser] = useState(false);
-  const [editPayUserId, setEditPayUserId] = useState("1");
-  const [editPayCard, setEditPayCard] = useState(false);
-  const [editPayCardId, setEditPayCardId] = useState("1");
-  const [hidden, setHidden] = useState(true);
+const GlobalState = (props) => {
+  const [loggedin, setLoggedin] = useState(false)
+  const [payUserConfirmed, setPayUserConfirmed] = useState(false)
+  const [payCardConfirmed, setPayCardConfirmed] = useState(false)
+  const [editPayUser, setEditPayUser] = useState(false)
+  const [editPayUserId, setEditPayUserId] = useState('1')
+  const [editPayCard, setEditPayCard] = useState(false)
+  const [editPayCardId, setEditPayCardId] = useState('1')
+  const [hidden, setHidden] = useState(true)
+  const [wishList, setWishList] = useState()
+  const [checkAdmin, setCheckAdmin] = useState(false)
+  const [checkCustomer, setCheckCustomer] = useState(false)
+  const [checkStoreManager, setCheckStoreManager] = useState(false)
   const [products, setProducts] = useState([
-    {id: "p1", title: "Gaming Mouse", price: 29.99},
-    {id: "p2", title: "Harry Potter 3", price: 9.99},
-    {id: "p3", title: "Used plastic bottle", price: 0.99},
-    {id: "p4", title: "Half-dried plant", price: 2.99}
-  ]);
+    {
+      title: 'Women1',
+      id: 1,
+      price: 123.0,
+      category: 'Women',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Women',
+      id: 2,
+      price: 123.0,
+      category: 'Women',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Men1',
+      id: 3,
+      price: 123.0,
+      category: 'Men',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Men',
+      id: 4,
+      price: 123.0,
+      category: 'Men',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Shoes1',
+      id: 5,
+      price: 123.0,
+      category: 'Shoes',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Women2',
+      id: 6,
+      price: 123.0,
+      category: 'Women',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Product11',
+      id: 7,
+      price: 123.0,
+      category: 'Women',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Product12',
+      id: 8,
+      price: 123.0,
+      category: 'Women',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Product1',
+      id: 9,
+      price: 123.0,
+      category: 'Hats',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    }
+  ])
+  const [tempProducts, setTempProducts] = useState(products)
+  const [cart, setCart] = useState([])
+  const [currentUser, setCurrentUser] = useState([{type: 'Null'}])
+  const [currentUserFirstName, setCurrentUserFirstName] = useState([])
+  const [currentUserLastName, setCurrentUserLastName] = useState([])
+  const [payUserDetails, setPayUserDetails] = useState([])
+  const [editPayUserDetails, setEditPayUserDetails] = useState([])
+  const [editPayCardDetails, setEditPayCardDetails] = useState([])
+  const [payCardDetails, setPayCardDetails] = useState([])
+  const [payOrderDetails, setPayOrderDetails] = useState([])
+  const [editStoreManager, setEditStoreManager] = useState(false)
+  const [editStoreManagerId, setEditStoreManagerID] = useState('1')
+  const [storeManagers, setStoreManagers] = useState([])
+  const [editCategory, setEditCategory] = useState(false)
+  const [editCategoryId, setEditCategoryID] = useState('1')
+  const [existingCategory, setEditExistingCategory] = useState(false)
+  const [categories, setCategories] = useState([
+    {
+      categoryTitle: 'Hats'
+    },
+    {
+      categoryTitle: 'Men'
+    },
+    {
+      categoryTitle: 'Women'
+    },
+    {
+      categoryTitle: 'Shoes'
+    }
+  ])
 
-  var count = -1;
-
-  const [cart, setCart] = useState([]);
-  const [ currentUser, setCurrentUser] = useState([]);
-  const [ payUserDetails, setPayUserDetails] = useState([]);
-  const [ editPayUserDetails, setEditPayUserDetails] = useState([]);
-  const [ editPayCardDetails, setEditPayCardDetails] = useState([]);
-  const [ payCardDetails, setPayCardDetails] = useState([]);
-  const [ payOrderDetails, setPayOrderDetails] = useState([]);
-
-    const addItemToCart = item => {
-    const updatedCart = cart;
-    console.log(updatedCart);
-
-    var itemId = item.id;
-    console.log(itemId);
-
-    const updatedItemIndex = updatedCart.findIndex(item => item.id == itemId);
-
-    console.log(updatedItemIndex);
-
+  const addItemToCart = (item) => {
+    const updatedCart = cart
+    let itemId = item.id
+    const updatedItemIndex = updatedCart.findIndex(
+      (item) => item.id === itemId
+    )
     if (updatedItemIndex < 0) {
-      updatedCart.push({...item, quantity: 1});
+      updatedCart.push({...item, quantity: 1})
     } else {
       const updatedItem = {
-        ...updatedCart[updatedItemIndex]
-      };
-      updatedItem.quantity++;
-      updatedCart[updatedItemIndex] = updatedItem;
+        ...updatedCart[updatedItemIndex],
+      }
+      updatedItem.quantity++
+      updatedCart[updatedItemIndex] = updatedItem
     }
+    setCart(updatedCart)
+  }
 
-    setCart(updatedCart);
-  };
+  const addToWishList = async (productTitle) => {
+    let responseData = 0
+    const mail = currentUser[0].email
+    var responseError = ''
+    var objs = {
+      userID: mail,
+      productID: productTitle,
+    }
+    try {
+      const response = await fetch(
+        `http://localhost:5000/users/addToWishList`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(objs),
+        }
+      )
+      responseData = await response.json()
+      setWishListmethod(currentUser[0].email)
+      responseError = responseData.message
+      console.log(responseData)
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
 
-  const removeItemFromCart = item => {
-    const updatedCart = cart;
-    console.log(updatedCart);
+  // const setWishListMethod = async (wishlist) => {
+  //   console.log('setWishListMethod')
+  //   const wishLis = wishList
+  //   let wishL = []
+  //   wishL.push(...wishLis)
+  //   console.log(wishL)
+  //   setWishList(wishL)
+  //   console.log(wishList)
+  // }
 
-    var itemId = item.id;
-    console.log(itemId);
+  // const getWishList = () => {
+  //   console.log('getWishList')
+  //   return wishList
+  // }
 
-    const updatedItemIndex = updatedCart.findIndex(item => item.id == itemId);
+  const setChangeWishListProduct = (product) => {
+    // let tempProduct = products
+    // var filtered = products.filter((pitem) => pitem.title != product.title)
+    // filtered.push(product)
+    // setProducts(filtered)
+    // console.log('//////////////////')
+    // console.log(filtered)
+  }
 
-    console.log(updatedItemIndex);
+  const products1 = tempProducts
 
+  const setWishListmethod = async (mail) => {
+    console.log('setWishListmethod')
+    let filteredAll = []
+    let responseData = 0
+    // const mail = currentUser[0].email
+    var responseError = ''
+    try {
+      const response = await fetch(
+        `http://localhost:5000/users/getWishList/${mail}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(),
+        }
+      )
+      responseData = await response.json()
+      // console.log(responseData.wishList)
+      responseError = responseData.message
+      console.log(responseData)
+    } catch (err) {
+      console.log(err.message)
+    }
+    var filtering = products1
+    responseData.wishList.forEach((item) => {
+      const indexOfItem = products.findIndex(
+        (ppitem) => ppitem.title === item.productID
+      )
+      console.log(item)
+      var filtered = products.filter((pitem) => pitem.title == item.productID)
+      var fill = filtered.concat(filteredAll)
+      console.log(filtered)
+      filteredAll = fill
+      products.forEach((pitem) => {
+        if (pitem.title == item.productID) {
+          let temp = {...pitem, wishList: 1}
+          filtering = filtering.filter(
+            (pitem) => pitem.title != item.productID
+          )
+          // let temp2 = filtering
+          filtering.splice(indexOfItem, 0, temp)
+          // filtering.push(temp)
+          console.log('++++++++++++++++++++++')
+          console.log(filtering)
+        }
+      })
+    })
+    // console.log('fileredAll')
+    // console.log(filteredAll)
+    // if (filteredAll.length) {
+    //   filteredAll.splice(-1, 1)
+    // }
+    // console.log(filteredAll)
+    setWishList(filteredAll)
+    setProducts(filtering)
+  }
+
+  // const deleteWishListItem = async (productID) => {
+  //   console.log('deleteWishListItem')
+  //   let responseData = 0
+  //   const mail = currentUser[0].email
+  //   var responseError = ''
+  //   try {
+  //     const response = await fetch(
+  //       `http://localhost:5000/users/getWishList/${mail}/${productID}`,
+  //       {
+  //         method: 'DELETE',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify()
+  //       }
+  //     )
+  //     responseData = await response.json()
+  //     console.log(responseData.wishList)
+  //     responseError = responseData.message
+  //     console.log(responseData)
+  //   } catch (err) {
+  //     console.log(err.message)
+  //   }
+  //   const wishLis = responseData.wishList
+  //   let wishL = []
+  //   wishL.push({ ...wishLis })
+  //   console.log(wishL)
+  //   setWishList(wishL)
+  //   console.log(wishList)
+  // }
+
+  const addProducts = (products) => {
+    const products_ = []
+    products_.push({...products})
+    setProducts(products_)
+  }
+
+  const removeItemFromCart = (item) => {
+    const updatedCart = cart
+    let itemId = item.id
+    const updatedItemIndex = updatedCart.findIndex(
+      (item) => item.id === itemId
+    )
     const updatedItem = {
-      ...updatedCart[updatedItemIndex]
-    };
-    updatedItem.quantity--;
-    updatedCart[updatedItemIndex] = updatedItem;
+      ...updatedCart[updatedItemIndex],
+    }
+    updatedItem.quantity--
+    updatedCart[updatedItemIndex] = updatedItem
+    setCart(updatedCart)
+  }
 
-    setCart(updatedCart);
-  };
-
-  const removeCompletelyItemFromCart = item => {
-    const updatedCart = cart;
-    console.log(updatedCart);
-
-    var itemId = item.id;
-
-    var cartUpdated = updatedCart.filter(item => {
-      return item.id != itemId;
-    });
-
-    setCart(cartUpdated);
-  };
+  const removeCompletelyItemFromCart = (item) => {
+    const updatedCart = cart
+    let itemId = item.id
+    let cartUpdated = updatedCart.filter((item) => {
+      return item.id !== itemId
+    })
+    setCart(cartUpdated)
+  }
 
   const toggleDropdownHidden = () => {
-    setHidden(!hidden);
-  };
+    setHidden(!hidden)
+  }
 
-  const logout = state => {
-    setLoggedin(false);
-    setEditPayUser(false);
-    setEditPayCard(false);
-  };
-  const login = state => {
-    setLoggedin(true);
-  };
+  const logout = (state) => {
+    setLoggedin(false)
+    setCheckAdmin(false)
+    setCheckCustomer(false)
+    setCheckStoreManager(false)
+    setCart([])
+    setEditPayUser(false)
+    setEditPayCard(false)
+    setEditStoreManager(false)
+  }
 
-  const  addPayCardDetails = payCard => {
-    const updatedPayCard = [] ;
-    updatedPayCard.push({...payCard});
-    console.log(updatedPayCard);    
+  const login = (state) => {
+    setLoggedin(true)
+  }
 
-    setPayCardDetails(updatedPayCard);
-  };
+  const addPayCardDetails = (payCard) => {
+    const updatedPayCard = []
+    updatedPayCard.push({...payCard})
+    setPayCardDetails(updatedPayCard)
+  }
 
-  const  addPayUserDetails = payUser => {
-    const updatedPayUser = [] ;
-    updatedPayUser.push({...payUser});
-    console.log(updatedPayUser);    
+  const addPayUserDetails = (payUser) => {
+    const updatedPayUser = []
+    updatedPayUser.push({...payUser})
+    setPayUserDetails(updatedPayUser)
+  }
 
-    setPayUserDetails(updatedPayUser);
-  };
+  const addEditPayUserDetails = (payUser) => {
+    const updatedPayUser = []
+    updatedPayUser.push({...payUser})
+    setEditPayUserDetails(updatedPayUser)
+  }
 
-  
-  const  addEditPayUserDetails = payUser => {
-    const updatedPayUser = [] ;
-    updatedPayUser.push({...payUser});
-    console.log(updatedPayUser);    
+  const addEditPayCardDetails = (payCard) => {
+    const updatedPayCard = []
+    updatedPayCard.push({...payCard})
+    setEditPayCardDetails(updatedPayCard)
+  }
 
-    setEditPayUserDetails(updatedPayUser);
-  };
+  const addPayOrderDetails = (payOrder) => {
+    const updatedPayOrder = []
+    updatedPayOrder.push({...payOrder})
+    setPayOrderDetails(updatedPayOrder)
+  }
 
-  const  addEditPayCardDetails = payCard => {
-    const updatedPayCard = [] ;
-    updatedPayCard.push({...payCard});
-    console.log(updatedPayCard);    
+  const addCurrentUser = (user) => {
+    const updatedCurrentUser = []
+    updatedCurrentUser.push({...user})
+    setCurrentUser(updatedCurrentUser)
+  }
 
-    setEditPayCardDetails(updatedPayCard);
-  };
+  const addCurrentUserFirstName = (name) => {
+    const updatedFirstName = []
+    updatedFirstName.push({...name})
+    console.log(updatedFirstName)
+    setCurrentUserFirstName(updatedFirstName)
+  }
 
-  const  addPayOrderDetails = payOrder => {
-    const updatedPayOrder = [] ;
-    updatedPayOrder.push({...payOrder});
-    console.log(updatedPayOrder);    
+  const addCurrentUserLastName = (name) => {
+    const updatedLastName = []
+    updatedLastName.push({...name})
+    console.log(updatedLastName)
+    setCurrentUserLastName(updatedLastName)
+  }
 
-    setPayOrderDetails(updatedPayOrder);
-  };
+  const payUserEdit = (state) => {
+    setEditPayUser(true)
+  }
 
-  const  addCurrentUser = user => {
-    const updatedCurrentUser = [] ;
-    updatedCurrentUser.push({...user});
-    console.log(updatedCurrentUser);    
+  const payUserEditFalse = (state) => {
+    setEditPayUser(false)
+  }
 
-    setCurrentUser(updatedCurrentUser);
-  };
+  const setEditPayUserID = (id) => {
+    setEditPayUserId(id)
+  }
 
+  const payCardEdit = (state) => {
+    setEditPayCard(true)
+  }
 
+  const payCardEditFalse = (state) => {
+    setEditPayCard(false)
+  }
 
-  const payUserEdit = state => {
-    setEditPayUser(true);
-  };
+  const setEditPayCardID = (id) => {
+    setEditPayCardId(id)
+  }
 
-  const payUserEditFalse = state => {
-    setEditPayUser(false);
-  };
-  const setEditPayUserID = id => {
-    setEditPayUserId(id);
-  };
+  const setTruePayUserConfirmed = (state) => {
+    setPayUserConfirmed(true)
+  }
 
-  
-  const payCardEdit = state => {
-    setEditPayCard(true);
-  };
+  const setTruePayCardConfirmed = (state) => {
+    setPayCardConfirmed(true)
+  }
 
-  const payCardEditFalse = state => {
-    setEditPayCard(false);
-  };
-  const setEditPayCardID = id => {
-    setEditPayCardId(id);
-  };
+  const setFalsePayUserConfirmed = (state) => {
+    setPayUserConfirmed(false)
+  }
+
+  const setFalsePayCardConfirmed = (state) => {
+    setPayCardConfirmed(false)
+  }
+
+  const setCheckAdminMethod = () => {
+    setCheckAdmin(true)
+  }
+
+  const setCheckCustomerMethod = () => {
+    setCheckCustomer(true)
+  }
+
+  const setChecksetCheckStoreManagerMethod = () => {
+    setCheckStoreManager(true)
+  }
+
+  const storeManagerEdit = () => {
+    setEditStoreManager(true)
+  }
+
+  const editStoreManagerFalse = () => {
+    setEditStoreManager(false)
+  }
+
+  const setEditStoreManagerId = (id) => {
+    setEditStoreManagerID(id)
+  }
+
+  const addStoreManagers = (storeManager) => {
+    const updatedStoreManager = []
+    updatedStoreManager.push({...storeManager})
+    setStoreManagers(updatedStoreManager)
+  }
+
+  const categoryEdit = () => {
+    setEditCategory(true)
+  }
+
+  const editCategoryFalse = () => {
+    setEditCategory(false)
+  }
+
+  const setEditCategoryId = (id) => {
+    setEditCategoryID(id)
+  }
+
+  const addCategories = (category) => {
+    const updatedCategory = []
+    updatedCategory.push({...category})
+    setCategories(updatedCategory)
+  }
+
+  const existingCategoryEdit = () => {
+    setEditExistingCategory(true)
+  }
+
+  const editExistingCategoryFalse = () => {
+    setEditExistingCategory(false)
+  }
+
   return (
     <AppContext.Provider
       value={{
-        editPayUser:editPayUser,
-        editPayUserId:editPayUserId,
-        editPayCard:editPayCard,
-        editPayCardId:editPayCardId,
+        editPayUser: editPayUser,
+        wishList: wishList,
+        editPayUserId: editPayUserId,
+        editPayCard: editPayCard,
+        editPayCardId: editPayCardId,
         hidden: hidden,
         products: products,
         loggedin: loggedin,
+        payUserConfirmed: payUserConfirmed,
+        payCardConfirmed: payCardConfirmed,
         cart: cart,
-        currentUser:currentUser,
+        currentUser: currentUser,
+        currentUserFirstName: currentUserFirstName,
+        currentUserLastName: currentUserLastName,
         payUserDetails: payUserDetails,
-        editPayUserDetails:editPayUserDetails,
-        editPayCardDetails:editPayCardDetails,
+        editPayUserDetails: editPayUserDetails,
+        editPayCardDetails: editPayCardDetails,
         payCardDetails: payCardDetails,
         payOrderDetails: payOrderDetails,
-        payUserEdit:payUserEdit,
-        payUserEditFalse:payUserEditFalse,
-        setEditPayUserID :setEditPayUserID ,
-        payCardEdit:payCardEdit,
-        payCardEditFalse:payCardEditFalse,
-        setEditPayCardID :setEditPayCardID ,
+        checkAdmin: checkAdmin,
+        checkCustomer: checkCustomer,
+        tempProducts: tempProducts,
+        checkStoreManager: checkStoreManager,
+        editStoreManager: editStoreManager,
+        editStoreManagerId: editStoreManagerId,
+        storeManagers: storeManagers,
+        editCategory: editCategory,
+        editCategoryId: editCategoryId,
+        categories: categories,
+        existingCategory: existingCategory,
+
+        payUserEdit: payUserEdit,
+        payUserEditFalse: payUserEditFalse,
+        setEditPayUserID: setEditPayUserID,
+        payCardEdit: payCardEdit,
+        payCardEditFalse: payCardEditFalse,
+        setEditPayCardID: setEditPayCardID,
         login: login,
         logout: logout,
-        addEditPayUserDetails:addEditPayUserDetails,
-        addEditPayCardDetails:addEditPayCardDetails,
-        addCurrentUser:addCurrentUser,
+        setTruePayUserConfirmed: setTruePayUserConfirmed,
+        setTruePayCardConfirmed: setTruePayCardConfirmed,
+        setFalsePayUserConfirmed: setFalsePayUserConfirmed,
+        setFalsePayCardConfirmed: setFalsePayCardConfirmed,
+        addEditPayUserDetails: addEditPayUserDetails,
+        addEditPayCardDetails: addEditPayCardDetails,
+        addCurrentUser: addCurrentUser,
+        addCurrentUserFirstName: addCurrentUserFirstName,
+        addCurrentUserLastName: addCurrentUserLastName,
         addItemToCart: addItemToCart,
-        addPayUserDetails:addPayUserDetails,
-        addPayCardDetails:addPayCardDetails,
-        addPayOrderDetails:addPayOrderDetails,
+        addPayUserDetails: addPayUserDetails,
+        addPayCardDetails: addPayCardDetails,
+        addPayOrderDetails: addPayOrderDetails,
         removeCompletelyItemFromCart: removeCompletelyItemFromCart,
         removeItemFromCart: removeItemFromCart,
-        toggleDropdownHidden: toggleDropdownHidden
+        toggleDropdownHidden: toggleDropdownHidden,
+        setChangeWishListProduct: setChangeWishListProduct,
+        setWishListmethod: setWishListmethod,
+        addToWishList: addToWishList,
+        setCheckAdminMethod: setCheckAdminMethod,
+        setCheckCustomerMethod: setCheckCustomerMethod,
+        setChecksetCheckStoreManagerMethod: setChecksetCheckStoreManagerMethod,
+        storeManagerEdit: storeManagerEdit,
+        editStoreManagerFalse: editStoreManagerFalse,
+        setEditStoreManagerId: setEditStoreManagerId,
+        addStoreManagers: addStoreManagers,
+        categoryEdit: categoryEdit,
+        editCategoryFalse: editCategoryFalse,
+        setEditCategoryId: setEditCategoryId,
+        addCategories: addCategories,
+        existingCategoryEdit: existingCategoryEdit,
+        editExistingCategoryFalse: editExistingCategoryFalse
       }}
     >
       {props.children}
     </AppContext.Provider>
-  );
-};
+  )
+}
 
-export default GlobalState;
+export default GlobalState

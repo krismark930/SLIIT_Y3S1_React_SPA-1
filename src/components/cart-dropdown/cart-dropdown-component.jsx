@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {FaShoppingCart} from "react-icons/fa";
+import {FaRegHourglass, FaShoppingCart} from "react-icons/fa";
 import {Button} from "react-bootstrap";
 
 import "./cart-dropdown-styles.scss";
@@ -34,28 +34,60 @@ import {AppContext} from "../../Context/app-context";
 const CartDropdown = ({checkoutToggle}) => {
   const appContext = useContext(AppContext);
 
+  const setFalseCardAndUser = () => {
+    appContext.setFalsePayUserConfirmed();
+    appContext.setFalsePayCardConfirmed();
+  };
+
   return (
     <div className="cart-dropdown">
       <div className="cart-items">
         {appContext.cart.length ? (
-          appContext.cart.map(cartItem => (
+          appContext.cart.map((cartItem) => (
             <CartItem key={cartItem.id} item={cartItem}/>
           ))
         ) : (
-          <span className="red-text empty-cart">Cart is Empty</span>
+          <div style={{textAlign: "center"}}>
+            <span
+              className="red-text empty-cart"
+              style={{
+                fontSize: "15px",
+                color: "rgb(0, 123, 255)",
+                fontWeight: "600",
+                fontFamily: "Lemonada",
+
+                display: "block",
+              }}
+            >
+              Cart is Empty
+            </span>
+            <FaRegHourglass
+              style={{
+                marginRight: "10px",
+                marginBottom: "3px",
+                fontSize: "40px",
+                color: "rgb(0, 123, 255)",
+              }}
+            />
+          </div>
         )}
       </div>
 
-      <Link to="/checkout-page">
+      <Link
+        to="/checkout-page"
+        onClick={() => {
+          setFalseCardAndUser();
+        }}
+      >
         <Button
           type="submit"
-          style={{marginTop: "10px"}}
+          style={{marginTop: "10px", marginLeft: "17%"}}
           onClick={appContext.toggleDropdownHidden}
         >
           <FaShoppingCart
             style={{
               marginRight: "10px",
-              marginBottom: "3px"
+              marginBottom: "3px",
             }}
           />
           Go to checkout

@@ -2,33 +2,35 @@ import React, {useContext, useState} from "react";
 import {Formik} from "formik";
 import {Button, Col, Form, Row, Spinner} from "react-bootstrap";
 import * as yup from "yup";
-import {FaSignInAlt} from "react-icons/fa";
+import {FaSignInAlt, FaUnlockAlt} from "react-icons/fa";
 import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
 
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email()
-    .required("Enter the email"),
-  password: yup.string().required("Enter the password")
+  email: yup.string().email().required("Enter the email"),
+  password: yup.string().required("Enter the password"),
 });
 
 var errorss = "";
 
-const LoginForm = props => {
+const LoginForm = (props) => {
+  const appContext = useContext(AppContext)
+  appContext.editStoreManagerFalse()
+  appContext.editCategoryFalse()
+  appContext.editExistingCategoryFalse()
+
   const [loading, setLoading] = useState(false);
-  const appContext = useContext(AppContext);
   const [errorLogin, seterrorLogin] = useState(null);
 
   var responseError = "";
   const [loginData, setloginData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const onSubmitHand = async (values, {setSubmitting}) => {
     setLoading(true);
+    console.log("login eke submit athulata awa" + values);
     console.log(values);
     setloginData(values);
 
@@ -36,23 +38,43 @@ const LoginForm = props => {
       const response = await fetch("http://localhost:5000/users/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(values)
+        body: JSON.stringify(values),
       });
 
       const responseData = await response.json();
-      console.log(responseData);
+      // console.log(responseData.userDetails);
+
       if (!responseData.login) {
         errorss = responseData.message;
         throw new Error(responseData.message);
       }
       responseError = responseData.message;
-      // console.log(responseError);
+      // console.log(responseData.userDetails);
+      if (responseData.type == "Administrator") {
+        console.log("--------------");
+        // console.log(responseData.type);
+        console.log("Administrator");
+        appContext.setCheckAdminMethod();
+      } else if (responseData.type == "Store Manager") {
+        console.log("--------------");
+        console.log("Store Manager");
+        // console.log(responseData.type);
+        appContext.setChecksetCheckStoreManagerMethod();
+      } else if (responseData.type == "Customer") {
+        console.log("--------------");
+        console.log(responseData.type);
+        console.log("Customerrdfdsfsdfsdf");
+        appContext.setCheckCustomerMethod();
+      }
+
       appContext.login();
-      console.log(`wade hari`);
+      console.log("-------------");
+      console.log(responseData.userDetails);
       appContext.addCurrentUser(values);
-      console.log(appContext.addCurrentUser(values));
+      appContext.setWishListmethod(values.email);
+      console.log(appContext.addCurrentUser(responseData.userDetails));
       setLoading(false);
     } catch (err) {
       seterrorLogin(err.message);
@@ -69,7 +91,7 @@ const LoginForm = props => {
         onSubmit={onSubmitHand}
         initialValues={{
           email: loginData.email,
-          password: loginData.password
+          password: loginData.password,
         }}
       >
         {({
@@ -80,12 +102,19 @@ const LoginForm = props => {
             values,
             touched,
             isValid,
-            errors
+            errors,
           }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Form.Row>
               <Form.Group as={Col} md="12" controlId="validationFormik01">
-                <Form.Label>Email</Form.Label>
+                <Form.Label
+                  style={{
+                    fontFamily: "Roboto Slab",
+                    fontSize: "16px",
+                  }}
+                >
+                  Email
+                </Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="Email"
@@ -97,11 +126,18 @@ const LoginForm = props => {
                   isValid={touched.email && !errors.email}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {errors.email}
+                  <i>{errors.email}</i>
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group as={Col} md="12" controlId="validationFormik02">
-                <Form.Label>Password</Form.Label>
+                <Form.Label
+                  style={{
+                    fontFamily: "Roboto Slab",
+                    fontSize: "16px",
+                  }}
+                >
+                  Password
+                </Form.Label>
                 <Form.Control
                   placeholder="Password"
                   type="password"
@@ -112,33 +148,31 @@ const LoginForm = props => {
                   isInvalid={touched.password && errors.password}
                   isValid={touched.password && !errors.password}
                 />
-
                 {loading && (
                   <Spinner
                     animation="border"
                     style={{textAlign: "center", marginLeft: "44%"}}
                   />
                 )}
-
                 <Form.Control.Feedback type="invalid">
-                  {errors.password}
+                  <i>{errors.password}</i>
                 </Form.Control.Feedback>
               </Form.Group>
             </Form.Row>
-
             <Row>
               <Col md={4}>
                 <Button type="submit" style={{}} disabled={isSubmitting}>
                   <FaSignInAlt
                     style={{
                       marginRight: "10px",
-                      marginBottom: "3px"
+                      marginBottom: "3px",
                     }}
                   />
                   Login
                 </Button>
               </Col>
-              <Col md={2}></Col>
+              <Col md={1}></Col>
+
               <Link to="/forgot-password">
                 <Col
                   md={6}
@@ -147,16 +181,29 @@ const LoginForm = props => {
                     fontWeight: "500",
                     color: "red",
                     fontSize: "14px",
-                    maxWidth: "100%"
+                    maxWidth: "100%",
+                    marginLeft: "14px",
                   }}
                 >
-                  <span>Forgot Password</span>
+                  <Button
+                    type="submit"
+                    variant="outline-danger"
+                    style={{marginTop: "-6px", float: "right"}}
+                  >
+                    <FaUnlockAlt
+                      style={{
+                        marginRight: "10px",
+                        marginBottom: "3px",
+                        transform: "rotate(270deg)",
+                      }}
+                    />
+                    Forgot Password
+                  </Button>
                 </Col>
               </Link>
             </Row>
-
-            <Row></Row>
-            {errorss && <div id="loginServerError">{errorss}</div>}
+            <Row/>
+            <i>{errorss && <div id="loginServerError">{errorss}</div>}</i>
           </Form>
         )}
       </Formik>

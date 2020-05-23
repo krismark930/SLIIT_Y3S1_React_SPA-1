@@ -14,15 +14,8 @@ const UsePlaceOrderDetails = ({cartItem}) => {
 
   useEffect(() => {
     quantity = cartItem.quantity;
+    //appContext.setFalsePayCardConfirmed();
   });
-
-  // var itemToSend = {
-  //   id: item.id,
-  //   title: item.title,
-  //   price: item.price,
-  //   quantity: item.quantity
-  // };
-  // const { name, imageUrl, price, quantity } = cartItem;
 
   return (
     <div className="checkout-item">
@@ -37,7 +30,7 @@ const UsePlaceOrderDetails = ({cartItem}) => {
        
       </span>
       <span className="price">{cartItem.price}</span>
-      
+
     </div>
   );
 };

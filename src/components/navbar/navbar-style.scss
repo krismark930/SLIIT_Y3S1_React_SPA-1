@@ -1,9 +1,8 @@
 .navbar-head {
-  background-color: "dark";
+  background-color: darkslategrey;
 
   .dripdowntoggles {
     .nav-link {
-      /* display: block; */
       padding: 0.5rem 1rem;
     }
   }
@@ -11,5 +10,9 @@
   .cartDropdownNavBar {
     margin-left: 3px;
     margin-right: 10px;
+  }
+
+  #wislistLink:hover {
+    text-decoration: none;
   }
 }
