@@ -61,7 +61,9 @@ function App() {
       <Switch>
         {app.payUserConfirmed ? (
           <div>
+            <Route exact path="/pay-user" component={PayUserDetails} />
             <Route exact path="/pay-card" component={PayCardDetails} />
+            <Route exact path="/checkout-page" component={Checkout} />
             <Redirect to="/pay-card" />
           </div>
         ) : (
@@ -69,6 +71,7 @@ function App() {
             {app.payCardConfirmed ? (
               <div>
                 <Route exact path="/pay-order" component={PayPlaceOrder} />
+                <Route exact path="/checkout-page" component={Checkout} />
                 <Route
                   exact
                   path="/pay-order-success"
@@ -79,7 +82,7 @@ function App() {
                   path="/delivery-charges"
                   component={DisplayDeliveryCharges}
                 />
-                <Redirect to="/pay-order" />
+                <Redirect to="/checkout-page" />
               </div>
             ) : (
               <div>

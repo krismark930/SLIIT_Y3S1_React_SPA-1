@@ -50,8 +50,11 @@ const Checkout = () => {
   });
 
   const setFalseEdit = () => {
+    console.log("edit click kala");
     appContext.payUserEditFalse();
     appContext.payCardEditFalse();
+    console.log("edit click kala");
+    console.log(appContext);
   };
 
   let classNamesss = appContext.cart.length ? "checkOutHead" : null;
