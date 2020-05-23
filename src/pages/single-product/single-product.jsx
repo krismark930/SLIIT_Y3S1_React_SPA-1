@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import { Card, ListGroup, ListGroupItem,Container, Row, Image, Col, Label, Button} from "react-bootstrap";
 import { AppContext } from "../../Context/app-context";
+import "./single-product.scss";
+import AddComment from "../../components/add-comment/add-comment-component";
+import DisplayComments from "../../components/display-comments/display-comments-component";
 
 const SingleProductView = (props) => {
   console.log(props.match.params.product);
@@ -14,6 +17,10 @@ const SingleProductView = (props) => {
   console.log(productFiltered);
 
   return (
+    <div
+      className="loginSignupMainHead23"
+      style={{marginTop: "10%", marginBottom: "4%"}}
+    >
     <div className="singleproductHeader" style={{ margin: "100px" }}>
       <Container>
         <Row>
@@ -38,6 +45,28 @@ const SingleProductView = (props) => {
             <Card.Body>
               <Button variant="primary">Go somewhere</Button>
             </Card.Body>
+            <Card.Body>
+            <div className="loginSignupMainHead22">
+      <div className="container">
+        <Row>
+          <Col md="4">
+            <div className="loginSignupPageLginForm">
+
+
+              <AddComment pid={productFiltered[0]._id}/>
+            </div>
+          </Col>
+          <Col md="6" className="clll">
+            <div className="loginSignupPageSignupForm">
+
+              <DisplayComments pid={productFiltered[0]._id}/>
+
+            </div>
+          </Col>
+        </Row>
+      </div>
+    </div>
+            </Card.Body>
           </Card>
         </Col>
         
@@ -45,6 +74,7 @@ const SingleProductView = (props) => {
       
       </Container>
       
+    </div>
     </div>
   );
 };
