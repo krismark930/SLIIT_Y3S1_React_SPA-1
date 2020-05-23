@@ -4,7 +4,7 @@ import "./checkout-style.scss";
 import { Button } from "react-bootstrap";
 import CheckoutItem from "../../components/checkout-item/checkout-item-component";
 import { AppContext } from "../../Context/app-context";
-import { FaRegHourglass } from "react-icons/fa";
+import { FaRegHourglass, FaCcAmazonPay, FaDollarSign } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 // const cartItems = [
@@ -50,7 +50,7 @@ const Checkout = () => {
   };
 
   return (
-    <div>
+    <div className="checkOutHead">
       {appContext.cart.length ? (
         <div className="checkout-page">
           <h2
@@ -69,37 +69,118 @@ const Checkout = () => {
           </h2>
           <div className="checkout-header">
             <div className="header-block">
-              <span>Product</span>
+              <span
+                style={{
+                  marginTop: "100px",
+                  fontSize: "15px",
+                  color: "currentcolor",
+                  fontWeight: "600",
+                  fontFamily: "Lemonada",
+                }}
+              >
+                Product
+              </span>
             </div>
             <div className="header-block">
-              <span>Description</span>
+              <span
+                style={{
+                  marginTop: "100px",
+                  fontSize: "15px",
+                  color: "currentcolor",
+                  fontWeight: "600",
+                  fontFamily: "Lemonada",
+                }}
+              >
+                Description
+              </span>
             </div>
             <div className="header-block">
-              <span>Quantity</span>
+              <span
+                style={{
+                  marginTop: "100px",
+                  fontSize: "15px",
+                  color: "currentcolor",
+                  fontWeight: "600",
+                  fontFamily: "Lemonada",
+                }}
+              >
+                Quantity
+              </span>
             </div>
             <div className="header-block">
-              <span>Price</span>
+              <span
+                style={{
+                  marginTop: "100px",
+                  fontSize: "15px",
+                  color: "currentcolor",
+                  fontWeight: "600",
+                  fontFamily: "Lemonada",
+                }}
+              >
+                Price
+              </span>
             </div>
             <div className="header-block">
-              <span>Remove</span>
+              <span
+                style={{
+                  marginTop: "100px",
+                  fontSize: "15px",
+                  color: "currentcolor",
+                  fontWeight: "600",
+                  fontFamily: "Lemonada",
+                }}
+              >
+                Remove
+              </span>
             </div>
           </div>
           {appContext.cart.map((cartItem) => (
             <CheckoutItem key={cartItem.id} cartItem={cartItem} />
           ))}
-          <div className="total">TOTAL: ${total}</div>
-          <Link to="/pay-user">
-            <Button
-              className="buyNowBtn"
-              type="submit"
-              style={{ float: "right" }}
-              onClick={() => {
-                setFalseEdit();
-              }}
-            >
-              Buy Now
-            </Button>
-          </Link>
+          <div className="container" style={{ marginBottom: "6%" }}>
+            <div className="row">
+              <div
+                className="total col-4"
+                style={{
+                  fontSize: "18px",
+                  color: "currentcolor",
+                  fontWeight: "700",
+                  fontFamily: "Lemonada",
+                  marginTop: "40px",
+                }}
+              >
+                TOTAL: ${total}
+              </div>
+
+              <div className="col-5"></div>
+              <div className="col-3">
+                <Link to="/pay-user">
+                  <Button
+                    className="buyNowBtn"
+                    type="submit"
+                    style={{
+                      float: "right",
+                      fontWeight: "700",
+                      fontFamily: "Roboto Slab",
+                    }}
+                    onClick={() => {
+                      setFalseEdit();
+                    }}
+                  >
+                    Buy Now
+                    <FaDollarSign
+                      style={{
+                        marginLeft: "10px",
+                        // marginBottom: "3px",
+                        fontSize: "22px",
+                        color: "white",
+                      }}
+                    />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       ) : (
         <div
