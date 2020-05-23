@@ -1,14 +1,18 @@
-import React, {useContext} from "react";
-import {Button, Nav, Navbar} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Button, Nav, Navbar, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./navbar-style.scss";
-import {FaCartArrowDown} from "react-icons/fa";
-import {IconContext} from "react-icons";
+import { FaCartArrowDown } from "react-icons/fa";
+import { IconContext } from "react-icons";
 import CartDropdown from "../cart-dropdown/cart-dropdown-component";
-import {AppContext} from "../../Context/app-context";
+import { AppContext } from "../../Context/app-context";
 
 const MainNavbar = () => {
   const appContext = useContext(AppContext);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   console.log(appContext);
   return (
     <div className="navbar-head">
@@ -17,14 +21,14 @@ const MainNavbar = () => {
         collapseOnSelect
         expand="md"
         variant="dark"
-        style={{width: "100%", backgroundColor: "currentColor"}}
+        style={{ width: "100%", backgroundColor: "currentColor" }}
       >
         <Link to="/">
           <Navbar.Brand href="#home">Home</Navbar.Brand>
         </Link>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto"/>
+          <Nav className="mr-auto" />
           <Nav className=" float-right">
             {appContext.loggedin ? (
               <Nav>
@@ -77,25 +81,23 @@ const MainNavbar = () => {
                           size: "2rem",
                         }}
                       >
-                        <FaCartArrowDown/>
+                        <FaCartArrowDown />
                       </IconContext.Provider>
                     </Nav.Link>
-                    {appContext.hidden ? null : <CartDropdown/>}
+                    {appContext.hidden ? null : <CartDropdown />}
                   </div>
                 ) : null}
-                <Nav.Link onClick={appContext.logout}>
-                  <Link to="/">
-                    <Button
-                      variant="outline-primary"
-                      style={{
-                        padding: "4px",
-                        // margin: "4px 6px",
-                        color: "white",
-                      }}
-                    >
-                      Sign Out
-                    </Button>
-                  </Link>
+                <Nav.Link onClick={handleShow}>
+                  <Button
+                    variant="outline-primary"
+                    style={{
+                      padding: "4px",
+                      // margin: "4px 6px",
+                      color: "white",
+                    }}
+                  >
+                    Sign Out
+                  </Button>
                 </Nav.Link>
               </Nav>
             ) : (
@@ -119,6 +121,33 @@ const MainNavbar = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title
+            style={{
+              textAlign: "center",
+              margin: "auto",
+              width: "100%",
+              fontWeight: "700",
+              fontStyle: "italic",
+            }}
+          >
+            Do you really wanna logout
+          </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Link to="/">
+            <Button variant="danger" onClick={appContext.logout}>
+              Confirm Logout
+            </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
