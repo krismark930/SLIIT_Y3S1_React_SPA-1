@@ -24,9 +24,6 @@ const Footer = () => {
               <a href='#contact_us'>Contact Us</a>
             </li>
           </ul>
-          <p class='text-center'>
-            Copyright @2020 | Designed by SLIIT AF GROUP
-          </p>
           <ul class='social_footer_ul'>
             <li>
               <a href='#facebook'>
@@ -49,6 +46,9 @@ const Footer = () => {
               </a>
             </li>
           </ul>
+          <p className='text-center' style={{marginBottom: '-14px'}}>
+            Copyright @2020 | Designed by SLIIT AF GROUP
+          </p>
         </div>
       </footer>
     </div>
