@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import "./checkout-style.scss";
 import { Button } from "react-bootstrap";
@@ -6,7 +6,8 @@ import CheckoutItem from "../../components/checkout-item/checkout-item-component
 import { AppContext } from "../../Context/app-context";
 import { FaDollarSign, FaRegHourglass, FaHandHoldingUsd } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import "aos/dist/aos.css";
+import Aos from "aos";
 // const cartItems = [
 //   {
 //     id: 1,
@@ -31,6 +32,10 @@ import { Link } from "react-router-dom";
 //   }
 // ];
 const Checkout = () => {
+  useEffect(() => {
+    // void reset();
+    Aos.init({ duration: 1000 });
+  }, []);
   const appContext = useContext(AppContext);
 
   var total = 0;
@@ -56,6 +61,9 @@ const Checkout = () => {
       {appContext.cart.length ? (
         <div className="checkout-page">
           <h2
+            data-aos="fade-up"
+            data-aos-duration="600"
+            data-aos-delay="100"
             style={{
               padding: "10px",
               marginLeft: "10px ",
@@ -72,6 +80,9 @@ const Checkout = () => {
           <div className="checkout-header">
             <div className="header-block">
               <span
+                data-aos="fade-down"
+                data-aos-duration="600"
+                data-aos-delay="400"
                 style={{
                   marginTop: "100px",
                   fontSize: "15px",
@@ -85,6 +96,9 @@ const Checkout = () => {
             </div>
             <div className="header-block">
               <span
+                data-aos="fade-down"
+                data-aos-duration="600"
+                data-aos-delay="500"
                 style={{
                   marginTop: "100px",
                   fontSize: "15px",
@@ -98,6 +112,9 @@ const Checkout = () => {
             </div>
             <div className="header-block">
               <span
+                data-aos="fade-down"
+                data-aos-duration="600"
+                data-aos-delay="600"
                 style={{
                   marginTop: "100px",
                   fontSize: "15px",
@@ -111,6 +128,9 @@ const Checkout = () => {
             </div>
             <div className="header-block">
               <span
+                data-aos="fade-down"
+                data-aos-duration="600"
+                data-aos-delay="700"
                 style={{
                   marginTop: "100px",
                   fontSize: "15px",
@@ -124,6 +144,9 @@ const Checkout = () => {
             </div>
             <div className="header-block">
               <span
+                data-aos="fade-down"
+                data-aos-duration="600"
+                data-aos-delay="800"
                 style={{
                   marginTop: "100px",
                   fontSize: "15px",
@@ -142,6 +165,9 @@ const Checkout = () => {
           <div className="container" style={{ marginBottom: "6%" }}>
             <div className="row">
               <div
+                data-aos="zoom-in"
+                data-aos-duration="600"
+                data-aos-delay="200"
                 className="total col-4"
                 style={{
                   fontSize: "18px",
@@ -158,6 +184,9 @@ const Checkout = () => {
               <div className="col-3">
                 <Link to="/pay-user">
                   <Button
+                    data-aos="flip-left"
+                    data-aos-duration="600"
+                    data-aos-delay="200"
                     className="buyNowBtn"
                     type="submit"
                     style={{
@@ -186,6 +215,9 @@ const Checkout = () => {
         </div>
       ) : (
         <div
+          data-aos="flip-up"
+          data-aos-duration="600"
+          data-aos-delay="200"
           style={{
             textAlign: "center",
             marginTop: "150px",

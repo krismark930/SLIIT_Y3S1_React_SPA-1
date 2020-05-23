@@ -20,9 +20,6 @@ const HomeItem = ({ item }) => {
 
   return (
     <Card
-      // data-aos="fade-up-right"
-      // data-aos-duration="600"
-      // data-aos-delay="1000"
       id="homeitemComponentCard"
       className="col-3"
       style={{
