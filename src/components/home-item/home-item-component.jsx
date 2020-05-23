@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from "react";
-import { Button, Card } from "react-bootstrap";
-import { FaCartArrowDown, FaHeart, FaRegHeart } from "react-icons/fa";
-import { AppContext } from "../../Context/app-context";
+import React, {useContext, useEffect} from "react";
+import {Button, Card} from "react-bootstrap";
+import {FaCartArrowDown, FaHeart, FaRegHeart} from "react-icons/fa";
+import {AppContext} from "../../Context/app-context";
 import "./home-item-styles.scss";
 import Aos from "aos";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
-const HomeItem = ({ item }) => {
+const HomeItem = ({item}) => {
   const appContext = useContext(AppContext);
   const urls = item.productImage;
   var titlez = item.title;
@@ -14,7 +14,7 @@ const HomeItem = ({ item }) => {
 
   useEffect(() => {
     // void reset();
-    Aos.init({ duration: 1000 });
+    Aos.init({duration: 1000});
   }, []);
   return (
     <Card
@@ -34,7 +34,7 @@ const HomeItem = ({ item }) => {
       <Link to={linkToss}>
         <Card.Img
           variant="top"
-          style={{ width: "215px", height: "238px", margin: "10px" }}
+          style={{width: "215px", height: "238px", margin: "10px"}}
           src={require("../../assets/img1.jpg")}
         />
       </Link>

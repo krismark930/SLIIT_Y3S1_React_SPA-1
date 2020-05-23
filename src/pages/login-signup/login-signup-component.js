@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
+import React, {useEffect} from "react";
+import {Col, Row} from "react-bootstrap";
 import LoginForm from "../../components/login-fom/login-form-component";
 import Aos from "aos";
 import "./login-signup-styles.scss";
@@ -9,13 +9,13 @@ import "aos/dist/aos.css";
 const LoginSignup = (props) => {
   useEffect(() => {
     // void reset();
-    Aos.init({ duration: 1000 });
+    Aos.init({duration: 1000});
   }, []);
 
   return (
     <div
       className="loginSignupMainHead"
-      style={{ marginTop: "10%", marginBottom: "4%" }}
+      style={{marginTop: "10%", marginBottom: "4%"}}
     >
       {/* <ProductAdd/> */}
       <div className="container">
@@ -55,7 +55,7 @@ const LoginSignup = (props) => {
                 >
                   Signin using email and password
                 </p>
-                <LoginForm />
+                <LoginForm/>
               </div>
             </div>
           </Col>
@@ -93,7 +93,7 @@ const LoginSignup = (props) => {
               >
                 Signin using required details
               </p>
-              <SignupForm />
+              <SignupForm/>
             </div>
           </Col>
         </Row>
