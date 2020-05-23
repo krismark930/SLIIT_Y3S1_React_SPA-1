@@ -68,7 +68,11 @@ const HomeItem = ({ item }) => {
         {appContext.checkCustomer ? (
           <div>
             {item.wishList ? (
-              <span>
+              <span
+                data-aos="zoom-in-right"
+                data-aos-duration="600"
+                data-aos-delay="1000"
+              >
                 <FaHeart
                   // onClick={() => appContext.addToWishList(item)}
                   style={{
@@ -80,7 +84,11 @@ const HomeItem = ({ item }) => {
                 />
               </span>
             ) : (
-              <span>
+              <span
+                data-aos="zoom-in-right"
+                data-aos-duration="600"
+                data-aos-delay="1000"
+              >
                 <FaRegHeart
                   onClick={() => appContext.addToWishList(item.title)}
                   style={{
