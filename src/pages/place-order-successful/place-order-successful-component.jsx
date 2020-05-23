@@ -29,20 +29,23 @@ const PlaceOrderSuccessful = props => {
 
     <div>
       <Modal show={show} onHide={handleClose}>
+        <div  style={{border:'solid gray 3px'}}>
+      
 
-        <Modal.Title>Confirm Message</Modal.Title>
-
-        <Modal.Body>Your Order has been confirmed successfully!</Modal.Body>
+        <Modal.Body>
+        <h4>Your Order has been confirmed successfully!</h4>
+        </Modal.Body>
         <Modal.Footer>
 
           <Link to="/" onClick={() => {
             setConfirmedBackToHome()
           }}>
-            <Button variant="primary">
+            <Button variant="primary" style={{width:'100px'}}>
               OK
             </Button>
           </Link>
         </Modal.Footer>
+        </div>
       </Modal>
     </div>
   );
