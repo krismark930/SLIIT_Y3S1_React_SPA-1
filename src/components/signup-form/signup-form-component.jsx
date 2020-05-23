@@ -89,8 +89,6 @@ const SignupForm = (props) => {
       setLoading(false);
       setError(errorss.message || "Something went wrong, try again later");
     }
-
-    console.log(errorss + " errosdfdfdf");
   };
 
   return (
