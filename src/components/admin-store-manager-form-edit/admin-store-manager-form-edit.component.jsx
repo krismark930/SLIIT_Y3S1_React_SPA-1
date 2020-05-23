@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react'
 import {Formik} from 'formik'
 import {Button, Col, Form, Spinner} from 'react-bootstrap'
 import * as yup from 'yup'
-import {FaArrowAltCircleLeft, FaBrush, FaUserEdit} from 'react-icons/fa'
+import {FaArrowAltCircleLeft, FaUserEdit} from 'react-icons/fa'
 import {AppContext} from '../../Context/app-context'
 import './admin-store-manager-form-edit-styles.scss'
 
@@ -97,7 +97,6 @@ const EditStoreManagerForm = () => {
         >
           {({
               handleSubmit,
-              handleReset,
               isSubmitting,
               handleChange,
               handleBlur,
@@ -184,15 +183,14 @@ const EditStoreManagerForm = () => {
                 />
               )}
               <Form.Row>
-                <Form.Group as={Col} md='4'>
+                <Form.Group as={Col} md='6'>
                   <Button
                     type='button'
                     onClick={goBack}
                     disabled={isSubmitting}
                     style={{
-                      marginTop: '15%',
-                      marginLeft: '10%',
-                      marginRight: 'auto',
+                      marginTop: '10%',
+                      marginLeft: '30%',
                       paddingLeft: '15px',
                       paddingRight: '15px',
                       paddingTop: '10px',
@@ -208,38 +206,13 @@ const EditStoreManagerForm = () => {
                     Back
                   </Button>
                 </Form.Group>
-                <Form.Group as={Col} md='4'>
-                  <Button
-                    type='button'
-                    onClick={handleReset}
-                    disabled={isSubmitting}
-                    style={{
-                      marginTop: '15%',
-                      marginLeft: '13%',
-                      marginRight: 'auto',
-                      paddingLeft: '15px',
-                      paddingRight: '15px',
-                      paddingTop: '10px',
-                      paddingBottom: '10px'
-                    }}
-                  >
-                    <FaBrush
-                      style={{
-                        marginRight: '9px',
-                        marginBottom: '6px'
-                      }}
-                    />
-                    Reset
-                  </Button>
-                </Form.Group>
-                <Form.Group as={Col} md='4'>
+                <Form.Group as={Col} md='6'>
                   <Button
                     type='submit'
                     disabled={isSubmitting}
                     style={{
-                      marginTop: '15%',
-                      marginLeft: '17%',
-                      marginRight: 'auto',
+                      marginTop: '10%',
+                      marginLeft: '20%',
                       paddingLeft: '15px',
                       paddingRight: '15px',
                       paddingTop: '10px',
