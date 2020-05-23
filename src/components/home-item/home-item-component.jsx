@@ -1,12 +1,13 @@
-import React, {useContext, useEffect} from "react";
-import {Button, Card} from "react-bootstrap";
-import {FaCartArrowDown, FaHeart, FaRegHeart} from "react-icons/fa";
-import {AppContext} from "../../Context/app-context";
+import React, { useContext, useEffect } from "react";
+import { Button, Card } from "react-bootstrap";
+import { FaCartArrowDown, FaHeart, FaRegHeart } from "react-icons/fa";
+import { AppContext } from "../../Context/app-context";
 import "./home-item-styles.scss";
 import Aos from "aos";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import "aos/dist/aos.css";
 
-const HomeItem = ({item}) => {
+const HomeItem = ({ item }) => {
   const appContext = useContext(AppContext);
   const urls = item.productImage;
   var titlez = item.title;
@@ -14,8 +15,9 @@ const HomeItem = ({item}) => {
 
   useEffect(() => {
     // void reset();
-    Aos.init({duration: 1000});
+    Aos.init({ duration: 1000 });
   }, []);
+
   return (
     <Card
       // data-aos="fade-up-right"
@@ -34,7 +36,7 @@ const HomeItem = ({item}) => {
       <Link to={linkToss}>
         <Card.Img
           variant="top"
-          style={{width: "215px", height: "238px", margin: "10px"}}
+          style={{ width: "215px", height: "238px", margin: "10px" }}
           src={require("../../assets/img1.jpg")}
         />
       </Link>
@@ -47,8 +49,20 @@ const HomeItem = ({item}) => {
           justifyContent: "space-between",
         }}
       >
-        <span style={{fontFamily: "Roboto Slab"}}>{item.title}</span>
-        <span style={{fontFamily: "Roboto Slab", fontWeight: "700"}}>
+        <span
+          data-aos="zoom-in-left"
+          data-aos-duration="600"
+          data-aos-delay="500"
+          style={{ fontFamily: "Roboto Slab" }}
+        >
+          {item.title}
+        </span>
+        <span
+          data-aos="zoom-in-right"
+          data-aos-duration="600"
+          data-aos-delay="1000"
+          style={{ fontFamily: "Roboto Slab", fontWeight: "700" }}
+        >
           ${item.price}
         </span>
         {appContext.checkCustomer ? (
@@ -82,7 +96,7 @@ const HomeItem = ({item}) => {
         ) : null}
       </Card.Title>
 
-      <Card.Footer style={{textAlign: "center", backgroundColor: "white"}}>
+      <Card.Footer style={{ textAlign: "center", backgroundColor: "white" }}>
         <Button
           onClick={() => appContext.addItemToCart(item)}
           variant="dark"
