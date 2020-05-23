@@ -71,13 +71,13 @@ const LoginForm = (props) => {
       }
 
       appContext.login();
+      // appContext.setProductsMethod();
       console.log("-------------");
       console.log(responseData.userDetails);
       appContext.addCurrentUser(values);
       appContext.setWishListmethod(values.email);
       console.log(appContext.addCurrentUser(responseData.userDetails));
       setLoading(false);
-      appContext.setProductsMethod();
     } catch (err) {
       seterrorLogin(err.message);
       console.log(err.message);

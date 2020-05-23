@@ -25,6 +25,9 @@ function App() {
 
   useEffect(() => {
     app.setProductsMethod();
+    // if (app.loggedin && app.currentUser[0].type === "Customer") {
+    //   app.setWishListmethod(app.currentUser[0].email);
+    // }
   }, []);
 
   let routes;

@@ -15,7 +15,7 @@ const GlobalState = (props) => {
   const [checkCustomer, setCheckCustomer] = useState(false);
   const [checkStoreManager, setCheckStoreManager] = useState(false);
   const [products, setProducts] = useState([]);
-  const [tempProducts, setTempProducts] = useState(products);
+  const [tempProducts, setTempProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [currentUser, setCurrentUser] = useState([{ type: "Null" }]);
   const [currentUserFirstName, setCurrentUserFirstName] = useState([]);
@@ -113,11 +113,12 @@ const GlobalState = (props) => {
       responseData = await response.json();
       // console.log(responseData.wishList)
       responseError = responseData.message;
-      console.log("+++++++++++++++++");
-      console.log(responseData);
+      // console.log("+++++++++++++++++");
+      // console.log(responseData);
       setProducts(responseData);
-      console.log("*-*-*-*-*-*-*---*");
-      console.log(products);
+      setTempProducts(responseData);
+      // console.log("*-*-*-*-*-*-*---*");
+      // console.log(products);
     } catch (err) {
       console.log(err.message);
     }
@@ -172,26 +173,41 @@ const GlobalState = (props) => {
     } catch (err) {
       console.log(err.message);
     }
+
+    // console.log("WishMethod Products");
+    // console.log(products);
     var filtering = products1;
     responseData.wishList.forEach((item) => {
       const indexOfItem = products.findIndex(
         (ppitem) => ppitem.title === item.productID
       );
-      console.log(item);
+
+      // console.log("WishMethod Index of wishItem in product");
+      // console.log(indexOfItem);
+
       var filtered = products.filter((pitem) => pitem.title == item.productID);
       var fill = filtered.concat(filteredAll);
-      console.log(filtered);
+
+      // console.log("WishMethod Filtered");
+      // console.log(filtered);
+      // console.log(products);
+
       filteredAll = fill;
       products.forEach((pitem) => {
         if (pitem.title == item.productID) {
           let temp = { ...pitem, wishList: 1 };
+          // console.log("WishMethod TempProduct");
+          // console.log(temp);
+
           filtering = filtering.filter(
             (pitem) => pitem.title != item.productID
           );
-          // let temp2 = filtering
+          // console.log("WishMethod TempProduct");
+          // console.log(temp);
+
           filtering.splice(indexOfItem, 0, temp);
           // filtering.push(temp)
-          console.log("++++++++++++++++++++++");
+          console.log("------------");
           console.log(filtering);
         }
       });
