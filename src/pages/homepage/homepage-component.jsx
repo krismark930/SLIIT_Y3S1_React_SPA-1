@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import { AppContext } from "../../Context/app-context";
+import React, {useContext, useEffect} from "react";
+import {AppContext} from "../../Context/app-context";
 import HomeCategory from "../../components/home-category/home-category-component";
 import HomePageCarousle from "../../components/homepage-carousle/homepage-carousle-component";
 import "./homepage-styles.scss";
@@ -8,7 +8,7 @@ import Aos from "aos";
 const Homepage = () => {
   useEffect(() => {
     // void reset();
-    Aos.init({ duration: 1000 });
+    Aos.init({duration: 1000});
   }, []);
 
   const appContext = useContext(AppContext);
@@ -32,7 +32,7 @@ const Homepage = () => {
           </Button>
         </div>
       ))} */}
-      <HomePageCarousle />
+      <HomePageCarousle/>
       <div id="categoriesss">{chats}</div>
     </div>
   );

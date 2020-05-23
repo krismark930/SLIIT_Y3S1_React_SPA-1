@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 
 import "./checkout-item-styles.scss";
-import { AppContext } from "../../Context/app-context";
-import { Button, Modal } from "react-bootstrap";
+import {AppContext} from "../../Context/app-context";
+import {Button, Modal} from "react-bootstrap";
 
-const CheckoutItem = ({ cartItem }) => {
+const CheckoutItem = ({cartItem}) => {
   const [quantityHelper, setQuantityHelper] = useState(0);
   const [show, setShow] = useState(false);
 
@@ -31,7 +31,7 @@ const CheckoutItem = ({ cartItem }) => {
   return (
     <div className="checkout-item">
       <div className="image-container">
-        <img src={cartItem.id} alt="item" />
+        <img src={cartItem.id} alt="item"/>
       </div>
       <span className="name">{cartItem.title}</span>
       <span className="quantity">
@@ -54,7 +54,7 @@ const CheckoutItem = ({ cartItem }) => {
       <div
         className="remove-button"
         onClick={handleShow}
-        style={{ fontWeight: "1000" }}
+        style={{fontWeight: "1000"}}
       >
         &#10005;
       </div>
