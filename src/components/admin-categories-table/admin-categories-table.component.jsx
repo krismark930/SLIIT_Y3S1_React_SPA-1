@@ -15,6 +15,7 @@ const ManageCategoryTable = () => {
       setCategories(responseData)
       appContext.addCategories(responseData)
       appContext.editStoreManagerFalse()
+      appContext.editExistingStoreManagerFalse()
     } catch (errors) {
       console.log(errors)
     }
