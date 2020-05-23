@@ -44,6 +44,7 @@ const ManageStoreManagerTable = () => {
   }, [storeManagers])
 
   const EditStoreManager = (id) => {
+    appContext.editExistingStoreManagerFalse()
     appContext.storeManagerEdit()
     appContext.setEditStoreManagerId(id)
     axios.get('http://localhost:5000/admin/storemanager/' + id)
@@ -68,6 +69,7 @@ const ManageStoreManagerTable = () => {
     } catch (errors) {
       console.log(errors)
     }
+    appContext.editExistingStoreManagerFalse()
     setToastShow(true)
   }
 
