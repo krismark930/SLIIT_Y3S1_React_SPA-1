@@ -44,6 +44,7 @@ const ManageCategoryTable = () => {
   }, [categories])
 
   const EditCategory = (id) => {
+    appContext.editExistingCategoryFalse()
     appContext.categoryEdit()
     appContext.setEditCategoryId(id)
     axios.get('http://localhost:5000/admin/category/' + id)
@@ -68,6 +69,7 @@ const ManageCategoryTable = () => {
     } catch (errors) {
       console.log(errors)
     }
+    appContext.editExistingCategoryFalse()
     setToastShow(true)
   }
 

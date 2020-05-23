@@ -48,9 +48,15 @@ const EditCategoryForm = () => {
         },
         body: JSON.stringify(new_category)
       })
-      await response.json();
+      const responseData = await response.json()
+      appContext.editExistingCategoryFalse()
+      if (responseData.exists) {
+        appContext.existingCategoryEdit()
+        errors_ = responseData.message
+      } else {
+        appContext.editCategoryFalse()
+      }
       setLoading(false)
-      appContext.editCategoryFalse()
     } catch (errors_) {
       setLoading(false)
     }
