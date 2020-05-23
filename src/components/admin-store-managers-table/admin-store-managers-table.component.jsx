@@ -3,10 +3,27 @@ import {FaUserEdit, FaUserMinus} from 'react-icons/fa'
 import './admin-store-managers-table-styles.scss'
 import {AppContext} from '../../Context/app-context'
 import axios from 'axios'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
+import Toast from 'react-bootstrap/Toast'
 
 const ManageStoreManagerTable = () => {
   const appContext = useContext(AppContext)
   const [storeManagers, setStoreManagers] = useState([])
+  const [toastShow, setToastShow] = useState(false)
+  const [show, setShow] = useState(false)
+  const [deleteId, setDeleteId] = useState('1')
+
+  const handleClose = () => setShow(false)
+
+  const handleDelete = () => {
+    DeleteStoreManager(deleteId).then(() => setShow(false))
+  }
+
+  const handleShow = (id) => {
+    setShow(true)
+    setDeleteId(id)
+  }
 
   const getStoreManagers = async () => {
     try {
@@ -31,6 +48,7 @@ const ManageStoreManagerTable = () => {
     appContext.setEditStoreManagerId(id)
     axios.get('http://localhost:5000/admin/storemanager/' + id)
       .then(response => {
+        appContext.editingStoreManager(response.data)
         appContext.addStoreManagers(response.data)
       })
       .catch(function (error) {
@@ -50,10 +68,25 @@ const ManageStoreManagerTable = () => {
     } catch (errors) {
       console.log(errors)
     }
+    setToastShow(true)
   }
 
   return (
     <div>
+      <Modal show={show} onHide={handleClose} deleteId={deleteId}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Store Manager</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this store manager?</Modal.Body>
+        <Modal.Footer>
+          <Button variant='success' onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant='danger' onClick={handleDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <table className='table' style={{border: 'solid darkblue 1px'}}>
         <thead style={{backgroundColor: '#0350a2'}}>
         <th style={{borderBottom: 'solid darkblue 1px'}}>First Name</th>
@@ -77,7 +110,7 @@ const ManageStoreManagerTable = () => {
                 </button>
               </td>
               <td>
-                <button onClick={() => DeleteStoreManager(storeManager._id)} style={{color: 'indianred'}}>
+                <button onClick={() => handleShow(storeManager._id)} style={{color: 'indianred'}}>
                   <FaUserMinus size={25}/>
                 </button>
               </td>
@@ -86,6 +119,24 @@ const ManageStoreManagerTable = () => {
         })}
         </tbody>
       </table>
+      <div style={{
+        position: 'fixed',
+        bottom: '180px',
+        right: '10px'
+      }}>
+        <Toast
+          onClose={() => setToastShow(false)}
+          show={toastShow}
+          delay={3000}
+          autohide={true}
+        >
+          <Toast.Header>
+            <strong>Store Manager Deleted!</strong>
+            <small style={{marginLeft: '10px'}}>Few seconds ago</small>
+          </Toast.Header>
+          <Toast.Body>Store manager deleted successfully.</Toast.Body>
+        </Toast>
+      </div>
     </div>
   )
 }

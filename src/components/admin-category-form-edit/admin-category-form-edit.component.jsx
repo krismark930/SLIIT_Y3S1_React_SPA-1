@@ -26,7 +26,21 @@ const EditCategoryForm = () => {
 
   const onSubmitHandle = async (values) => {
     setLoading(true)
+
+    let new_category
+
+    if (values.categoryTitle === undefined)
+      new_category = {categoryTitle: appContext.editingCategoryObject.categoryTitle}
+    else
+      new_category = {categoryTitle: values.categoryTitle}
+
+    if (values.categoryDescription === undefined)
+      new_category = {...new_category, categoryDescription: appContext.editingCategoryObject.categoryDescription}
+    else
+      new_category = {...new_category, categoryDescription: values.categoryDescription}
+
     category = {...values}
+
     try {
       if (values.isSave)
         appContext.addCategories(category)
@@ -37,7 +51,7 @@ const EditCategoryForm = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(category)
+        body: JSON.stringify(new_category)
       })
       await response.json();
       setLoading(false)

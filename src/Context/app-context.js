@@ -37,6 +37,7 @@ export const AppContext = createContext({
   categories: [],
   existingCategory: false,
   existingStoreManager: false,
+  editingStoreManagerObject: [],
 
   addItemToCart: (item) => {
   },
@@ -109,6 +110,8 @@ export const AppContext = createContext({
   setEditStoreManagerId: () => {
   },
   addStoreManagers: () => {
+  },
+  editingStoreManager: () => {
   },
   categoryEdit: () => {
   },
