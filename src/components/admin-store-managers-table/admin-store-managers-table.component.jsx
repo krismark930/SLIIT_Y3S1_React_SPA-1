@@ -70,6 +70,7 @@ const ManageStoreManagerTable = () => {
       console.log(errors)
     }
     appContext.editExistingStoreManagerFalse()
+    appContext.editStoreManagerFalse()
     setToastShow(true)
   }
 
