@@ -1,6 +1,6 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import HomeItem from "../../components/home-item/home-item-component";
-import {AppContext} from "../../Context/app-context";
+import { AppContext } from "../../Context/app-context";
 import "./single-category-styles.scss";
 
 const SingleCategory = (props) => {
@@ -13,7 +13,7 @@ const SingleCategory = (props) => {
 
   return (
     <div className="singleCategoryTop">
-      <div className="home-category-wrapper container cardDeckHome">
+      <div className="home-category-wrapperss container cardDeckHome">
         <h3
           style={{
             padding: "10px",
@@ -32,7 +32,7 @@ const SingleCategory = (props) => {
           <div className="col">
             <div className="row">
               {filtered.map((item) => {
-                return <HomeItem item={item}/>;
+                return <HomeItem item={item} />;
               })}
             </div>
           </div>

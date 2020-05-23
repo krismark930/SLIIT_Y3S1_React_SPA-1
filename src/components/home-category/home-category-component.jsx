@@ -1,22 +1,22 @@
-import React, {useContext} from "react";
-import {CardDeck} from "react-bootstrap";
+import React, { useContext } from "react";
+import { CardDeck } from "react-bootstrap";
 import HomeItem from "../home-item/home-item-component";
 import "./home-category-styles.scss";
-import {Link} from "react-router-dom";
-import {AppContext} from "../../Context/app-context";
+import { Link } from "react-router-dom";
+import { AppContext } from "../../Context/app-context";
 
-const HomeCategory = ({category, products}) => {
-  const appContext = useContext(AppContext)
-  appContext.editStoreManagerFalse()
-  appContext.editCategoryFalse()
-  appContext.editExistingCategoryFalse()
+const HomeCategory = ({ category, products }) => {
+  const appContext = useContext(AppContext);
+  appContext.editStoreManagerFalse();
+  appContext.editCategoryFalse();
+  appContext.editExistingCategoryFalse();
 
   var filtered = products.filter((item) => item.category == category);
 
   return (
     <div
       className="home-category-wrapper container cardDeckHome"
-      style={{maxWidth: "1201px", marginTop: "40px", marginBottom: "40px"}}
+      style={{ maxWidth: "1201px", marginBottom: "40px" }}
     >
       <div className="row">
         <div
@@ -28,7 +28,7 @@ const HomeCategory = ({category, products}) => {
             borderTopRightRadius: "30px",
           }}
         >
-          <div className="categoryNameHome" style={{height: "100%"}}>
+          <div className="categoryNameHome" style={{ height: "100%" }}>
             <p
               style={{
                 fontSize: "30px",
@@ -40,11 +40,11 @@ const HomeCategory = ({category, products}) => {
             >
               <span
                 class="rotate-characters-back-to-horizontal"
-                style={{writingMode: "vertical-rl"}}
+                style={{ writingMode: "vertical-rl" }}
               >
                 <Link
                   to={`/product-category/${category}`}
-                  style={{color: "black"}}
+                  style={{ color: "black" }}
                   id="productCategoryInHome"
                 >
                   {category}
@@ -70,7 +70,7 @@ const HomeCategory = ({category, products}) => {
         </div>
         <CardDeck className="col-11 " style={{}}>
           {filtered.slice(0, 4).map((item) => {
-            return <HomeItem item={item}/>;
+            return <HomeItem item={item} />;
           })}
         </CardDeck>
       </div>

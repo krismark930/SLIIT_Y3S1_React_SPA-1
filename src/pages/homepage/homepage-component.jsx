@@ -1,5 +1,5 @@
-import React, {useContext} from "react";
-import {AppContext} from "../../Context/app-context";
+import React, { useContext } from "react";
+import { AppContext } from "../../Context/app-context";
 import HomeCategory from "../../components/home-category/home-category-component";
 import HomePageCarousle from "../../components/homepage-carousle/homepage-carousle-component";
 import "./homepage-styles.scss";
@@ -26,8 +26,8 @@ const Homepage = () => {
           </Button>
         </div>
       ))} */}
-      <HomePageCarousle/>
-      {chats}
+      <HomePageCarousle />
+      <div id="categoriesss">{chats}</div>
     </div>
   );
 };
