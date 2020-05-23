@@ -45,7 +45,75 @@ const GlobalState = (props) => {
     {
       categoryTitle: "Shoes",
     },
-  ]);
+    {
+      title: 'Shoes1',
+      id: 5,
+      price: 123.0,
+      category: 'Shoes',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Women2',
+      id: 6,
+      price: 123.0,
+      category: 'Women',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Product11',
+      id: 7,
+      price: 123.0,
+      category: 'Women',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Product12',
+      id: 8,
+      price: 123.0,
+      category: 'Women',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Product1',
+      id: 9,
+      price: 123.0,
+      category: 'Hats',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    }
+  ])
+  const [tempProducts, setTempProducts] = useState(products)
+  const [cart, setCart] = useState([])
+  const [currentUser, setCurrentUser] = useState([{type: 'Null'}])
+  const [currentUserFirstName, setCurrentUserFirstName] = useState([])
+  const [currentUserLastName, setCurrentUserLastName] = useState([])
+  const [payUserDetails, setPayUserDetails] = useState([])
+  const [editPayUserDetails, setEditPayUserDetails] = useState([])
+  const [editPayCardDetails, setEditPayCardDetails] = useState([])
+  const [payCardDetails, setPayCardDetails] = useState([])
+  const [payOrderDetails, setPayOrderDetails] = useState([])
+  const [editStoreManager, setEditStoreManager] = useState(false)
+  const [editStoreManagerId, setEditStoreManagerID] = useState('1')
+  const [storeManagers, setStoreManagers] = useState([])
+  const [editCategory, setEditCategory] = useState(false)
+  const [editCategoryId, setEditCategoryID] = useState('1')
+  const [existingCategory, setEditExistingCategory] = useState(false)
+  const [existingStoreManager, setEditExistingStoreManager] = useState(false)
+  const [editingStoreManagerObject, setEditingStoreManagerObject] = useState([])
+  const [editingCategoryObject, setEditingCategoryObject] = useState([])
+  const [categories, setCategories] = useState([
+    {
+      categoryTitle: 'Hats'
+    },
+    {
+      categoryTitle: 'Men'
+    },
+    {
+      categoryTitle: 'Women'
+    },
+    {
+      categoryTitle: 'Shoes'
+    }
+  ])
 
   const addItemToCart = (item) => {
     const updatedCart = cart;
@@ -439,6 +507,14 @@ const GlobalState = (props) => {
     setEditExistingStoreManager(false);
   };
 
+  const editingStoreManager = (storeManager) => {
+    setEditingStoreManagerObject(storeManager)
+  }
+
+  const editingCategory = (category) => {
+    setEditingCategoryObject(category)
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -473,6 +549,8 @@ const GlobalState = (props) => {
         categories: categories,
         existingCategory: existingCategory,
         existingStoreManager: existingStoreManager,
+        editingStoreManagerObject: editingStoreManagerObject,
+        editingCategoryObject: editingCategoryObject,
 
         payUserEdit: payUserEdit,
         payUserEditFalse: payUserEditFalse,
@@ -517,6 +595,8 @@ const GlobalState = (props) => {
         editExistingCategoryFalse: editExistingCategoryFalse,
         existingStoreManagerEdit: existingStoreManagerEdit,
         editExistingStoreManagerFalse: editExistingStoreManagerFalse,
+        editingStoreManager: editingStoreManager,
+        editingCategory: editingCategory
       }}
     >
       {props.children}
