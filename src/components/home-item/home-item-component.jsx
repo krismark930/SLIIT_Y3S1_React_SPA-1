@@ -18,6 +18,9 @@ const HomeItem = ({ item }) => {
     Aos.init({ duration: 1000 });
   }, []);
 
+  console.log(appContext);
+  console.log(appContext.payUserConfirmed);
+  console.log(appContext.payCardConfirmed);
   return (
     <Card
       id="homeitemComponentCard"

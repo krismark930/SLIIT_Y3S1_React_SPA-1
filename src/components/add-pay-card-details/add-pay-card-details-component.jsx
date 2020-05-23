@@ -46,6 +46,7 @@ const AddPayCardDetails = props => {
   const setConfirmedCardCancel = () => {
     console.log("add pay card eke cancel click kala");
     appContext.setFalsePayUserConfirmed();
+    appContext.setFalsePayCardConfirmed();
   }
 
 
