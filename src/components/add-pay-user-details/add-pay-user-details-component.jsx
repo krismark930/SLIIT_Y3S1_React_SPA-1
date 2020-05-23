@@ -136,6 +136,7 @@ const AddPayUserDetails = props => {
               errors
             }) => (
             <Form noValidate onSubmit={handleSubmit}>
+              <Form.Row><Form.Label><h1>Shipping Information</h1></Form.Label></Form.Row>
 
 
               <Form.Row>
@@ -272,8 +273,9 @@ const AddPayUserDetails = props => {
               </Form.Row>
 
               <Form.Row>
-                <Form.Group as={Col} md="12" controlId="validationFormik04">
-                  <Form.Control
+                <Form.Group as={Col} md="12" controlId="formBasicCheckbox">
+                
+                  <Form.Check
                     type="checkbox"
                     name="isSave"
                     value={values.isSave}
@@ -281,12 +283,14 @@ const AddPayUserDetails = props => {
                     onBlur={handleBlur}
                     isInvalid={touched.isSave && errors.isSave}
                     isValid={touched.isSave && !errors.isSave}
+                    label="Save for future"
+                   
                   />
                   <Form.Control.Feedback type="invalid">
                     {errors.isSave}
                   </Form.Control.Feedback>
-
-                  <Form.Label>Save for future</Form.Label>
+                 
+                  
                 </Form.Group>
 
 
@@ -296,7 +300,7 @@ const AddPayUserDetails = props => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                style={{marginTop: "5px", marginRight: "5px"}}
+                style={{marginTop: "5px", marginRight: "10px"}}
               >
                 Confirm
               </Button>
@@ -306,11 +310,12 @@ const AddPayUserDetails = props => {
                 className="outline"
                 onClick={handleReset}
                 disabled={isSubmitting}
+                style={{marginTop: "5px", marginRight: "10px"}}
               >
                 Reset
               </Button>
 
-              <Link to="/" style={{marginTop: "5px", marginRight: "5px"}}>
+              <Link to="/" style={{marginTop: "10px", marginRight: "10px"}}>
                 Back to Home
               </Link>
 
