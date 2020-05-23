@@ -47,17 +47,18 @@ const AddCategoryForm = () => {
       if (responseData.exists) {
         appContext.existingCategoryEdit()
         errors_ = responseData.message
+      } else {
+        try {
+          resetForm({
+            values: resetValues
+          })
+        } catch (error) {
+          console.log(error)
+        }
       }
       setLoading(false)
     } catch (errors_) {
       setLoading(false)
-    }
-    try {
-      resetForm({
-        values: resetValues
-      })
-    } catch (error) {
-      console.log(error)
     }
   }
 
