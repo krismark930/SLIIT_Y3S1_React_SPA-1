@@ -145,71 +145,71 @@ const UsePayUserDetails = () => {
     <div>
       {(isData || isDelete) ? (
         <div><h1>Saved Shipping Information</h1>
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: "70px",
-            marginBottom: "70px",
-          }}
-        >
-          
-          <p
+          <div
             style={{
-              marginTop: "100px",
-              fontSize: "25px",
-              color: "rgb(0, 123, 255)",
-              fontWeight: "600",
-              fontFamily: "Lemonada",
+              textAlign: "center",
+              marginTop: "70px",
+              marginBottom: "70px",
             }}
           >
-            
-            <h2>There is no saved data to display</h2>
-          </p>
 
-          <FaRegHourglass
-            style={{
-              marginRight: "10px",
-              marginBottom: "3px",
-              fontSize: "123px",
-              color: "rgb(0, 123, 255)",
-            }}
-          />
-        </div>
+            <p
+              style={{
+                marginTop: "100px",
+                fontSize: "25px",
+                color: "rgb(0, 123, 255)",
+                fontWeight: "600",
+                fontFamily: "Lemonada",
+              }}
+            >
+
+              <h2>There is no saved data to display</h2>
+            </p>
+
+            <FaRegHourglass
+              style={{
+                marginRight: "10px",
+                marginBottom: "3px",
+                fontSize: "123px",
+                color: "rgb(0, 123, 255)",
+              }}
+            />
+          </div>
         </div>) : (<div>
-        <h1>Saved Shipping Information</h1>
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: "30px",
-            marginBottom: "30px",
-            width:'585px',
-            
-          }}
-        >
-          <table className="table"  style={{border: 'solid gray  2px' }}>
-            <thead className="thead-light">
-            <tr>
-              <th style={{borderBottom: 'solid gray   1px' , color: 'black'}}><h5>Name</h5></th>
-              <th style={{borderBottom: 'solid gray   1px', color: 'black'}}><h5>Phone</h5></th>
-              <th style={{borderBottom: 'solid gray   1px', color: 'black'}}><h5>Address</h5></th>
-              <th style={{borderBottom: 'solid gray   1px', color: 'black'}}><h5>City</h5></th>
-              <th style={{borderBottom: 'solid gray   1px', color: 'black'}}><h5>Province</h5></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>{payUserDetails.name}</td>
-              <td>{payUserDetails.phone}</td>
-              <td>{payUserDetails.address}</td>
-              <td>{payUserDetails.city}</td>
-              <td>{payUserDetails.province}</td>
-            </tr>
-            </tbody>
+          <h1>Saved Shipping Information</h1>
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: "30px",
+              marginBottom: "30px",
+              width: '585px',
+
+            }}
+          >
+            <table className="table" style={{border: 'solid gray  2px'}}>
+              <thead className="thead-light">
+              <tr>
+                <th style={{borderBottom: 'solid gray   1px', color: 'black'}}><h5>Name</h5></th>
+                <th style={{borderBottom: 'solid gray   1px', color: 'black'}}><h5>Phone</h5></th>
+                <th style={{borderBottom: 'solid gray   1px', color: 'black'}}><h5>Address</h5></th>
+                <th style={{borderBottom: 'solid gray   1px', color: 'black'}}><h5>City</h5></th>
+                <th style={{borderBottom: 'solid gray   1px', color: 'black'}}><h5>Province</h5></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>{payUserDetails.name}</td>
+                <td>{payUserDetails.phone}</td>
+                <td>{payUserDetails.address}</td>
+                <td>{payUserDetails.city}</td>
+                <td>{payUserDetails.province}</td>
+              </tr>
+              </tbody>
 
 
-          </table>
+            </table>
 
-          <Button className="buyNowBtn" type="submit" style={{margin: "10px"}} onClick={() => {
+            <Button className="buyNowBtn" type="submit" style={{margin: "10px"}} onClick={() => {
               setConfirmedUser()
             }}>
               Use This
@@ -228,7 +228,7 @@ const UsePayUserDetails = () => {
             }}>
               Delete
             </Button>
-            </div>
+          </div>
         </div>
       )}
 
