@@ -141,6 +141,9 @@ const PayCardDetails = props => {
                 </Link>
 
 
+                <Link to="/" style={{marginTop: "5px", marginRight: "5px"}}>
+                Back to Home
+              </Link>
               </Form>
             )}
           </Formik>
@@ -157,18 +160,19 @@ const PayCardDetails = props => {
     <div className="loginSignupMainHead">
       <div className="container">
         <Row>
-          <Col md="4">
+          <Col md="6">
             <div className="loginSignupPageLginForm">
+              
+            <UsePayCardDetails/>
 
-
-              {route}
+              
             </div>
           </Col>
           <Col md="6" className="clll">
             <div className="loginSignupPageSignupForm">
 
+            {route}
 
-              <UsePayCardDetails/>
 
             </div>
           </Col>

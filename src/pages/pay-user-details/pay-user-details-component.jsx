@@ -24,17 +24,17 @@ const PayUserDetails = props => {
     <div className="loginSignupMainHead">
       <div className="container">
         <Row>
-          <Col md="4">
+          <Col md="6">
             <div className="loginSignupPageLginForm">
 
-
-              {route}
+            <UsePayUserDetails/>
+              
             </div>
           </Col>
           <Col md="6" className="clll">
             <div className="loginSignupPageSignupForm">
 
-              <UsePayUserDetails/>
+            {route}
 
             </div>
           </Col>

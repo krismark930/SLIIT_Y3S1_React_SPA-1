@@ -236,6 +236,7 @@ const EditPayCardDetails = props => {
   return (
     <React.Fragment>
       <div className="addPayCardDetailsFormHead">
+        
         <Formik
           validationSchema={schema}
           onSubmit={onSubmitHandle}
@@ -295,7 +296,7 @@ const EditPayCardDetails = props => {
 
               <Form.Row>
                 <Form.Group as={Col} md="12" controlId="validationFormik04">
-                  <Form.Control
+                  <Form.Check
                     type="checkbox"
                     name="isSave"
                     value={values.isSave}
@@ -303,12 +304,13 @@ const EditPayCardDetails = props => {
                     onBlur={handleBlur}
                     isInvalid={touched.isSave && errors.isSave}
                     isValid={touched.isSave && !errors.isSave}
+                    label="Save for future"
                   />
                   <Form.Control.Feedback type="invalid">
                     {errors.isSave}
                   </Form.Control.Feedback>
 
-                  <Form.Label>Save for future</Form.Label>
+                
                 </Form.Group>
 
 

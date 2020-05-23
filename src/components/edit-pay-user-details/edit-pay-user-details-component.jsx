@@ -183,7 +183,7 @@ const EditPayUserDetails = props => {
               errors
             }) => (
             <Form noValidate onSubmit={handleSubmit}>
-
+              <Form.Row><Form.Label><h1>Shipping Information</h1></Form.Label></Form.Row>
 
               <Form.Row>
                 <Form.Group as={Col} md="12" controlId="validationFormik04">
@@ -320,7 +320,7 @@ const EditPayUserDetails = props => {
 
               <Form.Row>
                 <Form.Group as={Col} md="12" controlId="validationFormik04">
-                  <Form.Control
+                  <Form.Check
                     type="checkbox"
                     name="isSave"
                     value={values.isSave}
@@ -328,12 +328,13 @@ const EditPayUserDetails = props => {
                     onBlur={handleBlur}
                     isInvalid={touched.isSave && errors.isSave}
                     isValid={touched.isSave && !errors.isSave}
+                    label="Save for future"
                   />
                   <Form.Control.Feedback type="invalid">
                     {errors.isSave}
                   </Form.Control.Feedback>
 
-                  <Form.Label>Save for future</Form.Label>
+                  
                 </Form.Group>
 
 

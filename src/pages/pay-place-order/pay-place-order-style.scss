@@ -1,10 +1,20 @@
-.checkout-page {
+.loginSignupMainHead {
+  margin-top: 10%;
+  margin-bottom: 4%;
+  background: url("../../assets//Layer\ 4.svg") no-repeat;
+  background-size: cover;
+}
+
+
+.checkout-page1 {
   width: 55%;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px auto 0;
+  padding: 10px;
+  margin: 50px auto 50px;
+  background-color: rgba(254, 250, 250, 0.43);
 
   .test-creditcard {
     margin-top: 50px;
@@ -40,4 +50,8 @@
     font-size: 30px;
   }
 }
-  
+
+.checkOutHead {
+  background: url("../../assets/Layer\ 8.svg") no-repeat;
+  background-size: cover;
+}

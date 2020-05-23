@@ -18,6 +18,7 @@ const UsePlaceOrderDetails = ({cartItem}) => {
   });
 
   return (
+   
     <div className="checkout-item">
       <div className="image-container">
         <img src={cartItem.id} alt="item"/>
@@ -30,8 +31,10 @@ const UsePlaceOrderDetails = ({cartItem}) => {
        
       </span>
       <span className="price">{cartItem.price}</span>
+      <span></span>
 
     </div>
+    
   );
 };
 
