@@ -37,9 +37,7 @@ const MainNavbar = () => {
                     <Link to="/wishlist" id="wislistLink">
                       <Nav.Link href="#wish_list">Wish List</Nav.Link>
                     </Link>
-                    <Link to="/comment">
-                      <Nav.Link href="#comments">Comments</Nav.Link>
-                    </Link>
+                   
                     <Nav>
                       <Nav.Link href="#contact_us">Contact Us</Nav.Link>
                       <Nav.Link href="#about_us">About Us</Nav.Link>
