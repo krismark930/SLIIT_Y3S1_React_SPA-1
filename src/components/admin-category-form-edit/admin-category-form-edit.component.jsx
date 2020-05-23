@@ -16,7 +16,6 @@ const schema = yup.object().shape({
 })
 
 let errors_ = ''
-let category
 
 const EditCategoryForm = () => {
   const appContext = useContext(AppContext)
@@ -39,11 +38,7 @@ const EditCategoryForm = () => {
     else
       new_category = {...new_category, categoryDescription: values.categoryDescription}
 
-    category = {...values}
-
     try {
-      if (values.isSave)
-        appContext.addCategories(category)
       categoryId = appContext.editCategoryId
       appContext.categoryEdit()
       const response = await fetch('http://localhost:5000/admin/category/' + categoryId, {
@@ -198,7 +193,7 @@ const EditCategoryForm = () => {
                   </Button>
                 </Form.Group>
               </Form.Row>
-              {errors_ && <div id='serverErrors'>{errors_}</div>}
+              {appContext.existingCategory && errors_ && <div id='serverErrors'>{errors_}</div>}
             </Form>
           )}
         </Formik>

@@ -27,7 +27,6 @@ const schema = yup.object().shape({
 })
 
 let errors_ = ''
-let store_manager
 
 const EditStoreManagerForm = () => {
   const appContext = useContext(AppContext)
@@ -60,11 +59,7 @@ const EditStoreManagerForm = () => {
     else
       new_store_manager = {...new_store_manager, teleNo: values.teleNo}
 
-    store_manager = {...values}
-
     try {
-      if (values.isSave)
-        appContext.addStoreManagers(store_manager)
       userId = appContext.editStoreManagerId
       appContext.storeManagerEdit();
       const response = await fetch('http://localhost:5000/admin/storemanager/' + userId, {
