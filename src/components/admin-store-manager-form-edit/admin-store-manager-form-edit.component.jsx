@@ -37,7 +37,31 @@ const EditStoreManagerForm = () => {
 
   const onSubmitHandle = async (values) => {
     setLoading(true)
+
+    let new_store_manager
+
+    if (values.firstName === undefined)
+      new_store_manager = {firstName: appContext.editingStoreManagerObject.firstName}
+    else
+      new_store_manager = {firstName: values.firstName}
+
+    if (values.lastName === undefined)
+      new_store_manager = {...new_store_manager, lastName: appContext.editingStoreManagerObject.lastName}
+    else
+      new_store_manager = {...new_store_manager, lastName: values.lastName}
+
+    if (values.email === undefined)
+      new_store_manager = {...new_store_manager, email: appContext.editingStoreManagerObject.email}
+    else
+      new_store_manager = {...new_store_manager, email: values.email}
+
+    if (values.teleNo === undefined)
+      new_store_manager = {...new_store_manager, teleNo: appContext.editingStoreManagerObject.teleNo}
+    else
+      new_store_manager = {...new_store_manager, teleNo: values.teleNo}
+
     store_manager = {...values}
+
     try {
       if (values.isSave)
         appContext.addStoreManagers(store_manager)
@@ -48,11 +72,17 @@ const EditStoreManagerForm = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(store_manager)
+        body: JSON.stringify(new_store_manager)
       })
-      await response.json();
+      const responseData = await response.json()
+      appContext.editExistingStoreManagerFalse()
+      if (responseData.exists) {
+        appContext.existingStoreManagerEdit()
+        errors_ = responseData.message
+      } else {
+        appContext.editStoreManagerFalse()
+      }
       setLoading(false)
-      appContext.editStoreManagerFalse()
     } catch (errors_) {
       setLoading(false)
     }
@@ -231,7 +261,7 @@ const EditStoreManagerForm = () => {
                   </Button>
                 </Form.Group>
               </Form.Row>
-              {errors_ && <div id='serverErrors'>{errors_}</div>}
+              {appContext.existingStoreManager && errors_ && <div id='serverErrors'>{errors_}</div>}
             </Form>
           )}
         </Formik>

@@ -37,50 +37,96 @@ export const AppContext = createContext({
   categories: [],
   existingCategory: false,
   existingStoreManager: false,
+  editingStoreManagerObject: [],
 
-  addItemToCart: (item) => {},
-  removeItemFromCart: (productId, state) => {},
-  removeCompletelyItemFromCart: (item) => {},
-  toggleDropdownHidden: (state) => {},
-  logout: (state) => {},
-  login: (state) => {},
-  setTruePayUserConfirmed: (state) => {},
-  setFalsePayUserConfirmed: (state) => {},
-  setTruePayCardConfirmed: (state) => {},
-  setFalsePayCardConfirmed: (state) => {},
-  addCurrentUser: (user) => {},
-  addCurrentUserFirstName: (name) => {},
-  addCurrentUserLastName: (name) => {},
-  addPayUserDetails: (payUser) => {},
-  addPayCardDetails: (payUser) => {},
-  addPayOrderDetails: (payUser) => {},
-  addEditPayUserDetails: (payUser) => {},
-  addEditPayCardDetails: (payCard) => {},
-  payUserEdit: (state) => {},
-  payUserEditFalse: (state) => {},
-  setEditPayUserID: (id) => {},
-  payCardEdit: (state) => {},
-  payCardEditFalse: (state) => {},
-  setEditPayCardID: (id) => {},
-  setWishListmethod: (mail) => {},
-  addToWishList: (product) => {},
-  setWishListMethod: () => {},
-  getWishList: () => {},
-  setChangeWishListProduct: (p) => {},
-  setCheckAdminMethod: () => {},
-  setCheckCustomerMethod: () => {},
-  setChecksetCheckStoreManagerMethod: () => {},
-  storeManagerEdit: () => {},
-  editStoreManagerFalse: () => {},
-  setEditStoreManagerId: () => {},
-  addStoreManagers: () => {},
-  categoryEdit: () => {},
-  editCategoryFalse: () => {},
-  setEditCategoryId: () => {},
-  addCategories: () => {},
-  existingCategoryEdit: () => {},
-  editExistingCategoryFalse: () => {},
-  existingStoreManagerEdit: () => {},
-  editExistingStoreManagerFalse: () => {},
-  setProductsMethod: () => {},
-});
+  addItemToCart: (item) => {
+  },
+  removeItemFromCart: (productId, state) => {
+  },
+  removeCompletelyItemFromCart: (item) => {
+  },
+  toggleDropdownHidden: (state) => {
+  },
+  logout: (state) => {
+  },
+  login: (state) => {
+  },
+  setTruePayUserConfirmed: (state) => {
+  },
+  setFalsePayUserConfirmed: (state) => {
+  },
+  setTruePayCardConfirmed: (state) => {
+  },
+  setFalsePayCardConfirmed: (state) => {
+  },
+  addCurrentUser: (user) => {
+  },
+  addCurrentUserFirstName: (name) => {
+  },
+  addCurrentUserLastName: (name) => {
+  },
+  addPayUserDetails: (payUser) => {
+  },
+  addPayCardDetails: (payUser) => {
+  },
+  addPayOrderDetails: (payUser) => {
+  },
+  addEditPayUserDetails: (payUser) => {
+  },
+  addEditPayCardDetails: (payCard) => {
+  },
+  payUserEdit: (state) => {
+  },
+  payUserEditFalse: (state) => {
+  },
+  setEditPayUserID: (id) => {
+  },
+  payCardEdit: (state) => {
+  },
+  payCardEditFalse: (state) => {
+  },
+  setEditPayCardID: (id) => {
+  },
+  setWishListmethod: (mail) => {
+  },
+  addToWishList: (product) => {
+  },
+  setWishListMethod: () => {
+  },
+  getWishList: () => {
+  },
+  setChangeWishListProduct: (p) => {
+  },
+  setCheckAdminMethod: () => {
+  },
+  setCheckCustomerMethod: () => {
+  },
+  setChecksetCheckStoreManagerMethod: () => {
+  },
+  storeManagerEdit: () => {
+  },
+  editStoreManagerFalse: () => {
+  },
+  setEditStoreManagerId: () => {
+  },
+  addStoreManagers: () => {
+  },
+  editingStoreManager: () => {
+  },
+  categoryEdit: () => {
+  },
+  editCategoryFalse: () => {
+  },
+  setEditCategoryId: () => {
+  },
+  addCategories: () => {
+  },
+  existingCategoryEdit: () => {
+  },
+  editExistingCategoryFalse: () => {
+  },
+  existingStoreManagerEdit: () => {
+  },
+  editExistingStoreManagerFalse: () => {
+  }
+})
