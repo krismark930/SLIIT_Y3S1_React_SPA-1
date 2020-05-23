@@ -1,16 +1,16 @@
-import React, {useContext, useState} from "react";
-import {Formik} from "formik";
-import {Button, Card, Col, Form, Row, Spinner} from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Formik } from "formik";
+import { Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
 import * as yup from "yup";
-import {FaSignInAlt} from "react-icons/fa";
-import {AppContext} from "../../Context/app-context";
-import {Link} from "react-router-dom";
+import { FaSignInAlt } from "react-icons/fa";
+import { AppContext } from "../../Context/app-context";
+import { Link } from "react-router-dom";
 
 var errorss = "";
 var passwordUpdatedd = true;
 var userData = {};
 var responseData = {
-  user: {answer: "red", passwordResetQuestion: "", id: ""},
+  user: { answer: "red", passwordResetQuestion: "", id: "" },
 };
 var schema = {};
 
@@ -63,7 +63,7 @@ const UpdatePassword = (props) => {
     });
   }
 
-  const onSubmitHand = async (values, {setSubmitting}) => {
+  const onSubmitHand = async (values, { setSubmitting }) => {
     setLoading(true);
     console.log(values);
     setloginData(values);
@@ -138,14 +138,14 @@ const UpdatePassword = (props) => {
 
   return (
     <div className="updatePAsswordComponentHead">
-      <div className="container">
+      <div className="container" style={{ minHeight: "76vh" }}>
         {passwordUpdatedd ? (
           <Row>
             <Col
               md="6"
               style={{
                 margin: "auto",
-                marginTop: "102px",
+                marginTop: "21%",
                 padding: "20px",
                 borderRadius: "14px",
                 border: "2px solid rgba(0, 123, 255, 0.55)",
@@ -160,17 +160,17 @@ const UpdatePassword = (props) => {
                 }}
               >
                 {({
-                    handleSubmit,
-                    isSubmitting,
-                    handleChange,
-                    handleBlur,
-                    values,
-                    touched,
-                    isValid,
-                    errors,
-                  }) => (
+                  handleSubmit,
+                  isSubmitting,
+                  handleChange,
+                  handleBlur,
+                  values,
+                  touched,
+                  isValid,
+                  errors,
+                }) => (
                   <Form noValidate onSubmit={handleSubmit}>
-                    <Form.Row>
+                    <Form.Row style={{ textAlign: "center" }}>
                       <Form.Group
                         as={Col}
                         md="12"
@@ -300,13 +300,13 @@ const UpdatePassword = (props) => {
                       {loading && (
                         <Spinner
                           animation="border"
-                          style={{textAlign: "center", marginLeft: "44%"}}
+                          style={{ textAlign: "center", marginLeft: "44%" }}
                         />
                       )}
                     </Form.Row>
                     <Row>
                       <Col md={12}>
-                        <div style={{display: "grid"}}>
+                        <div style={{ display: "grid" }}>
                           <Button
                             type="submit"
                             style={{}}
@@ -334,7 +334,7 @@ const UpdatePassword = (props) => {
           </Row>
         ) : (
           <Row>
-            <Col md="7" style={{margin: "auto", marginTop: "102px"}}>
+            <Col md="7" style={{ margin: "auto", marginTop: "102px" }}>
               <Card
                 body
                 style={{
@@ -343,11 +343,16 @@ const UpdatePassword = (props) => {
                   width: "100%",
                 }}
               >
-                <p style={{textAlign: "center", fontWeight: "600"}}>
+                <p style={{ textAlign: "center", fontWeight: "600" }}>
                   Your password has been updated successfully
                 </p>{" "}
                 <Link to="/signin-signup">
-                  <Button style={{width: "100%"}}>Login</Button>
+                  <Button
+                    style={{ width: "100%" }}
+                    onClick={() => setpasswordUpdated(false)}
+                  >
+                    Login
+                  </Button>
                 </Link>
               </Card>
             </Col>
