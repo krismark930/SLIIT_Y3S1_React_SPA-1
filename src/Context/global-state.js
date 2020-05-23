@@ -2,37 +2,19 @@ import React, {useState} from 'react'
 import {AppContext} from './app-context'
 
 const GlobalState = (props) => {
-  const [loggedin, setLoggedin] = useState(false);
-  const [payUserConfirmed, setPayUserConfirmed] = useState(false);
-  const [payCardConfirmed, setPayCardConfirmed] = useState(false);
-  const [editPayUser, setEditPayUser] = useState(false);
-  const [editPayUserId, setEditPayUserId] = useState("1");
-  const [editPayCard, setEditPayCard] = useState(false);
-  const [editPayCardId, setEditPayCardId] = useState("1");
-  const [hidden, setHidden] = useState(true);
-  const [wishList, setWishList] = useState();
-  const [checkAdmin, setCheckAdmin] = useState(false);
-  const [checkCustomer, setCheckCustomer] = useState(false);
-  const [checkStoreManager, setCheckStoreManager] = useState(false);
-  const [products, setProducts] = useState([]);
-  const [tempProducts, setTempProducts] = useState([]);
-  const [cart, setCart] = useState([]);
-  const [currentUser, setCurrentUser] = useState([{ type: "Null" }]);
-  const [currentUserFirstName, setCurrentUserFirstName] = useState([]);
-  const [currentUserLastName, setCurrentUserLastName] = useState([]);
-  const [payUserDetails, setPayUserDetails] = useState([]);
-  const [editPayUserDetails, setEditPayUserDetails] = useState([]);
-  const [editPayCardDetails, setEditPayCardDetails] = useState([]);
-  const [payCardDetails, setPayCardDetails] = useState([]);
-  const [payOrderDetails, setPayOrderDetails] = useState([]);
-  const [editStoreManager, setEditStoreManager] = useState(false);
-  const [editStoreManagerId, setEditStoreManagerID] = useState("1");
-  const [storeManagers, setStoreManagers] = useState([]);
-  const [editCategory, setEditCategory] = useState(false);
-  const [editCategoryId, setEditCategoryID] = useState("1");
-  const [existingCategory, setEditExistingCategory] = useState(false);
-  const [existingStoreManager, setEditExistingStoreManager] = useState(false);
-  const [categories, setCategories] = useState([
+  const [loggedin, setLoggedin] = useState(false)
+  const [payUserConfirmed, setPayUserConfirmed] = useState(false)
+  const [payCardConfirmed, setPayCardConfirmed] = useState(false)
+  const [editPayUser, setEditPayUser] = useState(false)
+  const [editPayUserId, setEditPayUserId] = useState('1')
+  const [editPayCard, setEditPayCard] = useState(false)
+  const [editPayCardId, setEditPayCardId] = useState('1')
+  const [hidden, setHidden] = useState(true)
+  const [wishList, setWishList] = useState()
+  const [checkAdmin, setCheckAdmin] = useState(false)
+  const [checkCustomer, setCheckCustomer] = useState(false)
+  const [checkStoreManager, setCheckStoreManager] = useState(false)
+  const [products, setProducts] = useState([
     {
       title: 'Women1',
       id: 1,
@@ -61,7 +43,75 @@ const GlobalState = (props) => {
       category: 'Men',
       productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
     },
-  ]);
+    {
+      title: 'Shoes1',
+      id: 5,
+      price: 123.0,
+      category: 'Shoes',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Women2',
+      id: 6,
+      price: 123.0,
+      category: 'Women',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Product11',
+      id: 7,
+      price: 123.0,
+      category: 'Women',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Product12',
+      id: 8,
+      price: 123.0,
+      category: 'Women',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    },
+    {
+      title: 'Product1',
+      id: 9,
+      price: 123.0,
+      category: 'Hats',
+      productImage: 'https://i.ibb.co/ZYW3VTp/brown-brim.png'
+    }
+  ])
+  const [tempProducts, setTempProducts] = useState(products)
+  const [cart, setCart] = useState([])
+  const [currentUser, setCurrentUser] = useState([{type: 'Null'}])
+  const [currentUserFirstName, setCurrentUserFirstName] = useState([])
+  const [currentUserLastName, setCurrentUserLastName] = useState([])
+  const [payUserDetails, setPayUserDetails] = useState([])
+  const [editPayUserDetails, setEditPayUserDetails] = useState([])
+  const [editPayCardDetails, setEditPayCardDetails] = useState([])
+  const [payCardDetails, setPayCardDetails] = useState([])
+  const [payOrderDetails, setPayOrderDetails] = useState([])
+  const [editStoreManager, setEditStoreManager] = useState(false)
+  const [editStoreManagerId, setEditStoreManagerID] = useState('1')
+  const [storeManagers, setStoreManagers] = useState([])
+  const [editCategory, setEditCategory] = useState(false)
+  const [editCategoryId, setEditCategoryID] = useState('1')
+  const [existingCategory, setEditExistingCategory] = useState(false)
+  const [existingStoreManager, setEditExistingStoreManager] = useState(false)
+  const [editingStoreManagerObject, setEditingStoreManagerObject] = useState([])
+  const [editingCategoryObject, setEditingCategoryObject] = useState([])
+  const [categories, setCategories] = useState([
+    {
+      categoryTitle: 'Hats'
+    },
+    {
+      categoryTitle: 'Men'
+    },
+    {
+      categoryTitle: 'Women'
+    },
+    {
+      categoryTitle: 'Shoes'
+    }
+  ])
 
   const addItemToCart = (item) => {
     const updatedCart = cart
@@ -128,12 +178,11 @@ const GlobalState = (props) => {
       responseData = await response.json();
       // console.log(responseData.wishList)
       responseError = responseData.message;
-      // console.log("+++++++++++++++++");
-      // console.log(responseData);
+      console.log("+++++++++++++++++");
+      console.log(responseData);
       setProducts(responseData);
-      setTempProducts(responseData);
-      // console.log("*-*-*-*-*-*-*---*");
-      // console.log(products);
+      console.log("*-*-*-*-*-*-*---*");
+      console.log(products);
     } catch (err) {
       console.log(err.message);
     }
@@ -189,38 +238,23 @@ const GlobalState = (props) => {
     } catch (err) {
       console.log(err.message)
     }
-
-    // console.log("WishMethod Products");
-    // console.log(products);
-    var filtering = products1;
+    var filtering = products1
     responseData.wishList.forEach((item) => {
       const indexOfItem = products.findIndex(
         (ppitem) => ppitem.title === item.productID
-      );
-
-      // console.log("WishMethod Index of wishItem in product");
-      // console.log(indexOfItem);
-
-      var filtered = products.filter((pitem) => pitem.title == item.productID);
-      var fill = filtered.concat(filteredAll);
-
-      // console.log("WishMethod Filtered");
-      // console.log(filtered);
-      // console.log(products);
-
-      filteredAll = fill;
+      )
+      console.log(item)
+      var filtered = products.filter((pitem) => pitem.title == item.productID)
+      var fill = filtered.concat(filteredAll)
+      console.log(filtered)
+      filteredAll = fill
       products.forEach((pitem) => {
         if (pitem.title == item.productID) {
           let temp = {...pitem, wishList: 1}
-          // console.log("WishMethod TempProduct");
-          // console.log(temp);
-
           filtering = filtering.filter(
             (pitem) => pitem.title != item.productID
           )
-          // console.log("WishMethod TempProduct");
-          // console.log(temp);
-
+          // let temp2 = filtering
           filtering.splice(indexOfItem, 0, temp)
           // filtering.push(temp)
           console.log('++++++++++++++++++++++')
@@ -513,6 +547,8 @@ const GlobalState = (props) => {
         categories: categories,
         existingCategory: existingCategory,
         existingStoreManager: existingStoreManager,
+        editingStoreManagerObject: editingStoreManagerObject,
+        editingCategoryObject: editingCategoryObject,
 
         payUserEdit: payUserEdit,
         payUserEditFalse: payUserEditFalse,
@@ -557,6 +593,8 @@ const GlobalState = (props) => {
         editExistingCategoryFalse: editExistingCategoryFalse,
         existingStoreManagerEdit: existingStoreManagerEdit,
         editExistingStoreManagerFalse: editExistingStoreManagerFalse,
+        editingStoreManager: editingStoreManager,
+        editingCategory: editingCategory
       }}
     >
       {props.children}
