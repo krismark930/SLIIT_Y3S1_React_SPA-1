@@ -1,10 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import { CardDeck } from "react-bootstrap";
 import HomeItem from "../home-item/home-item-component";
 import "./home-category-styles.scss";
 import { Link } from "react-router-dom";
+import {AppContext} from "../../Context/app-context";
 
 const HomeCategory = ({ category, products }) => {
+  const appContext = useContext(AppContext)
+  appContext.editStoreManagerFalse()
+  appContext.editCategoryFalse()
+
   var filtered = products.filter((item) => item.category == category);
 
   return (
