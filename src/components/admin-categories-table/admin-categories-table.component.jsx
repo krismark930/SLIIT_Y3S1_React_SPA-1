@@ -70,6 +70,7 @@ const ManageCategoryTable = () => {
       console.log(errors)
     }
     appContext.editExistingCategoryFalse()
+    appContext.editCategoryFalse()
     setToastShow(true)
   }
 

@@ -1,9 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1536" height="682" preserveAspectRatio="xMidYMid" viewBox="0 0 1536 682" style="z-index:1;margin-right:-2px;display:block;background-repeat-y:initial;background-repeat-x:initial;animation-play-state:paused" ><g transform="" style="animation-play-state:paused" ><linearGradient id="lg-0.9701200647730852" x1="0" x2="1" y1="0" y2="0" style="animation-play-state:paused" ><stop stop-color="#0affe9" offset="0" style="animation-play-state:paused" ></stop>
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="682" preserveAspectRatio="xMidYMid" viewBox="0 0 1536 682"
+     style="z-index:1;margin-right:-2px;display:block;background-repeat-y:initial;background-repeat-x:initial;animation-play-state:paused">
+    <g transform="" style="animation-play-state:paused">
+        <linearGradient id="lg-0.9701200647730852" x1="0" x2="1" y1="0" y2="0" style="animation-play-state:paused">
+            <stop stop-color="#0affe9" offset="0" style="animation-play-state:paused"></stop>
 
-  
-<stop stop-color="#5ce8d7" offset="1" style="animation-play-state:paused" ></stop></linearGradient>
-<path fill="url(#lg-0.9701200647730852)" opacity="0.4" d="M 0 0 L 0 627.72 Q 153.6 542.089 307.2 508.056 T 614.4 469.416 T 921.6 414.183 T 1228.8 340.331 T 1536 266.01 L 1536 0 Z" style="opacity:0.4;animation-play-state:paused" ></path>
-<path fill="url(#lg-0.9701200647730852)" opacity="0.4" d="M 0 0 L 0 624.501 Q 153.6 621.485 307.2 596.302 T 614.4 446.335 T 921.6 438.066 T 1228.8 331.255 T 1536 290.04 L 1536 0 Z" style="opacity:0.4;animation-play-state:paused" ></path>
-<path fill="url(#lg-0.9701200647730852)" opacity="0.4" d="M 0 0 L 0 604.684 Q 153.6 602.099 307.2 572.461 T 614.4 522.489 T 921.6 364.688 T 1228.8 287.46 T 1536 302.54 L 1536 0 Z" style="opacity:0.4;animation-play-state:paused" ></path>
-<path fill="url(#lg-0.9701200647730852)" opacity="0.4" d="M 0 0 L 0 613.75 Q 153.6 570.362 307.2 534.77 T 614.4 543.685 T 921.6 403.877 T 1228.8 314.737 T 1536 299.017 L 1536 0 Z" style="opacity:0.4;animation-play-state:paused" ></path>
-<path fill="url(#lg-0.9701200647730852)" opacity="0.4" d="M 0 0 L 0 579.423 Q 153.6 589.06 307.2 553.992 T 614.4 479.96 T 921.6 476.5 T 1228.8 321.293 T 1536 283.643 L 1536 0 Z" style="opacity:0.4;animation-play-state:paused" ></path></g></svg>
+
+            <stop stop-color="#5ce8d7" offset="1" style="animation-play-state:paused"></stop>
+        </linearGradient>
+        <path fill="url(#lg-0.9701200647730852)" opacity="0.4"
+              d="M 0 0 L 0 627.72 Q 153.6 542.089 307.2 508.056 T 614.4 469.416 T 921.6 414.183 T 1228.8 340.331 T 1536 266.01 L 1536 0 Z"
+              style="opacity:0.4;animation-play-state:paused"></path>
+        <path fill="url(#lg-0.9701200647730852)" opacity="0.4"
+              d="M 0 0 L 0 624.501 Q 153.6 621.485 307.2 596.302 T 614.4 446.335 T 921.6 438.066 T 1228.8 331.255 T 1536 290.04 L 1536 0 Z"
+              style="opacity:0.4;animation-play-state:paused"></path>
+        <path fill="url(#lg-0.9701200647730852)" opacity="0.4"
+              d="M 0 0 L 0 604.684 Q 153.6 602.099 307.2 572.461 T 614.4 522.489 T 921.6 364.688 T 1228.8 287.46 T 1536 302.54 L 1536 0 Z"
+              style="opacity:0.4;animation-play-state:paused"></path>
+        <path fill="url(#lg-0.9701200647730852)" opacity="0.4"
+              d="M 0 0 L 0 613.75 Q 153.6 570.362 307.2 534.77 T 614.4 543.685 T 921.6 403.877 T 1228.8 314.737 T 1536 299.017 L 1536 0 Z"
+              style="opacity:0.4;animation-play-state:paused"></path>
+        <path fill="url(#lg-0.9701200647730852)" opacity="0.4"
+              d="M 0 0 L 0 579.423 Q 153.6 589.06 307.2 553.992 T 614.4 479.96 T 921.6 476.5 T 1228.8 321.293 T 1536 283.643 L 1536 0 Z"
+              style="opacity:0.4;animation-play-state:paused"></path>
+    </g>
+</svg>
