@@ -3,7 +3,7 @@ import { AppContext } from "../../Context/app-context";
 import WishListItem from "../../components/wishlist-item/wishlist-item-component";
 import { Button } from "react-bootstrap";
 import "./wishlist-styles.scss";
-import { FaRegHourglass } from "react-icons/fa";
+import { FaRegHourglass, FaCartArrowDown } from "react-icons/fa";
 
 const WishListPage = (props) => {
   const appContext = useContext(AppContext);
@@ -93,47 +93,48 @@ const WishListPage = (props) => {
     setWishList(arr);
   };
   return (
-    <div className="wishlist-page">
-      {wishList.length ? (
-        <h2
-          style={{
-            padding: "10px",
-            marginLeft: "10px ",
-            fontSize: "35px",
-            marginTop: "5%",
-            fontFamily: "Roboto Slab",
-            fontWeight: "700",
-            textAlign: "center",
-            marginBottom: "20px",
-          }}
-        >
-          Wish List
-        </h2>
-      ) : (
-        <div style={{ textAlign: "center" }}>
-          <p
+    <div className="wishlistHead">
+      <div className="wishlist-page">
+        {wishList.length ? (
+          <h2
             style={{
-              marginTop: "100px",
-              fontSize: "25px",
-              color: "rgb(0, 123, 255)",
-              fontWeight: "600",
-              fontFamily: "Lemonada",
+              padding: "10px",
+              marginLeft: "10px ",
+              fontSize: "35px",
+              marginTop: "5%",
+              fontFamily: "Roboto Slab",
+              fontWeight: "700",
+              textAlign: "center",
+              marginBottom: "20px",
             }}
           >
-            There's nothing in the Wish List
-          </p>
+            Wish List
+          </h2>
+        ) : (
+          <div style={{ textAlign: "center" }}>
+            <p
+              style={{
+                marginTop: "100px",
+                fontSize: "25px",
+                color: "rgb(0, 123, 255)",
+                fontWeight: "600",
+                fontFamily: "Lemonada",
+              }}
+            >
+              There's nothing in the Wish List
+            </p>
 
-          <FaRegHourglass
-            style={{
-              marginRight: "10px",
-              marginBottom: "3px",
-              fontSize: "123px",
-              color: "rgb(0, 123, 255)",
-            }}
-          />
-        </div>
-      )}
-      {/* <div className="checkout-header">
+            <FaRegHourglass
+              style={{
+                marginRight: "10px",
+                marginBottom: "3px",
+                fontSize: "123px",
+                color: "rgb(0, 123, 255)",
+              }}
+            />
+          </div>
+        )}
+        {/* <div className="checkout-header">
         <div className="header-block">
           <span>Product</span>
         </div>
@@ -149,24 +150,33 @@ const WishListPage = (props) => {
         </div>
       </div> */}
 
-      {wishList.map((item) => (
-        <WishListItem
-          key={item.id}
-          product={item}
-          removeWishItem={removeWishItem}
-        />
-      ))}
-      {/* <div className="total">TOTAL: ${total}</div> */}
-      {wishList.length ? (
-        <Button
-          className="buyNowBtn"
-          type="submit"
-          style={{ float: "right", marginBottom: "40px" }}
-          onClick={() => moveWishListToCart()}
-        >
-          Add to Cart
-        </Button>
-      ) : null}
+        {wishList.map((item) => (
+          <WishListItem
+            key={item.id}
+            product={item}
+            removeWishItem={removeWishItem}
+          />
+        ))}
+        {/* <div className="total">TOTAL: ${total}</div> */}
+        {wishList.length ? (
+          <Button
+            className="buyNowBtn"
+            type="submit"
+            style={{ float: "right", marginBottom: "40px" }}
+            onClick={() => moveWishListToCart()}
+          >
+            Add to Cart
+            <FaCartArrowDown
+              style={{
+                marginLeft: "8px",
+                marginBottom: "3px",
+                fontSize: "18px",
+                // color: "rgb(0, 123, 255)",
+              }}
+            />
+          </Button>
+        ) : null}
+      </div>
     </div>
   );
 };
