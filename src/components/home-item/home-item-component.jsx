@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Button, Card } from "react-bootstrap";
 import { FaCartArrowDown, FaHeart, FaRegHeart } from "react-icons/fa";
 import { AppContext } from "../../Context/app-context";
+import "./home-item-styles.scss";
 
 const HomeItem = ({ item }) => {
   const appContext = useContext(AppContext);
@@ -9,6 +10,7 @@ const HomeItem = ({ item }) => {
 
   return (
     <Card
+      id="homeitemComponentCard"
       className="col-3"
       style={{
         alignItems: "center",
