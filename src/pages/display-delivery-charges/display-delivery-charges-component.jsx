@@ -8,7 +8,10 @@ import {Link} from "react-router-dom";
 const DisplayDeliveryCharges = (props) => {
 
   return (
-
+    <div
+      className="loginSignupMainHead"
+      style={{marginTop: "10%", marginBottom: "4%"}}
+    >
     <div>
       <table className="table" style={{float: "center"}}>
         <thead className="thead-light">
@@ -62,7 +65,7 @@ const DisplayDeliveryCharges = (props) => {
         <Button style={{float: "center"}}>Cancel</Button>
       </Link>
     </div>
-
+    </div>
 
   );
 };

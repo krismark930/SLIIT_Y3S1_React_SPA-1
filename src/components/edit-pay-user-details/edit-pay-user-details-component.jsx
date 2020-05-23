@@ -102,6 +102,12 @@ const EditPayUserDetails = props => {
   console.log("me thama 11111111111111111111111111111111111111");
   console.log(appContext.editPayUserDetails[0]);
 
+  const setConfirmedCardCancel = () => {
+    console.log("edit pay card eke cancel click kala");
+    appContext.setFalsePayUserConfirmed();
+    appContext.setFalsePayCardConfirmed();
+  }
+
 
   const onSubmitHandle = async (values, {setSubmitting}) => {
 
@@ -359,7 +365,9 @@ const EditPayUserDetails = props => {
                 Reset to Saved Data
               </Button>
 
-              <Link to="/" style={{marginTop: "5px", marginRight: "5px"}}>
+              <Link to="/" style={{marginTop: "5px", marginRight: "5px"}} onClick={() => {
+          setConfirmedCardCancel()
+        }}>
                 Back to Home
               </Link>
 

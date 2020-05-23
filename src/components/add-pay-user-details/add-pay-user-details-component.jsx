@@ -58,6 +58,12 @@ const AddPayUserDetails = props => {
 
   }, [payUserDetails]);
 
+  const setConfirmedCardCancel = () => {
+    console.log("add pay card eke cancel click kala");
+    appContext.setFalsePayUserConfirmed();
+    appContext.setFalsePayCardConfirmed();
+  }
+
   const onSubmitHandle = async (values, {setSubmitting}) => {
 
     console.log("Ane manda");
@@ -315,7 +321,8 @@ const AddPayUserDetails = props => {
                 Reset
               </Button>
 
-              <Link to="/" style={{marginTop: "10px", marginRight: "10px"}}>
+              <Link to="/" style={{marginTop: "10px", marginRight: "10px"}} onClick={() => {
+          setConfirmedCardCancel()}}>
                 Back to Home
               </Link>
 

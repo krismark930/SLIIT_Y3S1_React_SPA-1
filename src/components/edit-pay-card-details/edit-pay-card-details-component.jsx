@@ -80,6 +80,7 @@ const EditPayCardDetails = props => {
   const setConfirmedCardCancel = () => {
     console.log("edit pay card eke cancel click kala");
     appContext.setFalsePayUserConfirmed();
+    appContext.setFalsePayCardConfirmed();
   }
 
 

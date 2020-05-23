@@ -71,6 +71,7 @@ function App() {
             {app.payCardConfirmed ? (
               <div>
                 <Route exact path="/pay-order" component={PayPlaceOrder} />
+                <Route exact path="/pay-user" component={PayUserDetails} />
                 <Route exact path="/checkout-page" component={Checkout} />
                 <Route
                   exact
@@ -82,7 +83,7 @@ function App() {
                   path="/delivery-charges"
                   component={DisplayDeliveryCharges}
                 />
-                <Redirect to="/checkout-page" />
+                <Redirect to="/pay-order" />
               </div>
             ) : (
               <div>
