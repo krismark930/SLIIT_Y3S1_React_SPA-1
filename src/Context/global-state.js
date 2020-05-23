@@ -515,6 +515,14 @@ const GlobalState = (props) => {
     setEditingCategoryObject(category)
   }
 
+  const editingStoreManager = (storeManager) => {
+    setEditingStoreManagerObject(storeManager)
+  }
+
+  const editingCategory = (category) => {
+    setEditingCategoryObject(category)
+  }
+
   return (
     <AppContext.Provider
       value={{
