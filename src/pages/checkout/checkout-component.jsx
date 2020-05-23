@@ -118,7 +118,7 @@ const Checkout = () => {
               fontFamily: "Lemonada",
             }}
           >
-            There's nothing in the Wish List
+            There's nothing in the Checkout
           </p>
 
           <FaRegHourglass

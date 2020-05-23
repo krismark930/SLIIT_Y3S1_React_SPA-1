@@ -30,7 +30,7 @@ const MainNavbar = () => {
               <Nav>
                 {appContext.checkCustomer ? (
                   <Nav>
-                    <Link to="/wishlist">
+                    <Link to="/wishlist" id="wislistLink">
                       <Nav.Link href="#wish_list">Wish List</Nav.Link>
                     </Link>
                     <Link to="/comment">
@@ -89,7 +89,7 @@ const MainNavbar = () => {
                       variant="outline-primary"
                       style={{
                         padding: "4px",
-                        margin: "4px 6px",
+                        // margin: "4px 6px",
                         color: "white",
                       }}
                     >
