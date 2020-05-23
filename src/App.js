@@ -18,6 +18,7 @@ import DisplayDeliveryCharges from "./pages/display-delivery-charges/display-del
 import ManageStoreManager from "./pages/admin-store-managers/admin-store-managers-component";
 import ManageCategory from "./pages/admin-categories/admin-categories-component";
 import Footer from "./components/footer/footer-component";
+import SingleProductView from "./pages/single-product/single-product";
 
 function App() {
   const app = useContext(AppContext);
@@ -45,11 +46,7 @@ function App() {
     routes = (
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <Route
-          exact
-          path="/product-category/:category"
-          component={SingleCategory}
-        />
+
         <Redirect to="/" />
       </Switch>
     );
@@ -90,6 +87,11 @@ function App() {
                   component={SingleCategory}
                 />
                 <Route exact path="/checkout-page" component={Checkout} />
+                <Route
+                  exact
+                  path="/singleProduct/:product"
+                  component={SingleProductView}
+                />
                 <Route exact path="/pay-user" component={PayUserDetails} />
                 <Route exact path="/wishlist" component={WishListPage} />
                 <Route exact path="/comment" component={ProductComments} />
@@ -109,6 +111,11 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/signin-signup" component={LoginSignup} />
         <Route exact path="/forgot-password" component={UpdatePassword} />
+        <Route
+          exact
+          path="/singleProduct/:product"
+          component={SingleProductView}
+        />
         <Route
           exact
           path="/product-category/:category"

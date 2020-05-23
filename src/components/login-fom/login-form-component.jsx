@@ -77,6 +77,7 @@ const LoginForm = (props) => {
       appContext.setWishListmethod(values.email);
       console.log(appContext.addCurrentUser(responseData.userDetails));
       setLoading(false);
+      appContext.setProductsMethod();
     } catch (err) {
       seterrorLogin(err.message);
       console.log(err.message);

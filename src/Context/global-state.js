@@ -14,71 +14,7 @@ const GlobalState = (props) => {
   const [checkAdmin, setCheckAdmin] = useState(false);
   const [checkCustomer, setCheckCustomer] = useState(false);
   const [checkStoreManager, setCheckStoreManager] = useState(false);
-  const [products, setProducts] = useState([
-    {
-      title: "Women1",
-      id: 1,
-      price: 123.0,
-      category: "Women",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Women",
-      id: 2,
-      price: 123.0,
-      category: "Women",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Men1",
-      id: 3,
-      price: 123.0,
-      category: "Men",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Men",
-      id: 4,
-      price: 123.0,
-      category: "Men",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Shoes1",
-      id: 5,
-      price: 123.0,
-      category: "Shoes",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Women2",
-      id: 6,
-      price: 123.0,
-      category: "Women",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Product11",
-      id: 7,
-      price: 123.0,
-      category: "Women",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Product12",
-      id: 8,
-      price: 123.0,
-      category: "Women",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-    {
-      title: "Product1",
-      id: 9,
-      price: 123.0,
-      category: "Hats",
-      productImage: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    },
-  ]);
+  const [products, setProducts] = useState([]);
   const [tempProducts, setTempProducts] = useState(products);
   const [cart, setCart] = useState([]);
   const [currentUser, setCurrentUser] = useState([{ type: "Null" }]);
