@@ -43,7 +43,9 @@ const AddCategoryForm = () => {
         },
         body: JSON.stringify(values)
       })
-      await response.json();
+      const responseData = await response.json();
+      if (responseData.exists)
+        errors_ = responseData.message;
       setLoading(false)
     } catch (errors_) {
       setLoading(false)
