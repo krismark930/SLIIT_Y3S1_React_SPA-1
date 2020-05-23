@@ -14,7 +14,7 @@ const UsePlaceOrderDetails = ({cartItem}) => {
 
   useEffect(() => {
     quantity = cartItem.quantity;
-    //appContext.setFalsePayCardConfirmed();
+    
   });
 
   //{cartItem.id}

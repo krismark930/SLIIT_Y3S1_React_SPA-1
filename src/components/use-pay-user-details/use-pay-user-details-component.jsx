@@ -39,13 +39,12 @@ const UsePayUserDetails = () => {
   const setEditPayUser = (id) => {
     appContext.payUserEdit();
     appContext.setEditPayUserID(id);
-    console.log("hi machan edit wada");
-    console.log(id);
+  
   }
 
 
   const DeletePayUser = async (id) => {
-    //console.log("hi oya delete eka athule");
+    
 
     try {
 
@@ -58,10 +57,7 @@ const UsePayUserDetails = () => {
       });
 
       const responseData = await response.json();
-      console.log(responseData);
-      //console.log("hi delete una");
-      // currentEmail = " ";
-      //getPayUserDetails();
+      
       if (responseData) {
         setIsDelete(true);
       }
@@ -80,21 +76,17 @@ const UsePayUserDetails = () => {
       const response = await fetch("http://localhost:5000/payments/pay-user");
 
       const responseData = await response.json();
-      //const userid= appContext.editPayUserId;
+      
       countAll = responseData.length;
 
       if (countAll === 0) {
-        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        
         setIsData(true);
       } else {
         setIsData(false);
       }
 
-      console.log("ganna thanama response data eka");
-      console.log(responseData.length);
-
-
-      //response = responseData;
+      
       responseData.map(payUser => {
         if ((payUser.email === currentEmail) && (payUser.isSave)) {
           setPayUserDetails(payUser);
@@ -102,9 +94,7 @@ const UsePayUserDetails = () => {
           countThis = countThis + 1;
 
         }
-        console.log("*************************************************************");
-        console.log(countAll);
-        console.log(countThis);
+       
 
 
         if (countThis === 0) {
@@ -116,7 +106,7 @@ const UsePayUserDetails = () => {
 
       });
 
-      console.log(payUserDetails);
+   
 
 
     } catch (errorss) {
@@ -126,17 +116,12 @@ const UsePayUserDetails = () => {
 
   }
 
-  /* if(isDelete){
-     currentEmail = " ";
-     getPayUserDetails();
-     console.log("me is delete check karapu eka");
-   }*/
+ 
 
-  console.log(isDelete);
 
   const setConfirmedUser = () => {
     appContext.setTruePayUserConfirmed();
-    //pay user savewa context ekata daganna
+    
     appContext.addPayUserDetails(payUserDetails);
   }
 

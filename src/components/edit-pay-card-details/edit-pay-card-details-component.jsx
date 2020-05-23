@@ -37,7 +37,7 @@ const EditPayCardDetails = props => {
     isSave: false
   });
 
-  //var payCard;
+  
   var currentEmail;
   var cardid;
 
@@ -46,29 +46,14 @@ const EditPayCardDetails = props => {
 
   const initialCard = appContext.editPayCardDetails;
 
-  //console.log("Ane manda me initial ekata ganna ewa");
-
-
-  //console.log(initialCard[0]);
-  //console.log(initialCard.name );
-
-
   useEffect(() => {
-
-
-    //console.log("meka thama edit karana id eka");
-    //console.log(cardid);
-
 
     axios.get('http://localhost:5000/payments/pay-card/' + cardid)
       .then(response => {
 
         setPayCardDetails(response.data);
         setDetails(response.data);
-        //console.log("me edit wenna ena data");
-        //console.log(response.data);     
-
-
+        
       })
       .catch(function (error) {
         console.log(error);
@@ -78,7 +63,7 @@ const EditPayCardDetails = props => {
   }, [cardid]);
 
   const setConfirmedCardCancel = () => {
-    console.log("edit pay card eke cancel click kala");
+    
     appContext.setFalsePayUserConfirmed();
     appContext.setFalsePayCardConfirmed();
   }
@@ -86,106 +71,18 @@ const EditPayCardDetails = props => {
 
   const setDetails = (data) => {
     payCard = data;
-    //console.log("me thama payCard");
-    //console.log(payCard);
   }
 
   console.log(appContext.editPayCardDetails[0]);
 
 
-//appContext.addPayCardDetails(payCard);
-//console.log("me thama context eken ganna edit details");
-//console.log(appContext.PayCardDetails);
-
-  //console.log("me payCardDetails ekata set una ewa");
-  // console.log(payCardDetails);
-
-  /* const onChangeName = (e) => {
-        setPayCardDetails({name:e.target.value});
-   }
-
-   const onChangePhone = (e) => {
-     setPayCardDetails({phone:e.target.value});
-   }
-
-   const onChangeAddress = (e) => {
-     setPayCardDetails({address:e.target.value});
-   }
-
-   const onChangeCity = (e) => {
-     setPayCardDetails({city:e.target.value});
-   }
-
-   const onChangeProvince = (e) => {
-     setPayCardDetails({province:e.target.value});
-   }
-
-   const onChangeIsSave = (e) => {
-     setPayCardDetails({isSave:e.target.value});
-   }
-
-   const onSubmit = async(e)  => {
-     e.preventDefault();
-
-     appContext.currentCard.forEach(card => {
-       currentEmail = card.email;
-       //console.log(currentEmail);
-
-     });
-     const payCard = {
-       email:currentEmail,
-       name: payCardDetails.name,
-       phone: payCardDetails.phone,
-       address: payCardDetails.address,
-       city: payCardDetails.city,
-       province:payCardDetails.province,
-       isSave: payCardDetails.isSave
-
-     }
-
-     console.log(payCard);
-
-     try {
-       if(payCard.isSave){
-         appContext.addPayCardDetails(payCard);
-       }
-       const response = await fetch("http://localhost:5000/payments/pay-card/update/"+ cardid,{
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json"
-         },
-         body: JSON.stringify(payUser)
-       });
-
-       const responseData = await response.json();
-       console.log(responseData);
-       if (!responseData.login) {
-         setError("lol");
-
-         throw new Error(responseData.message);
-       }
-
-       appContext.login();
-       setLoading(false);
-       console.log(responseData);
-     } catch (errorss) {
-       console.log(errorss);
-       setLoading(false);
-       setError(errorss.message || "Something went wrong, try again later");
-     }
-   }*/
-
-
   const onSubmitHandle = async (values, {setSubmitting}) => {
 
-
-    //console.log("Ane manda");
-    //console.log(values);
     setLoading(true);
 
     appContext.currentUser.forEach(user => {
       currentEmail = user.email;
-      console.log(currentEmail);
+      
       setPayCardDetails({...values, email: currentEmail});
     });
 
@@ -219,9 +116,9 @@ const EditPayCardDetails = props => {
           throw new Error(responseData.message);
         }
 
-        //appContext.login();
+      
         setLoading(false);
-        //console.log(responseData);
+       
       }
 
 

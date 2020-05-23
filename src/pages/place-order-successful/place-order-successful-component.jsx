@@ -9,9 +9,6 @@ const PlaceOrderSuccessful = props => {
   const appContext = useContext(AppContext);
 
 
-  console.log("333333333333333333333333333pay order successful ekata eddi 33333333333333333333333333311111");
-  console.log("user" + appContext.payUserConfirmed);
-  console.log("card" + appContext.payCardConfirmed);
 
   const [show, setShow] = useState(true);
 
@@ -19,8 +16,9 @@ const PlaceOrderSuccessful = props => {
   //const handleShow = () => setShow(true);
 
   const setConfirmedBackToHome = () => {
-    console.log("place order success eke back to home click kala");
+    
     appContext.setFalsePayCardConfirmed();
+    appContext.setFalsePayUserConfirmed();
   }
 
 
