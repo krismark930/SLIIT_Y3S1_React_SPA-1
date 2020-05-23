@@ -14,6 +14,12 @@ const MainNavbar = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   console.log(appContext);
+
+  const setConfirmedCardCancel = () => {
+    console.log("wishlist click kala");
+    appContext.setFalsePayUserConfirmed();
+    appContext.setFalsePayCardConfirmed();
+  }
   return (
     <div className="navbar-head">
       <Navbar
@@ -34,7 +40,9 @@ const MainNavbar = () => {
               <Nav>
                 {appContext.checkCustomer ? (
                   <Nav>
-                    <Link to="/wishlist" id="wislistLink">
+                    <Link to="/wishlist" id="wislistLink" onClick={() => {
+          setConfirmedCardCancel()
+        }}>
                       <Nav.Link href="#wish_list">Wish List</Nav.Link>
                     </Link>
                    
