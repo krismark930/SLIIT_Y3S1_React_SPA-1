@@ -9,6 +9,7 @@ const HomeCategory = ({category, products}) => {
   const appContext = useContext(AppContext)
   appContext.editStoreManagerFalse()
   appContext.editCategoryFalse()
+  appContext.editExistingCategoryFalse()
 
   var filtered = products.filter((item) => item.category == category);
 
