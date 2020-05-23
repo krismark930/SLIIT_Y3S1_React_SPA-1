@@ -100,7 +100,7 @@ const PayPlaceOrder = () => {
       style={{
         padding: "10px",
         marginLeft: "10px ",
-        fontSize: "35px",
+        fontSize: "55px",
         marginTop: "5%",
         fontFamily: "Roboto Slab",
         fontWeight: "700",
@@ -115,7 +115,7 @@ const PayPlaceOrder = () => {
         <span
           style={{
             marginTop: "100px",
-            fontSize: "15px",
+            fontSize: "25px",
             color: "currentcolor",
             fontWeight: "600",
             fontFamily: "Lemonada",
@@ -128,7 +128,7 @@ const PayPlaceOrder = () => {
         <span
           style={{
             marginTop: "100px",
-            fontSize: "15px",
+            fontSize: "25px",
             color: "currentcolor",
             fontWeight: "600",
             fontFamily: "Lemonada",
@@ -141,7 +141,7 @@ const PayPlaceOrder = () => {
         <span
           style={{
             marginTop: "100px",
-            fontSize: "15px",
+            fontSize: "25px",
             color: "currentcolor",
             fontWeight: "600",
             fontFamily: "Lemonada",
@@ -154,7 +154,7 @@ const PayPlaceOrder = () => {
         <span
           style={{
             marginTop: "100px",
-            fontSize: "15px",
+            fontSize: "25px",
             color: "currentcolor",
             fontWeight: "600",
             fontFamily: "Lemonada",
@@ -167,7 +167,7 @@ const PayPlaceOrder = () => {
               <span
                 style={{
                   marginTop: "100px",
-                  fontSize: "15px",
+                  fontSize: "25px",
                   color: "currentcolor",
                   fontWeight: "600",
                   fontFamily: "Lemonada",
