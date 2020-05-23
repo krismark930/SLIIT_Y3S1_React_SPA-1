@@ -36,15 +36,15 @@ const AddPayCardDetails = props => {
   var currentEmail;
 
   useEffect(() => {
-    console.log(payCardDetails);
+   
     payCard = payCardDetails;
 
   }, [payCardDetails]);
 
-  console.log(currentEmail);
+ 
 
   const setConfirmedCardCancel = () => {
-    console.log("add pay card eke cancel click kala");
+    
     appContext.setFalsePayUserConfirmed();
     appContext.setFalsePayCardConfirmed();
   }
@@ -53,22 +53,16 @@ const AddPayCardDetails = props => {
   const onSubmitHandle = async (values, {setSubmitting}) => {
 
 
-    //console.log('false one'+appContext.payUserConfirmed);
-    //console.log('true one'+appContext.payCardConfirmed);
-    console.log(values);
+ 
     setLoading(true);
 
     appContext.currentUser.forEach(user => {
       currentEmail = user.email;
-      console.log(currentEmail);
+     
       setPayCardDetails({...values, email: currentEmail});
     });
 
     payCard = {...values, email: currentEmail};
-
-    console.log("Ane manda Bn");
-    console.log(currentEmail);
-    console.log(payCard);
 
 
     appContext.setFalsePayUserConfirmed();
@@ -95,9 +89,7 @@ const AddPayCardDetails = props => {
 
           throw new Error(responseData.message);
         }
-        //appContext.setFalsePayUserConfirmed();
-        //appContext.setTruePayCardConfirmed();
-        //appContext.login();
+   
         setLoading(false);
         console.log(responseData);
       }

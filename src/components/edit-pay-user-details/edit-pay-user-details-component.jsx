@@ -54,7 +54,6 @@ const EditPayUserDetails = props => {
     isSave: false
   });
 
-  //var payUser;
   var currentEmail;
   var userid;
 
@@ -62,8 +61,6 @@ const EditPayUserDetails = props => {
   console.log(payUserDetails);
 
   const initialUser = appContext.editPayUserDetails;
-
-  console.log("Ane manda me initial ekata ganna ewa");
 
 
   console.log(initialUser[0]);
@@ -73,17 +70,12 @@ const EditPayUserDetails = props => {
   useEffect(() => {
 
 
-    //console.log("meka thama edit karana id eka");
-    //console.log(userid);
-
-
     axios.get('http://localhost:5000/payments/pay-user/' + userid)
       .then(response => {
 
         setPayUserDetails(response.data);
         setDetails(response.data);
-        //console.log("me edit wenna ena data");
-        //console.log(response.data);     
+       ;     
 
 
       })
@@ -96,14 +88,12 @@ const EditPayUserDetails = props => {
 
   const setDetails = (data) => {
     payUser = data;
-    //console.log("me thama payUser");
-    //console.log(payUser);
+   
   }
-  console.log("me thama 11111111111111111111111111111111111111");
-  console.log(appContext.editPayUserDetails[0]);
+  
 
   const setConfirmedCardCancel = () => {
-    console.log("edit pay card eke cancel click kala");
+   
     appContext.setFalsePayUserConfirmed();
     appContext.setFalsePayCardConfirmed();
   }
@@ -111,31 +101,25 @@ const EditPayUserDetails = props => {
 
   const onSubmitHandle = async (values, {setSubmitting}) => {
 
-    //console.log("Ane manda");
-    //console.log(values);
+   
     setLoading(true);
 
     appContext.currentUser.forEach(user => {
       currentEmail = user.email;
-      console.log(currentEmail);
+    
       setPayUserDetails({...values, email: currentEmail});
     });
 
     payUser = {...values, email: currentEmail};
 
-    // console.log("Ane manda Bn");
-    // console.log(currentEmail);
-    //console.log(currentEmail);
-    //console.log(payUser);
-
-    //pay userwa context ekata daganna
+   
     appContext.addPayUserDetails(payUser);
 
     appContext.setTruePayUserConfirmed();
 
     try {
       if (values.isSave) {
-        //appContext.addPayUserDetails(payUser);
+       
 
         userid = appContext.editPayUserId;
 
@@ -154,9 +138,9 @@ const EditPayUserDetails = props => {
 
           throw new Error(responseData.message);
         }
-        //appContext.login();
+        
         setLoading(false);
-        //console.log(responseData);
+       
       }
 
 

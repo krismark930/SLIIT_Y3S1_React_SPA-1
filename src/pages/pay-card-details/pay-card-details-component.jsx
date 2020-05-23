@@ -43,9 +43,7 @@ const PayCardDetails = props => {
 
 
   const onSubmitHandle = async (values, {setSubmitting}) => {
-    console.log("Ane manda");
-    console.log(values);
-    console.log(values.type);
+   
 
     if (values.type === "card") {
       setCardPayment(true);
