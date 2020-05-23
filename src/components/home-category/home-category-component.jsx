@@ -10,6 +10,7 @@ const HomeCategory = ({ category, products }) => {
   appContext.editStoreManagerFalse();
   appContext.editCategoryFalse();
   appContext.editExistingCategoryFalse();
+  appContext.editExistingStoreManagerFalse();
 
   var filtered = products.filter((item) => item.category == category);
 

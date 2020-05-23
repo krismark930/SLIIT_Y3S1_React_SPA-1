@@ -33,7 +33,7 @@ const schema = yup.object().shape({
 let errors_ = ''
 
 const AddStoreManagerForm = () => {
-  useContext(AppContext);
+  const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false)
   const [storeManagerData, setStoreManagerData] = useState({
     firstName: '',
@@ -41,7 +41,6 @@ const AddStoreManagerForm = () => {
     teleNo: '',
     email: ''
   })
-
   const resetValues = {
     firstName: '',
     lastName: '',
@@ -60,17 +59,23 @@ const AddStoreManagerForm = () => {
         },
         body: JSON.stringify(values)
       })
-      await response.json();
+      const responseData = await response.json()
+      appContext.editExistingStoreManagerFalse()
+      if (responseData.exists) {
+        appContext.existingStoreManagerEdit()
+        errors_ = responseData.message
+      } else {
+        try {
+          resetForm({
+            values: resetValues
+          })
+        } catch (error) {
+          console.log(error)
+        }
+      }
       setLoading(false)
     } catch (errors_) {
       setLoading(false)
-    }
-    try {
-      resetForm({
-        values: resetValues
-      })
-    } catch (error) {
-      console.log(error)
     }
   }
 
@@ -218,7 +223,7 @@ const AddStoreManagerForm = () => {
                   </Button>
                 </Form.Group>
               </Form.Row>
-              {errors_ && <div id='serverErrors'>{errors_}</div>}
+              {appContext.existingStoreManager && errors_ && <div id='serverErrors'>{errors_}</div>}
             </Form>
           )}
         </Formik>
