@@ -27,14 +27,14 @@ const PayUserDetails = props => {
           <Col md="6">
             <div className="loginSignupPageLginForm">
 
-            <UsePayUserDetails/>
-              
+              <UsePayUserDetails/>
+
             </div>
           </Col>
           <Col md="6" className="clll">
             <div className="loginSignupPageSignupForm">
 
-            {route}
+              {route}
 
             </div>
           </Col>

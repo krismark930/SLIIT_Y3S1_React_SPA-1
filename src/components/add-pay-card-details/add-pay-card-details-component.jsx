@@ -173,7 +173,7 @@ const AddPayCardDetails = props => {
 
               <Form.Row>
                 <Form.Group as={Col} md="12" controlId="validationFormik04">
-                
+
                   <Form.Check
                     type="checkbox"
                     name="isSave"
@@ -188,7 +188,7 @@ const AddPayCardDetails = props => {
                     {errors.isSave}
                   </Form.Control.Feedback>
 
-                  
+
                 </Form.Group>
 
 

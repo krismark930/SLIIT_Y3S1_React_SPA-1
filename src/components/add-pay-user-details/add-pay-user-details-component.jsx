@@ -274,7 +274,7 @@ const AddPayUserDetails = props => {
 
               <Form.Row>
                 <Form.Group as={Col} md="12" controlId="formBasicCheckbox">
-                
+
                   <Form.Check
                     type="checkbox"
                     name="isSave"
@@ -284,13 +284,13 @@ const AddPayUserDetails = props => {
                     isInvalid={touched.isSave && errors.isSave}
                     isValid={touched.isSave && !errors.isSave}
                     label="Save for future"
-                   
+
                   />
                   <Form.Control.Feedback type="invalid">
                     {errors.isSave}
                   </Form.Control.Feedback>
-                 
-                  
+
+
                 </Form.Group>
 
 
