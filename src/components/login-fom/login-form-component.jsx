@@ -18,6 +18,7 @@ const LoginForm = (props) => {
   appContext.editStoreManagerFalse()
   appContext.editCategoryFalse()
   appContext.editExistingCategoryFalse()
+  appContext.editExistingStoreManagerFalse()
 
   const [loading, setLoading] = useState(false);
   const [errorLogin, seterrorLogin] = useState(null);
