@@ -14,8 +14,11 @@ const schema = yup.object().shape({
 var errorss = "";
 
 const LoginForm = (props) => {
+  const appContext = useContext(AppContext)
+  appContext.editStoreManagerFalse()
+  appContext.editCategoryFalse()
+
   const [loading, setLoading] = useState(false);
-  const appContext = useContext(AppContext);
   const [errorLogin, seterrorLogin] = useState(null);
 
   var responseError = "";

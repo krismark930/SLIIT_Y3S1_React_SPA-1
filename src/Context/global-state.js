@@ -94,6 +94,7 @@ const GlobalState = (props) => {
   const [storeManagers, setStoreManagers] = useState([])
   const [editCategory, setEditCategory] = useState(false)
   const [editCategoryId, setEditCategoryID] = useState('1')
+  const [existingCategory, setEditExistingCategory] = useState(false)
   const [categories, setCategories] = useState([
     {
       categoryTitle: 'Hats'
@@ -456,6 +457,14 @@ const GlobalState = (props) => {
     setCategories(updatedCategory)
   }
 
+  const existingCategoryEdit = () => {
+    setEditExistingCategory(true)
+  }
+
+  const editExistingCategoryFalse = () => {
+    setEditExistingCategory(false)
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -488,6 +497,7 @@ const GlobalState = (props) => {
         editCategory: editCategory,
         editCategoryId: editCategoryId,
         categories: categories,
+        existingCategory: existingCategory,
 
         payUserEdit: payUserEdit,
         payUserEditFalse: payUserEditFalse,
@@ -526,7 +536,9 @@ const GlobalState = (props) => {
         categoryEdit: categoryEdit,
         editCategoryFalse: editCategoryFalse,
         setEditCategoryId: setEditCategoryId,
-        addCategories: addCategories
+        addCategories: addCategories,
+        existingCategoryEdit: existingCategoryEdit,
+        editExistingCategoryFalse: editExistingCategoryFalse
       }}
     >
       {props.children}
