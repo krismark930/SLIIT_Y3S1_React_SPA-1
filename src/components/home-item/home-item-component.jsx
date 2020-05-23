@@ -103,32 +103,31 @@ const HomeItem = ({ item }) => {
           </div>
         ) : null}
       </Card.Title>
-      {appContext.checkCustomer ? (
-        <Card.Footer style={{ textAlign: "center", backgroundColor: "white" }}>
-          <Button
-            data-aos="flip-up"
-            data-aos-duration="600"
-            data-aos-delay="1000"
-            onClick={() => appContext.addItemToCart(item)}
-            variant="dark"
+
+      <Card.Footer style={{ textAlign: "center", backgroundColor: "white" }}>
+        <Button
+          data-aos="flip-up"
+          data-aos-duration="600"
+          data-aos-delay="1000"
+          onClick={() => appContext.addItemToCart(item)}
+          variant="dark"
+          style={{
+            margin: "0px auto",
+            width: "100%",
+            fontWeight: "700",
+            // fontFamily: "Roboto Slab",
+          }}
+        >
+          Add to Cart{" "}
+          <FaCartArrowDown
             style={{
-              margin: "0px auto",
-              width: "100%",
-              fontWeight: "700",
-              // fontFamily: "Roboto Slab",
+              marginRight: "6px",
+              marginLeft: "6px",
+              marginBottom: "3px",
             }}
-          >
-            Add to Cart{" "}
-            <FaCartArrowDown
-              style={{
-                marginRight: "6px",
-                marginLeft: "6px",
-                marginBottom: "3px",
-              }}
-            />
-          </Button>
-        </Card.Footer>
-      ) : null}
+          />
+        </Button>
+      </Card.Footer>
     </Card>
   );
 };
