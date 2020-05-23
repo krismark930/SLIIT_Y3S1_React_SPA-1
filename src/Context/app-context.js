@@ -35,6 +35,7 @@ export const AppContext = createContext({
   editCategory: false,
   editCategoryId: '1',
   categories: [],
+  existingCategory: false,
 
   addItemToCart: (item) => {
   },
@@ -115,5 +116,9 @@ export const AppContext = createContext({
   setEditCategoryId: () => {
   },
   addCategories: () => {
+  },
+  existingCategoryEdit: () => {
+  },
+  editExistingCategoryFalse: () => {
   }
 })
