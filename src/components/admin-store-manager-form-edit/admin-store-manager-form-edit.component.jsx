@@ -34,7 +34,7 @@ const EditStoreManagerForm = () => {
 
   let userId
 
-  const onSubmitHandle = async (values) => {
+  const onSubmitHandle = async (values, {resetForm}) => {
     setLoading(true)
 
     let new_store_manager
@@ -74,6 +74,8 @@ const EditStoreManagerForm = () => {
       if (responseData.exists) {
         appContext.existingStoreManagerEdit()
         errors_ = responseData.message
+        appContext.editStoreManagerFalse()
+        appContext.storeManagerEdit()
       } else {
         appContext.editStoreManagerFalse()
       }

@@ -23,7 +23,7 @@ const EditCategoryForm = () => {
 
   let categoryId
 
-  const onSubmitHandle = async (values) => {
+  const onSubmitHandle = async (values, {resetForm}) => {
     setLoading(true)
 
     let new_category
@@ -53,6 +53,8 @@ const EditCategoryForm = () => {
       if (responseData.exists) {
         appContext.existingCategoryEdit()
         errors_ = responseData.message
+        appContext.editCategoryFalse()
+        appContext.categoryEdit()
       } else {
         appContext.editCategoryFalse()
       }
