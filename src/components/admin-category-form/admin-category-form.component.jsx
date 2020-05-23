@@ -18,15 +18,16 @@ const schema = yup.object().shape({
 })
 
 let errors_ = ''
+let status = 0
 
 const AddCategoryForm = () => {
-  useContext(AppContext);
+  useContext(AppContext)
+  
   const [loading, setLoading] = useState(false)
   const [categoryData, setCategoryData] = useState({
     categoryTitle: '',
     categoryDescription: ''
   })
-
   const resetValues = {
     categoryTitle: '',
     categoryDescription: ''
@@ -43,9 +44,12 @@ const AddCategoryForm = () => {
         },
         body: JSON.stringify(values)
       })
-      const responseData = await response.json();
-      if (responseData.exists)
-        errors_ = responseData.message;
+      const responseData = await response.json()
+      status = 0
+      if (responseData.exists) {
+        status = 1
+        errors_ = responseData.message
+      }
       setLoading(false)
     } catch (errors_) {
       setLoading(false)
@@ -167,7 +171,7 @@ const AddCategoryForm = () => {
                   </Button>
                 </Form.Group>
               </Form.Row>
-              {errors_ && <div id='serverErrors'>{errors_}</div>}
+              {status === 1 && errors_ && <div id='serverErrors'>{errors_}</div>}
             </Form>
           )}
         </Formik>
