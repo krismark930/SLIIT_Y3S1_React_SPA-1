@@ -39,7 +39,7 @@ const HomeCategory = ({ category, products }) => {
                 <Link
                   to={`/product-category/${category}`}
                   style={{ color: "black" }}
-                  id="productCategoryInHome"
+                  id="productCategoryInHome "
                 >
                   {category}
                 </Link>

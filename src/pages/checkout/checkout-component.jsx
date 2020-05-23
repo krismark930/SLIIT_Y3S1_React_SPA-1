@@ -49,8 +49,10 @@ const Checkout = () => {
     appContext.payCardEditFalse();
   };
 
+  let classNamesss = appContext.cart.length ? "checkOutHead" : null;
+
   return (
-    <div className="checkOutHead">
+    <div className={classNamesss}>
       {appContext.cart.length ? (
         <div className="checkout-page">
           <h2
