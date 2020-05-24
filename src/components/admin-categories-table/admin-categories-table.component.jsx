@@ -6,7 +6,7 @@ import axios from 'axios'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Toast from 'react-bootstrap/Toast'
-import {proxy} from "../../conf";
+import {proxy} from '../../conf'
 
 const ManageCategoryTable = () => {
   const appContext = useContext(AppContext)
