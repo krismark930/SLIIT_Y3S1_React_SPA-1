@@ -1,11 +1,11 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Formik} from "formik";
 import {Button, Col, Form, Spinner} from "react-bootstrap";
 import * as yup from "yup";
-import {FaSignInAlt} from "react-icons/fa";
 import {AppContext} from "../../Context/app-context";
-
-import "./product-form.scss";
+import {Link} from "react-router-dom";
+import axios from 'axios';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const schema = yup.object().shape({
   title: yup
@@ -31,13 +31,15 @@ const schema = yup.object().shape({
   image: yup.string().required("add image")
 });
 
-var errorss = "";
 
-const ProductAddForm = props => {
+const EditProduct = props => {
+  var product;
+
+
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
-  const [productData, setProductData] = useState({
+  const [productData, setproductData] = useState({
     title: "",
     brand: "",
     price: "",
@@ -47,68 +49,57 @@ const ProductAddForm = props => {
     category: "",
     image: ""
   });
-  let categories
 
-  const getCategories = async () => {
+  console.log(props.pId)
+  let productFiltered = appContext.products.filter(
+    (item) => item.title == props.pId
+  );
+
+  const onSubmitHandle = async (values, {setSubmitting}) => {
+    product = {...values};
     try {
-      const response = await fetch('http://localhost:5000/admin/category')
-      const responseData = await response.json()
-      categories = responseData
-      console.log("-------------------------------------")
-      console.log(responseData[0].categoryTitle)
-    } catch (errors) {
-      console.log(errors)
-    }
-  }
+      if (values.isSave) {
+        const response = await fetch("http://localhost:5000/storemanager/product/" + props.pId, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(product)
+        });
 
+        const responseData = await response.json();
+        console.log(responseData);
+        if (!responseData.login) {
+          setError("lol");
 
-  getCategories()
-
-  const onSubmitHand = async (values, {setSubmitting}) => {
-    setLoading(true);
-
-    console.log(values);
-    setProductData(values);
-
-    try {
-      const response = await fetch("http://localhost:5000/storemanager/product", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(values)
-      });
-
-      const responseData = await response.json();
-      console.log(responseData);
-      if (!responseData.added) {
-        setError("lol");
-        errorss = responseData.message;
-        throw new Error(responseData.message);
+          throw new Error(responseData.message);
+        }
+        //appContext.login();
+        setLoading(false);
+        //console.log(responseData);
       }
 
 
-      setLoading(false);
-      console.log(responseData);
     } catch (errorss) {
       console.log(errorss);
       setLoading(false);
       setError(errorss.message || "Something went wrong, try again later");
     }
 
-    console.log(errorss + " errosdfdfdf");
+
   };
 
   return (
     <React.Fragment>
-      <div className="productFormHead">
+      <div className="productEditFormHead">
         <Formik
           validationSchema={schema}
-          onSubmit={onSubmitHand}
-          initialValues={productData}
+          onSubmit={onSubmitHandle}
+          initialValues={productFiltered}
         >
           {({
               handleSubmit,
+              handleReset,
               isSubmitting,
               handleChange,
               handleBlur,
@@ -117,12 +108,12 @@ const ProductAddForm = props => {
               isValid,
               errors
             }) => (
-            <Form noValidate onSubmit={handleSubmit} classname="addForm">
+              <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
                   <Form.Label>Title</Form.Label>
                   <Form.Control
-                    placeholder="Enter Title"
+                    placeholder="Title"
                     type="text"
                     name="title"
                     value={values.title}
@@ -139,7 +130,7 @@ const ProductAddForm = props => {
                 <Form.Group as={Col} md="6" controlId="validationFormik02">
                   <Form.Label>brand</Form.Label>
                   <Form.Control
-                    placeholder="Enter Brand"
+                    placeholder="brand"
                     type="text"
                     name="brand"
                     value={values.brand}
@@ -177,9 +168,6 @@ const ProductAddForm = props => {
                       !errors.category
                     }
                   >
-{/*                     
-                    {categories.map((category) =>
-                    {return(<option >{category.categoryTitle}</option>)})} */}
                     <option></option>
                     <option value="category 01">
                     category 01{" "}
@@ -199,7 +187,7 @@ const ProductAddForm = props => {
                   <Form.Label>Price</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Price"
+                    placeholder="Price"
                     name="price"
                     value={values.price}
                     onChange={handleChange}
@@ -213,9 +201,9 @@ const ProductAddForm = props => {
                 </Form.Group>
 
                 <Form.Group as={Col} md="12" controlId="validationFormik03">
-                  <Form.Label>iscount</Form.Label>
+                  <Form.Label>Discount</Form.Label>
                   <Form.Control
-                    placeholder="Enter Discount"
+                    placeholder="Discount"
                     type="text"
                     name="discount"
                     value={values.discount}
@@ -232,7 +220,7 @@ const ProductAddForm = props => {
 
                 <Form.Group as={Col} controlId="formGridState">
                   <Form.Label>
-                    Select a Colour{" "}
+                    Select a colour{" "}
                   </Form.Label>
                   <Form.Control
                     as="select"
@@ -267,7 +255,7 @@ const ProductAddForm = props => {
                 <Form.Group as={Col} md="12" controlId="validationFormik05">
                   <Form.Label>Discription</Form.Label>
                   <Form.Control
-                    placeholder="Enter Discription"
+                    placeholder="Discription"
                     type="text"
                     name="discription"
                     value={values.discription}
@@ -291,9 +279,9 @@ const ProductAddForm = props => {
                 </Form.Group>
 
                 <Form.Group as={Col} md="12" controlId="validationFormik05">
-                  <Form.Label>Image</Form.Label>
+                  <Form.Label>Add Image</Form.Label>
                   <Form.Control
-                    placeholder="Add Image"
+                    placeholder="Image"
                     type="text"
                     name="image"
                     value={values.image}
@@ -309,27 +297,47 @@ const ProductAddForm = props => {
                 </Form.Group>
               </Form.Row>
 
+
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                style={{marginTop: "5px"}}
+                style={{marginTop: "5px", marginRight: "5px"}}
               >
-                <FaSignInAlt
-                  style={{
-                    marginRight: "10px",
-                    marginBottom: "3px",
-                    transform: "rotate(270deg)"
-                  }}
-                />
-                Add
+                Update
               </Button>
-              {errorss && <div id="loginServerError">{errorss}</div>}
+
+              <Button
+                type="button"
+                variant="danger"
+                disabled={isSubmitting}
+                style={{marginTop: "5px", marginRight: "5px"}}
+              >
+                Delete
+              </Button>
+
+
+              <Button
+                type="button"
+                variant="warning"
+                onClick={handleReset}
+                disabled={isSubmitting}
+                style={{marginTop: "5px", marginRight: "5px"}}
+              >
+                Reset to Saved Data
+              </Button>
+
+              <Link to="/" style={{marginTop: "5px", marginRight: "5px"}}>
+                Back to Home
+              </Link>
+
+
             </Form>
           )}
         </Formik>
       </div>
     </React.Fragment>
+
   );
 };
 
-export default ProductAddForm;
+export default EditProduct;

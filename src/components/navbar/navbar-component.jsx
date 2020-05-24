@@ -103,6 +103,7 @@ const MainNavbar = () => {
             ) : (
               <Nav>
                 <Nav.Link href="#contact_us">Contact Us</Nav.Link>
+                <Link to = "/add-product">Add Product</Link>
                 <Nav.Link href="#about_us">About Us</Nav.Link>
                 <div className="dripdowntoggles">
                   <Nav.Link
@@ -138,7 +139,7 @@ const MainNavbar = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-
+                    
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title

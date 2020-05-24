@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Card, ListGroup, ListGroupItem,Container, Row, Image, Col, Label, Button} from "react-bootstrap";
 import { AppContext } from "../../Context/app-context";
+import { Link } from "react-router-dom";
 
 const SingleProductView = (props) => {
   console.log(props.match.params.product);
@@ -12,6 +13,8 @@ const SingleProductView = (props) => {
   );
 
   console.log(productFiltered);
+  let pId = productFiltered[0].title
+  let linkzz = `/edit-product/${pId}`
 
   return (
     <div className="singleproductHeader" style={{ margin: "100px" }}>
@@ -36,7 +39,9 @@ const SingleProductView = (props) => {
               <ListGroupItem>{productFiltered[0].discription}</ListGroupItem>
             </ListGroup>
             <Card.Body>
-              <Button variant="primary">Go somewhere</Button>
+              <Link to = {linkzz}>
+              <Button variant="primary">Update</Button>
+              </Link>
             </Card.Body>
           </Card>
         </Col>
