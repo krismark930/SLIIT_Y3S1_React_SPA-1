@@ -1,11 +1,12 @@
-import React, {useContext, useEffect, useState} from "react";
-import {AppContext} from "../../Context/app-context";
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../Context/app-context";
 import WishListItem from "../../components/wishlist-item/wishlist-item-component";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./wishlist-styles.scss";
-import {FaCartArrowDown, FaRegHourglass} from "react-icons/fa";
+import { FaCartArrowDown, FaRegHourglass } from "react-icons/fa";
 import "aos/dist/aos.css";
 import Aos from "aos";
+import { proxy } from "../../conf";
 
 const WishListPage = (props) => {
   const appContext = useContext(AppContext);
@@ -22,7 +23,7 @@ const WishListPage = (props) => {
 
   useEffect(() => {
     let responseData = 0;
-    Aos.init({duration: 1000});
+    Aos.init({ duration: 1000 });
     setWishList(appContext.wishList);
   }, []);
 
@@ -35,16 +36,13 @@ const WishListPage = (props) => {
     const mail = appContext.currentUser[0].email;
     var responseError = "";
     try {
-      const response = await fetch(
-        `http://localhost:5000/users/deleteWishList/${mail}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(),
-        }
-      );
+      const response = await fetch(`${proxy}/users/deleteWishList/${mail}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(),
+      });
 
       wishList.forEach((item) => {
         appContext.addItemToCart(item);
@@ -67,7 +65,7 @@ const WishListPage = (props) => {
     let titles = product.title;
     try {
       const response = await fetch(
-        `http://localhost:5000/users/deleteFromWishList/${mail}/${titles}`,
+        `${proxy}/users/deleteFromWishList/${mail}/${titles}`,
         {
           method: "DELETE",
           headers: {
@@ -77,7 +75,7 @@ const WishListPage = (props) => {
         }
       );
 
-      let tempChnage = {...product, wishList: 0};
+      let tempChnage = { ...product, wishList: 0 };
 
       console.log(tempChnage);
 
@@ -120,7 +118,7 @@ const WishListPage = (props) => {
             data-aos="fade-up"
             data-aos-duration="600"
             data-aos-delay="500"
-            style={{textAlign: "center"}}
+            style={{ textAlign: "center" }}
           >
             <p
               style={{
@@ -175,7 +173,7 @@ const WishListPage = (props) => {
             data-aos-delay="500"
             className="buyNowBtn"
             type="submit"
-            style={{float: "right", marginBottom: "40px"}}
+            style={{ float: "right", marginBottom: "40px" }}
             onClick={() => moveWishListToCart()}
           >
             Add to Cart

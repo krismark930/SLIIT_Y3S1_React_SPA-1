@@ -1,5 +1,6 @@
-import React, {useState} from "react";
-import {AppContext} from "./app-context";
+import React, { useState } from "react";
+import { AppContext } from "./app-context";
+import { proxy } from "../conf";
 
 const GlobalState = (props) => {
   const [loggedin, setLoggedin] = useState(false);
@@ -17,7 +18,7 @@ const GlobalState = (props) => {
   const [products, setProducts] = useState([]);
   const [tempProducts, setTempProducts] = useState(products);
   const [cart, setCart] = useState([]);
-  const [currentUser, setCurrentUser] = useState([{type: "Null"}]);
+  const [currentUser, setCurrentUser] = useState([{ type: "Null" }]);
   const [currentUserFirstName, setCurrentUserFirstName] = useState([]);
   const [currentUserLastName, setCurrentUserLastName] = useState([]);
   const [payUserDetails, setPayUserDetails] = useState([]);
@@ -45,7 +46,7 @@ const GlobalState = (props) => {
       (item) => item.title === itemId
     );
     if (updatedItemIndex < 0) {
-      updatedCart.push({...item, quantity: 1});
+      updatedCart.push({ ...item, quantity: 1 });
     } else {
       const updatedItem = {
         ...updatedCart[updatedItemIndex],
@@ -65,16 +66,13 @@ const GlobalState = (props) => {
       productID: productTitle,
     };
     try {
-      const response = await fetch(
-        `http://localhost:5000/users/addToWishList`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(objs),
-        }
-      );
+      const response = await fetch(`${proxy}/users/addToWishList`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(objs),
+      });
       responseData = await response.json();
       setWishListmethod(currentUser[0].email);
       responseError = responseData.message;
@@ -90,16 +88,13 @@ const GlobalState = (props) => {
     // const mail = currentUser[0].email
     var responseError = "";
     try {
-      const response = await fetch(
-        `http://localhost:5000/storemanager/product`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(),
-        }
-      );
+      const response = await fetch(`${proxy}/storemanager/product`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(),
+      });
       responseData = await response.json();
       // console.log(responseData.wishList)
       responseError = responseData.message;
@@ -120,7 +115,7 @@ const GlobalState = (props) => {
     // const mail = currentUser[0].email
     var responseError = "";
     try {
-      const response = await fetch(`http://localhost:5000/admin/category`, {
+      const response = await fetch(`${proxy}/admin/category`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -173,16 +168,13 @@ const GlobalState = (props) => {
     // const mail = currentUser[0].email
     var responseError = "";
     try {
-      const response = await fetch(
-        `http://localhost:5000/users/getWishList/${mail}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(),
-        }
-      );
+      const response = await fetch(`${proxy}/users/getWishList/${mail}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(),
+      });
       responseData = await response.json();
       // console.log(responseData.wishList)
       responseError = responseData.message;
@@ -202,7 +194,7 @@ const GlobalState = (props) => {
       filteredAll = fill;
       products.forEach((pitem) => {
         if (pitem.title == item.productID) {
-          let temp = {...pitem, wishList: 1};
+          let temp = { ...pitem, wishList: 1 };
           filtering = filtering.filter(
             (pitem) => pitem.title != item.productID
           );
@@ -257,7 +249,7 @@ const GlobalState = (props) => {
 
   const addProducts = (products) => {
     const products_ = [];
-    products_.push({...products});
+    products_.push({ ...products });
     setProducts(products_);
   };
 
@@ -305,50 +297,50 @@ const GlobalState = (props) => {
 
   const addPayCardDetails = (payCard) => {
     const updatedPayCard = [];
-    updatedPayCard.push({...payCard});
+    updatedPayCard.push({ ...payCard });
     setPayCardDetails(updatedPayCard);
   };
 
   const addPayUserDetails = (payUser) => {
     const updatedPayUser = [];
-    updatedPayUser.push({...payUser});
+    updatedPayUser.push({ ...payUser });
     setPayUserDetails(updatedPayUser);
   };
 
   const addEditPayUserDetails = (payUser) => {
     const updatedPayUser = [];
-    updatedPayUser.push({...payUser});
+    updatedPayUser.push({ ...payUser });
     setEditPayUserDetails(updatedPayUser);
   };
 
   const addEditPayCardDetails = (payCard) => {
     const updatedPayCard = [];
-    updatedPayCard.push({...payCard});
+    updatedPayCard.push({ ...payCard });
     setEditPayCardDetails(updatedPayCard);
   };
 
   const addPayOrderDetails = (payOrder) => {
     const updatedPayOrder = [];
-    updatedPayOrder.push({...payOrder});
+    updatedPayOrder.push({ ...payOrder });
     setPayOrderDetails(updatedPayOrder);
   };
 
   const addCurrentUser = (user) => {
     const updatedCurrentUser = [];
-    updatedCurrentUser.push({...user});
+    updatedCurrentUser.push({ ...user });
     setCurrentUser(updatedCurrentUser);
   };
 
   const addCurrentUserFirstName = (name) => {
     const updatedFirstName = [];
-    updatedFirstName.push({...name});
+    updatedFirstName.push({ ...name });
     console.log(updatedFirstName);
     setCurrentUserFirstName(updatedFirstName);
   };
 
   const addCurrentUserLastName = (name) => {
     const updatedLastName = [];
-    updatedLastName.push({...name});
+    updatedLastName.push({ ...name });
     console.log(updatedLastName);
     setCurrentUserLastName(updatedLastName);
   };
@@ -419,7 +411,7 @@ const GlobalState = (props) => {
 
   const addStoreManagers = (storeManager) => {
     const updatedStoreManager = [];
-    updatedStoreManager.push({...storeManager});
+    updatedStoreManager.push({ ...storeManager });
     setStoreManagers(updatedStoreManager);
   };
 
@@ -437,7 +429,7 @@ const GlobalState = (props) => {
 
   const addCategories = (category) => {
     const updatedCategory = [];
-    updatedCategory.push({...category});
+    updatedCategory.push({ ...category });
     setCategories(updatedCategory);
   };
 
