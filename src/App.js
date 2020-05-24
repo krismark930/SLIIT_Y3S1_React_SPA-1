@@ -42,6 +42,16 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/store-managers" component={ManageStoreManager} />
         <Route exact path="/categories" component={ManageCategory} />
+        <Route
+          exact
+          path="/singleProduct/:product"
+          component={SingleProductView}
+        />
+        <Route
+          exact
+          path="/product-category/:category"
+          component={SingleCategory}
+        />
         <Redirect to="/" />
       </Switch>
     );
@@ -58,6 +68,11 @@ function App() {
           exact
           path="/singleProduct/:product"
           component={SingleProductView}
+        />
+        <Route
+          exact
+          path="/product-category/:category"
+          component={SingleCategory}
         />
         <Redirect to="/" />
       </Switch>
