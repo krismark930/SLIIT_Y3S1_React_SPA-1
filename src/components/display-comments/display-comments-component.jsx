@@ -1,12 +1,11 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import "./display-comments-styles.scss";
 //import CheckoutItem from "../../components/checkout-item/checkout-item-component";
-import {AppContext} from "../../Context/app-context";
+import { AppContext } from "../../Context/app-context";
 import { proxy } from "../../conf";
 
-
-const DisplayComments = props => {
+const DisplayComments = (props) => {
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
@@ -14,10 +13,9 @@ const DisplayComments = props => {
 
   var currentEmail;
   var productId = props.pid;
-  console.log("!!!!!!!!!!!!!!!!!! " + productId)
+  console.log("!!!!!!!!!!!!!!!!!! " + productId);
 
   const productComments = [];
-
 
   useEffect(() => {
     /*appContext.currentUser.forEach(user => {
@@ -25,7 +23,6 @@ const DisplayComments = props => {
       });
   */
     getComments();
-
   }, [commentDetails, currentEmail]);
 
   /* const setEditPayUser = (id) => {
@@ -74,38 +71,31 @@ const DisplayComments = props => {
       const responseData = await response.json();
       //const userid= appContext.editPayUserId;
 
-      responseData.forEach(comment => {
-          console.log("awa awa for each ekata");
+      responseData.forEach((comment) => {
+        console.log("awa awa for each ekata");
+        //console.log(comment);
+        //console.log(comment.product_id);
+
+        if (comment.product_id === productId) {
+          console.log("44444444444 meka thama id eka 1 wana comment");
           //console.log(comment);
-          //console.log(comment.product_id);
 
-          if (comment.product_id === productId) {
-            console.log("44444444444 meka thama id eka 1 wana comment");
-            //console.log(comment);
+          productComments.push({ ...comment });
 
-            productComments.push({...comment});
-
-
-            //setCategories(updatedCategory);
-            //appContext.addEditPayUserDetails(payUser);
-
-          }
-
+          //setCategories(updatedCategory);
+          //appContext.addEditPayUserDetails(payUser);
         }
-      );
+      });
 
       setCommentDetails(productComments);
       console.log(productComments);
 
       //console.log(responseData);
       console.log(commentDetails);
-
-
     } catch (errorss) {
       console.log(errorss);
-
     }
-  }
+  };
 
   /* if(isDelete){
      currentEmail = " ";
@@ -178,24 +168,23 @@ const DisplayComments = props => {
   );*/
 
   return (
-    <div className="cart-dropdown">
+    <div className="cart-dropdownss">
       <div className="cart-items">
-
-        {commentDetails.map(comment => {
+        {commentDetails.map((comment) => {
           return (
             <div>
               <div className="container">
-              <h6>{comment.user_firstName} {comment.user_lastName}</h6>
-              {comment.comment}
+                <h6>
+                  {comment.user_firstName} {comment.user_lastName}
+                </h6>
+                {comment.comment}
               </div>
             </div>
-          )
+          );
         })}
-
       </div>
     </div>
   );
-
 };
 
 export default DisplayComments;
