@@ -14,7 +14,7 @@ const UsePlaceOrderDetails = ({cartItem}) => {
 
   useEffect(() => {
     quantity = cartItem.quantity;
-    
+
   });
 
   //{cartItem.id}
@@ -22,7 +22,7 @@ const UsePlaceOrderDetails = ({cartItem}) => {
 
     <div className="checkout-item">
       <div className="image-container">
-        <img src={require("../../assets/img1.jpg")} alt="item" />
+        <img src={require("../../assets/img1.jpg")} alt="item"/>
       </div>
       <span className="name">{cartItem.title}</span>
       <span className="quantity">

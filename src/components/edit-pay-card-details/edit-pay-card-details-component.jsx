@@ -37,7 +37,7 @@ const EditPayCardDetails = props => {
     isSave: false
   });
 
-  
+
   var currentEmail;
   var cardid;
 
@@ -53,7 +53,7 @@ const EditPayCardDetails = props => {
 
         setPayCardDetails(response.data);
         setDetails(response.data);
-        
+
       })
       .catch(function (error) {
         console.log(error);
@@ -63,7 +63,7 @@ const EditPayCardDetails = props => {
   }, [cardid]);
 
   const setConfirmedCardCancel = () => {
-    
+
     appContext.setFalsePayUserConfirmed();
     appContext.setFalsePayCardConfirmed();
   }
@@ -82,7 +82,7 @@ const EditPayCardDetails = props => {
 
     appContext.currentUser.forEach(user => {
       currentEmail = user.email;
-      
+
       setPayCardDetails({...values, email: currentEmail});
     });
 
@@ -116,9 +116,9 @@ const EditPayCardDetails = props => {
           throw new Error(responseData.message);
         }
 
-      
+
         setLoading(false);
-       
+
       }
 
 

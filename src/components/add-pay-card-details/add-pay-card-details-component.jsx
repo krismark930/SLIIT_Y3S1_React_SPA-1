@@ -36,15 +36,14 @@ const AddPayCardDetails = props => {
   var currentEmail;
 
   useEffect(() => {
-   
+
     payCard = payCardDetails;
 
   }, [payCardDetails]);
 
- 
 
   const setConfirmedCardCancel = () => {
-    
+
     appContext.setFalsePayUserConfirmed();
     appContext.setFalsePayCardConfirmed();
   }
@@ -53,12 +52,11 @@ const AddPayCardDetails = props => {
   const onSubmitHandle = async (values, {setSubmitting}) => {
 
 
- 
     setLoading(true);
 
     appContext.currentUser.forEach(user => {
       currentEmail = user.email;
-     
+
       setPayCardDetails({...values, email: currentEmail});
     });
 
@@ -89,7 +87,7 @@ const AddPayCardDetails = props => {
 
           throw new Error(responseData.message);
         }
-   
+
         setLoading(false);
         console.log(responseData);
       }

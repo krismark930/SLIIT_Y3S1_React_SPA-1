@@ -75,7 +75,7 @@ const EditPayUserDetails = props => {
 
         setPayUserDetails(response.data);
         setDetails(response.data);
-       ;     
+        ;
 
 
       })
@@ -88,12 +88,12 @@ const EditPayUserDetails = props => {
 
   const setDetails = (data) => {
     payUser = data;
-   
+
   }
-  
+
 
   const setConfirmedCardCancel = () => {
-   
+
     appContext.setFalsePayUserConfirmed();
     appContext.setFalsePayCardConfirmed();
   }
@@ -101,25 +101,25 @@ const EditPayUserDetails = props => {
 
   const onSubmitHandle = async (values, {setSubmitting}) => {
 
-   
+
     setLoading(true);
 
     appContext.currentUser.forEach(user => {
       currentEmail = user.email;
-    
+
       setPayUserDetails({...values, email: currentEmail});
     });
 
     payUser = {...values, email: currentEmail};
 
-   
+
     appContext.addPayUserDetails(payUser);
 
     appContext.setTruePayUserConfirmed();
 
     try {
       if (values.isSave) {
-       
+
 
         userid = appContext.editPayUserId;
 
@@ -138,9 +138,9 @@ const EditPayUserDetails = props => {
 
           throw new Error(responseData.message);
         }
-        
+
         setLoading(false);
-       
+
       }
 
 
@@ -350,8 +350,8 @@ const EditPayUserDetails = props => {
               </Button>
 
               <Link to="/" style={{marginTop: "5px", marginRight: "5px"}} onClick={() => {
-          setConfirmedCardCancel()
-        }}>
+                setConfirmedCardCancel()
+              }}>
                 Back to Home
               </Link>
 
