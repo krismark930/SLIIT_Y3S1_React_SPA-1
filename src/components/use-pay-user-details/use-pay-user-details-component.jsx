@@ -36,40 +36,7 @@ const UsePayUserDetails = () => {
 
   }, [payUserDetails, currentEmail, isDelete]);
 
-  const setEditPayUser = (id) => {
-    appContext.payUserEdit();
-    appContext.setEditPayUserID(id);
-
-  }
-
-
-  const DeletePayUser = async (id) => {
-
-
-    try {
-
-      const response = await fetch('http://localhost:5000/payments/pay-user/' + id, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json"
-        },
-
-      });
-
-      const responseData = await response.json();
-
-      if (responseData) {
-        setIsDelete(true);
-      }
-      setLoading(false);
-
-    } catch (errorss) {
-      console.log(errorss);
-      setLoading(false);
-
-    }
-  }
-
+  
   const getPayUserDetails = async () => {
     console.log("hi details ganna awa");
     try {
@@ -120,6 +87,41 @@ const UsePayUserDetails = () => {
     appContext.addPayUserDetails(payUserDetails);
   }
 
+  const setEditPayUser = (id) => {
+    appContext.payUserEdit();
+    appContext.setEditPayUserID(id);
+
+  }
+
+
+  const DeletePayUser = async (id) => {
+
+
+    try {
+
+      const response = await fetch('http://localhost:5000/payments/pay-user/' + id, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+      });
+
+      const responseData = await response.json();
+
+      if (responseData) {
+        setIsDelete(true);
+      }
+      setLoading(false);
+
+    } catch (errorss) {
+      console.log(errorss);
+      setLoading(false);
+
+    }
+  }
+
+
 
   return (
     <div>
@@ -160,8 +162,8 @@ const UsePayUserDetails = () => {
           <div
             style={{
               textAlign: "center",
-              marginTop: "30px",
-              marginBottom: "30px",
+              marginTop: "20px",
+              marginBottom: "20px",
               width: '585px',
 
             }}
