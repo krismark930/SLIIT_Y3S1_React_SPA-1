@@ -103,6 +103,32 @@ const EditProduct = (props) => {
     }
   };
 
+  const removeItem = async () => {
+    let responseData = 0;
+    var responseError = "";
+    console.log("eeeeeeeeeeeeeeeeeeeeeeeeee");
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/storemanager/product/${props.pId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(),
+        }
+      );
+
+      responseData = await response.json();
+
+      console.log(responseData.message);
+      console.log(appContext);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <React.Fragment>
       <div className="productEditFormHead">
@@ -296,7 +322,7 @@ const EditProduct = (props) => {
               <Button
                 type="button"
                 variant="danger"
-                disabled={isSubmitting}
+                onClick={removeItem}
                 style={{ marginTop: "5px", marginRight: "5px" }}
               >
                 Delete

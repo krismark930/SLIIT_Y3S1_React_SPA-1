@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import "./single-product.scss";
 import AddComment from "../../components/add-comment/add-comment-component";
 import DisplayComments from "../../components/display-comments/display-comments-component";
+import SelectedItem from "../../components/reviewf/review-form";
 
 const SingleProductView = (props) => {
   console.log(props.match.params.product);
@@ -71,6 +72,9 @@ const SingleProductView = (props) => {
                   </Link>
                 </Card.Body>
                 <ListGroup className="singleproduct-list-group-flush">
+                  {/* <ListGroupItem>
+                    <SelectedItem id={productFiltered[0].title} />
+                  </ListGroupItem> */}
                   <ListGroupItem>
                     <AddComment pid={productFiltered[0]._id} />
                   </ListGroupItem>
