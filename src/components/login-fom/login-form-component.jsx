@@ -1,10 +1,10 @@
-import React, {useContext, useState} from "react";
-import {Formik} from "formik";
-import {Button, Col, Form, Row, Spinner} from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Formik } from "formik";
+import { Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import * as yup from "yup";
-import {FaSignInAlt, FaUnlockAlt} from "react-icons/fa";
-import {AppContext} from "../../Context/app-context";
-import {Link} from "react-router-dom";
+import { FaSignInAlt, FaUnlockAlt } from "react-icons/fa";
+import { AppContext } from "../../Context/app-context";
+import { Link } from "react-router-dom";
 
 const schema = yup.object().shape({
   email: yup.string().email().required("Enter the email"),
@@ -29,7 +29,7 @@ const LoginForm = (props) => {
     password: "",
   });
 
-  const onSubmitHand = async (values, {setSubmitting}) => {
+  const onSubmitHand = async (values, { setSubmitting }) => {
     setLoading(true);
     console.log("login eke submit athulata awa" + values);
     console.log(values);
@@ -71,6 +71,7 @@ const LoginForm = (props) => {
       }
 
       appContext.login();
+      appContext.setCategoriesMethod();
       appContext.setProductsMethod();
       console.log("-------------");
       console.log(responseData.userDetails);
@@ -97,15 +98,15 @@ const LoginForm = (props) => {
         }}
       >
         {({
-            handleSubmit,
-            isSubmitting,
-            handleChange,
-            handleBlur,
-            values,
-            touched,
-            isValid,
-            errors,
-          }) => (
+          handleSubmit,
+          isSubmitting,
+          handleChange,
+          handleBlur,
+          values,
+          touched,
+          isValid,
+          errors,
+        }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Form.Row>
               <Form.Group as={Col} md="12" controlId="validationFormik01">
@@ -153,7 +154,7 @@ const LoginForm = (props) => {
                 {loading && (
                   <Spinner
                     animation="border"
-                    style={{textAlign: "center", marginLeft: "44%"}}
+                    style={{ textAlign: "center", marginLeft: "44%" }}
                   />
                 )}
                 <Form.Control.Feedback type="invalid">
@@ -190,7 +191,7 @@ const LoginForm = (props) => {
                   <Button
                     type="submit"
                     variant="outline-danger"
-                    style={{marginTop: "-6px", float: "right"}}
+                    style={{ marginTop: "-6px", float: "right" }}
                   >
                     <FaUnlockAlt
                       style={{
@@ -204,7 +205,7 @@ const LoginForm = (props) => {
                 </Col>
               </Link>
             </Row>
-            <Row/>
+            <Row />
             <i>{errorss && <div id="loginServerError">{errorss}</div>}</i>
           </Form>
         )}
