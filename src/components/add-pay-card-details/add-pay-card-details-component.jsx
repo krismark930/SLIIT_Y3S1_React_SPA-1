@@ -6,7 +6,7 @@ import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
 
 import "./add-pay-card-details-styles.scss";
-
+import { proxy } from "../../conf";
 const schema = yup.object().shape({
   cardType: yup
     .string()
@@ -70,7 +70,7 @@ const AddPayCardDetails = props => {
       if (values.isSave) {
         appContext.addPayCardDetails(payCard);
 
-        const response = await fetch("http://localhost:5000/payments/pay-card", {
+        const response = await fetch("${proxy}/payments/pay-card", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

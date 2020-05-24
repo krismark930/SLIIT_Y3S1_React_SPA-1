@@ -3,6 +3,7 @@ import React, {useContext, useEffect, useState} from "react";
 import "./display-comments-styles.scss";
 //import CheckoutItem from "../../components/checkout-item/checkout-item-component";
 import {AppContext} from "../../Context/app-context";
+import { proxy } from "../../conf";
 
 
 const DisplayComments = props => {
@@ -68,7 +69,7 @@ const DisplayComments = props => {
   const getComments = async () => {
     console.log("hi details ganna awa");
     try {
-      const response = await fetch("http://localhost:5000/comments//product-comment");
+      const response = await fetch("${proxy}/comments//product-comment");
 
       const responseData = await response.json();
       //const userid= appContext.editPayUserId;

@@ -5,6 +5,7 @@ import {Button} from "react-bootstrap";
 //import CheckoutItem from "../../components/checkout-item/checkout-item-component";
 import {AppContext} from "../../Context/app-context";
 import {FaRegHourglass} from "react-icons/fa";
+import { proxy } from "../../conf";
 
 
 const UsePayUserDetails = () => {
@@ -49,7 +50,7 @@ const UsePayUserDetails = () => {
 
     try {
 
-      const response = await fetch('http://localhost:5000/payments/pay-user/' + id, {
+      const response = await fetch('${proxy}/payments/pay-user/' + id, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json"
@@ -74,7 +75,7 @@ const UsePayUserDetails = () => {
   const getPayUserDetails = async () => {
     console.log("hi details ganna awa");
     try {
-      const response = await fetch("http://localhost:5000/payments/pay-user");
+      const response = await fetch("${proxy}/payments/pay-user");
 
       const responseData = await response.json();
       //const userid= appContext.editPayUserId;
