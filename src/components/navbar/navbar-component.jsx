@@ -38,15 +38,15 @@ const MainNavbar = () => {
             src={require("../../assets/logo512.png")}
           />
         </Navbar.Brand>
-        <Navbar.Brand
-          href="#home"
-          style={{ fontFamily: "Dancing Script", fontSize: "20px" }}
-        >
-          Online ShoppingMall
-        </Navbar.Brand>
         <Link to="/">
-          <Navbar.Brand href="#home">Home</Navbar.Brand>
+          <Navbar.Brand
+            href="#home"
+            style={{ fontFamily: "Dancing Script", fontSize: "20px" }}
+          >
+            Online ShoppingMall
+          </Navbar.Brand>
         </Link>
+
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto" />
