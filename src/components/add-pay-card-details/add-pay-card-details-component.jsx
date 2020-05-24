@@ -6,7 +6,7 @@ import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
 
 import "./add-pay-card-details-styles.scss";
-import { proxy } from "../../conf";
+
 const schema = yup.object().shape({
   cardType: yup
     .string()
