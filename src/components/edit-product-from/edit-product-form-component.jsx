@@ -1,11 +1,12 @@
-import React, {useContext, useEffect, useState} from "react";
-import {Formik} from "formik";
-import {Button, Col, Form, Spinner} from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Formik } from "formik";
+import { Button, Col, Form, Spinner } from "react-bootstrap";
 import * as yup from "yup";
-import {AppContext} from "../../Context/app-context";
-import {Link} from "react-router-dom";
-import axios from 'axios';
+import { AppContext } from "../../Context/app-context";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { proxy } from "../../conf";
 
 const schema = yup.object().shape({
   title: yup
@@ -16,25 +17,20 @@ const schema = yup.object().shape({
     .string()
     .min(2, "brand must have at least 2 characters")
     .required("Enter the brand"),
-  price: yup
-    .string()
-    .required("Enter the price"),
-  discount: yup
-    .string(),
-    // .required("Enter the discount"),
+  price: yup.string().required("Enter the price"),
+  discount: yup.string(),
+  // .required("Enter the discount"),
   colour: yup.string().required("Select a category"),
   discription: yup
     .string()
     .min(10, "add proper discription")
     .required("add discription"),
   category: yup.string().required("Select a category"),
-  image: yup.string().required("add image")
+  image: yup.string().required("add image"),
 });
 
-
-const EditProduct = props => {
+const EditProduct = (props) => {
   var product;
-
 
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
@@ -47,46 +43,64 @@ const EditProduct = props => {
     colour: "",
     discription: "",
     category: "",
-    image: ""
+    image: "",
   });
 
-  console.log(props.pId)
+  console.log(props.pId);
   let productFiltered = appContext.products.filter(
     (item) => item.title == props.pId
   );
 
-  const onSubmitHandle = async (values, {setSubmitting}) => {
-    product = {...values};
+  // let brand = productFiltered1[0].brand;
+  // let category = productFiltered1[0].category;
+  // let colour = productFiltered1[0].colour;
+  // let discount = productFiltered1[0].discount;
+  // let discription = productFiltered1[0].discription;
+  // let image = productFiltered1[0].image;
+  // let price = productFiltered1[0].price;
+  // let title = productFiltered1[0].title;
+
+  // let productFiltered = {
+  //   title: title,
+  //   brand: brand,
+  //   price: price,
+  //   discount: discount,
+  //   colour: colour,
+  //   discription: discription,
+  //   category: category,
+  //   image: image,
+  // };
+
+  console.log("+*+**+*+*+*+*+*+*+*");
+  console.log(productFiltered);
+
+  const onSubmitHandle = async (values, { setSubmitting }) => {
+    product = { ...values };
+    console.log(values);
     try {
-      if (values.isSave) {
-        const response = await fetch("http://localhost:5000/storemanager/product/" + props.pId, {
+      const response = await fetch(
+        // `${proxy}/storemanager/product/${props.pId}`,
+        `http://localhost:5000/storemanager/product/${props.pId}`,
+        {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(product)
-        });
-
-        const responseData = await response.json();
-        console.log(responseData);
-        if (!responseData.login) {
-          setError("lol");
-
-          throw new Error(responseData.message);
+          body: JSON.stringify(product),
         }
-        //appContext.login();
-        setLoading(false);
-        //console.log(responseData);
-      }
+      );
 
+      const responseData = await response.json();
+      console.log(responseData);
 
+      //appContext.login();
+      setLoading(false);
+      //console.log(responseData);
     } catch (errorss) {
       console.log(errorss);
       setLoading(false);
       setError(errorss.message || "Something went wrong, try again later");
     }
-
-
   };
 
   return (
@@ -95,20 +109,20 @@ const EditProduct = props => {
         <Formik
           validationSchema={schema}
           onSubmit={onSubmitHandle}
-          initialValues={productFiltered}
+          initialValues={productFiltered[0]}
         >
           {({
-              handleSubmit,
-              handleReset,
-              isSubmitting,
-              handleChange,
-              handleBlur,
-              values,
-              touched,
-              isValid,
-              errors
-            }) => (
-              <Form noValidate onSubmit={handleSubmit}>
+            handleSubmit,
+            handleReset,
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            values,
+            touched,
+            isValid,
+            errors,
+          }) => (
+            <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
                   <Form.Label>Title</Form.Label>
@@ -147,10 +161,8 @@ const EditProduct = props => {
               </Form.Row>
 
               <Form.Row>
-              <Form.Group as={Col} controlId="formGridState">
-                  <Form.Label>
-                    Select a Category{" "}
-                  </Form.Label>
+                <Form.Group as={Col} controlId="formGridState">
+                  <Form.Label>Select a Category </Form.Label>
                   <Form.Control
                     as="select"
                     placeholder="category"
@@ -159,22 +171,12 @@ const EditProduct = props => {
                     value={values.category}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={
-                      touched.category &&
-                      errors.category
-                    }
-                    isValid={
-                      touched.category &&
-                      !errors.category
-                    }
+                    isInvalid={touched.category && errors.category}
+                    isValid={touched.category && !errors.category}
                   >
                     <option></option>
-                    <option value="category 01">
-                    category 01{" "}
-                    </option>
-                    <option value="category 02">
-                    category 02{" "}
-                    </option>
+                    <option value="category 01">category 01 </option>
+                    <option value="category 02">category 02 </option>
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
                     {errors.category}
@@ -219,9 +221,7 @@ const EditProduct = props => {
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridState">
-                  <Form.Label>
-                    Select a colour{" "}
-                  </Form.Label>
+                  <Form.Label>Select a colour </Form.Label>
                   <Form.Control
                     as="select"
                     placeholder="Colour"
@@ -230,22 +230,12 @@ const EditProduct = props => {
                     value={values.colour}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={
-                      touched.colour &&
-                      errors.colour
-                    }
-                    isValid={
-                      touched.colour &&
-                      !errors.colour
-                    }
+                    isInvalid={touched.colour && errors.colour}
+                    isValid={touched.colour && !errors.colour}
                   >
                     <option></option>
-                    <option value="red">
-                    Red{" "}
-                    </option>
-                    <option value="blue">
-                    Blue{" "}
-                    </option>
+                    <option value="red">Red </option>
+                    <option value="blue">Blue </option>
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
                     {errors.colour}
@@ -261,15 +251,13 @@ const EditProduct = props => {
                     value={values.discription}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={
-                      touched.discription && errors.discription
-                    }
+                    isInvalid={touched.discription && errors.discription}
                     isValid={touched.discription && !errors.discription}
                   />
                   {loading && (
                     <Spinner
                       animation="border"
-                      style={{textAlign: "center", marginLeft: "49%"}}
+                      style={{ textAlign: "center", marginLeft: "49%" }}
                     />
                   )}
 
@@ -297,11 +285,10 @@ const EditProduct = props => {
                 </Form.Group>
               </Form.Row>
 
-
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                style={{marginTop: "5px", marginRight: "5px"}}
+                style={{ marginTop: "5px", marginRight: "5px" }}
               >
                 Update
               </Button>
@@ -310,33 +297,29 @@ const EditProduct = props => {
                 type="button"
                 variant="danger"
                 disabled={isSubmitting}
-                style={{marginTop: "5px", marginRight: "5px"}}
+                style={{ marginTop: "5px", marginRight: "5px" }}
               >
                 Delete
               </Button>
-
 
               <Button
                 type="button"
                 variant="warning"
                 onClick={handleReset}
                 disabled={isSubmitting}
-                style={{marginTop: "5px", marginRight: "5px"}}
+                style={{ marginTop: "5px", marginRight: "5px" }}
               >
                 Reset to Saved Data
               </Button>
 
-              <Link to="/" style={{marginTop: "5px", marginRight: "5px"}}>
+              <Link to="/" style={{ marginTop: "5px", marginRight: "5px" }}>
                 Back to Home
               </Link>
-
-
             </Form>
           )}
         </Formik>
       </div>
     </React.Fragment>
-
   );
 };
 

@@ -1,9 +1,9 @@
-import React, {useContext, useState} from "react";
-import {Formik} from "formik";
-import {Button, Col, Form, Spinner} from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Formik } from "formik";
+import { Button, Col, Form, Spinner } from "react-bootstrap";
 import * as yup from "yup";
-import {FaSignInAlt} from "react-icons/fa";
-import {AppContext} from "../../Context/app-context";
+import { FaSignInAlt } from "react-icons/fa";
+import { AppContext } from "../../Context/app-context";
 
 import "./product-form.scss";
 
@@ -16,24 +16,21 @@ const schema = yup.object().shape({
     .string()
     .min(2, "brand must have at least 2 characters")
     .required("Enter the brand"),
-  price: yup
-    .string()
-    .required("Enter the price"),
-  discount: yup
-    .string(),
-    // .required("Enter the discount"),
+  price: yup.string().required("Enter the price"),
+  discount: yup.string(),
+  // .required("Enter the discount"),
   colour: yup.string().required("Select a category"),
   discription: yup
     .string()
     .min(10, "add proper discription")
     .required("add discription"),
   category: yup.string().required("Select a category"),
-  image: yup.string().required("add image")
+  image: yup.string().required("add image"),
 });
 
 var errorss = "";
 
-const ProductAddForm = props => {
+const ProductAddForm = (props) => {
   const appContext = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
@@ -45,39 +42,46 @@ const ProductAddForm = props => {
     colour: "",
     discription: "",
     category: "",
-    image: ""
+    image: "",
   });
-  let categories
+  let categories;
+
+  console.log(
+    "-------------------------------------------------------------------------------------"
+  );
+  console.log(appContext.categories);
 
   const getCategories = async () => {
     try {
-      const response = await fetch('http://localhost:5000/admin/category')
-      const responseData = await response.json()
-      categories = responseData
-      console.log("-------------------------------------")
-      console.log(responseData[0].categoryTitle)
+      const response = await fetch("http://localhost:5000/admin/category");
+      const responseData = await response.json();
+      categories = responseData;
+      console.log("-------------------------------------");
+      console.log(responseData[0].categoryTitle);
     } catch (errors) {
-      console.log(errors)
+      console.log(errors);
     }
-  }
+  };
 
+  getCategories();
 
-  getCategories()
-
-  const onSubmitHand = async (values, {setSubmitting}) => {
+  const onSubmitHand = async (values, { setSubmitting }) => {
     setLoading(true);
 
     console.log(values);
     setProductData(values);
 
     try {
-      const response = await fetch("http://localhost:5000/storemanager/product", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(values)
-      });
+      const response = await fetch(
+        "http://localhost:5000/storemanager/product",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }
+      );
 
       const responseData = await response.json();
       console.log(responseData);
@@ -86,7 +90,6 @@ const ProductAddForm = props => {
         errorss = responseData.message;
         throw new Error(responseData.message);
       }
-
 
       setLoading(false);
       console.log(responseData);
@@ -108,15 +111,15 @@ const ProductAddForm = props => {
           initialValues={productData}
         >
           {({
-              handleSubmit,
-              isSubmitting,
-              handleChange,
-              handleBlur,
-              values,
-              touched,
-              isValid,
-              errors
-            }) => (
+            handleSubmit,
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            values,
+            touched,
+            isValid,
+            errors,
+          }) => (
             <Form noValidate onSubmit={handleSubmit} classname="addForm">
               <Form.Row>
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
@@ -156,10 +159,8 @@ const ProductAddForm = props => {
               </Form.Row>
 
               <Form.Row>
-              <Form.Group as={Col} controlId="formGridState">
-                  <Form.Label>
-                    Select a Category{" "}
-                  </Form.Label>
+                <Form.Group as={Col} controlId="formGridState">
+                  <Form.Label>Select a Category </Form.Label>
                   <Form.Control
                     as="select"
                     placeholder="category"
@@ -168,25 +169,26 @@ const ProductAddForm = props => {
                     value={values.category}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={
-                      touched.category &&
-                      errors.category
-                    }
-                    isValid={
-                      touched.category &&
-                      !errors.category
-                    }
+                    isInvalid={touched.category && errors.category}
+                    isValid={touched.category && !errors.category}
                   >
-{/*                     
+                    {/*                     
                     {categories.map((category) =>
                     {return(<option >{category.categoryTitle}</option>)})} */}
-                    <option></option>
-                    <option value="category 01">
-                    category 01{" "}
-                    </option>
-                    <option value="category 02">
-                    category 02{" "}
-                    </option>
+                    {/* {
+                    appContext.categories.map(element => {
+                      return (
+                        
+                          <option value="{elem.categoryTitle}">
+                            {appContext.categories.categoryTitle}
+                          </option>
+                        
+                        
+                      )
+                      
+                    });
+                  }
+                 */}
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
                     {errors.category}
@@ -231,9 +233,7 @@ const ProductAddForm = props => {
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridState">
-                  <Form.Label>
-                    Select a Colour{" "}
-                  </Form.Label>
+                  <Form.Label>Select a Colour </Form.Label>
                   <Form.Control
                     as="select"
                     placeholder="Colour"
@@ -242,22 +242,12 @@ const ProductAddForm = props => {
                     value={values.colour}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={
-                      touched.colour &&
-                      errors.colour
-                    }
-                    isValid={
-                      touched.colour &&
-                      !errors.colour
-                    }
+                    isInvalid={touched.colour && errors.colour}
+                    isValid={touched.colour && !errors.colour}
                   >
                     <option></option>
-                    <option value="red">
-                    Red{" "}
-                    </option>
-                    <option value="blue">
-                    Blue{" "}
-                    </option>
+                    <option value="red">Red </option>
+                    <option value="blue">Blue </option>
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
                     {errors.colour}
@@ -273,15 +263,13 @@ const ProductAddForm = props => {
                     value={values.discription}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={
-                      touched.discription && errors.discription
-                    }
+                    isInvalid={touched.discription && errors.discription}
                     isValid={touched.discription && !errors.discription}
                   />
                   {loading && (
                     <Spinner
                       animation="border"
-                      style={{textAlign: "center", marginLeft: "49%"}}
+                      style={{ textAlign: "center", marginLeft: "49%" }}
                     />
                   )}
 
@@ -312,13 +300,13 @@ const ProductAddForm = props => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                style={{marginTop: "5px"}}
+                style={{ marginTop: "5px" }}
               >
                 <FaSignInAlt
                   style={{
                     marginRight: "10px",
                     marginBottom: "3px",
-                    transform: "rotate(270deg)"
+                    transform: "rotate(270deg)",
                   }}
                 />
                 Add
