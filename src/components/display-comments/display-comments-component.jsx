@@ -184,8 +184,10 @@ const DisplayComments = props => {
         {commentDetails.map(comment => {
           return (
             <div>
+              <div className="container">
               <h6>{comment.user_firstName} {comment.user_lastName}</h6>
               {comment.comment}
+              </div>
             </div>
           )
         })}

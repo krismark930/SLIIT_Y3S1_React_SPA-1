@@ -45,33 +45,16 @@ const SingleProductView = (props) => {
                   <ListGroupItem>About Product</ListGroupItem>
                   <ListGroupItem>{productFiltered[0].discription}</ListGroupItem>
                 </ListGroup>
-                <Card.Body>
-                  <Link to = {linkzz}>
-                    <Button variant="primary">Update</Button>
-                  </Link>
-                </Card.Body>
-                <Card.Body>
-                  <div className="loginSignupMainHead22">
-                    <div className="container">
-                      <Row>
-                        <Col md="4">
-                          <div className="loginSignupPageLginForm">
-
-
-                            <AddComment pid={productFiltered[0]._id}/>
-                          </div>
-                        </Col>
-                        <Col md="6" className="clll">
-                          <div className="loginSignupPageSignupForm">
-
-                            <DisplayComments pid={productFiltered[0]._id}/>
-
-                          </div>
-                        </Col>
-                      </Row>
-                    </div>
-                  </div>
-                </Card.Body>
+                <ListGroup className="singleproduct-list-group-flush">
+                <ListGroupItem><AddComment pid={productFiltered[0]._id}/></ListGroupItem>
+                
+                </ListGroup>
+                <ListGroup className="singleproduct-list-group-flush">
+                <ListGroupItem>  <DisplayComments pid={productFiltered[0]._id}/></ListGroupItem>
+                
+                </ListGroup>
+                
+               
               </Card>
             </Col>
 
