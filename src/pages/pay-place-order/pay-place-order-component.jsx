@@ -56,13 +56,13 @@ const PayPlaceOrder = () => {
     itemTotal = element.quantity * element.price;
     subtotals = subtotals + itemTotal;
     subtotal = Number(subtotals).toFixed(2);
-    
+
   });
 
   total = (Number(subtotal) + Number(delivery)).toFixed(2);
 
   const setConfirmedOrderCancel = () => {
-    
+
     appContext.setFalsePayCardConfirmed();
     appContext.setFalsePayUserConfirmed();
   }

@@ -36,12 +36,12 @@ const UsePayCardDetails = () => {
   const setEditPayCard = (id) => {
     appContext.payCardEdit();
     appContext.setEditPayCardID(id);
-    
+
   }
 
 
   const DeletePayCard = async (id) => {
- 
+
 
     try {
 
@@ -54,8 +54,8 @@ const UsePayCardDetails = () => {
       });
 
       const responseData = await response.json();
-      
-     
+
+
       if (responseData) {
         setIsDelete(true);
       }
@@ -76,7 +76,7 @@ const UsePayCardDetails = () => {
       const response = await fetch("http://localhost:5000/payments/pay-card");
 
       const responseData = await response.json();
-      
+
 
       countAll = responseData.length;
 
@@ -113,8 +113,6 @@ const UsePayCardDetails = () => {
 
     }
   }
-
- 
 
 
   const setConfirmedCard = () => {

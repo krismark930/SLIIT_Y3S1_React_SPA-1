@@ -6,6 +6,7 @@ import axios from 'axios'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Toast from 'react-bootstrap/Toast'
+import {proxy} from "../../conf";
 
 const ManageCategoryTable = () => {
   const appContext = useContext(AppContext)
@@ -27,7 +28,7 @@ const ManageCategoryTable = () => {
 
   const getCategories = async () => {
     try {
-      const response = await fetch('http://localhost:5000/admin/category')
+      const response = await fetch(`${proxy}category`)
       const responseData = await response.json()
       setCategories(responseData)
       appContext.addCategories(responseData)
@@ -47,7 +48,7 @@ const ManageCategoryTable = () => {
     appContext.editExistingCategoryFalse()
     appContext.categoryEdit()
     appContext.setEditCategoryId(id)
-    axios.get('http://localhost:5000/admin/category/' + id)
+    axios.get(`${proxy}category/` + id)
       .then(response => {
         appContext.editingCategory(response.data)
         appContext.addCategories(response.data)
@@ -59,7 +60,7 @@ const ManageCategoryTable = () => {
 
   const DeleteCategory = async (id) => {
     try {
-      const response = await fetch('http://localhost:5000/admin/category/' + id, {
+      const response = await fetch(`${proxy}category/` + id, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'

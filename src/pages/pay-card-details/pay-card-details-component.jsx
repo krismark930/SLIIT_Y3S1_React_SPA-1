@@ -43,7 +43,7 @@ const PayCardDetails = props => {
 
 
   const onSubmitHandle = async (values, {setSubmitting}) => {
-   
+
 
     if (values.type === "card") {
       setCardPayment(true);
@@ -135,10 +135,10 @@ const PayCardDetails = props => {
                   <Button
                     type="submit"
                     style={{marginTop: "5px", marginRight: "5px"}}
-                    
+
                     onClick={handleReset}
                     disabled={isSubmitting}
-                    
+
                   >
                     Cancel
                   </Button>
@@ -146,8 +146,8 @@ const PayCardDetails = props => {
 
 
                 <Link to="/" style={{marginTop: "5px", marginRight: "5px"}} onClick={() => {
-          setConfirmedCardCancel()
-        }}>
+                  setConfirmedCardCancel()
+                }}>
                   Back to Home
                 </Link>
               </Form>

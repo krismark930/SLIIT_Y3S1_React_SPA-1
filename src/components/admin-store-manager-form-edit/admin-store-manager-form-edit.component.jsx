@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import {FaArrowAltCircleLeft, FaUserEdit} from 'react-icons/fa'
 import {AppContext} from '../../Context/app-context'
 import './admin-store-manager-form-edit-styles.scss'
+import {proxy} from '../../conf'
 
 const schema = yup.object().shape({
   firstName: yup
@@ -34,7 +35,7 @@ const EditStoreManagerForm = () => {
 
   let userId
 
-  const onSubmitHandle = async (values, {resetForm}) => {
+  const onSubmitHandle = async (values) => {
     setLoading(true)
 
     let new_store_manager
@@ -61,8 +62,8 @@ const EditStoreManagerForm = () => {
 
     try {
       userId = appContext.editStoreManagerId
-      appContext.storeManagerEdit();
-      const response = await fetch('http://localhost:5000/admin/storemanager/' + userId, {
+      appContext.storeManagerEdit()
+      const response = await fetch(`${proxy}storemanager/` + userId, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

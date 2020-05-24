@@ -53,7 +53,7 @@ const AddPayUserDetails = props => {
   var currentEmail;
 
   useEffect(() => {
-   
+
   }, [payUserDetails]);
 
   const setConfirmedCardCancel = () => {
@@ -78,7 +78,7 @@ const AddPayUserDetails = props => {
 
     try {
       if (values.isSave) {
-        
+
 
         const response = await fetch("http://localhost:5000/payments/pay-user", {
           method: "POST",
@@ -96,11 +96,11 @@ const AddPayUserDetails = props => {
           throw new Error(responseData.message);
         }
         setLoading(false);
-       
+
       }
 
     } catch (errorss) {
-      
+
       setLoading(false);
       setError(errorss.message || "Something went wrong, try again later");
     }
@@ -308,7 +308,8 @@ const AddPayUserDetails = props => {
               </Button>
 
               <Link to="/" style={{marginTop: "10px", marginRight: "10px"}} onClick={() => {
-          setConfirmedCardCancel()}}>
+                setConfirmedCardCancel()
+              }}>
                 Back to Home
               </Link>
 

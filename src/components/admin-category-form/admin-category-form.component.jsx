@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import {FaBrush, FaPlusCircle} from 'react-icons/fa'
 import {AppContext} from '../../Context/app-context'
 import './admin-category-form-styles.scss'
+import {proxy} from '../../conf'
 
 const schema = yup.object().shape({
   categoryTitle: yup
@@ -35,7 +36,7 @@ const AddCategoryForm = () => {
     setLoading(true)
     setCategoryData(values)
     try {
-      const response = await fetch('http://localhost:5000/admin/category', {
+      const response = await fetch(`${proxy}category`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

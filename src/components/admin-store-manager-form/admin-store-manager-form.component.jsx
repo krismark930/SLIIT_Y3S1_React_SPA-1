@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import {FaBrush, FaUserPlus} from 'react-icons/fa'
 import {AppContext} from '../../Context/app-context'
 import './admin-store-manager-form-styles.scss'
+import {proxy} from '../../conf'
 
 const schema = yup.object().shape({
   firstName: yup
@@ -33,7 +34,7 @@ const schema = yup.object().shape({
 let errors_ = ''
 
 const AddStoreManagerForm = () => {
-  const appContext = useContext(AppContext);
+  const appContext = useContext(AppContext)
   const [loading, setLoading] = useState(false)
   const [storeManagerData, setStoreManagerData] = useState({
     firstName: '',
@@ -52,7 +53,7 @@ const AddStoreManagerForm = () => {
     setLoading(true)
     setStoreManagerData(values)
     try {
-      const response = await fetch('http://localhost:5000/admin/storemanager', {
+      const response = await fetch(`${proxy}storemanager`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -39,12 +39,12 @@ const UsePayUserDetails = () => {
   const setEditPayUser = (id) => {
     appContext.payUserEdit();
     appContext.setEditPayUserID(id);
-  
+
   }
 
 
   const DeletePayUser = async (id) => {
-    
+
 
     try {
 
@@ -57,7 +57,7 @@ const UsePayUserDetails = () => {
       });
 
       const responseData = await response.json();
-      
+
       if (responseData) {
         setIsDelete(true);
       }
@@ -76,17 +76,17 @@ const UsePayUserDetails = () => {
       const response = await fetch("http://localhost:5000/payments/pay-user");
 
       const responseData = await response.json();
-      
+
       countAll = responseData.length;
 
       if (countAll === 0) {
-        
+
         setIsData(true);
       } else {
         setIsData(false);
       }
 
-      
+
       responseData.map(payUser => {
         if ((payUser.email === currentEmail) && (payUser.isSave)) {
           setPayUserDetails(payUser);
@@ -94,7 +94,6 @@ const UsePayUserDetails = () => {
           countThis = countThis + 1;
 
         }
-       
 
 
         if (countThis === 0) {
@@ -106,8 +105,6 @@ const UsePayUserDetails = () => {
 
       });
 
-   
-
 
     } catch (errorss) {
       console.log(errorss);
@@ -116,12 +113,10 @@ const UsePayUserDetails = () => {
 
   }
 
- 
-
 
   const setConfirmedUser = () => {
     appContext.setTruePayUserConfirmed();
-    
+
     appContext.addPayUserDetails(payUserDetails);
   }
 

@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import {FaArrowAltCircleLeft, FaEdit} from 'react-icons/fa'
 import {AppContext} from '../../Context/app-context'
 import './admin-category-form-edit-styles.scss'
+import {proxy} from '../../conf'
 
 const schema = yup.object().shape({
   categoryTitle: yup
@@ -23,7 +24,7 @@ const EditCategoryForm = () => {
 
   let categoryId
 
-  const onSubmitHandle = async (values, {resetForm}) => {
+  const onSubmitHandle = async (values) => {
     setLoading(true)
 
     let new_category
@@ -41,7 +42,7 @@ const EditCategoryForm = () => {
     try {
       categoryId = appContext.editCategoryId
       appContext.categoryEdit()
-      const response = await fetch('http://localhost:5000/admin/category/' + categoryId, {
+      const response = await fetch(`${proxy}category/` + categoryId, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
