@@ -19,6 +19,8 @@ import ManageStoreManager from "./pages/admin-store-managers/admin-store-manager
 import ManageCategory from "./pages/admin-categories/admin-categories-component";
 import Footer from "./components/footer/footer-component";
 import SingleProductView from "./pages/single-product/single-product";
+import ProductAdd from "./pages/Product-add/product-add-component";
+import ProductEdit from "./pages/product-edit/product-edit-component";
 
 function App() {
   const app = useContext(AppContext);
@@ -130,7 +132,9 @@ function App() {
           path="/product-category/:category"
           component={SingleCategory}
         />
-        <Redirect to="/signin-signup"/>
+        <Route exact path="/add-product" component={ProductAdd} />
+        <Route exact path="/edit-product/:pId" component={ProductEdit} />
+        <Redirect to="/signin-signup" />
       </Switch>
     );
   }
