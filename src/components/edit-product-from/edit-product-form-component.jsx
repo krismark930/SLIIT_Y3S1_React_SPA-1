@@ -1,9 +1,9 @@
-import React, {useContext, useState} from "react";
-import {Formik} from "formik";
-import {Button, Col, Form, Spinner} from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Formik } from "formik";
+import { Button, Col, Form, Spinner } from "react-bootstrap";
 import * as yup from "yup";
-import {AppContext} from "../../Context/app-context";
-import {Link} from "react-router-dom";
+import { AppContext } from "../../Context/app-context";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const schema = yup.object().shape({
@@ -72,8 +72,8 @@ const EditProduct = (props) => {
   console.log("+*+**+*+*+*+*+*+*+*");
   console.log(productFiltered);
 
-  const onSubmitHandle = async (values, {setSubmitting}) => {
-    product = {...values};
+  const onSubmitHandle = async (values, { setSubmitting }) => {
+    product = { ...values };
     console.log(values);
     try {
       const response = await fetch(
@@ -136,16 +136,16 @@ const EditProduct = (props) => {
           initialValues={productFiltered[0]}
         >
           {({
-              handleSubmit,
-              handleReset,
-              isSubmitting,
-              handleChange,
-              handleBlur,
-              values,
-              touched,
-              isValid,
-              errors,
-            }) => (
+            handleSubmit,
+            handleReset,
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            values,
+            touched,
+            isValid,
+            errors,
+          }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
@@ -198,9 +198,11 @@ const EditProduct = (props) => {
                     isInvalid={touched.category && errors.category}
                     isValid={touched.category && !errors.category}
                   >
-                    <option></option>
-                    <option value="category 01">category 01</option>
-                    <option value="category 02">category 02</option>
+                    <option>{values.category}</option>
+                    <option value="Hat">Hat</option>
+                    <option value="Women">Women</option>
+                    <option value="Men">Men</option>
+                    <option value="Shoes">Shoes</option>
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
                     {errors.category}
@@ -257,9 +259,11 @@ const EditProduct = (props) => {
                     isInvalid={touched.colour && errors.colour}
                     isValid={touched.colour && !errors.colour}
                   >
-                    <option></option>
-                    <option value="red">Red</option>
-                    <option value="blue">Blue</option>
+                    <option>{values.color}</option>
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Black">Black</option>
+                    <option value="White">White</option>
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
                     {errors.colour}
@@ -281,7 +285,7 @@ const EditProduct = (props) => {
                   {loading && (
                     <Spinner
                       animation="border"
-                      style={{textAlign: "center", marginLeft: "49%"}}
+                      style={{ textAlign: "center", marginLeft: "49%" }}
                     />
                   )}
 
@@ -309,36 +313,57 @@ const EditProduct = (props) => {
                 </Form.Group>
               </Form.Row>
 
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                style={{marginTop: "5px", marginRight: "5px"}}
+              <div
+                className="row"
+                style={{
+                  marginBottom: "4%",
+                  textAlign: "center",
+                  marginTop: "4%",
+                }}
               >
-                Update
-              </Button>
-
-              <Button
-                type="button"
-                variant="danger"
-                onClick={removeItem}
-                style={{marginTop: "5px", marginRight: "5px"}}
-              >
-                Delete
-              </Button>
-
-              <Button
-                type="button"
-                variant="warning"
-                onClick={handleReset}
-                disabled={isSubmitting}
-                style={{marginTop: "5px", marginRight: "5px"}}
-              >
-                Reset to Saved Data
-              </Button>
-
-              <Link to="/" style={{marginTop: "5px", marginRight: "5px"}}>
-                Back to Home
-              </Link>
+                <div className="col-4">
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    style={{
+                      marginTop: "5px",
+                      marginRight: "5px",
+                      width: "169px",
+                    }}
+                  >
+                    Update
+                  </Button>
+                </div>
+                <div className="col-4">
+                  <Button
+                    type="button"
+                    variant="danger"
+                    onClick={removeItem}
+                    style={{
+                      marginTop: "5px",
+                      marginRight: "5px",
+                      width: "169px",
+                    }}
+                  >
+                    Delete
+                  </Button>
+                </div>
+                <div className="col-4">
+                  <Button
+                    type="button"
+                    variant="warning"
+                    onClick={handleReset}
+                    disabled={isSubmitting}
+                    style={{
+                      marginTop: "5px",
+                      marginRight: "5px",
+                      width: "169px",
+                    }}
+                  >
+                    Reset to Saved Data
+                  </Button>
+                </div>
+              </div>
             </Form>
           )}
         </Formik>

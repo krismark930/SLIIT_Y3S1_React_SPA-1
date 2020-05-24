@@ -132,7 +132,10 @@ const UpdatePassword = (props) => {
   };
 
   return (
-    <div className="updatePAsswordComponentHead">
+    <div
+      className="updatePAsswordComponentHead"
+      style={{ marginBottom: "30px" }}
+    >
       <div className="container" style={{ minHeight: "76vh" }}>
         {passwordUpdatedd ? (
           <Row>

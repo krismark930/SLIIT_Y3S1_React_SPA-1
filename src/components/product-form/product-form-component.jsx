@@ -1,9 +1,9 @@
-import React, {useContext, useState} from "react";
-import {Formik} from "formik";
-import {Button, Col, Form, Spinner} from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Formik } from "formik";
+import { Button, Col, Form, Spinner } from "react-bootstrap";
 import * as yup from "yup";
-import {FaSignInAlt} from "react-icons/fa";
-import {AppContext} from "../../Context/app-context";
+import { FaSignInAlt } from "react-icons/fa";
+import { AppContext } from "../../Context/app-context";
 
 import "./product-form.scss";
 
@@ -65,7 +65,7 @@ const ProductAddForm = (props) => {
 
   getCategories();
 
-  const onSubmitHand = async (values, {setSubmitting}) => {
+  const onSubmitHand = async (values, { setSubmitting }) => {
     setLoading(true);
 
     console.log(values);
@@ -111,15 +111,15 @@ const ProductAddForm = (props) => {
           initialValues={productData}
         >
           {({
-              handleSubmit,
-              isSubmitting,
-              handleChange,
-              handleBlur,
-              values,
-              touched,
-              isValid,
-              errors,
-            }) => (
+            handleSubmit,
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            values,
+            touched,
+            isValid,
+            errors,
+          }) => (
             <Form noValidate onSubmit={handleSubmit} classname="addForm">
               <Form.Row>
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
@@ -172,23 +172,11 @@ const ProductAddForm = (props) => {
                     isInvalid={touched.category && errors.category}
                     isValid={touched.category && !errors.category}
                   >
-                    {/*                     
-                    {categories.map((category) =>
-                    {return(<option >{category.categoryTitle}</option>)})} */}
-                    {/* {
-                    appContext.categories.map(element => {
-                      return (
-                        
-                          <option value="{elem.categoryTitle}">
-                            {appContext.categories.categoryTitle}
-                          </option>
-                        
-                        
-                      )
-                      
-                    });
-                  }
-                 */}
+                    <option></option>
+                    <option value="Hat">Hat</option>
+                    <option value="Women">Women</option>
+                    <option value="Men">Men</option>
+                    <option value="Shoes">Shoes</option>
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
                     {errors.category}
@@ -246,8 +234,10 @@ const ProductAddForm = (props) => {
                     isValid={touched.colour && !errors.colour}
                   >
                     <option></option>
-                    <option value="red">Red</option>
-                    <option value="blue">Blue</option>
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Black">Black</option>
+                    <option value="White">White</option>
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
                     {errors.colour}
@@ -269,7 +259,7 @@ const ProductAddForm = (props) => {
                   {loading && (
                     <Spinner
                       animation="border"
-                      style={{textAlign: "center", marginLeft: "49%"}}
+                      style={{ textAlign: "center", marginLeft: "49%" }}
                     />
                   )}
 
@@ -300,7 +290,7 @@ const ProductAddForm = (props) => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                style={{marginTop: "5px"}}
+                style={{ marginTop: "5px" }}
               >
                 <FaSignInAlt
                   style={{
