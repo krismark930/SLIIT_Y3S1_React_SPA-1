@@ -3,6 +3,7 @@ import {Formik} from "formik";
 import {Button, Col, Form} from "react-bootstrap";
 import * as yup from "yup";
 import {AppContext} from "../../Context/app-context";
+import { proxy } from "../../conf";
 
 import "./add-comment-styles.scss";
 
@@ -62,7 +63,7 @@ const AddComment = props => {
     });
 
     try {
-      const response = await fetch("http://localhost:5000/users/current-user");
+      const response = await fetch("${proxy}/users/current-user");
 
       const responseData = await response.json();
 
