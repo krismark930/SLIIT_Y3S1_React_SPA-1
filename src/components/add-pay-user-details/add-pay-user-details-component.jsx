@@ -53,37 +53,32 @@ const AddPayUserDetails = props => {
   var currentEmail;
 
   useEffect(() => {
-    //console.log(payUserDetails);
-    //payUser = payUserDetails;
 
   }, [payUserDetails]);
 
+  const setConfirmedCardCancel = () => {
+    appContext.setFalsePayUserConfirmed();
+    appContext.setFalsePayCardConfirmed();
+  }
+
   const onSubmitHandle = async (values, {setSubmitting}) => {
 
-    console.log("Ane manda");
-    console.log(values);
     setLoading(true);
 
     appContext.currentUser.forEach(user => {
       currentEmail = user.email;
-      console.log(currentEmail);
       setPayUserDetails({...values, email: currentEmail});
     });
 
     payUser = {...values, email: currentEmail};
 
-    console.log("Ane manda Bn");
-    console.log(currentEmail);
-    console.log(payUser);
-
-    //pay userwa context ekata daganna
     appContext.addPayUserDetails(payUser);
 
     appContext.setTruePayUserConfirmed();
 
     try {
       if (values.isSave) {
-        //appContext.addPayUserDetails(payUser);
+
 
         const response = await fetch("http://localhost:5000/payments/pay-user", {
           method: "POST",
@@ -100,15 +95,12 @@ const AddPayUserDetails = props => {
 
           throw new Error(responseData.message);
         }
-
-        //appContext.setTruePayUserConfirmed();
-        //appContext.login();
         setLoading(false);
-        console.log(responseData);
+
       }
 
     } catch (errorss) {
-      //console.log(errorss);
+
       setLoading(false);
       setError(errorss.message || "Something went wrong, try again later");
     }
@@ -315,7 +307,9 @@ const AddPayUserDetails = props => {
                 Reset
               </Button>
 
-              <Link to="/" style={{marginTop: "10px", marginRight: "10px"}}>
+              <Link to="/" style={{marginTop: "10px", marginRight: "10px"}} onClick={() => {
+                setConfirmedCardCancel()
+              }}>
                 Back to Home
               </Link>
 

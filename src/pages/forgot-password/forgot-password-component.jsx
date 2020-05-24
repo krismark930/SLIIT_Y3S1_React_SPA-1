@@ -138,14 +138,14 @@ const UpdatePassword = (props) => {
 
   return (
     <div className="updatePAsswordComponentHead">
-      <div className="container">
+      <div className="container" style={{minHeight: "76vh"}}>
         {passwordUpdatedd ? (
           <Row>
             <Col
               md="6"
               style={{
                 margin: "auto",
-                marginTop: "102px",
+                marginTop: "21%",
                 padding: "20px",
                 borderRadius: "14px",
                 border: "2px solid rgba(0, 123, 255, 0.55)",
@@ -170,7 +170,7 @@ const UpdatePassword = (props) => {
                     errors,
                   }) => (
                   <Form noValidate onSubmit={handleSubmit}>
-                    <Form.Row>
+                    <Form.Row style={{textAlign: "center"}}>
                       <Form.Group
                         as={Col}
                         md="12"
@@ -347,7 +347,12 @@ const UpdatePassword = (props) => {
                   Your password has been updated successfully
                 </p>{" "}
                 <Link to="/signin-signup">
-                  <Button style={{width: "100%"}}>Login</Button>
+                  <Button
+                    style={{width: "100%"}}
+                    onClick={() => setpasswordUpdated(false)}
+                  >
+                    Login
+                  </Button>
                 </Link>
               </Card>
             </Col>

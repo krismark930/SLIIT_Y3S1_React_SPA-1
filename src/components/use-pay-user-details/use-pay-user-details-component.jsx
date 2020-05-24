@@ -36,16 +36,66 @@ const UsePayUserDetails = () => {
 
   }, [payUserDetails, currentEmail, isDelete]);
 
+
+  const getPayUserDetails = async () => {
+    console.log("hi details ganna awa");
+    try {
+      const response = await fetch("http://localhost:5000/payments/pay-user");
+
+      const responseData = await response.json();
+
+      countAll = responseData.length;
+
+      if (countAll === 0) {
+
+        setIsData(true);
+      } else {
+        setIsData(false);
+      }
+
+
+      responseData.map(payUser => {
+        if ((payUser.email === currentEmail) && (payUser.isSave)) {
+          setPayUserDetails(payUser);
+          appContext.addEditPayUserDetails(payUser);
+          countThis = countThis + 1;
+
+        }
+
+
+        if (countThis === 0) {
+          setIsData(true);
+        } else {
+          setIsData(false);
+        }
+
+
+      });
+
+
+    } catch (errorss) {
+      console.log(errorss);
+
+    }
+
+  }
+
+
+  const setConfirmedUser = () => {
+    appContext.setTruePayUserConfirmed();
+
+    appContext.addPayUserDetails(payUserDetails);
+  }
+
   const setEditPayUser = (id) => {
     appContext.payUserEdit();
     appContext.setEditPayUserID(id);
-    console.log("hi machan edit wada");
-    console.log(id);
+
   }
 
 
   const DeletePayUser = async (id) => {
-    //console.log("hi oya delete eka athule");
+
 
     try {
 
@@ -58,10 +108,7 @@ const UsePayUserDetails = () => {
       });
 
       const responseData = await response.json();
-      console.log(responseData);
-      //console.log("hi delete una");
-      // currentEmail = " ";
-      //getPayUserDetails();
+
       if (responseData) {
         setIsDelete(true);
       }
@@ -72,72 +119,6 @@ const UsePayUserDetails = () => {
       setLoading(false);
 
     }
-  }
-
-  const getPayUserDetails = async () => {
-    console.log("hi details ganna awa");
-    try {
-      const response = await fetch("http://localhost:5000/payments/pay-user");
-
-      const responseData = await response.json();
-      //const userid= appContext.editPayUserId;
-      countAll = responseData.length;
-
-      if (countAll === 0) {
-        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        setIsData(true);
-      } else {
-        setIsData(false);
-      }
-
-      console.log("ganna thanama response data eka");
-      console.log(responseData.length);
-
-
-      //response = responseData;
-      responseData.map(payUser => {
-        if ((payUser.email === currentEmail) && (payUser.isSave)) {
-          setPayUserDetails(payUser);
-          appContext.addEditPayUserDetails(payUser);
-          countThis = countThis + 1;
-
-        }
-        console.log("*************************************************************");
-        console.log(countAll);
-        console.log(countThis);
-
-
-        if (countThis === 0) {
-          setIsData(true);
-        } else {
-          setIsData(false);
-        }
-
-
-      });
-
-      console.log(payUserDetails);
-
-
-    } catch (errorss) {
-      console.log(errorss);
-
-    }
-
-  }
-
-  /* if(isDelete){
-     currentEmail = " ";
-     getPayUserDetails();
-     console.log("me is delete check karapu eka");
-   }*/
-
-  console.log(isDelete);
-
-  const setConfirmedUser = () => {
-    appContext.setTruePayUserConfirmed();
-    //pay user savewa context ekata daganna
-    appContext.addPayUserDetails(payUserDetails);
   }
 
 
@@ -180,8 +161,8 @@ const UsePayUserDetails = () => {
           <div
             style={{
               textAlign: "center",
-              marginTop: "30px",
-              marginBottom: "30px",
+              marginTop: "20px",
+              marginBottom: "20px",
               width: '585px',
 
             }}

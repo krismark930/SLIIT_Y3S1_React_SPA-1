@@ -36,13 +36,12 @@ const UsePayCardDetails = () => {
   const setEditPayCard = (id) => {
     appContext.payCardEdit();
     appContext.setEditPayCardID(id);
-    console.log("hi machan edit wada");
-    console.log(id);
+
   }
 
 
   const DeletePayCard = async (id) => {
-    //console.log("hi oya delete eka athule");
+
 
     try {
 
@@ -55,10 +54,8 @@ const UsePayCardDetails = () => {
       });
 
       const responseData = await response.json();
-      console.log(responseData);
-      //console.log("hi delete una");
-      // currentEmail = " ";
-      //getPayCardDetails();
+
+
       if (responseData) {
         setIsDelete(true);
       }
@@ -79,7 +76,7 @@ const UsePayCardDetails = () => {
       const response = await fetch("http://localhost:5000/payments/pay-card");
 
       const responseData = await response.json();
-      //const cardid= appContext.editPayCardId;
+
 
       countAll = responseData.length;
 
@@ -116,15 +113,6 @@ const UsePayCardDetails = () => {
 
     }
   }
-
-  /* if(isDelete){
-     currentEmail = " ";
-     getPayCardDetails();
-     console.log("me is delete check karapu eka");
-   }*/
-
-  console.log(isDelete);
-  console.log(currentEmail);
 
 
   const setConfirmedCard = () => {

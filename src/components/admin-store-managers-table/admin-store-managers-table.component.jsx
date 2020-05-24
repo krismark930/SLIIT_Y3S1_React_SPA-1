@@ -6,6 +6,7 @@ import axios from 'axios'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Toast from 'react-bootstrap/Toast'
+import {proxy} from '../../conf'
 
 const ManageStoreManagerTable = () => {
   const appContext = useContext(AppContext)
@@ -27,7 +28,7 @@ const ManageStoreManagerTable = () => {
 
   const getStoreManagers = async () => {
     try {
-      const response = await fetch('http://localhost:5000/admin/storemanager')
+      const response = await fetch(`${proxy}/admin/storemanager`)
       const responseData = await response.json()
       setStoreManagers(responseData)
       appContext.addStoreManagers(responseData)
@@ -47,7 +48,7 @@ const ManageStoreManagerTable = () => {
     appContext.editExistingStoreManagerFalse()
     appContext.storeManagerEdit()
     appContext.setEditStoreManagerId(id)
-    axios.get('http://localhost:5000/admin/storemanager/' + id)
+    axios.get(`${proxy}/admin/storemanager/` + id)
       .then(response => {
         appContext.editingStoreManager(response.data)
         appContext.addStoreManagers(response.data)
@@ -59,7 +60,7 @@ const ManageStoreManagerTable = () => {
 
   const DeleteStoreManager = async (id) => {
     try {
-      const response = await fetch('http://localhost:5000/admin/storemanager/' + id, {
+      const response = await fetch(`${proxy}/admin/storemanager/` + id, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'

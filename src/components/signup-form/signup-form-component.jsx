@@ -76,10 +76,12 @@ const SignupForm = (props) => {
         errorss = responseData.message;
         throw new Error(responseData.message);
       }
+      appContext.setProductsMethod();
       appContext.addCurrentUser(responseData.user);
       appContext.login();
       appContext.setCheckCustomerMethod();
 
+      appContext.setWishListmethod(values.email);
       setLoading(false);
       console.log(responseData);
     } catch (errorss) {
@@ -87,8 +89,6 @@ const SignupForm = (props) => {
       setLoading(false);
       setError(errorss.message || "Something went wrong, try again later");
     }
-
-    console.log(errorss + " errosdfdfdf");
   };
 
   return (

@@ -14,14 +14,15 @@ const UsePlaceOrderDetails = ({cartItem}) => {
 
   useEffect(() => {
     quantity = cartItem.quantity;
-    //appContext.setFalsePayCardConfirmed();
+
   });
 
+  //
   return (
 
     <div className="checkout-item">
       <div className="image-container">
-        <img src={cartItem.id} alt="item"/>
+        <img src={cartItem.image} alt="item"/>
       </div>
       <span className="name">{cartItem.title}</span>
       <span className="quantity">

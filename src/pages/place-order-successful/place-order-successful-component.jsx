@@ -9,18 +9,15 @@ const PlaceOrderSuccessful = props => {
   const appContext = useContext(AppContext);
 
 
-  console.log("333333333333333333333333333pay order successful ekata eddi 33333333333333333333333333311111");
-  console.log("user" + appContext.payUserConfirmed);
-  console.log("card" + appContext.payCardConfirmed);
-
   const [show, setShow] = useState(true);
 
   const handleClose = () => setShow(false);
   //const handleShow = () => setShow(true);
 
   const setConfirmedBackToHome = () => {
-    console.log("place order success eke back to home click kala");
+
     appContext.setFalsePayCardConfirmed();
+    appContext.setFalsePayUserConfirmed();
   }
 
 
@@ -29,20 +26,23 @@ const PlaceOrderSuccessful = props => {
 
     <div>
       <Modal show={show} onHide={handleClose}>
+        <div style={{border: 'solid gray 3px'}}>
 
-        <Modal.Title>Confirm Message</Modal.Title>
 
-        <Modal.Body>Your Order has been confirmed successfully!</Modal.Body>
-        <Modal.Footer>
+          <Modal.Body>
+            <h4>Your Order has been confirmed successfully!</h4>
+          </Modal.Body>
+          <Modal.Footer>
 
-          <Link to="/" onClick={() => {
-            setConfirmedBackToHome()
-          }}>
-            <Button variant="primary">
-              OK
-            </Button>
-          </Link>
-        </Modal.Footer>
+            <Link to="/" onClick={() => {
+              setConfirmedBackToHome()
+            }}>
+              <Button variant="primary" style={{width: '100px'}}>
+                OK
+              </Button>
+            </Link>
+          </Modal.Footer>
+        </div>
       </Modal>
     </div>
   );
