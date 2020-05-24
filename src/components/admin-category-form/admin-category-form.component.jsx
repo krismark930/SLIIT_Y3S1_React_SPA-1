@@ -36,7 +36,7 @@ const AddCategoryForm = () => {
     setLoading(true)
     setCategoryData(values)
     try {
-      const response = await fetch(`${proxy}category`, {
+      const response = await fetch(`${proxy}/admin/category`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -53,7 +53,7 @@ const AddStoreManagerForm = () => {
     setLoading(true)
     setStoreManagerData(values)
     try {
-      const response = await fetch(`${proxy}storemanager`, {
+      const response = await fetch(`${proxy}/admin/storemanager`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
