@@ -118,7 +118,7 @@ const AddComment = props => {
 
       //appContext.addPayUserDetails(payUser);
 
-      const response = await fetch("http://localhost:5000/comments/product-comment", {
+      const response = await fetch("${proxy}/comments/product-comment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
