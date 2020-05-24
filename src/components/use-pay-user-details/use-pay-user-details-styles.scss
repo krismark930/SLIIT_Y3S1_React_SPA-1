@@ -1,4 +1,4 @@
-.checkout-page {
+/*checkout-page {
   width: 55%;
   min-height: 90vh;
   display: flex;
@@ -10,14 +10,14 @@
     margin-top: 50px;
     font-style: italic;
     font-weight: 500;
-  }
+  }*/
 
   .buyNowBtn {
     margin-left: auto;
     margin-top: 30px;
   }
 
-  .checkout-header {
+  /*.checkout-header {
     width: 100%;
     padding: 10px 0;
     display: flex;
@@ -40,4 +40,16 @@
     font-size: 30px;
   }
 }
+
+button {
+  border: none;
+  background: transparent;
+}
+
+button:focus {
+  outline: none !important;
+}*/
+
+
+
   
