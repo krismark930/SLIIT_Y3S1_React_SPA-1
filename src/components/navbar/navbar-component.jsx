@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
-import { Button, Modal, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, {useContext, useState} from "react";
+import {Button, Modal, Nav, Navbar} from "react-bootstrap";
+import {Link} from "react-router-dom";
 import "./navbar-style.scss";
-import { FaCartArrowDown } from "react-icons/fa";
-import { IconContext } from "react-icons";
+import {FaCartArrowDown} from "react-icons/fa";
+import {IconContext} from "react-icons";
 import CartDropdown from "../cart-dropdown/cart-dropdown-component";
-import { AppContext } from "../../Context/app-context";
+import {AppContext} from "../../Context/app-context";
 
 const MainNavbar = () => {
   const appContext = useContext(AppContext);
@@ -14,6 +14,12 @@ const MainNavbar = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   console.log(appContext);
+
+  const setConfirmedCardCancel = () => {
+    console.log("wishlist click kala");
+    appContext.setFalsePayUserConfirmed();
+    appContext.setFalsePayCardConfirmed();
+  }
   return (
     <div className="navbar-head">
       <Navbar
@@ -21,25 +27,25 @@ const MainNavbar = () => {
         collapseOnSelect
         expand="md"
         variant="dark"
-        style={{ width: "100%", backgroundColor: "currentColor" }}
+        style={{width: "100%", backgroundColor: "currentColor"}}
       >
         <Link to="/">
           <Navbar.Brand href="#home">Home</Navbar.Brand>
         </Link>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto" />
+          <Nav className="mr-auto"/>
           <Nav className=" float-right">
             {appContext.loggedin ? (
               <Nav>
                 {appContext.checkCustomer ? (
                   <Nav>
-                    <Link to="/wishlist" id="wislistLink">
+                    <Link to="/wishlist" id="wislistLink" onClick={() => {
+                      setConfirmedCardCancel()
+                    }}>
                       <Nav.Link href="#wish_list">Wish List</Nav.Link>
                     </Link>
-                    <Link to="/comment">
-                      <Nav.Link href="#comments">Comments</Nav.Link>
-                    </Link>
+
                     <Nav>
                       <Nav.Link href="#contact_us">Contact Us</Nav.Link>
                       <Nav.Link href="#about_us">About Us</Nav.Link>
@@ -81,10 +87,10 @@ const MainNavbar = () => {
                           size: "2rem",
                         }}
                       >
-                        <FaCartArrowDown />
+                        <FaCartArrowDown/>
                       </IconContext.Provider>
                     </Nav.Link>
-                    {appContext.hidden ? null : <CartDropdown />}
+                    {appContext.hidden ? null : <CartDropdown/>}
                   </div>
                 ) : null}
                 <Nav.Link onClick={handleShow}>
@@ -117,10 +123,10 @@ const MainNavbar = () => {
                         size: "2rem",
                       }}
                     >
-                      <FaCartArrowDown />
+                      <FaCartArrowDown/>
                     </IconContext.Provider>
                   </Nav.Link>
-                  {appContext.hidden ? null : <CartDropdown />}
+                  {appContext.hidden ? null : <CartDropdown/>}
                 </div>
                 <Link to="/signin-signup">
                   <Button

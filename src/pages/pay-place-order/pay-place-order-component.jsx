@@ -6,29 +6,7 @@ import UsePlaceOrderDetails from "../../components/use-place-order-details/use-p
 import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
 
-// const cartItems = [
-//   {
-//     id: 1,
-//     name: "Brown Brim",
-//     imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-//     price: 25,
-//     quantity: 3
-//   },
-//   {
-//     id: 1,
-//     name: "Brown Brim",
-//     imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-//     price: 25,
-//     quantity: 3
-//   },
-//   {
-//     id: 1,
-//     name: "Brown Brim",
-//     imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-//     price: 25,
-//     quantity: 3
-//   }
-// ];
+
 const PayPlaceOrder = () => {
   const appContext = useContext(AppContext);
 
@@ -78,14 +56,15 @@ const PayPlaceOrder = () => {
     itemTotal = element.quantity * element.price;
     subtotals = subtotals + itemTotal;
     subtotal = Number(subtotals).toFixed(2);
-    // total = (Math.round(total * 100) / 100).toFixed(2);
+
   });
 
   total = (Number(subtotal) + Number(delivery)).toFixed(2);
 
   const setConfirmedOrderCancel = () => {
-    console.log("place order eke cancel click kala");
+
     appContext.setFalsePayCardConfirmed();
+    appContext.setFalsePayUserConfirmed();
   }
 
 

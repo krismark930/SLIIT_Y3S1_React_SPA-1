@@ -71,6 +71,7 @@ const LoginForm = (props) => {
       }
 
       appContext.login();
+      appContext.setCategoriesMethod();
       appContext.setProductsMethod();
       console.log("-------------");
       console.log(responseData.userDetails);

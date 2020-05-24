@@ -36,20 +36,7 @@ const GlobalState = (props) => {
     []
   );
   const [editingCategoryObject, setEditingCategoryObject] = useState([]);
-  const [categories, setCategories] = useState([
-    {
-      categoryTitle: "Hats",
-    },
-    {
-      categoryTitle: "Men",
-    },
-    {
-      categoryTitle: "Women",
-    },
-    {
-      categoryTitle: "Shoes",
-    },
-  ]);
+  const [categories, setCategories] = useState([]);
 
   const addItemToCart = (item) => {
     const updatedCart = cart;
@@ -122,6 +109,32 @@ const GlobalState = (props) => {
       console.log("*-*-*-*-*-*-*---*");
       setTempProducts(responseData);
       console.log(products);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const setCategoriesMethod = async () => {
+    console.log("setProductsMethod");
+    let responseData = 0;
+    // const mail = currentUser[0].email
+    var responseError = "";
+    try {
+      const response = await fetch(`http://localhost:5000/admin/category`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(),
+      });
+      responseData = await response.json();
+      // console.log(responseData.wishList)
+      responseError = responseData.message;
+      console.log("+++++++++++++++++");
+      console.log(responseData);
+      setCategories(responseData);
+      console.log("*-*-*-*-*-*-*---*");
+      console.log(categories);
     } catch (err) {
       console.log(err.message);
     }
@@ -534,6 +547,7 @@ const GlobalState = (props) => {
         editExistingStoreManagerFalse: editExistingStoreManagerFalse,
         editingStoreManager: editingStoreManager,
         editingCategory: editingCategory,
+        setCategoriesMethod: setCategoriesMethod,
       }}
     >
       {props.children}

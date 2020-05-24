@@ -38,13 +38,12 @@ const PayCardDetails = props => {
   const setConfirmedCardCancel = () => {
     console.log("add pay card eke payment type select karana eke cancel click kala");
     app.setFalsePayUserConfirmed();
+    app.setFalsePayCardConfirmed();
   }
 
 
   const onSubmitHandle = async (values, {setSubmitting}) => {
-    console.log("Ane manda");
-    console.log(values);
-    console.log(values.type);
+
 
     if (values.type === "card") {
       setCardPayment(true);
@@ -72,6 +71,7 @@ const PayCardDetails = props => {
             {({
                 handleSubmit,
                 isSubmitting,
+                handleReset,
                 handleChange,
                 handleBlur,
                 values,
@@ -135,13 +135,19 @@ const PayCardDetails = props => {
                   <Button
                     type="submit"
                     style={{marginTop: "5px", marginRight: "5px"}}
+
+                    onClick={handleReset}
+                    disabled={isSubmitting}
+
                   >
                     Cancel
                   </Button>
                 </Link>
 
 
-                <Link to="/" style={{marginTop: "5px", marginRight: "5px"}}>
+                <Link to="/" style={{marginTop: "5px", marginRight: "5px"}} onClick={() => {
+                  setConfirmedCardCancel()
+                }}>
                   Back to Home
                 </Link>
               </Form>
