@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { AppContext } from "../../Context/app-context";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { proxy } from "../../conf";
 
 const schema = yup.object().shape({
   title: yup
@@ -78,7 +79,7 @@ const EditProduct = (props) => {
     try {
       const response = await fetch(
         // `${proxy}/storemanager/product/${props.pId}`,
-        `http://localhost:5000/storemanager/product/${props.pId}`,
+        `${proxy}/storemanager/product/${props.pId}`,
         {
           method: "POST",
           headers: {
@@ -108,7 +109,7 @@ const EditProduct = (props) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/storemanager/product/${props.pId}`,
+        `${proxy}/storemanager/product/${props.pId}`,
         {
           method: "DELETE",
           headers: {

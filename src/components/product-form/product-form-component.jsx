@@ -4,6 +4,7 @@ import { Button, Col, Form, Spinner } from "react-bootstrap";
 import * as yup from "yup";
 import { FaSignInAlt } from "react-icons/fa";
 import { AppContext } from "../../Context/app-context";
+import { proxy } from "../../conf";
 
 import "./product-form.scss";
 
@@ -53,7 +54,7 @@ const ProductAddForm = (props) => {
 
   const getCategories = async () => {
     try {
-      const response = await fetch("http://localhost:5000/admin/category");
+      const response = await fetch(`${proxy}/admin/category`);
       const responseData = await response.json();
       categories = responseData;
       console.log("-------------------------------------");
@@ -72,16 +73,13 @@ const ProductAddForm = (props) => {
     setProductData(values);
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/storemanager/product",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }
-      );
+      const response = await fetch(`${proxy}/storemanager/product`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
       const responseData = await response.json();
       console.log(responseData);
