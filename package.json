@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/dom": "^7.5.7",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "jest-enzyme": "^7.1.2"
