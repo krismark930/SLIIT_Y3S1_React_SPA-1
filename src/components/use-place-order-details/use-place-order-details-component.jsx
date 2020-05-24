@@ -17,12 +17,12 @@ const UsePlaceOrderDetails = ({cartItem}) => {
 
   });
 
-  //{cartItem.id}
+  //
   return (
 
     <div className="checkout-item">
       <div className="image-container">
-        <img src={require("../../assets/img1.jpg")} alt="item"/>
+        <img src={cartItem.image} alt="item"/>
       </div>
       <span className="name">{cartItem.title}</span>
       <span className="quantity">
