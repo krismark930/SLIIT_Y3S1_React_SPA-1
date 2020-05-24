@@ -3,6 +3,7 @@ import React, {useContext, useEffect, useState} from "react";
 import "./display-comments-styles.scss";
 //import CheckoutItem from "../../components/checkout-item/checkout-item-component";
 import {AppContext} from "../../Context/app-context";
+import { proxy } from "../../conf";
 
 const DisplayComments = (props) => {
   const appContext = useContext(AppContext);

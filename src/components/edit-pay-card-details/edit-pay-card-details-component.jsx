@@ -6,7 +6,7 @@ import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { proxy } from "../../conf";
 import "./edit-pay-card-details-styles.scss";
 
 const schema = yup.object().shape({

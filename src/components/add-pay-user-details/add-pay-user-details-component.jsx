@@ -4,7 +4,7 @@ import {Button, Col, Form} from "react-bootstrap";
 import * as yup from "yup";
 import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
-
+import { proxy } from "../../conf";
 import "./add-pay-user-details-styles.scss";
 
 const schema = yup.object().shape({

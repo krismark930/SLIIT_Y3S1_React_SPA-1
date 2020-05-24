@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 //import CheckoutItem from "../../components/checkout-item/checkout-item-component";
 import { AppContext } from "../../Context/app-context";
 import { FaRegHourglass } from "react-icons/fa";
+import { proxy } from "../../conf";
 
 const UsePayUserDetails = () => {
   const appContext = useContext(AppContext);
