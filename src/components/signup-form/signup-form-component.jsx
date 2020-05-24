@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import { Formik } from "formik";
-import { Button, Col, Form, Spinner } from "react-bootstrap";
+import React, {useContext, useState} from "react";
+import {Formik} from "formik";
+import {Button, Col, Form, Spinner} from "react-bootstrap";
 import * as yup from "yup";
-import { FaMinusCircle, FaSignInAlt } from "react-icons/fa";
-import { AppContext } from "../../Context/app-context";
-import { proxy } from "../../conf";
+import {FaMinusCircle, FaSignInAlt} from "react-icons/fa";
+import {AppContext} from "../../Context/app-context";
+import {proxy} from "../../conf";
 
 import "./signup-form.scss";
 
@@ -55,7 +55,7 @@ const SignupForm = (props) => {
     answer: "",
   });
 
-  const onSubmitHand = async (values, { setSubmitting }) => {
+  const onSubmitHand = async (values, {setSubmitting}) => {
     setLoading(true);
 
     console.log(values);
@@ -101,17 +101,17 @@ const SignupForm = (props) => {
           initialValues={signUpData}
         >
           {({
-            handleSubmit,
-            isSubmitting,
-            handleChange,
-            handleBlur,
-            resetForm,
-            setFieldValue,
-            values,
-            touched,
-            isValid,
-            errors,
-          }) => (
+              handleSubmit,
+              isSubmitting,
+              handleChange,
+              handleBlur,
+              resetForm,
+              setFieldValue,
+              values,
+              touched,
+              isValid,
+              errors,
+            }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
@@ -263,7 +263,7 @@ const SignupForm = (props) => {
                   {loading && (
                     <Spinner
                       animation="border"
-                      style={{ textAlign: "center", marginLeft: "49%" }}
+                      style={{textAlign: "center", marginLeft: "49%"}}
                     />
                   )}
 
@@ -341,7 +341,7 @@ const SignupForm = (props) => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                style={{ marginTop: "5px" }}
+                style={{marginTop: "5px"}}
               >
                 <FaSignInAlt
                   style={{
@@ -361,7 +361,7 @@ const SignupForm = (props) => {
                 onClick={resetForm}
                 type="submit"
                 variant="outline-danger"
-                style={{ marginTop: "5px", float: "right" }}
+                style={{marginTop: "5px", float: "right"}}
               >
                 <FaMinusCircle
                   style={{

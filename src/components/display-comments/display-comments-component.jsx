@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 
 import "./display-comments-styles.scss";
 //import CheckoutItem from "../../components/checkout-item/checkout-item-component";
-import { AppContext } from "../../Context/app-context";
-import { proxy } from "../../conf";
+import {AppContext} from "../../Context/app-context";
 
 const DisplayComments = (props) => {
   const appContext = useContext(AppContext);
@@ -80,7 +79,7 @@ const DisplayComments = (props) => {
           console.log("44444444444 meka thama id eka 1 wana comment");
           //console.log(comment);
 
-          productComments.push({ ...comment });
+          productComments.push({...comment});
 
           //setCategories(updatedCategory);
           //appContext.addEditPayUserDetails(payUser);

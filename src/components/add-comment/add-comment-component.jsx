@@ -3,7 +3,6 @@ import {Formik} from "formik";
 import {Button, Col, Form} from "react-bootstrap";
 import * as yup from "yup";
 import {AppContext} from "../../Context/app-context";
-import { proxy } from "../../conf";
 
 import "./add-comment-styles.scss";
 
