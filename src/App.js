@@ -54,7 +54,6 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/add-product" component={ProductAdd} />
         <Route exact path="/edit-product/:pId" component={ProductEdit} />
-
         <Redirect to="/" />
       </Switch>
     );
