@@ -7,7 +7,8 @@ const ProductAdd = () => {
 
   return (
     <div>
-      <div>
+      <div style = {{ marginTop : "5%"}}>
+        <h1 style = {{ textAlign: "center"}}>Add Product</h1>
         <ProductAddForm/>
       </div>
     </div>
