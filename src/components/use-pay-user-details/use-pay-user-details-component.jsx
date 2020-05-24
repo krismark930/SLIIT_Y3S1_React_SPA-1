@@ -36,7 +36,7 @@ const UsePayUserDetails = () => {
 
   }, [payUserDetails, currentEmail, isDelete]);
 
-  
+
   const getPayUserDetails = async () => {
     console.log("hi details ganna awa");
     try {
@@ -120,7 +120,6 @@ const UsePayUserDetails = () => {
 
     }
   }
-
 
 
   return (
