@@ -28,7 +28,7 @@ const ManageCategoryTable = () => {
 
   const getCategories = async () => {
     try {
-      const response = await fetch(`${proxy}category`)
+      const response = await fetch(`${proxy}/admin/category`)
       const responseData = await response.json()
       setCategories(responseData)
       appContext.addCategories(responseData)
@@ -48,7 +48,7 @@ const ManageCategoryTable = () => {
     appContext.editExistingCategoryFalse()
     appContext.categoryEdit()
     appContext.setEditCategoryId(id)
-    axios.get(`${proxy}category/` + id)
+    axios.get(`${proxy}/admin/category/` + id)
       .then(response => {
         appContext.editingCategory(response.data)
         appContext.addCategories(response.data)
@@ -60,7 +60,7 @@ const ManageCategoryTable = () => {
 
   const DeleteCategory = async (id) => {
     try {
-      const response = await fetch(`${proxy}category/` + id, {
+      const response = await fetch(`${proxy}/admin/category/` + id, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'

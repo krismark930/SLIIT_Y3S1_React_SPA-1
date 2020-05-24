@@ -42,7 +42,7 @@ const EditCategoryForm = () => {
     try {
       categoryId = appContext.editCategoryId
       appContext.categoryEdit()
-      const response = await fetch(`${proxy}category/` + categoryId, {
+      const response = await fetch(`${proxy}/admin/category/` + categoryId, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

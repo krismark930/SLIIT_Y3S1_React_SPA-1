@@ -63,7 +63,7 @@ const EditStoreManagerForm = () => {
     try {
       userId = appContext.editStoreManagerId
       appContext.storeManagerEdit()
-      const response = await fetch(`${proxy}storemanager/` + userId, {
+      const response = await fetch(`${proxy}/admin/storemanager/` + userId, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

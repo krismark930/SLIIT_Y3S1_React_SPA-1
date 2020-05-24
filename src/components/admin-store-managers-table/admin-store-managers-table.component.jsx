@@ -28,7 +28,7 @@ const ManageStoreManagerTable = () => {
 
   const getStoreManagers = async () => {
     try {
-      const response = await fetch(`${proxy}storemanager`)
+      const response = await fetch(`${proxy}/admin/storemanager`)
       const responseData = await response.json()
       setStoreManagers(responseData)
       appContext.addStoreManagers(responseData)
@@ -48,7 +48,7 @@ const ManageStoreManagerTable = () => {
     appContext.editExistingStoreManagerFalse()
     appContext.storeManagerEdit()
     appContext.setEditStoreManagerId(id)
-    axios.get(`${proxy}storemanager/` + id)
+    axios.get(`${proxy}/admin/storemanager/` + id)
       .then(response => {
         appContext.editingStoreManager(response.data)
         appContext.addStoreManagers(response.data)
@@ -60,7 +60,7 @@ const ManageStoreManagerTable = () => {
 
   const DeleteStoreManager = async (id) => {
     try {
-      const response = await fetch(`${proxy}storemanager/` + id, {
+      const response = await fetch(`${proxy}/admin/storemanager/` + id, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'

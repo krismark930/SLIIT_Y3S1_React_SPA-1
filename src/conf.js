@@ -1,1 +1,1 @@
-export const proxy = 'http://localhost:5000/admin/'
+export const proxy = 'https://sliit-af-online-shoppingmall.herokuapp.com'
