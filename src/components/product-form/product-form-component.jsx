@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import { Formik } from "formik";
-import { Button, Col, Form, Spinner } from "react-bootstrap";
+import React, {useContext, useState} from "react";
+import {Formik} from "formik";
+import {Button, Col, Form, Spinner} from "react-bootstrap";
 import * as yup from "yup";
-import { FaSignInAlt } from "react-icons/fa";
-import { AppContext } from "../../Context/app-context";
-import { proxy } from "../../conf";
+import {FaSignInAlt} from "react-icons/fa";
+import {AppContext} from "../../Context/app-context";
+import {proxy} from "../../conf";
 
 import "./product-form.scss";
 
@@ -66,7 +66,7 @@ const ProductAddForm = (props) => {
 
   getCategories();
 
-  const onSubmitHand = async (values, { setSubmitting }) => {
+  const onSubmitHand = async (values, {setSubmitting}) => {
     setLoading(true);
 
     console.log(values);
@@ -109,15 +109,15 @@ const ProductAddForm = (props) => {
           initialValues={productData}
         >
           {({
-            handleSubmit,
-            isSubmitting,
-            handleChange,
-            handleBlur,
-            values,
-            touched,
-            isValid,
-            errors,
-          }) => (
+              handleSubmit,
+              isSubmitting,
+              handleChange,
+              handleBlur,
+              values,
+              touched,
+              isValid,
+              errors,
+            }) => (
             <Form noValidate onSubmit={handleSubmit} classname="addForm">
               <Form.Row>
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
@@ -257,7 +257,7 @@ const ProductAddForm = (props) => {
                   {loading && (
                     <Spinner
                       animation="border"
-                      style={{ textAlign: "center", marginLeft: "49%" }}
+                      style={{textAlign: "center", marginLeft: "49%"}}
                     />
                   )}
 
@@ -288,7 +288,7 @@ const ProductAddForm = (props) => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                style={{ marginTop: "5px" }}
+                style={{marginTop: "5px"}}
               >
                 <FaSignInAlt
                   style={{

@@ -4,7 +4,7 @@ import {Button, Col, Form} from "react-bootstrap";
 import * as yup from "yup";
 import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
-import { proxy } from "../../conf";
+import {proxy} from "../../conf";
 import "./add-pay-user-details-styles.scss";
 
 const schema = yup.object().shape({
@@ -80,7 +80,7 @@ const AddPayUserDetails = props => {
       if (values.isSave) {
 
 
-        const response = await fetch("${proxy}/payments/pay-user", {
+        const response = await fetch(`${proxy}/payments/pay-user`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

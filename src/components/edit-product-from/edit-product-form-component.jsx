@@ -1,11 +1,10 @@
-import React, { useContext, useState } from "react";
-import { Formik } from "formik";
-import { Button, Col, Form, Spinner } from "react-bootstrap";
+import React, {useContext, useState} from "react";
+import {Formik} from "formik";
+import {Button, Col, Form, Spinner} from "react-bootstrap";
 import * as yup from "yup";
-import { AppContext } from "../../Context/app-context";
-import { Link } from "react-router-dom";
+import {AppContext} from "../../Context/app-context";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { proxy } from "../../conf";
+import {proxy} from "../../conf";
 
 const schema = yup.object().shape({
   title: yup
@@ -73,8 +72,8 @@ const EditProduct = (props) => {
   console.log("+*+**+*+*+*+*+*+*+*");
   console.log(productFiltered);
 
-  const onSubmitHandle = async (values, { setSubmitting }) => {
-    product = { ...values };
+  const onSubmitHandle = async (values, {setSubmitting}) => {
+    product = {...values};
     console.log(values);
     try {
       const response = await fetch(
@@ -137,16 +136,16 @@ const EditProduct = (props) => {
           initialValues={productFiltered[0]}
         >
           {({
-            handleSubmit,
-            handleReset,
-            isSubmitting,
-            handleChange,
-            handleBlur,
-            values,
-            touched,
-            isValid,
-            errors,
-          }) => (
+              handleSubmit,
+              handleReset,
+              isSubmitting,
+              handleChange,
+              handleBlur,
+              values,
+              touched,
+              isValid,
+              errors,
+            }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Row>
                 <Form.Group as={Col} md="6" controlId="validationFormik01">
@@ -286,7 +285,7 @@ const EditProduct = (props) => {
                   {loading && (
                     <Spinner
                       animation="border"
-                      style={{ textAlign: "center", marginLeft: "49%" }}
+                      style={{textAlign: "center", marginLeft: "49%"}}
                     />
                   )}
 

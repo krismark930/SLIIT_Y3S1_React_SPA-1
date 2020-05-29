@@ -4,7 +4,7 @@ import {Button, Col, Form} from "react-bootstrap";
 import * as yup from "yup";
 import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
-import { proxy } from "../../conf";
+import {proxy} from "../../conf";
 
 import "./add-pay-card-details-styles.scss";
 
@@ -71,7 +71,7 @@ const AddPayCardDetails = props => {
       if (values.isSave) {
         appContext.addPayCardDetails(payCard);
 
-        const response = await fetch("${proxy}/payments/pay-card", {
+        const response = await fetch(`${proxy}/payments/pay-card`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

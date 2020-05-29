@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Formik } from "formik";
-import { Button, Col, Form } from "react-bootstrap";
+import React, {useContext, useEffect, useState} from "react";
+import {Formik} from "formik";
+import {Button, Col, Form} from "react-bootstrap";
 import * as yup from "yup";
-import { AppContext } from "../../Context/app-context";
-import { proxy } from "../../conf";
+import {AppContext} from "../../Context/app-context";
+import {proxy} from "../../conf";
 import "./add-comment-styles.scss";
 
 const schema = yup.object().shape({
@@ -45,7 +45,7 @@ const AddComment = (props) => {
     //payUser = payUserDetails;
   }, [commentDetails]);
 
-  const onSubmitHandle = async (values, { setSubmitting, resetForm }) => {
+  const onSubmitHandle = async (values, {setSubmitting, resetForm}) => {
     console.log("Ane manda");
     console.log(values);
     setLoading(true);
@@ -57,7 +57,7 @@ const AddComment = (props) => {
     });
 
     try {
-      const response = await fetch("${proxy}/users/current-user");
+      const response = await fetch(`${proxy}/users/current-user`);
 
       const responseData = await response.json();
 
@@ -104,7 +104,7 @@ const AddComment = (props) => {
     try {
       //appContext.addPayUserDetails(payUser);
 
-      const response = await fetch("${proxy}/comments/product-comment", {
+      const response = await fetch(`${proxy}/comments/product-comment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -131,7 +131,7 @@ const AddComment = (props) => {
     }
 
     try {
-      resetForm({ values: resvalues });
+      resetForm({values: resvalues});
       console.log("me reset eke values thama");
       console.log(values);
     } catch (error) {
@@ -150,16 +150,16 @@ const AddComment = (props) => {
           initialValues={commentDetails}
         >
           {({
-            handleSubmit,
-            handleReset,
-            isSubmitting,
-            handleChange,
-            handleBlur,
-            values,
-            touched,
-            isValid,
-            errors,
-          }) => (
+              handleSubmit,
+              handleReset,
+              isSubmitting,
+              handleChange,
+              handleBlur,
+              values,
+              touched,
+              isValid,
+              errors,
+            }) => (
             <Form noValidate onSubmit={handleSubmit} id="exampleForm">
               <Form.Row>
                 <Form.Group as={Col} md="12" controlId="validationFormik04">
@@ -183,7 +183,7 @@ const AddComment = (props) => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                style={{ marginLeft: "30px", marginRight: "30px" }}
+                style={{marginLeft: "30px", marginRight: "30px"}}
               >
                 Add
               </Button>
@@ -193,7 +193,7 @@ const AddComment = (props) => {
                 className="outline"
                 onClick={handleReset}
                 disabled={isSubmitting}
-                style={{ marginLeft: "30px", marginRight: "30px" }}
+                style={{marginLeft: "30px", marginRight: "30px"}}
               >
                 Cancel
               </Button>

@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 
 import "./use-pay-user-details-styles.scss";
-import { Button } from "react-bootstrap";
+import {Button} from "react-bootstrap";
 //import CheckoutItem from "../../components/checkout-item/checkout-item-component";
-import { AppContext } from "../../Context/app-context";
-import { FaRegHourglass } from "react-icons/fa";
-import { proxy } from "../../conf";
+import {AppContext} from "../../Context/app-context";
+import {FaRegHourglass} from "react-icons/fa";
+import {proxy} from "../../conf";
 
 const UsePayUserDetails = () => {
   const appContext = useContext(AppContext);
@@ -49,7 +49,7 @@ const UsePayUserDetails = () => {
     );
 
     try {
-      const response = await fetch("${proxy}/payments/pay-user/" + id, {
+      const response = await fetch(`${proxy}/payments/pay-user/` + id, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const UsePayUserDetails = () => {
   const getPayUserDetails = async () => {
     console.log("hi details ganna awa");
     try {
-      const response = await fetch("${proxy}/payments/pay-user");
+      const response = await fetch(`${proxy}/payments/pay-user`);
 
       const responseData = await response.json();
       //const userid= appContext.editPayUserId;
@@ -165,51 +165,51 @@ const UsePayUserDetails = () => {
               width: "585px",
             }}
           >
-            <table className="table" style={{ border: "solid gray  2px" }}>
+            <table className="table" style={{border: "solid gray  2px"}}>
               <thead className="thead-light">
-                <tr>
-                  <th
-                    style={{ borderBottom: "solid gray   1px", color: "black" }}
-                  >
-                    <h5>Name</h5>
-                  </th>
-                  <th
-                    style={{ borderBottom: "solid gray   1px", color: "black" }}
-                  >
-                    <h5>Phone</h5>
-                  </th>
-                  <th
-                    style={{ borderBottom: "solid gray   1px", color: "black" }}
-                  >
-                    <h5>Address</h5>
-                  </th>
-                  <th
-                    style={{ borderBottom: "solid gray   1px", color: "black" }}
-                  >
-                    <h5>City</h5>
-                  </th>
-                  <th
-                    style={{ borderBottom: "solid gray   1px", color: "black" }}
-                  >
-                    <h5>Province</h5>
-                  </th>
-                </tr>
+              <tr>
+                <th
+                  style={{borderBottom: "solid gray   1px", color: "black"}}
+                >
+                  <h5>Name</h5>
+                </th>
+                <th
+                  style={{borderBottom: "solid gray   1px", color: "black"}}
+                >
+                  <h5>Phone</h5>
+                </th>
+                <th
+                  style={{borderBottom: "solid gray   1px", color: "black"}}
+                >
+                  <h5>Address</h5>
+                </th>
+                <th
+                  style={{borderBottom: "solid gray   1px", color: "black"}}
+                >
+                  <h5>City</h5>
+                </th>
+                <th
+                  style={{borderBottom: "solid gray   1px", color: "black"}}
+                >
+                  <h5>Province</h5>
+                </th>
+              </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>{payUserDetails.name}</td>
-                  <td>{payUserDetails.phone}</td>
-                  <td>{payUserDetails.address}</td>
-                  <td>{payUserDetails.city}</td>
-                  <td>{payUserDetails.province}</td>
-                </tr>
+              <tr>
+                <td>{payUserDetails.name}</td>
+                <td>{payUserDetails.phone}</td>
+                <td>{payUserDetails.address}</td>
+                <td>{payUserDetails.city}</td>
+                <td>{payUserDetails.province}</td>
+              </tr>
               </tbody>
             </table>
 
             <Button
               className="buyNowBtn"
               type="submit"
-              style={{ margin: "10px" }}
+              style={{margin: "10px"}}
               onClick={() => {
                 setConfirmedUser();
               }}
@@ -220,7 +220,7 @@ const UsePayUserDetails = () => {
             <Button
               className="buyNowBtn"
               type="submit"
-              style={{ margin: "10px" }}
+              style={{margin: "10px"}}
               onClick={() => {
                 setEditPayUser(payUserDetails._id);
               }}
@@ -231,7 +231,7 @@ const UsePayUserDetails = () => {
             <Button
               className="buyNowBtn"
               type="submit"
-              style={{ margin: "10px" }}
+              style={{margin: "10px"}}
               onClick={() => {
                 DeletePayUser(payUserDetails._id);
               }}

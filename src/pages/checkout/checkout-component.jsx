@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, {useContext, useEffect} from "react";
 
 import "./checkout-style.scss";
-import { Button } from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import CheckoutItem from "../../components/checkout-item/checkout-item-component";
-import { AppContext } from "../../Context/app-context";
-import { FaHandHoldingUsd, FaRegHourglass } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import {AppContext} from "../../Context/app-context";
+import {FaHandHoldingUsd, FaRegHourglass} from "react-icons/fa";
+import {Link} from "react-router-dom";
 import "aos/dist/aos.css";
 import Aos from "aos";
 // const cartItems = [
@@ -34,7 +34,7 @@ import Aos from "aos";
 const Checkout = () => {
   useEffect(() => {
     // void reset();
-    Aos.init({ duration: 1000 });
+    Aos.init({duration: 1000});
   }, []);
   const appContext = useContext(AppContext);
 
@@ -60,7 +60,7 @@ const Checkout = () => {
   let classNamesss = appContext.cart.length ? "checkOutHead" : null;
 
   return (
-    <div className={classNamesss} style={{ minHeight: "57vh" }}>
+    <div className={classNamesss} style={{minHeight: "57vh"}}>
       {appContext.cart.length ? (
         <div className="checkout-page">
           <h2
@@ -163,9 +163,9 @@ const Checkout = () => {
             </div>
           </div>
           {appContext.cart.map((cartItem) => (
-            <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+            <CheckoutItem key={cartItem.id} cartItem={cartItem}/>
           ))}
-          <div className="container" style={{ marginBottom: "6%" }}>
+          <div className="container" style={{marginBottom: "6%"}}>
             <div className="row">
               <div
                 // data-aos="zoom-in"

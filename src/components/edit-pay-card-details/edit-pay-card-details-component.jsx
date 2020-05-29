@@ -6,7 +6,7 @@ import {AppContext} from "../../Context/app-context";
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { proxy } from "../../conf";
+import {proxy} from "../../conf";
 import "./edit-pay-card-details-styles.scss";
 
 const schema = yup.object().shape({
@@ -48,7 +48,7 @@ const EditPayCardDetails = props => {
 
   useEffect(() => {
 
-    axios.get('${proxy}/payments/pay-card/' + cardid)
+    axios.get(`${proxy}/payments/pay-card/` + cardid)
       .then(response => {
 
         setPayCardDetails(response.data);
@@ -100,7 +100,7 @@ const EditPayCardDetails = props => {
 
         cardid = appContext.editPayCardId;
 
-        const response = await fetch("${proxy}/payments/pay-card/update/" + cardid, {
+        const response = await fetch(`${proxy}/payments/pay-card/update/` + cardid, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
